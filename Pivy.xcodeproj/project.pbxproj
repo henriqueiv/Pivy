@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
+		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
+		6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* ViewController.m */; };
+		6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
+		6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A91ABB47F1008B5970 /* Images.xcassets */; };
+		6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
+		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
+		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
+		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
+		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
+		62D5A2201ABB5D1200464F29 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62D5A21F1ABB5D1200464F29 /* Parse.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6222C8B31ABB47F1008B5970 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6222C8981ABB47F1008B5970;
+			remoteInfo = Pivy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6222C8A01ABB47F1008B5970 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6222C8A11ABB47F1008B5970 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6222C8A31ABB47F1008B5970 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6222C8A41ABB47F1008B5970 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6222C8A71ABB47F1008B5970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6222C8A91ABB47F1008B5970 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6222C8AC1ABB47F1008B5970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6222C8B21ABB47F1008B5970 /* PivyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PivyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6222C8B71ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6222C8B81ABB47F1008B5970 /* PivyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PivyTests.m; sourceTree = "<group>"; };
+		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
+		62D5A2171ABB56A200464F29 /* Objeto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Objeto.m; sourceTree = "<group>"; };
+		62D5A2191ABB570200464F29 /* Pivy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pivy.h; sourceTree = "<group>"; };
+		62D5A21A1ABB570200464F29 /* Pivy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pivy.m; sourceTree = "<group>"; };
+		62D5A21C1ABB571200464F29 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		62D5A21D1ABB571200464F29 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		62D5A21F1ABB5D1200464F29 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6222C8961ABB47F1008B5970 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D5A2201ABB5D1200464F29 /* Parse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6222C8AF1ABB47F1008B5970 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6222C8901ABB47F1008B5970 = {
+			isa = PBXGroup;
+			children = (
+				62D5A2211ABB5D1600464F29 /* Frameworks */,
+				6222C89B1ABB47F1008B5970 /* Pivy */,
+				6222C8B51ABB47F1008B5970 /* PivyTests */,
+				6222C89A1ABB47F1008B5970 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6222C89A1ABB47F1008B5970 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6222C8991ABB47F1008B5970 /* Pivy.app */,
+				6222C8B21ABB47F1008B5970 /* PivyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6222C89B1ABB47F1008B5970 /* Pivy */ = {
+			isa = PBXGroup;
+			children = (
+				62D5A2111ABB560100464F29 /* Models */,
+				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
+				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
+				6222C8A31ABB47F1008B5970 /* ViewController.h */,
+				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
+				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
+				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
+				6222C89C1ABB47F1008B5970 /* Supporting Files */,
+			);
+			path = Pivy;
+			sourceTree = "<group>";
+		};
+		6222C89C1ABB47F1008B5970 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6222C89D1ABB47F1008B5970 /* Info.plist */,
+				6222C89E1ABB47F1008B5970 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6222C8B51ABB47F1008B5970 /* PivyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6222C8B81ABB47F1008B5970 /* PivyTests.m */,
+				6222C8B61ABB47F1008B5970 /* Supporting Files */,
+			);
+			path = PivyTests;
+			sourceTree = "<group>";
+		};
+		6222C8B61ABB47F1008B5970 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6222C8B71ABB47F1008B5970 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		62D5A2111ABB560100464F29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				62D5A2161ABB56A200464F29 /* Objeto.h */,
+				62D5A2171ABB56A200464F29 /* Objeto.m */,
+				62D5A2191ABB570200464F29 /* Pivy.h */,
+				62D5A21A1ABB570200464F29 /* Pivy.m */,
+				62D5A21C1ABB571200464F29 /* Background.h */,
+				62D5A21D1ABB571200464F29 /* Background.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		62D5A2211ABB5D1600464F29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62D5A2231ABB5D2500464F29 /* System Frameworks */,
+				62D5A2221ABB5D1D00464F29 /* User Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		62D5A2221ABB5D1D00464F29 /* User Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62D5A21F1ABB5D1200464F29 /* Parse.framework */,
+			);
+			name = "User Frameworks";
+			sourceTree = "<group>";
+		};
+		62D5A2231ABB5D2500464F29 /* System Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "System Frameworks";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6222C8981ABB47F1008B5970 /* Pivy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6222C8BC1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "Pivy" */;
+			buildPhases = (
+				6222C8951ABB47F1008B5970 /* Sources */,
+				6222C8961ABB47F1008B5970 /* Frameworks */,
+				6222C8971ABB47F1008B5970 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pivy;
+			productName = Pivy;
+			productReference = 6222C8991ABB47F1008B5970 /* Pivy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6222C8B11ABB47F1008B5970 /* PivyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6222C8BF1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "PivyTests" */;
+			buildPhases = (
+				6222C8AE1ABB47F1008B5970 /* Sources */,
+				6222C8AF1ABB47F1008B5970 /* Frameworks */,
+				6222C8B01ABB47F1008B5970 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6222C8B41ABB47F1008B5970 /* PBXTargetDependency */,
+			);
+			name = PivyTests;
+			productName = PivyTests;
+			productReference = 6222C8B21ABB47F1008B5970 /* PivyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6222C8911ABB47F1008B5970 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Henrique Valcanaia";
+				TargetAttributes = {
+					6222C8981ABB47F1008B5970 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 8WCPHDZJPJ;
+					};
+					6222C8B11ABB47F1008B5970 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 6222C8981ABB47F1008B5970;
+					};
+				};
+			};
+			buildConfigurationList = 6222C8941ABB47F1008B5970 /* Build configuration list for PBXProject "Pivy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6222C8901ABB47F1008B5970;
+			productRefGroup = 6222C89A1ABB47F1008B5970 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6222C8981ABB47F1008B5970 /* Pivy */,
+				6222C8B11ABB47F1008B5970 /* PivyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6222C8971ABB47F1008B5970 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */,
+				6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */,
+				6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6222C8B01ABB47F1008B5970 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6222C8951ABB47F1008B5970 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
+				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
+				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
+				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
+				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
+				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6222C8AE1ABB47F1008B5970 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6222C8B41ABB47F1008B5970 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6222C8981ABB47F1008B5970 /* Pivy */;
+			targetProxy = 6222C8B31ABB47F1008B5970 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6222C8A61ABB47F1008B5970 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6222C8A71ABB47F1008B5970 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6222C8AC1ABB47F1008B5970 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6222C8BA1ABB47F1008B5970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6222C8BB1ABB47F1008B5970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6222C8BD1ABB47F1008B5970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Pivy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6222C8BE1ABB47F1008B5970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Pivy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6222C8C01ABB47F1008B5970 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PivyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pivy.app/Pivy";
+			};
+			name = Debug;
+		};
+		6222C8C11ABB47F1008B5970 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PivyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pivy.app/Pivy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6222C8941ABB47F1008B5970 /* Build configuration list for PBXProject "Pivy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6222C8BA1ABB47F1008B5970 /* Debug */,
+				6222C8BB1ABB47F1008B5970 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6222C8BC1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "Pivy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6222C8BD1ABB47F1008B5970 /* Debug */,
+				6222C8BE1ABB47F1008B5970 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6222C8BF1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "PivyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6222C8C01ABB47F1008B5970 /* Debug */,
+				6222C8C11ABB47F1008B5970 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6222C8911ABB47F1008B5970 /* Project object */;
+}
