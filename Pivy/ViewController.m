@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-
+#import <Parse/Parse.h>
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
@@ -22,6 +23,17 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    
+    PFQuery *backgrounds = [PFQuery queryWithClassName:@"Background"];
+    
+    NSArray *backgroundsArray = [backgrounds findObjects];
+    [PFObject pinAllInBackground:backgroundsArray];
+    
+}
+- (IBAction)countryButton:(UIButton *)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
+    [query fromLocalDatastore];
+    [query whereKeyExists:@"image"];
 }
 
 - (void)didReceiveMemoryWarning {
