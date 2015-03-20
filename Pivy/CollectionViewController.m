@@ -33,6 +33,11 @@ self.collectionView.allowsSelection = YES;
 
 }
 
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+//    self.collectionView.backgroundColor
+    self.collectionView.backgroundView.backgroundColor = [UIColor brownColor];
+}
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
