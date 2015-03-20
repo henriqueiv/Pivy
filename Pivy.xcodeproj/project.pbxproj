@@ -19,6 +19,9 @@
 		358B18141ABC7C92007283CB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18131ABC7C92007283CB /* libz.dylib */; };
 		358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18151ABC7C98007283CB /* libsqlite3.dylib */; };
 		358B18181ABC7DC1007283CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18171ABC7DC1007283CB /* Bolts.framework */; };
+		358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181A1ABCA8C6007283CB /* MapViewController.m */; };
+		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
+		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* ViewController.m */; };
@@ -55,6 +58,11 @@
 		358B18131ABC7C92007283CB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		358B18151ABC7C98007283CB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		358B18171ABC7DC1007283CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		358B18191ABCA8C6007283CB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		358B181A1ABCA8C6007283CB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */,
 				358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */,
 				358B18141ABC7C92007283CB /* libz.dylib in Frameworks */,
 				358B18121ABC7C88007283CB /* SystemConfiguration.framework in Frameworks */,
@@ -131,12 +140,14 @@
 			isa = PBXGroup;
 			children = (
 				62D5A2111ABB560100464F29 /* Models */,
+				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
 				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
 				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
 				6222C8A31ABB47F1008B5970 /* ViewController.h */,
 				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+				358B18191ABCA8C6007283CB /* MapViewController.h */,
+				358B181A1ABCA8C6007283CB /* MapViewController.m */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
-				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
 			);
@@ -185,6 +196,9 @@
 		62D5A2211ABB5D1600464F29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				358B181E1ABCB33B007283CB /* MBProgressHUD.h */,
+				358B181F1ABCB33B007283CB /* MBProgressHUD.m */,
+				358B181C1ABCABC6007283CB /* MapKit.framework */,
 				358B18151ABC7C98007283CB /* libsqlite3.dylib */,
 				358B18131ABC7C92007283CB /* libz.dylib */,
 				358B18111ABC7C88007283CB /* SystemConfiguration.framework */,
@@ -325,6 +339,8 @@
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
+				358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */,
+				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

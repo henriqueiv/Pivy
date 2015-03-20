@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
@@ -28,20 +29,40 @@
     PFQuery *backgrounds = [PFQuery queryWithClassName:@"Background"];
     
     NSArray *backgroundsArray = [backgrounds findObjects];
-    [PFObject pinAllInBackground:backgroundsArray];
-    
+    [PFObject pinAllInBackground:backgroundsArray block:^(BOOL succeeded, NSError *error) {
+        if(succeeded){
+            NSLog(@"DEu tudo certo no pinning do parse");
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
 }
 - (IBAction)countryButton:(UIButton *)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
     [query fromLocalDatastore];
     [query whereKey:@"country" equalTo:[sender.currentTitle lowercaseString]];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
         if(!error){
             _backgroundImageView.image = [UIImage imageWithData:[object[@"image"] getData]];
             NSLog(@"Nao deu erro!!");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
-        else
-            NSLog(@"%@", error);
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
     }];
 }
 
