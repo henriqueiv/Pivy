@@ -11,6 +11,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
+
 @end
 
 @implementation ViewController
@@ -33,7 +34,15 @@
 - (IBAction)countryButton:(UIButton *)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
     [query fromLocalDatastore];
-    [query whereKeyExists:@"image"];
+    [query whereKey:@"country" equalTo:[sender.currentTitle lowercaseString]];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(!error){
+            _backgroundImageView.image = [UIImage imageWithData:[object[@"image"] getData]];
+            NSLog(@"Nao deu erro!!");
+        }
+        else
+            NSLog(@"%@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,8 +63,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     [self reverseGeocode:newLocation];
-//    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-//    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+    //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 }
 
 @end
