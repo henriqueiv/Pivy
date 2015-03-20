@@ -10,31 +10,31 @@
 	<string>Pivy</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7C16197A5F068C6C034B3F1573E08054FB442F55</key>
-		<string>https://github.com/henriqueiv/Me-Empresta.git</string>
+		<key>477E838B78426A496D2FADDD3848CAB5EF68B3C7</key>
+		<string>https://github.com/henriqueiv/Pivy.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Apps/Pivy/Pivy.xcodeproj</string>
+	<string>Pivy.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7C16197A5F068C6C034B3F1573E08054FB442F55</key>
-		<string>../../../..</string>
+		<key>477E838B78426A496D2FADDD3848CAB5EF68B3C7</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/henriqueiv/Me-Empresta.git</string>
+	<string>https://github.com/henriqueiv/Pivy.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7C16197A5F068C6C034B3F1573E08054FB442F55</string>
+	<string>477E838B78426A496D2FADDD3848CAB5EF68B3C7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7C16197A5F068C6C034B3F1573E08054FB442F55</string>
+			<string>477E838B78426A496D2FADDD3848CAB5EF68B3C7</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Projects</string>
+			<string>Pivy</string>
 		</dict>
 	</array>
 </dict>
