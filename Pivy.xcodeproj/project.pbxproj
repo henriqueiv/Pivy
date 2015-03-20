@@ -334,10 +334,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
+				521568BF1ABCA7E900127980 /* CollectionViewController.m in Sources */,
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
 				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
+				521568C21ABCAD2100127980 /* CollectionViewCell.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
 				358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,

@@ -56,13 +56,16 @@
                                     <action selector="countryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1DB-1e-Dfd"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TUk-1a-k9D">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXJ-Ih-vXm">
                                 <rect key="frame" x="515" y="28" width="69" height="30"/>
                                 <state key="normal" title="Collection">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ix1-sl-Atd" kind="show" id="GFT-bc-5nv"/>
+                                    <segue destination="wwf-Qw-C5o" kind="show" id="Bln-UB-cIV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6A-tP-jUl">
@@ -110,21 +113,21 @@
             <point key="canvasLocation" x="378" y="434"/>
         </scene>
         <!--Collection View Controller-->
-        <scene sceneID="8p7-dH-J4b">
+        <scene sceneID="n5x-sa-Cji">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNI-bv-8HL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="ix1-sl-Atd" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SkL-Z6-X3Q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Map-Ha-bY2">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OK7-Dn-bAr">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eoj-DK-IGf">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="QnS-U3-iQp" customClass="CollectionViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -132,12 +135,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="0.10614086085725803" green="0.4707059075130533" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                             </collectionViewCell>
                         </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="ix1-sl-Atd" id="2Se-gt-4CO"/>
-                            <outlet property="delegate" destination="ix1-sl-Atd" id="gyB-2B-AcG"/>
-                        </connections>
                     </collectionView>
                 </collectionViewController>
             </objects>
