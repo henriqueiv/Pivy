@@ -19,10 +19,11 @@
 		358B18141ABC7C92007283CB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18131ABC7C92007283CB /* libz.dylib */; };
 		358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18151ABC7C98007283CB /* libsqlite3.dylib */; };
 		358B18181ABC7DC1007283CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18171ABC7DC1007283CB /* Bolts.framework */; };
-		358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181A1ABCA8C6007283CB /* MapViewController.m */; };
 		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
 		35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FB1AC094A40067BAAE /* MoreViewController.m */; };
+		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
+		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
@@ -61,13 +62,15 @@
 		358B18131ABC7C92007283CB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		358B18151ABC7C98007283CB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		358B18171ABC7DC1007283CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		358B18191ABCA8C6007283CB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		358B181A1ABCA8C6007283CB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		35C3A5FA1AC094A40067BAAE /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = ../MoreViewController.h; sourceTree = "<group>"; };
 		35C3A5FB1AC094A40067BAAE /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = ../MoreViewController.m; sourceTree = "<group>"; };
+		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		35C3A5FE1AC0B0040067BAAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAnnotation.h; sourceTree = "<group>"; };
+		35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalAnnotation.m; sourceTree = "<group>"; };
 		52362FDD1ABE0D030079D117 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -154,12 +157,14 @@
 				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
 				52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */,
 				52362FE01ABE0D2B0079D117 /* CollectionViewController.m */,
-				358B18191ABCA8C6007283CB /* MapViewController.h */,
-				358B181A1ABCA8C6007283CB /* MapViewController.m */,
+				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
+				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
 				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
 				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
 				6222C8A31ABB47F1008B5970 /* ViewController.h */,
 				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
+				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
 				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
@@ -351,15 +356,16 @@
 			files = (
 				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
+				35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */,
 				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
 				52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */,
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
-				358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
 				35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
+				35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

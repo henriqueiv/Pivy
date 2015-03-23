@@ -19,6 +19,7 @@
     [Parse enableLocalDatastore];
     [Parse setApplicationId:@"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
                   clientKey:@"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
     return YES;
 }
 
