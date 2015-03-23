@@ -31,7 +31,7 @@
     NSArray *backgroundsArray = [backgrounds findObjects];
     [PFObject pinAllInBackground:backgroundsArray block:^(BOOL succeeded, NSError *error) {
         if(succeeded){
-            NSLog(@"DEu tudo certo no pinning do parse");
+            NSLog(@"Deu tudo certo no pinning do parse");
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"

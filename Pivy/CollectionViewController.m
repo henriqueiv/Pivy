@@ -35,7 +35,7 @@ self.collectionView.allowsSelection = YES;
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    self.collectionView.backgroundColor = [UIColor blueColor];
+//    self.collectionView.backgroundColor = [UIColor blueColor];
 //    self.collectionView.backgroundView.backgroundColor = [UIColor brownColor];
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor blackColor];
