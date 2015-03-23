@@ -25,7 +25,7 @@ _reuseIdentifier =  @"Cell";
 
     
 // EVIL: Register your own cell class (or comment this out)
-//[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+//[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:_reuseIdentifier];
 
 // allow multiple selections
 self.collectionView.allowsMultipleSelection = YES;
@@ -35,9 +35,11 @@ self.collectionView.allowsSelection = YES;
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    self.collectionView.backgroundColor
-    self.collectionView.backgroundView.backgroundColor = [UIColor brownColor];
-}
+    self.collectionView.backgroundColor = [UIColor blueColor];
+//    self.collectionView.backgroundView.backgroundColor = [UIColor brownColor];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor blackColor];
+    }
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -56,7 +58,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
 //    cell.textLabel.text = [self.cellData objectAtIndex:indexPath.row];
-    
+    cell.backgroundColor = [UIColor brownColor];
+    cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
     return cell;
 }
 

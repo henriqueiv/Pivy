@@ -137,6 +137,10 @@
                                 <color key="backgroundColor" red="0.10614086085725803" green="0.4707059075130533" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                             </collectionViewCell>
                         </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ix1-sl-Atd" id="r6h-lH-7Vi"/>
+                            <outlet property="delegate" destination="ix1-sl-Atd" id="Ogj-ru-gde"/>
+                        </connections>
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNI-bv-8HL" userLabel="First Responder" sceneMemberID="firstResponder"/>

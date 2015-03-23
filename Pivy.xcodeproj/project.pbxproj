@@ -291,10 +291,11 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = YYWFQ73E8M;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = YYWFQ73E8M;
 						TestTargetID = 6222C8981ABB47F1008B5970;
 					};
 				};
@@ -477,6 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -484,6 +486,7 @@
 				INFOPLIST_FILE = Pivy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -492,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -499,6 +503,7 @@
 				INFOPLIST_FILE = Pivy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
