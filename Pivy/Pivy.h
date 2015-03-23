@@ -13,6 +13,7 @@
 
 @property PFGeoPoint *location;
 @property NSString *name;
+@property NSString *country;
 @property PFFile *image;
 
 @end

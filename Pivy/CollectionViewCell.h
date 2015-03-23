@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface CollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imageCell;
 
 @end

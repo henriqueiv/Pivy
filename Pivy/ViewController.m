@@ -31,7 +31,24 @@
     NSArray *backgroundsArray = [backgrounds findObjects];
     [PFObject pinAllInBackground:backgroundsArray block:^(BOOL succeeded, NSError *error) {
         if(succeeded){
-            NSLog(@"DEu tudo certo no pinning do parse");
+            NSLog(@"BACKGROUND Pinning OK");
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
+    
+    PFQuery *pivy = [PFQuery queryWithClassName:@"Pivy"];
+    
+    NSArray *pivyArray = [pivy findObjects];
+    [PFObject pinAllInBackground:pivyArray block:^(BOOL succeeded, NSError *error) {
+        if(succeeded){
+            NSLog(@"PIVY Pinning OK");
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
