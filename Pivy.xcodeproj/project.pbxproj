@@ -22,6 +22,8 @@
 		358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181A1ABCA8C6007283CB /* MapViewController.m */; };
 		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
+		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
+		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* ViewController.m */; };
@@ -63,6 +65,10 @@
 		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		52362FDD1ABE0D030079D117 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		52362FE01ABE0D2B0079D117 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -141,6 +147,10 @@
 			children = (
 				62D5A2111ABB560100464F29 /* Models */,
 				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
+				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
+				52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */,
+				52362FE01ABE0D2B0079D117 /* CollectionViewController.m */,
+				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
 				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
 				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
 				6222C8A31ABB47F1008B5970 /* ViewController.h */,
@@ -334,14 +344,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
-				521568BF1ABCA7E900127980 /* CollectionViewController.m in Sources */,
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
 				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
+				52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */,
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
-				521568C21ABCAD2100127980 /* CollectionViewCell.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
 				358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */,
+				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
