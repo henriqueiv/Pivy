@@ -22,6 +22,7 @@
 		358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181A1ABCA8C6007283CB /* MapViewController.m */; };
 		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
+		35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FB1AC094A40067BAAE /* MoreViewController.m */; };
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
@@ -65,6 +66,8 @@
 		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		35C3A5FA1AC094A40067BAAE /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = ../MoreViewController.h; sourceTree = "<group>"; };
+		35C3A5FB1AC094A40067BAAE /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = ../MoreViewController.m; sourceTree = "<group>"; };
 		52362FDD1ABE0D030079D117 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -145,20 +148,22 @@
 		6222C89B1ABB47F1008B5970 /* Pivy */ = {
 			isa = PBXGroup;
 			children = (
-				62D5A2111ABB560100464F29 /* Models */,
-				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
+				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
+				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
+				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
 				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
 				52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */,
 				52362FE01ABE0D2B0079D117 /* CollectionViewController.m */,
-				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
-				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
-				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
-				6222C8A31ABB47F1008B5970 /* ViewController.h */,
-				6222C8A41ABB47F1008B5970 /* ViewController.m */,
 				358B18191ABCA8C6007283CB /* MapViewController.h */,
 				358B181A1ABCA8C6007283CB /* MapViewController.m */,
-				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
+				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
+				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
+				6222C8A31ABB47F1008B5970 /* ViewController.h */,
+				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
+				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
+				62D5A2111ABB560100464F29 /* Models */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
 			);
 			path = Pivy;
@@ -291,11 +296,11 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = YYWFQ73E8M;
+						DevelopmentTeam = BJXVASWXX8;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = YYWFQ73E8M;
+						DevelopmentTeam = BJXVASWXX8;
 						TestTargetID = 6222C8981ABB47F1008B5970;
 					};
 				};
@@ -353,6 +358,7 @@
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
 				358B181B1ABCA8C6007283CB /* MapViewController.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
+				35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
