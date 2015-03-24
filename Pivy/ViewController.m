@@ -93,7 +93,7 @@
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error) {
             CLPlacemark *placemark = [placemarks lastObject];
-            NSLog(@"Country: %@", placemark);
+//            NSLog(@"Country: %@", placemark);
         } else
             NSLog(@"Error %@", error.description);
     }];

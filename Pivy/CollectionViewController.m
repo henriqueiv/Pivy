@@ -40,13 +40,15 @@ self.collectionView.allowsSelection = YES;
 
     [self.pivyArray addObjectsFromArray:[query findObjects]];
     
+    
     NSMutableArray *countries = [[NSMutableArray alloc]init];
     for (PFObject *pivy in self.pivyArray){
-//        if ([countries addObject:pivy[@"Country"] ){
-//            
-//        }
-        NSLog(@"%@", pivy[@"Country"]);
+     [countries addObject:pivy[@"Country"]];
     }
+    
+    NSSet *countrySet = [[NSSet alloc]initWithArray:countries];
+    
+    NSLog(@"\n\nPAISES = %ld", countrySet.count);
     
 }
 

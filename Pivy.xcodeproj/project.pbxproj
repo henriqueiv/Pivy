@@ -304,7 +304,7 @@
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 8WCPHDZJPJ;
+						DevelopmentTeam = YYWFQ73E8M;
 						TestTargetID = 6222C8981ABB47F1008B5970;
 					};
 				};

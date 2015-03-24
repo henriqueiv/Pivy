@@ -55,7 +55,7 @@
 
 -(void)populateWorld{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        NSLog(@"\n\nSOU O ERRO:%@", error);
+//        NSLog(@"\n\nSOU O ERRO:%@", error);
         PFQuery *query = [PFQuery queryWithClassName:@"Pivy"];
         
         CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
@@ -63,9 +63,9 @@
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
+//            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
             for (PFObject *local in objects) {
-                NSLog(@"%@", local);
+//                NSLog(@"%@", local);
                 PFGeoPoint *geoPoint= local[@"location"];
                 CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 
@@ -125,7 +125,7 @@
 }
 
 -(void)changeViewModeMap{
-    NSLog(@"%ld", (long)self.mapTypeSelector.selectedSegmentIndex);
+//    NSLog(@"%ld", (long)self.mapTypeSelector.selectedSegmentIndex);
     switch (self.mapTypeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);
@@ -146,7 +146,7 @@
         }
             
         default:{
-            NSLog(@"ViewMode não esperado!");
+//            NSLog(@"ViewMode não esperado!");
             break;
         }
     }
