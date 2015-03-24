@@ -1,23 +1,21 @@
 //
 //  LocalAnnotation.h
-//  iVolunteer
+//  Pivy
 //
-//  Created by Pietro Degrazia on 3/9/15.
-//  Copyright (c) 2015 Marcus Vinicius Kuquert. All rights reserved.
+//  Created by Henrique Valcanaia on 3/9/15.
+//  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "Pivy.h"
+
 @interface LocalAnnotation : NSObject <MKAnnotation>
 
-
-
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong) Pivy *pivy;
 
-
-
--(id)initWithTitle: (NSString*)newTitle Location:(CLLocationCoordinate2D)location;
+-(id)initWithPivy:(Pivy*)pivy;
 
 @end

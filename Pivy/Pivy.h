@@ -9,11 +9,14 @@
 #import "Objeto.h"
 #import <Parse/Parse.h>
 
-@interface Pivy : Objeto
+@interface Pivy : PFObject<PFSubclassing>
 
-@property PFGeoPoint *location;
-@property NSString *name;
-@property NSString *country;
-@property PFFile *image;
+@property (nonatomic, strong) PFGeoPoint *location;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *Description;
+@property (nonatomic, strong) NSString *Country;
+@property (nonatomic, strong) PFFile *image;
+
++ (NSString *)parseClassName;
 
 @end

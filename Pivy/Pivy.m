@@ -10,4 +10,14 @@
 
 @implementation Pivy
 
+@dynamic name;
+@dynamic location;
+@dynamic Country;
+@dynamic image;
+@dynamic Description;
+
++ (NSString *)parseClassName {
+    return NSStringFromClass([self class]);
+}
+
 @end

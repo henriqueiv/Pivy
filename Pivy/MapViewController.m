@@ -58,21 +58,19 @@
 -(void)populateWorld{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         NSLog(@"\n\nSOU O ERRO:%@", error);
-        PFQuery *query = [PFQuery queryWithClassName:@"Pivy"];
+        PFQuery *query = [Pivy query];
         
         CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoord, 6000, 6000);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
         
+        [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
+        NSLog(@"%@", geoPoint);
+        
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
-            for (PFObject *local in objects) {
-                NSLog(@"%@", local);
-                PFGeoPoint *geoPoint= local[@"location"];
-                CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                
-                LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithTitle:local[@"name"] Location:coord];
-                
+            for (Pivy *local in objects) {
+                LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithPivy:local];
                 [self.mapView addAnnotation:localAnnotation];
             }
         }];
@@ -87,7 +85,7 @@
     // Handle any custom annotations.
     if ([annotation isKindOfClass:[LocalAnnotation class]]){
         // Try to dequeue an existing pin view first.
-        MKAnnotationView*    pinView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        MKAnnotationView* pinView = (MKAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
         
         if (!pinView){
             // If an existing pin view was not available, create one.
@@ -120,10 +118,11 @@
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-//    _titleAuxiliar = view.annotation.title;
-//    _descriptionAuxiliar = @"OIOIOI";
-    NSLog(@"%@", view.annotation);
-//    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
+    //    _titleAuxiliar = view.annotation.title;
+    //    _descriptionAuxiliar = @"OIOIOI";
+    LocalAnnotation *la = (LocalAnnotation*) view.annotation;
+//    NSLog(@"%@", la);
+    //    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -134,7 +133,7 @@
 }
 
 -(void)changeViewModeMap{
-    NSLog(@"%ld", (long)self.mapViewModeSelector.selectedSegmentIndex);
+//    NSLog(@"%ld", (long)self.mapViewModeSelector.selectedSegmentIndex);
     switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);

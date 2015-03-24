@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, atomic) NSMutableArray *pivys;
 
 
 @end

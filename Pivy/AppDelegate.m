@@ -8,42 +8,56 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "Pivy.h"
+
 @interface AppDelegate ()
+
+@property MBProgressHUD *HUD;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Parse enableLocalDatastore];
-    [Parse setApplicationId:@"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
-                  clientKey:@"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"];
-//    [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
+    [self configureParse];
+//    [self getPivys];
+    [self myProgressTask];
+    //    [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
     [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+-(void)configureParse{
+    //    NSArray *parseClassesToRegister = [[NSArray alloc] initWithArray:[Pivy class]];
+    //    for (int i = 0; i < parseClassesToRegister.count; i++) {
+    //        PFObject<PFSubclassing> *obj = (PFObject<PFSubclassing>*)NSClassFromString([parseClassesToRegister[i] parseClassName]);
+    //        [obj ];
+    //    }
+    [Pivy registerSubclass];
+    
+    [Parse enableLocalDatastore];
+    [Parse setApplicationId:@"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
+                  clientKey:@"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+-(void)getPivys{
+    _HUD = [[MBProgressHUD alloc] initWithView:_window];
+    _HUD.mode = MBProgressHUDModeDeterminate;
+    [_window addSubview:_HUD];
+    _HUD.delegate = self;
+    _HUD.labelText = @"Loading";;
+    [_HUD showWhileExecuting:@selector(myProgressTask) onTarget:self withObject:nil animated:YES];
+    [_window makeKeyAndVisible];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+-(void)myProgressTask{
+    PFQuery *query = [Pivy query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        _pivys = [[NSMutableArray alloc] initWithArray:objects];
+        //[hud hide:YES];
+//        NSLog(@"pivys: %@", _pivys);
+    }];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
 
 @end
