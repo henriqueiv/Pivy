@@ -24,7 +24,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TrT-WD-eef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="29"/>
+            <point key="canvasLocation" x="-1697" y="-408"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="ni7-eY-uEv">
@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOD-pu-fG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="772"/>
+            <point key="canvasLocation" x="-1697" y="335"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="-941"/>
+            <point key="canvasLocation" x="-860" y="-1378"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="n5x-sa-Cji">
@@ -187,7 +187,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNI-bv-8HL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="-279"/>
+            <point key="canvasLocation" x="-860" y="-716"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="fPs-El-57R">
@@ -201,38 +201,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3LT-4k-Kco">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3LT-4k-Kco">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="odo-wT-hbR" id="T6X-KX-6gM"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R8V-EN-tCa">
-                                <rect key="frame" x="239" y="28" width="123" height="29"/>
-                                <segments>
-                                    <segment title="Nearby"/>
-                                    <segment title="World"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
+                            <view opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaH-zN-E96">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R8V-EN-tCa">
+                                        <rect key="frame" x="239" y="8" width="123" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="089-Hq-AXp"/>
+                                            <constraint firstAttribute="width" constant="123" id="pN8-He-oVO"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Nearby"/>
+                                            <segment title="World"/>
+                                        </segments>
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Spg-LC-bAj"/>
+                                    <constraint firstAttribute="centerY" secondItem="R8V-EN-tCa" secondAttribute="centerY" id="bxc-Dj-PvI"/>
+                                    <constraint firstAttribute="centerX" secondItem="R8V-EN-tCa" secondAttribute="centerX" constant="-0.5" id="ktz-Jj-8zm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eaH-zN-E96" firstAttribute="top" secondItem="gyE-Sf-g78" secondAttribute="topMargin" id="D4a-ho-4ww"/>
                             <constraint firstAttribute="trailing" secondItem="3LT-4k-Kco" secondAttribute="trailing" id="VhB-B1-mSI"/>
-                            <constraint firstItem="7cg-ex-K5I" firstAttribute="top" secondItem="3LT-4k-Kco" secondAttribute="bottom" id="fWo-hX-SeR"/>
+                            <constraint firstItem="7cg-ex-K5I" firstAttribute="top" secondItem="3LT-4k-Kco" secondAttribute="bottom" constant="-49" id="fWo-hX-SeR"/>
                             <constraint firstItem="3LT-4k-Kco" firstAttribute="leading" secondItem="gyE-Sf-g78" secondAttribute="leading" id="h3e-ph-p7c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eaH-zN-E96" secondAttribute="trailing" constant="-16" id="mpK-ax-wL2"/>
+                            <constraint firstItem="eaH-zN-E96" firstAttribute="leading" secondItem="gyE-Sf-g78" secondAttribute="leadingMargin" constant="-16" id="sp9-Gl-fJn"/>
                             <constraint firstItem="3LT-4k-Kco" firstAttribute="top" secondItem="gyE-Sf-g78" secondAttribute="top" id="xUv-2T-Nml"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="jQc-Ss-j9p"/>
                     <connections>
-                        <outlet property="mapTypeSelector" destination="R8V-EN-tCa" id="KUl-sB-mgi"/>
                         <outlet property="mapView" destination="3LT-4k-Kco" id="1l6-LS-Xfk"/>
+                        <outlet property="mapViewModeSelector" destination="R8V-EN-tCa" id="ZQp-6J-dPV"/>
+                        <segue destination="L9M-Dc-DQz" kind="show" identifier="gotoPivyDetail" id="w4a-LR-wRE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkk-LD-o2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="400"/>
+            <point key="canvasLocation" x="-850" y="-37"/>
+        </scene>
+        <!--Pivy Detail View Controller-->
+        <scene sceneID="wvV-HT-lvd">
+            <objects>
+                <viewController id="L9M-Dc-DQz" customClass="PivyDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iyq-mj-7B6"/>
+                        <viewControllerLayoutGuide type="bottom" id="kga-lg-8Qm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LLb-c4-uyY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59z-Jv-1Zb">
+                                <rect key="frame" x="104" y="92" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lig-jl-c6o">
+                                <rect key="frame" x="104" y="131" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaX-0O-9XZ">
+                                <rect key="frame" x="104" y="55" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXr-rP-RQY">
+                                <rect key="frame" x="104" y="160" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao </string>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4n4-CD-nSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-121" y="-37"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Xfc-Gm-Tf2">
@@ -280,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g93-aS-JHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="1477"/>
+            <point key="canvasLocation" x="-855" y="1040"/>
         </scene>
     </scenes>
 </document>
