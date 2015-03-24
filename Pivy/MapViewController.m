@@ -57,18 +57,22 @@
 
 -(void)populateWorld{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        NSLog(@"\n\nSOU O ERRO:%@", error);
+//        NSLog(@"\n\nSOU O ERRO:%@", error);
         PFQuery *query = [PFQuery queryWithClassName:@"Pivy"];
         
         CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+        
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoord, 6000, 6000);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
+//            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
             for (PFObject *local in objects) {
-                NSLog(@"%@", local);
+//                NSLog(@"%@", local);
                 PFGeoPoint *geoPoint= local[@"location"];
+                if ([local[@"name"] isEqualToString:@"Eiffel Tower"]) {
+                    NSLog(@"COORDENADA \n %@", local[@"location"]);
+                }
                 CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 
                 LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithTitle:local[@"name"] Location:coord];
@@ -134,7 +138,7 @@
 }
 
 -(void)changeViewModeMap{
-    NSLog(@"%ld", (long)self.mapViewModeSelector.selectedSegmentIndex);
+//    NSLog(@"%ld", (long)self.mapTypeSelector.selectedSegmentIndex);
     switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);
@@ -155,7 +159,7 @@
         }
             
         default:{
-            NSLog(@"ViewMode não esperado!");
+//            NSLog(@"ViewMode não esperado!");
             break;
         }
     }
