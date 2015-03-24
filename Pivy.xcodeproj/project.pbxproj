@@ -24,6 +24,8 @@
 		35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FB1AC094A40067BAAE /* MoreViewController.m */; };
 		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
 		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
+		35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C3A6031AC1D6590067BAAE /* More.storyboard */; };
+		35C3A6071AC1DEC10067BAAE /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */; };
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
@@ -72,6 +74,9 @@
 		35C3A5FE1AC0B0040067BAAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAnnotation.h; sourceTree = "<group>"; };
 		35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalAnnotation.m; sourceTree = "<group>"; };
+		35C3A6031AC1D6590067BAAE /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		35C3A6051AC1DEC10067BAAE /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
+		35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		52362FDD1ABE0D030079D117 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -165,6 +170,9 @@
 				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
 				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
+				35C3A6031AC1D6590067BAAE /* More.storyboard */,
+				35C3A6051AC1DEC10067BAAE /* MoreTableViewController.h */,
+				35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */,
 				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
 				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
 				62D5A2111ABB560100464F29 /* Models */,
@@ -339,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */,
+				35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */,
 				6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */,
 				6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */,
 			);
@@ -358,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C3A6071AC1DEC10067BAAE /* MoreTableViewController.m in Sources */,
 				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
 				35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */,
