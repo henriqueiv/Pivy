@@ -161,7 +161,7 @@
         }
             
         default:{
-            NSLog(@"ViewMode não esperado!");
+//            NSLog(@"ViewMode não esperado!");
             break;
         }
     }
