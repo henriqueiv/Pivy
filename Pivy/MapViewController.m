@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "LocalAnnotation.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PivyDetailViewController.h"
 
 #define kViewModeNearby 0
 #define kViewModeWorld 1
@@ -22,7 +23,7 @@
 @property NSString *titleAuxiliar;
 @property NSString *descriptionAuxiliar;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSelector;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapViewModeSelector;
 
 @end
 
@@ -33,11 +34,11 @@
     self.mapView.delegate = self;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self populateWorld];
-    self.mapView.mapType = MKMapTypeStandard;
+    //    self.mapView.mapType = MKMapTypeStandard;
     
-    [self.mapTypeSelector addTarget:self
-                             action:@selector(changeViewModeMap)
-                   forControlEvents:UIControlEventValueChanged];
+    [self.mapViewModeSelector addTarget:self
+                                 action:@selector(changeViewModeMap)
+                       forControlEvents:UIControlEventValueChanged];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -48,6 +49,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
@@ -118,15 +120,22 @@
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    _titleAuxiliar = view.annotation.title;
-    _descriptionAuxiliar = @"OIOIOI";
-    
-    [self performSegueWithIdentifier:@"gotoDetail" sender:view];
+//    _titleAuxiliar = view.annotation.title;
+//    _descriptionAuxiliar = @"OIOIOI";
+    NSLog(@"%@", view.annotation);
+//    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"gotoPivyDetail"]) {
+        LocalAnnotation *a = (LocalAnnotation*) sender;
+        PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
+    }
 }
 
 -(void)changeViewModeMap{
-    NSLog(@"%ld", (long)self.mapTypeSelector.selectedSegmentIndex);
-    switch (self.mapTypeSelector.selectedSegmentIndex) {
+    NSLog(@"%ld", (long)self.mapViewModeSelector.selectedSegmentIndex);
+    switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);
             MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];

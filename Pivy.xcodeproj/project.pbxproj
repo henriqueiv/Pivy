@@ -33,6 +33,7 @@
 		6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A91ABB47F1008B5970 /* Images.xcassets */; };
 		6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
+		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
 		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
 		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
 		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
@@ -88,6 +89,8 @@
 		6222C8B21ABB47F1008B5970 /* PivyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PivyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C8B71ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C8B81ABB47F1008B5970 /* PivyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PivyTests.m; sourceTree = "<group>"; };
+		623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDetailViewController.h; sourceTree = "<group>"; };
+		623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDetailViewController.m; sourceTree = "<group>"; };
 		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
 		62D5A2171ABB56A200464F29 /* Objeto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Objeto.m; sourceTree = "<group>"; };
 		62D5A2191ABB570200464F29 /* Pivy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pivy.h; sourceTree = "<group>"; };
@@ -157,19 +160,21 @@
 				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
 				52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */,
 				52362FE01ABE0D2B0079D117 /* CollectionViewController.m */,
-				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
-				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
-				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
-				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
-				6222C8A31ABB47F1008B5970 /* ViewController.h */,
-				6222C8A41ABB47F1008B5970 /* ViewController.m */,
-				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
-				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
 				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
+				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
+				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
+				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
+				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
 				62D5A2111ABB560100464F29 /* Models */,
+				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
+				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
+				623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */,
+				623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
+				6222C8A31ABB47F1008B5970 /* ViewController.h */,
+				6222C8A41ABB47F1008B5970 /* ViewController.m */,
 			);
 			path = Pivy;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
+				623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
 				35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
