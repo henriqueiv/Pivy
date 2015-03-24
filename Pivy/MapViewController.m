@@ -11,6 +11,7 @@
 #import "LocalAnnotation.h"
 #import <CoreLocation/CoreLocation.h>
 #import "PivyDetailViewController.h"
+#import "AppDelegate.h"
 
 #define kViewModeNearby 0
 #define kViewModeWorld 1
@@ -56,25 +57,31 @@
 }
 
 -(void)populateWorld{
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        NSLog(@"\n\nSOU O ERRO:%@", error);
-        PFQuery *query = [Pivy query];
-        
-        CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoord, 6000, 6000);
-        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-        
-        [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
-        NSLog(@"%@", geoPoint);
-        
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
-            for (Pivy *local in objects) {
-                LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithPivy:local];
-                [self.mapView addAnnotation:localAnnotation];
-            }
-        }];
-    }];
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    for (Pivy *pivy in appDelegate.pivys) {
+        LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithPivy:pivy];
+        [self.mapView addAnnotation:localAnnotation];
+    }
+    
+//    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+//        NSLog(@"\n\nSOU O ERRO:%@", error);
+//        PFQuery *query = [Pivy query];
+//        
+//        CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoord, 6000, 6000);
+//        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+//        
+//        [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
+//        NSLog(@"%@", geoPoint);
+//        
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
+//            for (Pivy *local in objects) {
+//                LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithPivy:local];
+//                [self.mapView addAnnotation:localAnnotation];
+//            }
+//        }];
+//    }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
@@ -121,7 +128,7 @@
     //    _titleAuxiliar = view.annotation.title;
     //    _descriptionAuxiliar = @"OIOIOI";
     LocalAnnotation *la = (LocalAnnotation*) view.annotation;
-//    NSLog(@"%@", la);
+    NSLog(@"%@", la);
     //    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
 }
 
