@@ -61,6 +61,7 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Pivy"];
         
         CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+        
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoord, 6000, 6000);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
         
@@ -69,6 +70,9 @@
             for (PFObject *local in objects) {
 //                NSLog(@"%@", local);
                 PFGeoPoint *geoPoint= local[@"location"];
+                if ([local[@"name"] isEqualToString:@"Eiffel Tower"]) {
+                    NSLog(@"COORDENADA \n %@", local[@"location"]);
+                }
                 CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 
                 LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithTitle:local[@"name"] Location:coord];
@@ -135,7 +139,7 @@
 
 -(void)changeViewModeMap{
 //    NSLog(@"%ld", (long)self.mapTypeSelector.selectedSegmentIndex);
-    switch (self.mapTypeSelector.selectedSegmentIndex) {
+    switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);
             MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];

@@ -15,6 +15,7 @@
 @interface CollectionViewController()
  @property NSString *reuseIdentifier;
  @property NSMutableArray *pivyArray;
+ @property NSDictionary *pivyDic;
 @end
 
 @implementation CollectionViewController
@@ -39,16 +40,7 @@ self.collectionView.allowsSelection = YES;
     [query fromLocalDatastore];
 
     [self.pivyArray addObjectsFromArray:[query findObjects]];
-    
-    
-    NSMutableArray *countries = [[NSMutableArray alloc]init];
-    for (PFObject *pivy in self.pivyArray){
-     [countries addObject:pivy[@"Country"]];
-    }
-    
-    NSSet *countrySet = [[NSSet alloc]initWithArray:countries];
-    
-    NSLog(@"\n\nPAISES = %ld", countrySet.count);
+    NSLog(@"\n\nARRAY LOKA\n\n%@", [self.pivyArray valueForKey:@""]);
     
 }
 
@@ -63,17 +55,24 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     }
 
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    return 1;
+    NSMutableArray *countries = [[NSMutableArray alloc]init];
+    for (PFObject *pivy in self.pivyArray){
+        [countries addObject:pivy[@"Country"]];
+    }
+    
+    NSSet *countrySet = [[NSSet alloc]initWithArray:countries];
+    
+    return  countrySet.count;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return self.cellData.count;
+
     return [self.pivyArray count];
 }
+
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
