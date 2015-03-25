@@ -11,37 +11,50 @@
 #import "CollectionViewController.h"
 #import "CollectionViewCell.h"
 #import "Pivy.h"
+#import "AppDelegate.h"
 
 @interface CollectionViewController()
  @property NSString *reuseIdentifier;
- @property NSMutableArray *pivyArray;
- @property NSDictionary *pivyDic;
+ @property NSMutableDictionary *pivyDic;
+ @property AppDelegate *delegate;
+ @property NSMutableArray *countries;
+ @property NSSet *countrySet;
 @end
 
 @implementation CollectionViewController
 
 - (void)viewDidLoad {
-
-[super viewDidLoad];
-_reuseIdentifier =  @"Cell";
-    self.pivyArray = [[NSMutableArray alloc]init];
-
-
     
-// EVIL: Register your own cell class (or comment this out)
-//[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:_reuseIdentifier];
-
-// allow multiple selections
-self.collectionView.allowsMultipleSelection = YES;
-self.collectionView.allowsSelection = YES;
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Pivy"];
+    [super viewDidLoad];
+    _reuseIdentifier =  @"Cell";
+    // EVIL: Register your own cell class (or comment this out)
+    //[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:_reuseIdentifier];
+    // allow multiple selections
+    self.collectionView.allowsMultipleSelection = YES;
+    self.collectionView.allowsSelection = YES;
     
-    [query fromLocalDatastore];
-
-    [self.pivyArray addObjectsFromArray:[query findObjects]];
-    NSLog(@"\n\nARRAY LOKA\n\n%@", [self.pivyArray valueForKey:@""]);
     
+    self.delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+        self.countries = [[NSMutableArray alloc]init];
+        for ( Pivy *pivy in self.delegate.pivys){
+            [self.countries addObject:pivy[@"Country"]];
+        }
+    
+        self.countrySet = [[NSSet alloc]initWithArray:self.countries];
+    
+    
+    
+    
+    
+    
+    self.pivyDic = [[NSMutableDictionary alloc]init];
+    
+    //    for( Pivy *pivy in self.delegate.pivys){
+    //        if([self.pivyDic valueForKey:pivy.Country])
+    //            [self.pivyDic setValue:( [self.pivyDic valueForKey:pivy.Country] + 1 ) forKey:pivy.Country];
+    //    }
+    //
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
@@ -49,7 +62,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
 //    self.collectionView.backgroundColor = [UIColor blueColor];
 //    self.collectionView.backgroundView.backgroundColor = [UIColor brownColor];
-    
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor blackColor];
     
@@ -57,20 +69,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    NSMutableArray *countries = [[NSMutableArray alloc]init];
-    for (PFObject *pivy in self.pivyArray){
-        [countries addObject:pivy[@"Country"]];
-    }
-    
-    NSSet *countrySet = [[NSSet alloc]initWithArray:countries];
-    
-    return  countrySet.count;
+//    NSMutableArray *countries = [[NSMutableArray alloc]init];
+//    for (PFObject *pivy in self.pivyArray){
+//        [countries addObject:pivy[@"Country"]];
+//    }
+//    
+//    NSSet *countrySet = [[NSSet alloc]initWithArray:countries];
+//    
+//    return  countrySet.count;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return [self.pivyArray count];
+//    return [self.pivyArray count];
+    return 1;
 }
 
 
