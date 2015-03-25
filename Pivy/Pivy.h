@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-#import "Objeto.h"
 #import <Parse/Parse.h>
 
 @interface Pivy : PFObject<PFSubclassing>

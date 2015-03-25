@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
-@interface Objeto : NSObject
+@interface Objeto : PFObject<PFSubclassing>
+
++ (NSString *)parseClassName;
 
 @end

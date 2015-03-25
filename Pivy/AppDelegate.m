@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "Pivy.h"
+#import "Objeto.h"
 
 @interface AppDelegate ()
 
@@ -33,6 +34,7 @@
     //        PFObject<PFSubclassing> *obj = (PFObject<PFSubclassing>*)NSClassFromString([parseClassesToRegister[i] parseClassName]);
     //        [obj ];
     //    }
+//    [Objeto registerSubclass];
     [Pivy registerSubclass];
     
     [Parse enableLocalDatastore];
@@ -52,8 +54,15 @@
 
 -(void)myProgressTask{
     PFQuery *query = [Pivy query];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         _pivys = [[NSMutableArray alloc] initWithArray:objects];
+        [PFObject pinAllInBackground:_pivys
+                               block:^(BOOL succeeded, NSError *error) {
+                                   if(error){
+                                       NSLog(@"%@", error);
+                                   }
+                               }];
         //[hud hide:YES];
 //        NSLog(@"pivys: %@", _pivys);
     }];

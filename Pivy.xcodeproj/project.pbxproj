@@ -161,28 +161,10 @@
 			children = (
 				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
 				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
-				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
-				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
-				52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */,
-				52362FE01ABE0D2B0079D117 /* CollectionViewController.m */,
-				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
-				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
-				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
-				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
-				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
-				35C3A6031AC1D6590067BAAE /* More.storyboard */,
-				35C3A6051AC1DEC10067BAAE /* MoreTableViewController.h */,
-				35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */,
-				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
-				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
+				6292E1761AC30AFE00B28CE0 /* Controllers */,
 				62D5A2111ABB560100464F29 /* Models */,
-				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
-				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
-				623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */,
-				623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
-				6222C8A31ABB47F1008B5970 /* ViewController.h */,
-				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+				6292E1771AC30B1D00B28CE0 /* Views */,
 			);
 			path = Pivy;
 			sourceTree = "<group>";
@@ -190,6 +172,7 @@
 		6222C89C1ABB47F1008B5970 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6222C8A91ABB47F1008B5970 /* Images.xcassets */,
 				6222C89D1ABB47F1008B5970 /* Info.plist */,
 				6222C89E1ABB47F1008B5970 /* main.m */,
 			);
@@ -213,9 +196,66 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6292E1761AC30AFE00B28CE0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6292E17A1AC30B7D00B28CE0 /* More */,
+				6292E1791AC30B7400B28CE0 /* Map */,
+				6292E1781AC30B6500B28CE0 /* Collection */,
+				6222C8A31ABB47F1008B5970 /* ViewController.h */,
+				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		6292E1771AC30B1D00B28CE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
+				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
+				35C3A6031AC1D6590067BAAE /* More.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6292E1781AC30B6500B28CE0 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */,
+				52362FE01ABE0D2B0079D117 /* CollectionViewController.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
+		6292E1791AC30B7400B28CE0 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */,
+				623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */,
+				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
+				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		6292E17A1AC30B7D00B28CE0 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				35C3A6051AC1DEC10067BAAE /* MoreTableViewController.h */,
+				35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */,
+				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
+				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
 		62D5A2111ABB560100464F29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
+				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
+				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
+				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
 				62D5A2161ABB56A200464F29 /* Objeto.h */,
 				62D5A2171ABB56A200464F29 /* Objeto.m */,
 				62D5A2191ABB570200464F29 /* Pivy.h */,

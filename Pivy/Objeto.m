@@ -10,4 +10,8 @@
 
 @implementation Objeto
 
++ (NSString *)parseClassName {
+    return NSStringFromClass([self class]);
+}
+
 @end

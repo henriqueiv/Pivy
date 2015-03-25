@@ -11,7 +11,6 @@
 @implementation MoreViewController
 NSArray *array;
 
-
 -(void)viewWillAppear:(BOOL)animated{
     array = [[NSArray alloc] initWithObjects:@"Login",@"Signup", @"Teste",nil];
 }
