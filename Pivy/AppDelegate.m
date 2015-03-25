@@ -54,7 +54,7 @@
 
 -(void)myProgressTask{
     PFQuery *query = [Pivy query];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+//    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         _pivys = [[NSMutableArray alloc] initWithArray:objects];
         [PFObject pinAllInBackground:_pivys
