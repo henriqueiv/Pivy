@@ -37,24 +37,17 @@
     self.delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
         self.countries = [[NSMutableArray alloc]init];
+    
+        self.pivyDic = [[NSMutableDictionary alloc]init];
         for ( Pivy *pivy in self.delegate.pivys){
-            [self.countries addObject:pivy[@"Country"]];
+            
         }
     
         self.countrySet = [[NSSet alloc]initWithArray:self.countries];
+ 
     
     
     
-    
-    
-    
-    self.pivyDic = [[NSMutableDictionary alloc]init];
-    
-    //    for( Pivy *pivy in self.delegate.pivys){
-    //        if([self.pivyDic valueForKey:pivy.Country])
-    //            [self.pivyDic setValue:( [self.pivyDic valueForKey:pivy.Country] + 1 ) forKey:pivy.Country];
-    //    }
-    //
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
