@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "Reachability.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
+    Reachability *internetReachable;    
 }
 
 @end

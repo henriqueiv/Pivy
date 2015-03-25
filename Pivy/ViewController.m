@@ -9,9 +9,10 @@
 #import "ViewController.h"
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
+#import "Pivy.h"
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-
 
 @end
 
@@ -65,33 +66,55 @@
     NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
     NSLog(@"Country Locale:%@  Code:%@ Name:%@", countryLocale, countryCode, country);
     
-//    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
-//    [query fromLocalDatastore];
-//    [query whereKey:@"country" equalTo:[UIDevice ]];
-//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        
-//        if(!error){
-//            _backgroundImageView.image = [UIImage imageWithData:[object[@"image"] getData]];
-//            NSLog(@"Nao deu erro!!");
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//        }
-//        else{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
-//                                                            message:[error.description valueForKey: @"error"]
-//                                                           delegate:nil
-//                                                  cancelButtonTitle:nil
-//                                                  otherButtonTitles:@"Dismiss", nil];
-//            [alert show];
-//        }
-//    }];
-    
-    
-    
-    
-    
-    
+    [self testInternetConnection];
 }
+
+-(void)downloadPivys{
+    PFQuery *query = [Pivy query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSMutableArray *pivys = [[NSMutableArray alloc] initWithArray:objects];
+        [PFObject pinAllInBackground:pivys
+                               block:^(BOOL succeeded, NSError *error) {
+                                   if (succeeded) {
+                                       NSLog(@"Pivys pinados com sucesso!!!!!!");
+                                   }else{
+                                       NSLog(@"Sem sucesso");
+                                   }
+                                   if(error){
+                                       NSLog(@"Erroooo: %@", error);
+                                   }else{
+                                       NSLog(@"Não deu erro");
+                                   }
+                               }];
+    }];
+}
+
+- (void)testInternetConnection{
+    internetReachable = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    // Internet is reachable
+    internetReachable.reachableBlock = ^(Reachability*reach){
+        // Update the UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Yayyy, we have the interwebs!");
+            [self downloadPivys];
+            //hide view blocking everything else
+        });
+    };
+    
+    // Internet is not reachable
+    internetReachable.unreachableBlock = ^(Reachability*reach){
+        // Update the UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Someone broke the internet :(");
+            //show view blocking everything else
+        });
+    };
+    
+    [internetReachable startNotifier];
+}
+
+
 - (IBAction)countryButton:(UIButton *)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
     [query fromLocalDatastore];
@@ -120,7 +143,7 @@
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error) {
             CLPlacemark *placemark = [placemarks lastObject];
-//            NSLog(@"Country: %@", placemark);
+            //            NSLog(@"Country: %@", placemark);
         } else
             NSLog(@"Error %@", error.description);
     }];

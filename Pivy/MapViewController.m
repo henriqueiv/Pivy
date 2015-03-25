@@ -35,7 +35,6 @@
     self.mapView.delegate = self;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self populateWorld];
-    //    self.mapView.mapType = MKMapTypeStandard;
     
     [self.mapViewModeSelector addTarget:self
                                  action:@selector(changeViewModeMap)
@@ -57,31 +56,13 @@
 }
 
 -(void)populateWorld{
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    for (Pivy *pivy in appDelegate.pivys) {
-        LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithPivy:pivy];
-        [self.mapView addAnnotation:localAnnotation];
-    }
-    
-//    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-//        NSLog(@"\n\nSOU O ERRO:%@", error);
-//        PFQuery *query = [Pivy query];
-//        
-//        CLLocationCoordinate2D userCoord = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoord, 6000, 6000);
-//        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-//        
-//        [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
-//        NSLog(@"%@", geoPoint);
-//        
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            NSLog(@"\n\nNUMERO IGUAL A \n %li", objects.count);
-//            for (Pivy *local in objects) {
-//                LocalAnnotation *localAnnotation = [[LocalAnnotation alloc]initWithPivy:local];
-//                [self.mapView addAnnotation:localAnnotation];
-//            }
-//        }];
-//    }];
+    PFQuery *query = [[Pivy query] fromLocalDatastore];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (Pivy *pivy in objects) {
+            LocalAnnotation *localAnnotation = [[LocalAnnotation alloc] initWithPivy:pivy];
+            [self.mapView addAnnotation:localAnnotation];
+        }
+    }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
@@ -97,7 +78,6 @@
         if (!pinView){
             // If an existing pin view was not available, create one.
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
-            
             UIImage *pinImage =[UIImage imageNamed:@"customPin.jpg"];
             
             pinView.image = pinImage;
@@ -105,7 +85,6 @@
             pinView.canShowCallout = YES;
             
             // If appropriate, customize the callout by adding accessory views (code not shown).
-            
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             
             [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
@@ -125,8 +104,6 @@
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    //    _titleAuxiliar = view.annotation.title;
-    //    _descriptionAuxiliar = @"OIOIOI";
     LocalAnnotation *la = (LocalAnnotation*) view.annotation;
     NSLog(@"%@", la);
     //    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
@@ -140,7 +117,6 @@
 }
 
 -(void)changeViewModeMap{
-//    NSLog(@"%ld", (long)self.mapViewModeSelector.selectedSegmentIndex);
     switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);

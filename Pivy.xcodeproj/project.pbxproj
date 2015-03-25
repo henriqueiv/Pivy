@@ -36,6 +36,7 @@
 		6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
+		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
 		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
 		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
 		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
@@ -66,8 +67,8 @@
 		358B18151ABC7C98007283CB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		358B18171ABC7DC1007283CB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
+		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
 		35C3A5FA1AC094A40067BAAE /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = ../MoreViewController.h; sourceTree = "<group>"; };
 		35C3A5FB1AC094A40067BAAE /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = ../MoreViewController.m; sourceTree = "<group>"; };
 		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -96,6 +97,8 @@
 		6222C8B81ABB47F1008B5970 /* PivyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PivyTests.m; sourceTree = "<group>"; };
 		623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDetailViewController.h; sourceTree = "<group>"; };
 		623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDetailViewController.m; sourceTree = "<group>"; };
+		6292E17C1AC31F4200B28CE0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6292E17D1AC31F4200B28CE0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
 		62D5A2171ABB56A200464F29 /* Objeto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Objeto.m; sourceTree = "<group>"; };
 		62D5A2191ABB570200464F29 /* Pivy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pivy.h; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 				6292E1761AC30AFE00B28CE0 /* Controllers */,
 				62D5A2111ABB560100464F29 /* Models */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
+				6292E17B1AC31F3400B28CE0 /* Utils */,
 				6292E1771AC30B1D00B28CE0 /* Views */,
 			);
 			path = Pivy;
@@ -199,11 +203,10 @@
 		6292E1761AC30AFE00B28CE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6292E17F1AC320ED00B28CE0 /* Main */,
 				6292E17A1AC30B7D00B28CE0 /* More */,
 				6292E1791AC30B7400B28CE0 /* Map */,
 				6292E1781AC30B6500B28CE0 /* Collection */,
-				6222C8A31ABB47F1008B5970 /* ViewController.h */,
-				6222C8A41ABB47F1008B5970 /* ViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +214,8 @@
 		6292E1771AC30B1D00B28CE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
+				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
 				35C3A6031AC1D6590067BAAE /* More.storyboard */,
@@ -249,11 +254,29 @@
 			name = More;
 			sourceTree = "<group>";
 		};
+		6292E17B1AC31F3400B28CE0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				358B181E1ABCB33B007283CB /* MBProgressHUD.h */,
+				358B181F1ABCB33B007283CB /* MBProgressHUD.m */,
+				6292E17C1AC31F4200B28CE0 /* Reachability.h */,
+				6292E17D1AC31F4200B28CE0 /* Reachability.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		6292E17F1AC320ED00B28CE0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6222C8A31ABB47F1008B5970 /* ViewController.h */,
+				6222C8A41ABB47F1008B5970 /* ViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		62D5A2111ABB560100464F29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
-				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
 				35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */,
 				35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */,
 				62D5A2161ABB56A200464F29 /* Objeto.h */,
@@ -269,20 +292,6 @@
 		62D5A2211ABB5D1600464F29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				358B181E1ABCB33B007283CB /* MBProgressHUD.h */,
-				358B181F1ABCB33B007283CB /* MBProgressHUD.m */,
-				358B181C1ABCABC6007283CB /* MapKit.framework */,
-				358B18151ABC7C98007283CB /* libsqlite3.dylib */,
-				358B18131ABC7C92007283CB /* libz.dylib */,
-				358B18111ABC7C88007283CB /* SystemConfiguration.framework */,
-				358B180F1ABC7C82007283CB /* StoreKit.framework */,
-				358B180D1ABC7C7D007283CB /* Security.framework */,
-				358B180B1ABC7C74007283CB /* QuartzCore.framework */,
-				358B18091ABC7C6E007283CB /* MobileCoreServices.framework */,
-				358B18071ABC7C4E007283CB /* CoreLocation.framework */,
-				358B18051ABC7C48007283CB /* CoreGraphics.framework */,
-				358B18031ABC7C41007283CB /* CFNetwork.framework */,
-				358B18011ABC7C39007283CB /* AudioToolbox.framework */,
 				62D5A2231ABB5D2500464F29 /* System Frameworks */,
 				62D5A2221ABB5D1D00464F29 /* User Frameworks */,
 			);
@@ -301,6 +310,18 @@
 		62D5A2231ABB5D2500464F29 /* System Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				358B181C1ABCABC6007283CB /* MapKit.framework */,
+				358B18151ABC7C98007283CB /* libsqlite3.dylib */,
+				358B18131ABC7C92007283CB /* libz.dylib */,
+				358B18111ABC7C88007283CB /* SystemConfiguration.framework */,
+				358B180F1ABC7C82007283CB /* StoreKit.framework */,
+				358B180D1ABC7C7D007283CB /* Security.framework */,
+				358B180B1ABC7C74007283CB /* QuartzCore.framework */,
+				358B18091ABC7C6E007283CB /* MobileCoreServices.framework */,
+				358B18071ABC7C4E007283CB /* CoreLocation.framework */,
+				358B18051ABC7C48007283CB /* CoreGraphics.framework */,
+				358B18031ABC7C41007283CB /* CFNetwork.framework */,
+				358B18011ABC7C39007283CB /* AudioToolbox.framework */,
 			);
 			name = "System Frameworks";
 			sourceTree = "<group>";
@@ -411,6 +432,7 @@
 				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
 				35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */,
+				6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */,
 				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
 				52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */,
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
