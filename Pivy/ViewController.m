@@ -68,9 +68,6 @@
     NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
     NSLog(@"Country Locale:%@  Code:%@ Name:%@", countryLocale, countryCode, country);
     
-    [self testInternetConnection];
-    
-    
 
     //Link with More.storyboard
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
