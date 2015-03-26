@@ -30,7 +30,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 3) {
-         [[PFFacebookUtils session] close];
+//         [[PFFacebookUtils session] close];
+        [PFUser logOut];
     }
 }
 

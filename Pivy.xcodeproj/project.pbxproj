@@ -20,11 +20,11 @@
 		358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18151ABC7C98007283CB /* libsqlite3.dylib */; };
 		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
-		359187441AC4922F009E81B1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187401AC4922F009E81B1 /* Parse.framework */; };
-		359187451AC4922F009E81B1 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187411AC4922F009E81B1 /* ParseFacebookUtils.framework */; };
 		359187461AC4922F009E81B1 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187421AC4922F009E81B1 /* ParseFacebookUtilsV4.framework */; };
 		359187481AC49243009E81B1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187471AC49243009E81B1 /* Bolts.framework */; };
 		3591874A1AC49274009E81B1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187491AC49274009E81B1 /* FacebookSDK.framework */; };
+		3591874C1AC4BBFA009E81B1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3591874B1AC4BBFA009E81B1 /* Parse.framework */; };
+		3591874E1AC4BD0E009E81B1 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */; };
 		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
 		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
 		35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C3A6031AC1D6590067BAAE /* More.storyboard */; };
@@ -77,11 +77,11 @@
 		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
-		359187401AC4922F009E81B1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		359187411AC4922F009E81B1 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		359187421AC4922F009E81B1 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		359187471AC49243009E81B1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		359187491AC49274009E81B1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		3591874B1AC4BBFA009E81B1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		35C3A5FE1AC0B0040067BAAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAnnotation.h; sourceTree = "<group>"; };
@@ -140,14 +140,14 @@
 				359187481AC49243009E81B1 /* Bolts.framework in Frameworks */,
 				358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */,
 				358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */,
-				359187451AC4922F009E81B1 /* ParseFacebookUtils.framework in Frameworks */,
 				358B18141ABC7C92007283CB /* libz.dylib in Frameworks */,
 				358B18121ABC7C88007283CB /* SystemConfiguration.framework in Frameworks */,
+				3591874E1AC4BD0E009E81B1 /* ParseFacebookUtils.framework in Frameworks */,
+				3591874C1AC4BBFA009E81B1 /* Parse.framework in Frameworks */,
 				358B18101ABC7C82007283CB /* StoreKit.framework in Frameworks */,
 				358B180E1ABC7C7D007283CB /* Security.framework in Frameworks */,
 				3591874A1AC49274009E81B1 /* FacebookSDK.framework in Frameworks */,
 				358B180C1ABC7C74007283CB /* QuartzCore.framework in Frameworks */,
-				359187441AC4922F009E81B1 /* Parse.framework in Frameworks */,
 				358B180A1ABC7C6F007283CB /* MobileCoreServices.framework in Frameworks */,
 				359187461AC4922F009E81B1 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				358B18081ABC7C4E007283CB /* CoreLocation.framework in Frameworks */,
@@ -348,10 +348,10 @@
 		62D5A2221ABB5D1D00464F29 /* User Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */,
+				3591874B1AC4BBFA009E81B1 /* Parse.framework */,
 				359187491AC49274009E81B1 /* FacebookSDK.framework */,
 				359187471AC49243009E81B1 /* Bolts.framework */,
-				359187401AC4922F009E81B1 /* Parse.framework */,
-				359187411AC4922F009E81B1 /* ParseFacebookUtils.framework */,
 				359187421AC4922F009E81B1 /* ParseFacebookUtilsV4.framework */,
 			);
 			name = "User Frameworks";

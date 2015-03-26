@@ -33,6 +33,7 @@
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];
+    [PFFacebookUtils initializeFacebook];
 }
 
 - (BOOL)application:(UIApplication *)application

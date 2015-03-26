@@ -75,7 +75,7 @@
     UIViewController *vc;
     NSLog(@"%@", [PFUser currentUser]);
     if ([PFUser currentUser])
-        vc = [sb instantiateViewControllerWithIdentifier:@"more"];
+        vc = [sb instantiateViewControllerWithIdentifier:@"logged"];
     else
         vc = [sb instantiateViewControllerWithIdentifier:@"more"];
     

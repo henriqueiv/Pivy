@@ -33,9 +33,9 @@
                                     block:^(PFUser *user, NSError *error)
      {
          if (user) {
-             [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
              [alert show];
+             [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
          } else {
              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
              [alert show];
@@ -43,19 +43,19 @@
      }];
 }
 - (IBAction)facebookLogin:(id)sender {
-    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
-        if (!user) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [PFFacebookUtils logInWithPermissions:@[@"username", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
+        if (user) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
+            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
         } else if (user.isNew) {
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup sucess" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
         } else {
-            NSLog(@"%@", user);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
-            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
         }
     }];
 }

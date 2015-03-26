@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "MBProgressHUD.h"
 
 @interface RegisterViewController ()
@@ -24,6 +25,9 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+- (IBAction)facebookSignup:(id)sender {
+
 }
 - (IBAction)confirmButton:(id)sender {
     
