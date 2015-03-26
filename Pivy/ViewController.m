@@ -67,6 +67,23 @@
     NSLog(@"Country Locale:%@  Code:%@ Name:%@", countryLocale, countryCode, country);
     
     [self testInternetConnection];
+    
+    
+    
+    
+    //Link with More.storyboard
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
+    NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];
+    UIViewController *vc;
+    if (![PFUser currentUser])
+        vc = [sb instantiateViewControllerWithIdentifier:@"logged"];
+    else
+        vc = [sb instantiateViewControllerWithIdentifier:@"more"];
+    
+    [vc setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMore tag:4]];
+    [array addObject:vc];
+    [self.tabBarController setViewControllers:array];
+    
 }
 
 -(void)downloadPivys{

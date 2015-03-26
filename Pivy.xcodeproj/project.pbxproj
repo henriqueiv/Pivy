@@ -21,11 +21,13 @@
 		358B18181ABC7DC1007283CB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18171ABC7DC1007283CB /* Bolts.framework */; };
 		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
-		35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FB1AC094A40067BAAE /* MoreViewController.m */; };
 		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
 		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
 		35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C3A6031AC1D6590067BAAE /* More.storyboard */; };
 		35C3A6071AC1DEC10067BAAE /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */; };
+		35FED4F91AC336F000E12E32 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FED4F81AC336F000E12E32 /* RegisterViewController.m */; };
+		35FED4FC1AC3393C00E12E32 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FED4FB1AC3393C00E12E32 /* LoginViewController.m */; };
+		35FED4FF1AC3478000E12E32 /* LoggedMoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FED4FE1AC3478000E12E32 /* LoggedMoreTableViewController.m */; };
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
@@ -69,8 +71,6 @@
 		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
-		35C3A5FA1AC094A40067BAAE /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = ../MoreViewController.h; sourceTree = "<group>"; };
-		35C3A5FB1AC094A40067BAAE /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = ../MoreViewController.m; sourceTree = "<group>"; };
 		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		35C3A5FE1AC0B0040067BAAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAnnotation.h; sourceTree = "<group>"; };
@@ -78,6 +78,12 @@
 		35C3A6031AC1D6590067BAAE /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		35C3A6051AC1DEC10067BAAE /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
+		35FED4F71AC336F000E12E32 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		35FED4F81AC336F000E12E32 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		35FED4FA1AC3393C00E12E32 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		35FED4FB1AC3393C00E12E32 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		35FED4FD1AC3478000E12E32 /* LoggedMoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggedMoreTableViewController.h; sourceTree = "<group>"; };
+		35FED4FE1AC3478000E12E32 /* LoggedMoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggedMoreTableViewController.m; sourceTree = "<group>"; };
 		52362FDD1ABE0D030079D117 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -164,11 +170,11 @@
 			children = (
 				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
 				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
-				6292E1761AC30AFE00B28CE0 /* Controllers */,
 				62D5A2111ABB560100464F29 /* Models */,
+				6292E1771AC30B1D00B28CE0 /* Views */,
+				6292E1761AC30AFE00B28CE0 /* Controllers */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
 				6292E17B1AC31F3400B28CE0 /* Utils */,
-				6292E1771AC30B1D00B28CE0 /* Views */,
 			);
 			path = Pivy;
 			sourceTree = "<group>";
@@ -248,8 +254,12 @@
 			children = (
 				35C3A6051AC1DEC10067BAAE /* MoreTableViewController.h */,
 				35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */,
-				35C3A5FA1AC094A40067BAAE /* MoreViewController.h */,
-				35C3A5FB1AC094A40067BAAE /* MoreViewController.m */,
+				35FED4FD1AC3478000E12E32 /* LoggedMoreTableViewController.h */,
+				35FED4FE1AC3478000E12E32 /* LoggedMoreTableViewController.m */,
+				35FED4FA1AC3393C00E12E32 /* LoginViewController.h */,
+				35FED4FB1AC3393C00E12E32 /* LoginViewController.m */,
+				35FED4F71AC336F000E12E32 /* RegisterViewController.h */,
+				35FED4F81AC336F000E12E32 /* RegisterViewController.m */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -435,12 +445,14 @@
 				6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */,
 				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
 				52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */,
+				35FED4FC1AC3393C00E12E32 /* LoginViewController.m in Sources */,
 				6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */,
+				35FED4FF1AC3478000E12E32 /* LoggedMoreTableViewController.m in Sources */,
+				35FED4F91AC336F000E12E32 /* RegisterViewController.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
 				623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
-				35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
 				35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */,
 			);
