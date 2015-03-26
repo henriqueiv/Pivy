@@ -5,20 +5,22 @@
 //  Created by Marcus Vinicius Kuquert on 3/20/15.
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
-#import "MapViewController.h"
-#import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
-#import "LocalAnnotation.h"
 #import <CoreLocation/CoreLocation.h>
+#import "MapViewController.h"
+#import "LocalAnnotation.h"
 #import "PivyDetailViewController.h"
-#import "AppDelegate.h"
 
 #define kViewModeNearby 0
 #define kViewModeWorld 1
-#define kDistanceViewModeWorldLatitude 2000000
-#define kDistanceViewModeWorldLongitude 2000000
-#define kDistanceViewModeNearbyLatitude 30000
-#define kDistanceViewModeNearbyLongitude 30000
+#define kLatitudeDeltaNearby 2
+#define kLongitudeDeltaNearby 2
+#define kLatitudeDeltaWorld 180
+#define kLongitudeDeltaWorld 180
+#define DEBUG 1
+
+#define kJSONFile @"/Users/valcanaia/Documents/Projects/Apps/Cardapio RU UFRGS/json.json"
+#define kJSONURL [NSURL URLWithString:@"http://inf.ufrgs.br/~hivalcanaia/cardapio-ru-ufrgs/cardapioRU.php"]
 
 @interface MapViewController ()
 @property NSString *titleAuxiliar;
@@ -36,6 +38,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [self populateWorld];
     
+    self.mapViewModeSelector.layer.cornerRadius = 5; // Remove white borders from bounds
     [self.mapViewModeSelector addTarget:self
                                  action:@selector(changeViewModeMap)
                        forControlEvents:UIControlEventValueChanged];
@@ -102,10 +105,13 @@
     return nil;
 }
 
-
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     LocalAnnotation *la = (LocalAnnotation*) view.annotation;
-    NSLog(@"%@", la);
+    
+#ifdef DEBUG
+    NSLog(@"LocalAnnotation: %@", la);
+#endif
+    
     //    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
 }
 
@@ -116,11 +122,45 @@
     }
 }
 
+-(CLLocationCoordinate2D) addressLocation {
+    NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv",
+                           [@"abc" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSStringEncodingConversionAllowLossy  error:nil];
+    NSArray *listItems = [locationString componentsSeparatedByString:@","];
+    
+    double latitude = 0.0;
+    double longitude = 0.0;
+    
+    if([listItems count] >= 4 && [[listItems objectAtIndex:0] isEqualToString:@"200"]) {
+        latitude = [[listItems objectAtIndex:2] doubleValue];
+        longitude = [[listItems objectAtIndex:3] doubleValue];
+    }
+    else {
+        
+    }
+    CLLocationCoordinate2D location;
+    location.latitude = latitude;
+    location.longitude = longitude;
+    
+    return location;
+}
+
+
 -(void)changeViewModeMap{
     switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
-            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeNearbyLatitude, kDistanceViewModeNearbyLongitude);
-            MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+            MKCoordinateRegion region;
+            MKCoordinateSpan span;
+            
+            span.latitudeDelta = kLatitudeDeltaNearby;
+            span.longitudeDelta = kLongitudeDeltaNearby;
+            
+            region.span = span;
+            region.center = self.mapView.region.center;
+            
+            MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:region];
             [self.mapView setRegion:adjustedRegion animated:YES];
             self.mapView.showsUserLocation = YES;
             
@@ -128,8 +168,15 @@
         }
             
         case kViewModeWorld:{
-            MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.mapView.region.center, kDistanceViewModeWorldLatitude, kDistanceViewModeWorldLongitude);
-            MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+            MKCoordinateRegion region;
+            MKCoordinateSpan span;
+            
+            span.latitudeDelta = kLatitudeDeltaWorld;
+            span.longitudeDelta = kLongitudeDeltaWorld;
+            region.span = span;
+            region.center = self.mapView.region.center;
+            
+            MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:region];
             [self.mapView setRegion:adjustedRegion animated:YES];
             self.mapView.showsUserLocation = YES;
             

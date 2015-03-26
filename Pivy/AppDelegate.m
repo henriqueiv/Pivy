@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self configureParse];
-    [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
+    [self configureTabBar];
     return YES;
 }
 

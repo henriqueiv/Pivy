@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 #import "Pivy.h"
+#import "RWBlurPopover.h"
+#import "PivyDataManager.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -86,51 +88,10 @@
     
 }
 
--(void)downloadPivys{
-    PFQuery *query = [Pivy query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSMutableArray *pivys = [[NSMutableArray alloc] initWithArray:objects];
-        [PFObject pinAllInBackground:pivys
-                               block:^(BOOL succeeded, NSError *error) {
-                                   if (succeeded) {
-                                       NSLog(@"Pivys pinados com sucesso!!!!!!");
-                                   }else{
-                                       NSLog(@"Sem sucesso");
-                                   }
-                                   if(error){
-                                       NSLog(@"Erroooo: %@", error);
-                                   }else{
-                                       NSLog(@"Não deu erro");
-                                   }
-                               }];
-    }];
+-(IBAction)blur:(id)sender{
+    ViewController *vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    [RWBlurPopover showContentViewController:vc insideViewController:self];
 }
-
-- (void)testInternetConnection{
-    internetReachable = [Reachability reachabilityWithHostname:@"www.google.com"];
-    
-    // Internet is reachable
-    internetReachable.reachableBlock = ^(Reachability*reach){
-        // Update the UI on the main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"Yayyy, we have the interwebs!");
-            [self downloadPivys];
-            //hide view blocking everything else
-        });
-    };
-    
-    // Internet is not reachable
-    internetReachable.unreachableBlock = ^(Reachability*reach){
-        // Update the UI on the main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"Someone broke the internet :(");
-            //show view blocking everything else
-        });
-    };
-    
-    [internetReachable startNotifier];
-}
-
 
 - (IBAction)countryButton:(UIButton *)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
@@ -170,6 +131,10 @@
     [self reverseGeocode:newLocation];
     //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
     //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+}
+- (IBAction)downloadPivys:(id)sender {
+    PivyDataManager *pdm = [[PivyDataManager alloc] init];
+    [pdm downloadPivys];
 }
 
 @end
