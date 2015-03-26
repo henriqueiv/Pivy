@@ -36,6 +36,7 @@
 		6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
+		624B5A9C1AC47BAC00290D72 /* PivyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */; };
 		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
 		6292E1821AC34AC500B28CE0 /* RWBlurPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */; };
 		6292E1851AC34B3300B28CE0 /* RWBlurPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1841AC34B3300B28CE0 /* RWBlurPopoverView.m */; };
@@ -99,6 +100,8 @@
 		6222C8B81ABB47F1008B5970 /* PivyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PivyTests.m; sourceTree = "<group>"; };
 		623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDetailViewController.h; sourceTree = "<group>"; };
 		623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDetailViewController.m; sourceTree = "<group>"; };
+		624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDataManager.h; sourceTree = "<group>"; };
+		624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDataManager.m; sourceTree = "<group>"; };
 		6292E17C1AC31F4200B28CE0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6292E17D1AC31F4200B28CE0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6292E1801AC34AC500B28CE0 /* RWBlurPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWBlurPopover.h; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				6292E17A1AC30B7D00B28CE0 /* More */,
 				6292E1791AC30B7400B28CE0 /* Map */,
 				6292E1781AC30B6500B28CE0 /* Collection */,
+				624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */,
+				624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6292E1851AC34B3300B28CE0 /* RWBlurPopoverView.m in Sources */,
+				624B5A9C1AC47BAC00290D72 /* PivyDataManager.m in Sources */,
 				35C3A6071AC1DEC10067BAAE /* MoreTableViewController.m in Sources */,
 				62D5A21B1ABB570200464F29 /* Pivy.m in Sources */,
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,

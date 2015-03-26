@@ -33,40 +33,40 @@
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.allowsSelection = YES;
     
-    PFQuery *query = [Pivy query];
-    [query fromLocalDatastore];
-    [query orderByAscending:@"Country"];
-    NSArray *objects = [[NSArray alloc]init];
-    objects = [query findObjects];
-    
-    for(Pivy *pivy in objects){
-//        NSLog(@"%@", pivy.Country);
-    }
-    
-    
-    NSString *currentCountry = [[NSString alloc]init];
-    currentCountry = [[objects firstObject] Country];
-    
-    self.pivyDic = [[NSMutableDictionary alloc]init];
-//    self.pivyArray = [[NSMutableArray alloc]init];
-//    [self.pivyDic setObject:self.pivyArray forKey:@"China"];
-    for (Pivy *pivy in objects) {
-        if ([self.pivyDic objectForKey:pivy.Country]) {
-            [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
-//            NSLog(@"--- KEY: %@ --- OBJ: %@ --",pivy.Country, pivy.name);
-        }
-        else{
-            NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
-            [self.pivyDic setObject:pivyArray forKey:pivy.Country];
-            
-//            NSLog(@"--- ELSE ---");
-        }
-    }
-//    NSLog(@"DICIONARIO");
-//    NSLog(@"%@", self.pivyDic);
+//    PFQuery *query = [Pivy query];
+//    [query fromLocalDatastore];
+//    [query orderByAscending:@"Country"];
+//    NSArray *objects = [[NSArray alloc]init];
+//    objects = [query findObjects];
 //    
-//    NSLog(@"CONTAGENS");
-//    NSLog(@"%ld", self.pivyDic.count);
+//    for(Pivy *pivy in objects){
+////        NSLog(@"%@", pivy.Country);
+//    }
+//    
+//    
+//    NSString *currentCountry = [[NSString alloc]init];
+//    currentCountry = [[objects firstObject] Country];
+//    
+//    self.pivyDic = [[NSMutableDictionary alloc]init];
+////    self.pivyArray = [[NSMutableArray alloc]init];
+////    [self.pivyDic setObject:self.pivyArray forKey:@"China"];
+//    for (Pivy *pivy in objects) {
+//        if ([self.pivyDic objectForKey:pivy.Country]) {
+//            [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
+////            NSLog(@"--- KEY: %@ --- OBJ: %@ --",pivy.Country, pivy.name);
+//        }
+//        else{
+//            NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
+//            [self.pivyDic setObject:pivyArray forKey:pivy.Country];
+//            
+////            NSLog(@"--- ELSE ---");
+//        }
+//    }
+////    NSLog(@"DICIONARIO");
+////    NSLog(@"%@", self.pivyDic);
+////    
+////    NSLog(@"CONTAGENS");
+////    NSLog(@"%ld", self.pivyDic.count);
    
     
     

@@ -10,4 +10,7 @@
 
 @implementation Background
 
+@dynamic image;
+@dynamic country;
+
 @end

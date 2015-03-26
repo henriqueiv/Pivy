@@ -19,6 +19,9 @@
 #define kLongitudeDeltaWorld 180
 #define DEBUG 1
 
+#define kJSONFile @"/Users/valcanaia/Documents/Projects/Apps/Cardapio RU UFRGS/json.json"
+#define kJSONURL [NSURL URLWithString:@"http://inf.ufrgs.br/~hivalcanaia/cardapio-ru-ufrgs/cardapioRU.php"]
+
 @interface MapViewController ()
 @property NSString *titleAuxiliar;
 @property NSString *descriptionAuxiliar;
@@ -48,7 +51,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
-    [self addPaises];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -102,33 +104,6 @@
     }
     return nil;
 }
-
--(void)addPaises{
-    NSError *error;
-    
-    NSData *data = [NSData dataWithContentsOfFile:@"/Users/valcanaia/Downloads/paises.json"
-                                         options:0
-                                           error:&error];
-    if(data){
-        NSDictionary *_json = [[NSDictionary alloc] init];
-        _json = [NSJSONSerialization JSONObjectWithData:data
-                                                options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers
-                                                  error:&error];
-        if(error)
-            NSLog(@"Erro ao criar o json\n%@", error);
-        else
-            NSLog(@"Paises: %@", _json);
-    }else{
-        NSLog(@"Erro ao criar data\n%@", error);
-    }
-    
-    
-    //    NSMutableArray *paises = [[NSMutableArray alloc] init];
-    //    [paises addObject:];
-    //    PFObject *obj = [PFObject objectWithClassName:@"Country"];
-    //    [obj save];
-}
-
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     LocalAnnotation *la = (LocalAnnotation*) view.annotation;
