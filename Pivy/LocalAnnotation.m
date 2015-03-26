@@ -13,7 +13,6 @@
 -(id)initWithPivy:(Pivy *)pivy{
     self = [super init];
     if(self){
-         NSLog(@"Pivy: %@", pivy);
         _title = pivy.name;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(pivy.location.latitude, pivy.location.longitude);
         _coordinate = coord;

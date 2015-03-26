@@ -73,7 +73,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TUk-1a-k9T">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="customPin" translatesAutoresizingMaskIntoConstraints="NO" id="TUk-1a-k9T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bf9-Bq-Sif">
@@ -110,6 +110,15 @@
                                 </state>
                                 <connections>
                                     <action selector="countryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1DB-1e-Dfd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyX-6D-dQD">
+                                <rect key="frame" x="276" y="194" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blur:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Vg-Rf-ZhL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -211,40 +220,35 @@
                                     <outlet property="delegate" destination="odo-wT-hbR" id="T6X-KX-6gM"/>
                                 </connections>
                             </mapView>
-                            <view opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaH-zN-E96">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R8V-EN-tCa">
-                                        <rect key="frame" x="239" y="8" width="123" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="089-Hq-AXp"/>
-                                            <constraint firstAttribute="width" constant="123" id="pN8-He-oVO"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Nearby"/>
-                                            <segment title="World"/>
-                                        </segments>
-                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R8V-EN-tCa">
+                                <rect key="frame" x="239" y="20" width="123" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Spg-LC-bAj"/>
-                                    <constraint firstAttribute="centerY" secondItem="R8V-EN-tCa" secondAttribute="centerY" id="bxc-Dj-PvI"/>
-                                    <constraint firstAttribute="centerX" secondItem="R8V-EN-tCa" secondAttribute="centerX" constant="-0.5" id="ktz-Jj-8zm"/>
+                                    <constraint firstAttribute="height" constant="28" id="089-Hq-AXp"/>
+                                    <constraint firstAttribute="width" constant="123" id="pN8-He-oVO"/>
                                 </constraints>
-                            </view>
+                                <segments>
+                                    <segment title="Nearby"/>
+                                    <segment title="World"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eaH-zN-E96" firstAttribute="top" secondItem="gyE-Sf-g78" secondAttribute="topMargin" id="D4a-ho-4ww"/>
+                            <constraint firstItem="R8V-EN-tCa" firstAttribute="leading" secondItem="3LT-4k-Kco" secondAttribute="trailing" constant="-361" id="3RZ-yu-pOG"/>
+                            <constraint firstItem="3LT-4k-Kco" firstAttribute="centerX" secondItem="R8V-EN-tCa" secondAttribute="centerX" constant="-0.5" id="Rlq-mt-Afo"/>
                             <constraint firstAttribute="trailing" secondItem="3LT-4k-Kco" secondAttribute="trailing" id="VhB-B1-mSI"/>
                             <constraint firstItem="7cg-ex-K5I" firstAttribute="top" secondItem="3LT-4k-Kco" secondAttribute="bottom" constant="-49" id="fWo-hX-SeR"/>
                             <constraint firstItem="3LT-4k-Kco" firstAttribute="leading" secondItem="gyE-Sf-g78" secondAttribute="leading" id="h3e-ph-p7c"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eaH-zN-E96" secondAttribute="trailing" constant="-16" id="mpK-ax-wL2"/>
-                            <constraint firstItem="eaH-zN-E96" firstAttribute="leading" secondItem="gyE-Sf-g78" secondAttribute="leadingMargin" constant="-16" id="sp9-Gl-fJn"/>
+                            <constraint firstItem="3LT-4k-Kco" firstAttribute="top" secondItem="R8V-EN-tCa" secondAttribute="bottom" constant="-48" id="hUC-zi-nK6"/>
                             <constraint firstItem="3LT-4k-Kco" firstAttribute="top" secondItem="gyE-Sf-g78" secondAttribute="top" id="xUv-2T-Nml"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3RZ-yu-pOG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="jQc-Ss-j9p"/>
                     <connections>
@@ -305,4 +309,7 @@
             <point key="canvasLocation" x="-121" y="-37"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="customPin" width="20" height="33"/>
+    </resources>
 </document>

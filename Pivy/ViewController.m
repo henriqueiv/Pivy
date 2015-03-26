@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 #import "Pivy.h"
+#import "RWBlurPopover.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -67,6 +68,11 @@
     NSLog(@"Country Locale:%@  Code:%@ Name:%@", countryLocale, countryCode, country);
     
     [self testInternetConnection];
+}
+
+-(IBAction)blur:(id)sender{
+    ViewController *vc = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    [RWBlurPopover showContentViewController:vc insideViewController:self];
 }
 
 -(void)downloadPivys{
