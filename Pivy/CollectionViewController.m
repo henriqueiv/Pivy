@@ -16,9 +16,9 @@
 @interface CollectionViewController()
  @property NSString *reuseIdentifier;
  @property NSMutableDictionary *pivyDic;
- @property AppDelegate *delegate;
  @property NSMutableArray *countries;
  @property NSSet *countrySet;
+ @property NSMutableArray *pivyArray;
 @end
 
 @implementation CollectionViewController
@@ -33,22 +33,72 @@
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.allowsSelection = YES;
     
+    PFQuery *query = [Pivy query];
+    [query fromLocalDatastore];
+    [query orderByAscending:@"Country"];
+    NSArray *objects = [[NSArray alloc]init];
+    objects = [query findObjects];
     
-    self.delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    for(Pivy *pivy in objects){
+//        NSLog(@"%@", pivy.Country);
+    }
     
-        self.countries = [[NSMutableArray alloc]init];
     
-        self.pivyDic = [[NSMutableDictionary alloc]init];
-        for ( Pivy *pivy in self.delegate.pivys){
-            
+    NSString *currentCountry = [[NSString alloc]init];
+    currentCountry = [[objects firstObject] Country];
+    
+    self.pivyDic = [[NSMutableDictionary alloc]init];
+//    self.pivyArray = [[NSMutableArray alloc]init];
+//    [self.pivyDic setObject:self.pivyArray forKey:@"China"];
+    for (Pivy *pivy in objects) {
+        if ([self.pivyDic objectForKey:pivy.Country]) {
+            [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
+//            NSLog(@"--- KEY: %@ --- OBJ: %@ --",pivy.Country, pivy.name);
         }
+        else{
+            NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
+            [self.pivyDic setObject:pivyArray forKey:pivy.Country];
+            
+//            NSLog(@"--- ELSE ---");
+        }
+    }
+//    NSLog(@"DICIONARIO");
+//    NSLog(@"%@", self.pivyDic);
+//    
+//    NSLog(@"CONTAGENS");
+//    NSLog(@"%ld", self.pivyDic.count);
+   
     
-        self.countrySet = [[NSSet alloc]initWithArray:self.countries];
- 
     
-    
-    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
 }
+
+
+
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionReusableView *reusableview = nil;
+//    
+//    if (kind == UICollectionElementKindSectionHeader) {
+//        RecipeCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+//        NSString *title = [[NSString alloc]initWithFormat:@"Recipe Group #%i", indexPath.section + 1];
+//        headerView.title.text = title;
+//        UIImage *headerImage = [UIImage imageNamed:@"header_banner.png"];
+//        headerView.backgroundImage.image = headerImage;
+//        
+//        reusableview = headerView;
+//    }
+//    
+//    if (kind == UICollectionElementKindSectionFooter) {
+//        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+//        
+//        reusableview = footerview;
+//    }
+//    
+//    return reusableview;
+//}
+
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -61,23 +111,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+
+    return self.pivyDic.count;
     
-//    NSMutableArray *countries = [[NSMutableArray alloc]init];
-//    for (PFObject *pivy in self.pivyArray){
-//        [countries addObject:pivy[@"Country"]];
-//    }
-//    
-//    NSSet *countrySet = [[NSSet alloc]initWithArray:countries];
-//    
-//    return  countrySet.count;
-    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
-//    return [self.pivyArray count];
-    return 1;
+//    
+//    [[self.pivyDic objectForKey:[self.countrySet ]] count];
+//    
+    return 3;
 }
 
 
