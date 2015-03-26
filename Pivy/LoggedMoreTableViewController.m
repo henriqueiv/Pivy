@@ -7,8 +7,11 @@
 //
 
 #import "LoggedMoreTableViewController.h"
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @interface LoggedMoreTableViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mailLabel;
 
 @end
 
@@ -17,12 +20,18 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    _nameLabel.text = [[PFUser currentUser]valueForKey:@"username"];
+    _mailLabel.text = [[PFUser currentUser]valueForKey:@"email"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 3) {
+         [[PFFacebookUtils session] close];
+    }
+}
 
 @end

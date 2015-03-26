@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "Pivy.h"
-#import "Objeto.h"
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate ()
 
@@ -29,7 +30,24 @@
     [Parse enableLocalDatastore];
     [Parse setApplicationId:@"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
                   clientKey:@"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"];
+    
+    [PFFacebookUtils initializeFacebook];
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
+}
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[PFFacebookUtils session] close];
+}
 @end

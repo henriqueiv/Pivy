@@ -77,6 +77,21 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logout" textLabel="My1-MD-5Uw" style="IBUITableViewCellStyleDefault" id="3ct-vy-PTM">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ct-vy-PTM" id="sLo-Ok-vB7">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Logout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="My1-MD-5Uw">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Config" footerTitle="Use sync button to get all info from the server" id="ymn-wt-8xW">
@@ -163,6 +178,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="tYj-wO-DjG"/>
+                    <connections>
+                        <outlet property="mailLabel" destination="hwt-z0-Dh8" id="w5g-cx-Ia9"/>
+                        <outlet property="nameLabel" destination="SYk-Pc-U1g" id="9a5-U9-LaQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufy-UO-OgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -375,6 +394,15 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="uYP-zA-IBs" eventType="touchUpInside" id="I1k-m1-r3l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KvW-Ng-yJh">
+                                <rect key="frame" x="208" y="227" width="30" height="30"/>
+                                <state key="normal" title="FB">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="uYP-zA-IBs" eventType="touchUpInside" id="9XZ-j4-XYN"/>
                                 </connections>
                             </button>
                         </subviews>

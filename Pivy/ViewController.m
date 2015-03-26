@@ -69,14 +69,14 @@
     [self testInternetConnection];
     
     
-    
-    
+
     //Link with More.storyboard
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
     NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];
     UIViewController *vc;
-    if (![PFUser currentUser])
-        vc = [sb instantiateViewControllerWithIdentifier:@"logged"];
+    NSLog(@"%@", [PFUser currentUser]);
+    if ([PFUser currentUser])
+        vc = [sb instantiateViewControllerWithIdentifier:@"more"];
     else
         vc = [sb instantiateViewControllerWithIdentifier:@"more"];
     

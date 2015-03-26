@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -26,6 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginButton:(UIButton *)sender {
+    
     [PFUser logInWithUsernameInBackground:_usernameField.text password:_passwordField.text
                                     block:^(PFUser *user, NSError *error)
      {
@@ -38,6 +41,23 @@
              [alert show];
          }
      }];
+}
+- (IBAction)facebookLogin:(id)sender {
+    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        } else if (user.isNew) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup sucess" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
+        } else {
+            NSLog(@"%@", user);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
+        }
+    }];
 }
 
 @end
