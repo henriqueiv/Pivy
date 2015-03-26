@@ -28,6 +28,7 @@
 		35C3A6071AC1DEC10067BAAE /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6061AC1DEC10067BAAE /* MoreTableViewController.m */; };
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
+		52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* ViewController.m */; };
@@ -84,6 +85,8 @@
 		52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		52362FDF1ABE0D2B0079D117 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		52362FE01ABE0D2B0079D117 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		52C164581AC48546008E8B2F /* CollectionViewCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCellHeader.h; sourceTree = "<group>"; };
+		52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCellHeader.m; sourceTree = "<group>"; };
 		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,6 +149,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52C1645C1AC4859C008E8B2F /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				52C164581AC48546008E8B2F /* CollectionViewCellHeader.h */,
+				52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */,
+				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
+				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
 		6222C8901ABB47F1008B5970 = {
 			isa = PBXGroup;
 			children = (
@@ -170,11 +184,11 @@
 			children = (
 				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
 				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
+				6292E1771AC30B1D00B28CE0 /* Views */,
 				6292E1761AC30AFE00B28CE0 /* Controllers */,
 				62D5A2111ABB560100464F29 /* Models */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
 				6292E17B1AC31F3400B28CE0 /* Utils */,
-				6292E1771AC30B1D00B28CE0 /* Views */,
 			);
 			path = Pivy;
 			sourceTree = "<group>";
@@ -220,8 +234,7 @@
 		6292E1771AC30B1D00B28CE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				52362FDD1ABE0D030079D117 /* CollectionViewCell.h */,
-				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
+				52C1645C1AC4859C008E8B2F /* Collection */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
 				35C3A6031AC1D6590067BAAE /* More.storyboard */,
@@ -451,6 +464,7 @@
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
 				623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */,
+				52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
 				35C3A5FC1AC094A40067BAAE /* MoreViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,

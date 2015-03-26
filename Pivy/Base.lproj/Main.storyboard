@@ -160,6 +160,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SkL-Z6-X3Q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="16" maxX="0.0" maxY="0.0"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OK7-Dn-bAr">
                             <size key="itemSize" width="96" height="98"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -174,22 +175,42 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RR4-Y8-pLt">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RR4-Y8-pLt">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.10614086085725803" green="0.4707059075130533" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="RR4-Y8-pLt" firstAttribute="top" secondItem="QnS-U3-iQp" secondAttribute="top" id="4F6-2E-pwR"/>
+                                    <constraint firstAttribute="bottom" secondItem="RR4-Y8-pLt" secondAttribute="bottom" id="BDF-VG-KNx"/>
+                                    <constraint firstItem="RR4-Y8-pLt" firstAttribute="leading" secondItem="QnS-U3-iQp" secondAttribute="leading" id="CSu-Ud-urJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="RR4-Y8-pLt" secondAttribute="trailing" id="z29-SZ-Y58"/>
+                                </constraints>
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="imageCell" destination="RR4-Y8-pLt" id="atl-oQ-9bN"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="e8L-Qb-t6L">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="e8L-Qb-t6L" customClass="CollectionViewCellHeader">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-FM-ikU">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottomMargin" secondItem="cp6-FM-ikU" secondAttribute="bottom" id="39z-7C-dt7"/>
+                                <constraint firstItem="cp6-FM-ikU" firstAttribute="leading" secondItem="e8L-Qb-t6L" secondAttribute="leadingMargin" id="DQC-92-BLl"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="cp6-FM-ikU" secondAttribute="trailing" id="iQX-c2-J6a"/>
+                                <constraint firstItem="cp6-FM-ikU" firstAttribute="top" secondItem="e8L-Qb-t6L" secondAttribute="topMargin" id="vgB-V2-yhg"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="image" destination="cp6-FM-ikU" id="cy7-d8-sEr"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="ix1-sl-Atd" id="r6h-lH-7Vi"/>

@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "CollectionViewController.h"
 #import "CollectionViewCell.h"
+#import "CollectionViewCellHeader.h"
 #import "Pivy.h"
 #import "AppDelegate.h"
 
@@ -64,32 +65,20 @@
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
+   
 }
 
 
 
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionReusableView *reusableview = nil;
-//
-//    if (kind == UICollectionElementKindSectionHeader) {
-//        RecipeCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-//        NSString *title = [[NSString alloc]initWithFormat:@"Recipe Group #%i", indexPath.section + 1];
-//        headerView.title.text = title;
-//        UIImage *headerImage = [UIImage imageNamed:@"header_banner.png"];
-//        headerView.backgroundImage.image = headerImage;
-//
-//        reusableview = headerView;
-//    }
-//
-//    if (kind == UICollectionElementKindSectionFooter) {
-//        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-//
-//        reusableview = footerview;
-//    }
-//
-//    return reusableview;
-//}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    
+    CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+
+    header.image.image = [UIImage imageNamed:@"franceBanner.png"];
+    
+    return header;
+}
 
 
 - (void)collectionView:(UICollectionView *)collectionView
@@ -126,7 +115,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
     
     if(pivy.image){
-        
         cell.imageCell.image = [UIImage imageWithData:[pivy.image getData]];
     }
     else{
