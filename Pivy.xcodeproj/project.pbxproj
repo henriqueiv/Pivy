@@ -34,7 +34,6 @@
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */; };
-		52C1645E1AC59DFE008E8B2F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */; };
 		52C164621AC5DEFF008E8B2F /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C164611AC5DEFF008E8B2F /* Banner.m */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
