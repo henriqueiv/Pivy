@@ -35,6 +35,7 @@
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */; };
+		52C1645E1AC59DFE008E8B2F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* ViewController.m */; };
@@ -101,6 +102,7 @@
 		52362FE01ABE0D2B0079D117 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		52C164581AC48546008E8B2F /* CollectionViewCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCellHeader.h; sourceTree = "<group>"; };
 		52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCellHeader.m; sourceTree = "<group>"; };
+		52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				358B18121ABC7C88007283CB /* SystemConfiguration.framework in Frameworks */,
 				3591874E1AC4BD0E009E81B1 /* ParseFacebookUtils.framework in Frameworks */,
 				3591874C1AC4BBFA009E81B1 /* Parse.framework in Frameworks */,
+				52C1645E1AC59DFE008E8B2F /* FBSDKCoreKit.framework in Frameworks */,
 				358B18101ABC7C82007283CB /* StoreKit.framework in Frameworks */,
 				358B180E1ABC7C7D007283CB /* Security.framework in Frameworks */,
 				3591874A1AC49274009E81B1 /* FacebookSDK.framework in Frameworks */,
@@ -176,6 +179,15 @@
 				52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */,
 			);
 			name = Collection;
+			sourceTree = "<group>";
+		};
+		52C1645F1AC5A4E7008E8B2F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */,
+				623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 		6222C8901ABB47F1008B5970 = {
@@ -241,6 +253,7 @@
 		6292E1761AC30AFE00B28CE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52C1645F1AC5A4E7008E8B2F /* Detail */,
 				6292E17F1AC320ED00B28CE0 /* Main */,
 				6292E17A1AC30B7D00B28CE0 /* More */,
 				6292E1791AC30B7400B28CE0 /* Map */,
@@ -274,8 +287,6 @@
 		6292E1791AC30B7400B28CE0 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */,
-				623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */,
 				35C3A5FD1AC0B0040067BAAE /* MapViewController.h */,
 				35C3A5FE1AC0B0040067BAAE /* MapViewController.m */,
 			);
@@ -360,6 +371,7 @@
 		62D5A2231ABB5D2500464F29 /* System Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */,
 				358B181C1ABCABC6007283CB /* MapKit.framework */,
 				358B18151ABC7C98007283CB /* libsqlite3.dylib */,
 				358B18131ABC7C92007283CB /* libz.dylib */,
@@ -425,11 +437,11 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = YYWFQ73E8M;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = YYWFQ73E8M;
 						TestTargetID = 6222C8981ABB47F1008B5970;
 					};
 				};
@@ -629,6 +641,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/MarcusKuquert/Documents/FacebookSDK,
+					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -647,6 +660,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/MarcusKuquert/Documents/FacebookSDK,
+					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
