@@ -17,6 +17,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
--(id)initWithPivy:(Pivy *)pivy;
-
 @end

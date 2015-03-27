@@ -12,6 +12,7 @@
 #import "Pivy.h"
 #import "RWBlurPopover.h"
 #import "PivyDataManager.h"
+#import "GalleryDataManager.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -147,6 +148,22 @@
     //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
     //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 }
+
+- (IBAction)clearPivys:(id)sender {
+    PivyDataManager *pdm = [[PivyDataManager alloc] init];
+    [pdm clearLocalDB];
+}
+
+- (IBAction)downloadGalleries:(id)sender {
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm downloadGalleries];
+}
+
+- (IBAction)clearGalleries:(id)sender {
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm clearLocalDB];
+}
+
 - (IBAction)downloadPivys:(id)sender {
     PivyDataManager *pdm = [[PivyDataManager alloc] init];
     [pdm downloadPivys];

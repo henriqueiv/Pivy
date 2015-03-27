@@ -57,10 +57,27 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [self downloadData];
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [[PFFacebookUtils session] close];
 }
+
+-(void)downloadData{
+    [self downloadAppData];
+    [self downloadUserData];
+}
+
+-(void)downloadAppData{
+    PivyDataManager *pdm = [[PivyDataManager alloc] init];
+    [pdm downloadPivys];
+}
+
+-(void)downloadUserData{
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm downloadGalleries];
+}
+
 @end
