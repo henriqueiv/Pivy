@@ -7,10 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
-#import "Pivy.h"
-#import "Gallery.h"
-#import <ParseFacebookUtils/PFFacebookUtils.h>
+
 #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
 #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
 
@@ -55,10 +52,27 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [self downloadData];
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [[PFFacebookUtils session] close];
 }
+
+-(void)downloadData{
+    [self downloadAppData];
+    [self downloadUserData];
+}
+
+-(void)downloadAppData{
+    PivyDataManager *pdm = [[PivyDataManager alloc] init];
+    [pdm downloadPivys];
+}
+
+-(void)downloadUserData{
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm downloadGalleries];
+}
+
 @end

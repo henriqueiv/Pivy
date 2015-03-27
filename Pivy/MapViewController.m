@@ -19,13 +19,8 @@
 #define kLongitudeDeltaWorld 180
 #define DEBUG 1
 
-#define kJSONFile @"/Users/valcanaia/Documents/Projects/Apps/Cardapio RU UFRGS/json.json"
-#define kJSONURL [NSURL URLWithString:@"http://inf.ufrgs.br/~hivalcanaia/cardapio-ru-ufrgs/cardapioRU.php"]
-
 @interface MapViewController ()
 
-@property NSString *titleAuxiliar;
-@property NSString *descriptionAuxiliar;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapViewModeSelector;
 
@@ -50,6 +45,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self populateWorld];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
 }
@@ -107,24 +103,17 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    
 //    LocalAnnotation *la = (LocalAnnotation*) view.annotation;
     [self performSegueWithIdentifier:@"gotoPivyDetailFromMap" sender:view.annotation];
 
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
     if ([segue.identifier isEqualToString:@"gotoPivyDetailFromMap"]) {
         LocalAnnotation *a = (LocalAnnotation*) sender;
         PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
         pdvc.pivy = a.pivy;
-//        pdvc.nameLabel.text = a.pivy.name;
-//        pdvc.countryLabel.text = a.pivy.Country;
-//        pdvc.locationLabel.text = @"LOL";
-//        pdvc.descriptionTextView.text = a.pivy.Description;
     }
-    NSLog(@"----Segue---- %@", segue.identifier);
     
 }
 

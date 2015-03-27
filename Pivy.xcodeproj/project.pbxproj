@@ -34,7 +34,6 @@
 		52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FDE1ABE0D2B0079D117 /* CollectionViewCell.m */; };
 		52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52362FE01ABE0D2B0079D117 /* CollectionViewController.m */; };
 		52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */; };
-		52C1645E1AC59DFE008E8B2F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */; };
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* ViewController.m */; };
@@ -47,11 +46,13 @@
 		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
 		6292E1821AC34AC500B28CE0 /* RWBlurPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */; };
 		6292E1851AC34B3300B28CE0 /* RWBlurPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1841AC34B3300B28CE0 /* RWBlurPopoverView.m */; };
+		62C98EB21AC5BFE1003E405B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */; };
+		62C98EB81AC5DB6F003E405B /* GalleryDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C98EB71AC5DB6F003E405B /* GalleryDataManager.m */; };
+		62C98EBB1AC5DB8A003E405B /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C98EBA1AC5DB8A003E405B /* AppUtils.m */; };
 		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
 		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
 		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
 		62ED49261AC5B974002CCE90 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED49251AC5B974002CCE90 /* Gallery.m */; };
-		62ED49281AC5B9AD002CCE90 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62ED49271AC5B9AD002CCE90 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,11 @@
 		6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWBlurPopover.m; sourceTree = "<group>"; };
 		6292E1831AC34B3300B28CE0 /* RWBlurPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWBlurPopoverView.h; sourceTree = "<group>"; };
 		6292E1841AC34B3300B28CE0 /* RWBlurPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWBlurPopoverView.m; sourceTree = "<group>"; };
+		62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		62C98EB61AC5DB6F003E405B /* GalleryDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryDataManager.h; sourceTree = "<group>"; };
+		62C98EB71AC5DB6F003E405B /* GalleryDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryDataManager.m; sourceTree = "<group>"; };
+		62C98EB91AC5DB8A003E405B /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
+		62C98EBA1AC5DB8A003E405B /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
 		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
 		62D5A2171ABB56A200464F29 /* Objeto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Objeto.m; sourceTree = "<group>"; };
 		62D5A2191ABB570200464F29 /* Pivy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pivy.h; sourceTree = "<group>"; };
@@ -134,7 +140,6 @@
 		62D5A21D1ABB571200464F29 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		62ED49241AC5B974002CCE90 /* Gallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gallery.h; sourceTree = "<group>"; };
 		62ED49251AC5B974002CCE90 /* Gallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gallery.m; sourceTree = "<group>"; };
-		62ED49271AC5B9AD002CCE90 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +154,8 @@
 				358B18121ABC7C88007283CB /* SystemConfiguration.framework in Frameworks */,
 				3591874E1AC4BD0E009E81B1 /* ParseFacebookUtils.framework in Frameworks */,
 				3591874C1AC4BBFA009E81B1 /* Parse.framework in Frameworks */,
-				52C1645E1AC59DFE008E8B2F /* FBSDKCoreKit.framework in Frameworks */,
 				358B18101ABC7C82007283CB /* StoreKit.framework in Frameworks */,
-				62ED49281AC5B9AD002CCE90 /* FacebookSDK.framework in Frameworks */,
+				62C98EB21AC5BFE1003E405B /* FacebookSDK.framework in Frameworks */,
 				358B180E1ABC7C7D007283CB /* Security.framework in Frameworks */,
 				358B180C1ABC7C74007283CB /* QuartzCore.framework in Frameworks */,
 				358B180A1ABC7C6F007283CB /* MobileCoreServices.framework in Frameworks */,
@@ -263,6 +267,8 @@
 				6292E1781AC30B6500B28CE0 /* Collection */,
 				624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */,
 				624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */,
+				62C98EB61AC5DB6F003E405B /* GalleryDataManager.h */,
+				62C98EB71AC5DB6F003E405B /* GalleryDataManager.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +320,8 @@
 		6292E17B1AC31F3400B28CE0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				62C98EB91AC5DB8A003E405B /* AppUtils.h */,
+				62C98EBA1AC5DB8A003E405B /* AppUtils.m */,
 				6292E1831AC34B3300B28CE0 /* RWBlurPopoverView.h */,
 				6292E1841AC34B3300B28CE0 /* RWBlurPopoverView.m */,
 				6292E1801AC34AC500B28CE0 /* RWBlurPopover.h */,
@@ -364,7 +372,7 @@
 		62D5A2221ABB5D1D00464F29 /* User Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				62ED49271AC5B9AD002CCE90 /* FacebookSDK.framework */,
+				62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */,
 				3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */,
 				3591874B1AC4BBFA009E81B1 /* Parse.framework */,
 				359187471AC49243009E81B1 /* Bolts.framework */,
@@ -442,11 +450,10 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = YYWFQ73E8M;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = YYWFQ73E8M;
+						DevelopmentTeam = 8WCPHDZJPJ;
 						TestTargetID = 6222C8981ABB47F1008B5970;
 					};
 				};
@@ -503,6 +510,7 @@
 				62D5A21E1ABB571200464F29 /* Background.m in Sources */,
 				6292E1821AC34AC500B28CE0 /* RWBlurPopover.m in Sources */,
 				35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */,
+				62C98EBB1AC5DB8A003E405B /* AppUtils.m in Sources */,
 				6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */,
 				6222C8A51ABB47F1008B5970 /* ViewController.m in Sources */,
 				52362FE11ABE0D2B0079D117 /* CollectionViewCell.m in Sources */,
@@ -511,6 +519,7 @@
 				35FED4FF1AC3478000E12E32 /* LoggedMoreTableViewController.m in Sources */,
 				35FED4F91AC336F000E12E32 /* RegisterViewController.m in Sources */,
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
+				62C98EB81AC5DB6F003E405B /* GalleryDataManager.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
 				623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */,
 				52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */,
@@ -623,6 +632,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

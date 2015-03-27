@@ -7,31 +7,59 @@
 //
 
 #import "PivyDetailViewController.h"
+#import "Gallery.h"
 
 @interface PivyDetailViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
 
 @end
 
 @implementation PivyDetailViewController
 
-//-(id)initWithPivy:(Pivy *)pivy{
-//    self = [super init];
-//    if(self){
-//        self.nameLabel.text = pivy.name;
-//        self.countryLabel.text = pivy.Country;
-//        self.locationLabel.text = @"LOL";
-//        self.descriptionTextView.text = pivy.Description;
-//    }
-//    return self;
-//}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"VIEW DID LOAD");
-    NSLog(@"%@", self.pivy.name);
+    
     self.nameLabel.text = self.pivy.name;
     self.countryLabel.text = self.pivy.Country;
     self.locationLabel.text = @"LOL";
     self.descriptionTextView.text = self.pivy.Description;
-    
+    [self checkIfHasPivy];
 }
+
+-(void)checkIfHasPivy{
+    PFQuery *query = [Gallery query];
+    [query fromLocalDatastore];
+    [query whereKey:@"pivy" equalTo:self.pivy];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.btnGetPivy.enabled = (objects.count == 0);
+            //            if (objects.count == 0){
+            //                self.btnGetPivy.enabled = YES;
+            //            }else{
+            //                self.btnGetPivy.enabled = NO;
+            //                Gallery *g = (Gallery*) objects[0];
+            //                NSLog(@"%@", g);
+            //            }
+        });
+    }];
+}
+
+
+- (IBAction)getPivy:(id)sender {
+    Gallery *g = [[Gallery alloc] init];
+    g.pivy = self.pivy;
+    g.from = [PFUser currentUser];
+    g.to = [PFUser currentUser];
+    [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (succeeded) {
+                [g saveEventually];
+                [self checkIfHasPivy];
+            }
+        });
+    }];
+}
+
+
 @end
