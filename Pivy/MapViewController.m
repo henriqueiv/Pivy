@@ -23,6 +23,7 @@
 #define kJSONURL [NSURL URLWithString:@"http://inf.ufrgs.br/~hivalcanaia/cardapio-ru-ufrgs/cardapioRU.php"]
 
 @interface MapViewController ()
+
 @property NSString *titleAuxiliar;
 @property NSString *descriptionAuxiliar;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -106,20 +107,25 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    LocalAnnotation *la = (LocalAnnotation*) view.annotation;
     
-#ifdef DEBUG
-    NSLog(@"LocalAnnotation: %@", la);
-#endif
-    
-    //    [self performSegueWithIdentifier:@"gotoPivyDetail" sender:view.annotation];
+//    LocalAnnotation *la = (LocalAnnotation*) view.annotation;
+    [self performSegueWithIdentifier:@"gotoPivyDetailFromMap" sender:view.annotation];
+
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"gotoPivyDetail"]) {
+    
+    if ([segue.identifier isEqualToString:@"gotoPivyDetailFromMap"]) {
         LocalAnnotation *a = (LocalAnnotation*) sender;
         PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
+        pdvc.pivy = a.pivy;
+//        pdvc.nameLabel.text = a.pivy.name;
+//        pdvc.countryLabel.text = a.pivy.Country;
+//        pdvc.locationLabel.text = @"LOL";
+//        pdvc.descriptionTextView.text = a.pivy.Description;
     }
+    NSLog(@"----Segue---- %@", segue.identifier);
+    
 }
 
 -(CLLocationCoordinate2D) addressLocation {

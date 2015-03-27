@@ -12,5 +12,11 @@
 @interface PivyDetailViewController : UIViewController
 
 @property (weak, nonatomic) Pivy *pivy;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+-(id)initWithPivy:(Pivy *)pivy;
 
 @end

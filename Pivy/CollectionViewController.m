@@ -35,6 +35,7 @@
     // allow multiple selections
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.allowsSelection = YES;
+    self.navigationController.navigationBar.hidden = YES;
     
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
@@ -62,12 +63,22 @@
             [self.countries addObject:pivy.Country];
         }
     }
-    
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
-   
+//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+//    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    if (section == (self.pivyDic.count)-1)
+        return UIEdgeInsetsMake(15, 0, 66, 0);
+    else
+        return UIEdgeInsetsMake(15, 0, 15, 0);
+    
+}
+
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -75,7 +86,7 @@
     
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
 
-    header.image.image = [UIImage imageNamed:@"franceBanner.png"];
+    header.image.image = [UIImage imageNamed:@"bannerFrance.png"];
     
     return header;
 }
@@ -84,11 +95,13 @@
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    //    self.collectionView.backgroundColor = [UIColor blueColor];
-    //    self.collectionView.backgroundView.backgroundColor = [UIColor brownColor];
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor blackColor];
+    CollectionViewCell *cell = (CollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    NSLog(@"%@", cell.pivy);
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"SEGUEGUEGUGEUGEU:%@", segue.identifier);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -113,7 +126,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor brownColor];
     cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
-    
+    cell.pivy = pivy;
     if(pivy.image){
         cell.imageCell.image = [UIImage imageWithData:[pivy.image getData]];
     }
