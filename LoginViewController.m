@@ -43,7 +43,7 @@
      }];
 }
 - (IBAction)facebookLogin:(id)sender {
-    [PFFacebookUtils logInWithPermissions:@[@"username", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
+    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
         if (user) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];

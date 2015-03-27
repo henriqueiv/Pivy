@@ -24,11 +24,20 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    //Change placeholder text collor
+    UIColor *color = [UIColor lightTextColor];
+    _nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full name" attributes:@{NSForegroundColorAttributeName: color}];
+    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: color}];
+    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"E-mail" attributes:@{NSForegroundColorAttributeName: color}];
+    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+    _confirmPasswordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Confirm password" attributes:@{NSForegroundColorAttributeName: color}];
 }
-- (IBAction)facebookSignup:(id)sender {
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 
-}
 - (IBAction)confirmButton:(id)sender {
     
     if ([_passwordField.text isEqualToString:_confirmPasswordField.text]) {
@@ -60,5 +69,58 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password does not match" message:@"Check your password and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
+}
+
+- (IBAction)facebookSignup:(id)sender {
+    [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
+        if (user) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self loadData];
+            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
+        } else if (user.isNew) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup sucess" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }];
+}
+
+- (void)loadData {
+    // Send request to Facebook
+    FBRequest *request = [FBRequest requestForMe];
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        // handle response
+        if (!error) {
+            // Parse the data received
+            NSDictionary *userData = (NSDictionary *)result;
+            
+            
+            PFUser *user = [PFUser currentUser];
+            
+            NSString *facebookID = userData[@"id"];
+            if (facebookID)
+                user[@"facebookId"] = facebookID;
+            
+            NSString *name = userData[@"name"];
+            if (name)
+                user[@"name"] = name;
+            
+            NSString *email = userData[@"email"];
+            if (email)
+                user.email = email;
+            
+            [[PFUser currentUser] saveInBackground];
+            
+        } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
+                    isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
+            NSLog(@"The facebook session was invalidated");
+        } else {
+            NSLog(@"Some other error: %@", error);
+        }
+    }];
 }
 @end

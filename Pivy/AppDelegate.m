@@ -7,9 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
-#import "Pivy.h"
 #import "Gallery.h"
+#import "Pivy.h"
+#import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
 #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
@@ -23,7 +23,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self configureParse];
     [self configureTabBar];
+    [self configureNavigationBar];
     return YES;
+}
+
+-(void)configureNavigationBar{
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
+                                                        green:211/255.0f
+                                                         blue:10.0/255.0f
+                                                        alpha:1.0f]];
 }
 
 -(void)configureParse{

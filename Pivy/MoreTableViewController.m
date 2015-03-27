@@ -15,7 +15,12 @@
 @implementation MoreTableViewController
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 @end
