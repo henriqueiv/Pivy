@@ -12,5 +12,6 @@
 @interface PivyDataManager : NSObject
 
 -(void)downloadPivys;
+-(void)clearLocalDB;
 
 @end

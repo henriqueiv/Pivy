@@ -1,35 +1,29 @@
 //
-//  PivyDataManager.m
+//  GalleryDataManager.m
 //  Pivy
 //
-//  Created by Henrique Valcanaia on 3/26/15.
+//  Created by Henrique Valcanaia on 3/27/15.
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-#import "PivyDataManager.h"
-#import "Pivy.h"
-#import <Parse/Parse.h>
-#import "AppUtils.h"
-#define DEBUG 1
+#import "GalleryDataManager.h"
 
-#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+@implementation GalleryDataManager
 
-@implementation PivyDataManager
-
--(void)downloadPivys{
+-(void)downloadGalleries{
     if ([AppUtils hasInternetConnection]) {
-        PFQuery *query = [Pivy query];
+        PFQuery *query = [Gallery query];
         [[[query fromLocalDatastore] orderByDescending:@"createdAt"] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects) {
 #ifdef DEBUG
-                NSLog(@"\n%ld pivys já baixados", objects.count);
+                NSLog(@"\n%ld gallerys já baixados", objects.count);
 #endif
                 NSDate *date;
                 if (objects.count > 0) {
-                    Pivy *pivy = (Pivy*) objects[0];
-                    date = pivy.createdAt;
+                    Gallery *gallery = (Gallery*) objects[0];
+                    date = gallery.createdAt;
 #ifdef DEBUG
-                    NSLog(@"Pivy 0: %@", pivy.createdAt);
+                    NSLog(@"gallery 0: %@", gallery.createdAt);
 #endif
                 }else{
                     date = [[NSDate alloc] initWithTimeIntervalSince1970:0];
@@ -47,7 +41,7 @@
 }
 
 -(void)downloadAfterBackgroundWithDate: (NSDate *)date{
-    PFQuery *query = [Pivy query];
+    PFQuery *query = [Gallery query];
 #ifdef DEBUG
     NSLog(@"Maior data: %@", date);
 #endif
@@ -55,10 +49,10 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects) {
 #ifdef DEBUG
-            NSLog(@"\n%ld pivys baixados AGORA", objects.count);
+            NSLog(@"\n%ld gallery baixados AGORA", objects.count);
 #endif
-            NSMutableArray *pivys = [[NSMutableArray alloc] initWithArray:objects];
-            [PFObject pinAllInBackground:pivys
+            NSMutableArray *galleries = [[NSMutableArray alloc] initWithArray:objects];
+            [PFObject pinAllInBackground:galleries
                                    block:^(BOOL succeeded, NSError *error) {
                                        if (succeeded) {
                                            NSLog(@"Pivys pinados com sucesso!!!!!!");
@@ -77,22 +71,23 @@
 
 -(void)clearLocalDB{
     NSInteger count;
-    PFQuery *query = [Pivy query];
+    PFQuery *query = [Gallery query];
     [query fromLocalDatastore];
-    for (Pivy *pivy in [query findObjects]) {
+    for (Gallery *gallery in [query findObjects]) {
 #ifndef NDEBUG
-        if([pivy unpin]){
+        if([gallery unpin]){
             count++;
         }
 #else
-        [pivy unpin];
+        [gallery unpin];
 #endif
     }
     
 #ifndef NDEBUG
-    NSLog(@"%ld pivys excluidos localmente", count);
+    NSLog(@"%ld galleries excluidos localmente", count);
 #endif
     
 }
+
 
 @end

@@ -38,6 +38,7 @@
 -(void)configureParse{
     [Gallery registerSubclass];
     [Pivy registerSubclass];
+    [Banner registerSubclass];
     
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
@@ -64,10 +65,27 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [self downloadData];
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [[PFFacebookUtils session] close];
 }
+
+-(void)downloadData{
+    [self downloadAppData];
+    [self downloadUserData];
+}
+
+-(void)downloadAppData{
+    PivyDataManager *pdm = [[PivyDataManager alloc] init];
+    [pdm downloadPivys];
+}
+
+-(void)downloadUserData{
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm downloadGalleries];
+}
+
 @end

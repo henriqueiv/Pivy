@@ -12,6 +12,7 @@
 #import "Pivy.h"
 #import "RWBlurPopover.h"
 #import "PivyDataManager.h"
+#import "GalleryDataManager.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -52,6 +53,24 @@
     [PFObject pinAllInBackground:pivyArray block:^(BOOL succeeded, NSError *error) {
         if(succeeded){
             NSLog(@"PIVY Pinning OK");
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
+    
+    
+    PFQuery *bannerQuery = [PFQuery queryWithClassName:@"Banner"];
+    
+    NSArray *bannerArray = [bannerQuery findObjects];
+    [PFObject pinAllInBackground:bannerArray block:^(BOOL succeeded, NSError *error) {
+        if(succeeded){
+            NSLog(@"BANNER Pinning OK");
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
@@ -129,6 +148,22 @@
     //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
     //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 }
+
+- (IBAction)clearPivys:(id)sender {
+    PivyDataManager *pdm = [[PivyDataManager alloc] init];
+    [pdm clearLocalDB];
+}
+
+- (IBAction)downloadGalleries:(id)sender {
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm downloadGalleries];
+}
+
+- (IBAction)clearGalleries:(id)sender {
+    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+    [gdm clearLocalDB];
+}
+
 - (IBAction)downloadPivys:(id)sender {
     PivyDataManager *pdm = [[PivyDataManager alloc] init];
     [pdm downloadPivys];

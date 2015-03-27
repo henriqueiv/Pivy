@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "Pivy.h"
+#import "Gallery.h"
 #import "MBProgressHUD.h"
+#import "PivyDataManager.h"
+#import "GalleryDataManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, atomic) NSMutableArray *pivys;
 
 
 @end

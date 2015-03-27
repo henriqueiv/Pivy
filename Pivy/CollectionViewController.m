@@ -13,6 +13,7 @@
 #import "CollectionViewCellHeader.h"
 #import "Pivy.h"
 #import "AppDelegate.h"
+#import "Banner.h"
 
 @interface CollectionViewController()
 
@@ -20,6 +21,7 @@
 @property NSMutableDictionary *pivyDic;
 @property NSMutableArray *countries;
 @property NSMutableArray *pivyArray;
+@property NSArray *bannerArray;
 
 @end
 
@@ -37,6 +39,15 @@
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = YES;
     
+    //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    //    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self createCollection];
+}
+
+-(void)createCollection{
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
@@ -44,27 +55,31 @@
     NSArray *objects = [[NSArray alloc]init];
     objects = [query findObjects];
     
-    self.pivyDic = [[NSMutableDictionary alloc]init];
-    
-    self.countries = [[NSMutableArray alloc]init];
-    
-    
-    for (Pivy *pivy in objects) {
-        
-        if ([self.pivyDic objectForKey:pivy.Country]) {
-            
-            [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
-        }
-        else{
-            NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
-            
-            [self.pivyDic setObject:pivyArray forKey:pivy.Country];
-            
-            [self.countries addObject:pivy.Country];
+#ifndef NDEBUG
+    NSLog(@"%lu", (unsigned long)objects.count);
+#endif
+    if (objects) {
+        self.pivyDic = [[NSMutableDictionary alloc]init];
+        self.countries = [[NSMutableArray alloc]init];
+        for (Pivy *pivy in objects) {
+            if ([self.pivyDic objectForKey:pivy.Country]) {
+                [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
+            }else{
+                NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
+                [self.pivyDic setObject:pivyArray forKey:pivy.Country];
+                [self.countries addObject:pivy.Country];
+            }
         }
     }
-//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-//    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
+
+    PFQuery *bannerQuery = [Banner query];
+    [query fromLocalDatastore];
+    [query orderByAscending:@"country"];
+    self.bannerArray = [bannerQuery findObjects];
+    for(Banner* banner in self.bannerArray )
+        NSLog(@"******%@*****", banner.country);
+    
+    
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -72,7 +87,6 @@
         return UIEdgeInsetsMake(15, 0, 66, 0);
     else
         return UIEdgeInsetsMake(15, 0, 15, 0);
-    
 }
 
 
@@ -84,8 +98,11 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+    
+    
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-
+    
     header.image.image = [UIImage imageNamed:@"bannerFrance.png"];
     
     return header;
