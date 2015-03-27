@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "Pivy.h"
 #import "Gallery.h"
+#import "Banner.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
 #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
@@ -29,6 +30,7 @@
 -(void)configureParse{
     [Gallery registerSubclass];
     [Pivy registerSubclass];
+    [Banner registerSubclass];
     
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID

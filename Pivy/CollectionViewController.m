@@ -13,6 +13,7 @@
 #import "CollectionViewCellHeader.h"
 #import "Pivy.h"
 #import "AppDelegate.h"
+#import "Banner.h"
 
 @interface CollectionViewController()
 
@@ -20,6 +21,7 @@
 @property NSMutableDictionary *pivyDic;
 @property NSMutableArray *countries;
 @property NSMutableArray *pivyArray;
+@property NSArray *bannerArray;
 
 @end
 
@@ -63,8 +65,15 @@
             [self.countries addObject:pivy.Country];
         }
     }
-//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-//    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
+
+    PFQuery *bannerQuery = [Banner query];
+    [query fromLocalDatastore];
+    [query orderByAscending:@"country"];
+    self.bannerArray = [bannerQuery findObjects];
+    for(Banner* banner in self.bannerArray )
+        NSLog(@"******%@*****", banner.country);
+    
+    
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -83,6 +92,9 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    
     
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
 

@@ -63,6 +63,24 @@
         }
     }];
     
+    
+    PFQuery *bannerQuery = [PFQuery queryWithClassName:@"Banner"];
+    
+    NSArray *bannerArray = [bannerQuery findObjects];
+    [PFObject pinAllInBackground:bannerArray block:^(BOOL succeeded, NSError *error) {
+        if(succeeded){
+            NSLog(@"BANNER Pinning OK");
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
+    
     NSLocale *countryLocale = [NSLocale currentLocale];
     NSString *countryCode = [countryLocale objectForKey:NSLocaleCountryCode];
     NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
