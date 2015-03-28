@@ -13,28 +13,28 @@
 -(void)downloadGalleries{
     if ([AppUtils hasInternetConnection]) {
         PFQuery *query = [Gallery query];
-        [[[query fromLocalDatastore] orderByDescending:@"createdAt"] getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            NSDate *date;
-            if (error) {
-                NSLog(@"ERRO\n%@", error);
-            }else{
-                if (object) {
-                    Gallery *gallery = (Gallery*) object;
-                    date = gallery.createdAt;
-#ifdef DEBUG
-                    NSLog(@"Objeto encontrado, baixando a partir de %@", date);
-#endif
-                }else{
-                    date = [[NSDate alloc] initWithTimeIntervalSince1970:0];
-#ifdef DEBUG
-                    NSLog(@"Objeto NAO encontrado, baixando a partir de %@", date);
-#endif
-                }
-                [self performSelectorOnMainThread:@selector(downloadAfterBackgroundWithDate:)
-                                       withObject:date
-                                    waitUntilDone:NO];
-            }
-        }];
+//        [[[query fromLocalDatastore] orderByDescending:@"createdAt"] getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//            NSDate *date;
+//            if (error) {
+//                NSLog(@"ERRO\n%@", error);
+//            }else{
+//                if (object) {
+//                    Gallery *gallery = (Gallery*) object;
+//                    date = gallery.createdAt;
+//#ifdef DEBUG
+//                    NSLog(@"Objeto encontrado, baixando a partir de %@", date);
+//#endif
+//                }else{
+//                    date = [[NSDate alloc] initWithTimeIntervalSince1970:0];
+//#ifdef DEBUG
+//                    NSLog(@"Objeto NAO encontrado, baixando a partir de %@", date);
+//#endif
+//                }
+//                [self performSelectorOnMainThread:@selector(downloadAfterBackgroundWithDate:)
+//                                       withObject:date
+//                                    waitUntilDone:NO];
+//            }
+//        }];
         
         [[[query fromLocalDatastore] orderByDescending:@"createdAt"] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects) {
