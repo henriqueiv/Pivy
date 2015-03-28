@@ -37,14 +37,14 @@
     // allow multiple selections
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.allowsSelection = YES;
-    self.navigationController.navigationBar.hidden = YES;
-    
+    self.navigationController.navigationBar.hidden = NO;
+    [self createCollection];
     //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     //    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self createCollection];
+//    [self createCollection];
 }
 
 -(void)createCollection{
@@ -90,9 +90,9 @@
 }
 
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
+//- (BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
