@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "PivyDetailViewController.h"
 #import "CollectionViewController.h"
 #import "CollectionViewCell.h"
 #import "CollectionViewCellHeader.h"
 #import "Pivy.h"
+#import "Gallery.h"
 #import "AppDelegate.h"
 #import "Banner.h"
 
@@ -22,6 +24,8 @@
 @property NSMutableArray *countries;
 @property NSMutableArray *pivyArray;
 @property NSArray *bannerArray;
+@property NSMutableDictionary *bannerDic;
+@property NSArray *galleryArray;
 
 @end
 
@@ -32,22 +36,20 @@
     
     [super viewDidLoad];
     _reuseIdentifier =  @"Cell";
-    // EVIL: Register your own cell class (or comment this out)
-    //[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:_reuseIdentifier];
-    // allow multiple selections
     self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.allowsSelection = YES;
-    self.navigationController.navigationBar.hidden = YES;
-    
+    self.navigationController.navigationBar.hidden = NO;
+    [self createCollection];
     //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     //    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self createCollection];
+//    [self createCollection];
 }
 
 -(void)createCollection{
+    NSLog(@"CHAMOU");
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
@@ -73,13 +75,30 @@
     }
 
     PFQuery *bannerQuery = [Banner query];
-    [query fromLocalDatastore];
-    [query orderByAscending:@"country"];
+    [bannerQuery fromLocalDatastore];
+    [bannerQuery orderByAscending:@"country"];
     self.bannerArray = [bannerQuery findObjects];
-    for(Banner* banner in self.bannerArray )
-        NSLog(@"******%@*****", banner.country);
     
+    if(self.bannerArray){
+        self.bannerDic = [[NSMutableDictionary alloc]init];
+        for(Banner *banner in self.bannerArray){
+            if(banner){
+                [self.bannerDic setObject:banner.image forKey:banner.country];
+            }
+        }
+    }
+}
+
+-(void)createGallery{
     
+    PFQuery *galleryQuery = [Gallery query];
+    [galleryQuery fromLocalDatastore];
+    [galleryQuery whereKey:@"from" equalTo:[PFUser currentUser]];
+
+    self.galleryArray = [[NSArray alloc]init];
+    self.galleryArray = [galleryQuery findObjects];
+    
+    NSLog(@"**********GALLERY ARRAY**********\n\n%@", self.galleryArray);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -90,20 +109,17 @@
 }
 
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
+//- (BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
     
-    header.image.image = [UIImage imageNamed:@"bannerFrance.png"];
+    UIImage *bannerImage = [UIImage imageWithData:[[self.bannerDic objectForKey:[self.countries objectAtIndex:indexPath.section]] getData]];
+    header.image.image = bannerImage;
     
     return header;
 }
@@ -115,11 +131,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *cell = (CollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     NSLog(@"%@", cell.pivy);
     
+          [self performSegueWithIdentifier:@"gotoPivyDetailFromCollection" sender:cell];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSLog(@"SEGUEGUEGUGEUGEU:%@", segue.identifier);
-}
+    if ([segue.identifier isEqualToString:@"gotoPivyDetailFromCollection"]) {
+        CollectionViewCell *cell = (CollectionViewCell*) sender;
+        PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
+        pdvc.pivy = cell.pivy;
+    }}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -141,18 +161,22 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor brownColor];
     cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
     cell.pivy = pivy;
+    cell.backgroundColor = [UIColor blackColor];
+    cell.contentView.alpha = 0.2;
+    for(Gallery *gallery in self.galleryArray){
+        if( (pivy.name == gallery.pivy.name) && (gallery.to == [PFUser currentUser]) ){
+            cell.contentView.alpha = 1;
+        }
+    }
+
     if(pivy.image){
         cell.imageCell.image = [UIImage imageWithData:[pivy.image getData]];
     }
     else{
         cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
     }
-    
-    NSLog(@"SECTION: %ld    ROW: %ld   PIVY: %@", indexPath.section, indexPath.row, pivy.name  );
-    
     return cell;
 }
 
