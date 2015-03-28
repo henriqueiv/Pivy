@@ -97,11 +97,8 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+ 
     
     header.image.image = [UIImage imageNamed:@"bannerFrance.png"];
     
@@ -150,9 +147,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     else{
         cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
     }
-    
-    NSLog(@"SECTION: %ld    ROW: %ld   PIVY: %@", indexPath.section, indexPath.row, pivy.name  );
-    
     return cell;
 }
 
