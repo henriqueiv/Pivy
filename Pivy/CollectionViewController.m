@@ -40,12 +40,14 @@
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
     [self createCollection];
+//    [self createGallery];
     //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     //    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-//    [self createCollection];
+   if([PFUser currentUser])
+       [self createGallery];
 }
 
 -(void)createCollection{
@@ -90,9 +92,9 @@
 }
 
 -(void)createGallery{
-    
     PFQuery *galleryQuery = [Gallery query];
     [galleryQuery fromLocalDatastore];
+    
     [galleryQuery whereKey:@"from" equalTo:[PFUser currentUser]];
 
     self.galleryArray = [[NSArray alloc]init];
@@ -168,6 +170,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     for(Gallery *gallery in self.galleryArray){
         if( (pivy.name == gallery.pivy.name) && (gallery.to == [PFUser currentUser]) ){
             cell.contentView.alpha = 1;
+            NSLog(@"CELL: %@", pivy.name);
         }
     }
 
