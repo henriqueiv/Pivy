@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zw5-Y0-BW6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zw5-Y0-BW6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -134,7 +134,7 @@
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="imageCell" destination="RR4-Y8-pLt" id="atl-oQ-9bN"/>
-                                    <segue destination="L9M-Dc-DQz" kind="show" identifier="gotoPivyDetailFromCollection" id="p1p-Pq-9DO"/>
+                                    <segue destination="L9M-Dc-DQz" kind="show" identifier="goToPivyDetailFromCollection" id="TuR-Ye-sG1"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -142,18 +142,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cp6-FM-ikU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PIVY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kic-L3-ihT">
+                                    <rect key="frame" x="8" y="10" width="210" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="trailingMargin" secondItem="cp6-FM-ikU" secondAttribute="trailing" constant="-8" id="ANF-OQ-bKl"/>
-                                <constraint firstItem="cp6-FM-ikU" firstAttribute="leading" secondItem="e8L-Qb-t6L" secondAttribute="leadingMargin" constant="-8" id="M2D-AI-CaL"/>
-                                <constraint firstAttribute="bottomMargin" secondItem="cp6-FM-ikU" secondAttribute="bottom" constant="-8" id="PcB-9O-ayG"/>
-                                <constraint firstItem="cp6-FM-ikU" firstAttribute="top" secondItem="e8L-Qb-t6L" secondAttribute="topMargin" constant="-8" id="XOX-uH-erV"/>
-                            </constraints>
                             <connections>
-                                <outlet property="image" destination="cp6-FM-ikU" id="cy7-d8-sEr"/>
+                                <outlet property="headerLabel" destination="kic-L3-ihT" id="Sag-Of-IOe"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -317,6 +314,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="w4a-LR-wRE"/>
+        <segue reference="TuR-Ye-sG1"/>
     </inferredMetricsTieBreakers>
 </document>

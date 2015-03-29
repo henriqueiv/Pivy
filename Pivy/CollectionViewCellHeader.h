@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CollectionViewCellHeader : UICollectionReusableView
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @end

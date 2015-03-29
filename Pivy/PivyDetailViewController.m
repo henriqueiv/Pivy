@@ -28,12 +28,16 @@
 }
 
 -(void)checkIfHasPivy{
+    
     PFQuery *query = [Gallery query];
     [query fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
+    NSLog(@"1");
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"2");
         dispatch_async(dispatch_get_main_queue(), ^{
             self.btnGetPivy.enabled = (objects.count == 0);
+            NSLog(@"3");
             //            if (objects.count == 0){
             //                self.btnGetPivy.enabled = YES;
             //            }else{
@@ -42,9 +46,11 @@
             //                NSLog(@"%@", g);
             //            }
         });
+        NSLog(@"4");
     }];
+    NSLog(@"5");
+    
 }
-
 
 - (IBAction)getPivy:(id)sender {
     Gallery *g = [[Gallery alloc] init];

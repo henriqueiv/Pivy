@@ -36,10 +36,10 @@
     
     [super viewDidLoad];
     _reuseIdentifier =  @"Cell";
-    self.collectionView.allowsMultipleSelection = YES;
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
     [self createCollection];
+    
 //    [self createGallery];
     //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     //    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
@@ -48,10 +48,10 @@
 -(void)viewWillAppear:(BOOL)animated{
    if([PFUser currentUser])
        [self createGallery];
+    [self.collectionView reloadData];
 }
 
 -(void)createCollection{
-    NSLog(@"CHAMOU");
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
@@ -76,19 +76,19 @@
         }
     }
 
-    PFQuery *bannerQuery = [Banner query];
-    [bannerQuery fromLocalDatastore];
-    [bannerQuery orderByAscending:@"country"];
-    self.bannerArray = [bannerQuery findObjects];
-    
-    if(self.bannerArray){
-        self.bannerDic = [[NSMutableDictionary alloc]init];
-        for(Banner *banner in self.bannerArray){
-            if(banner){
-                [self.bannerDic setObject:banner.image forKey:banner.country];
-            }
-        }
-    }
+//    PFQuery *bannerQuery = [Banner query];
+//    [bannerQuery fromLocalDatastore];
+//    [bannerQuery orderByAscending:@"country"];
+//    self.bannerArray = [bannerQuery findObjects];
+//    
+//    if(self.bannerArray){
+//        self.bannerDic = [[NSMutableDictionary alloc]init];
+//        for(Banner *banner in self.bannerArray){
+//            if(banner){
+//                [self.bannerDic setObject:banner.image forKey:banner.country];
+//            }
+//        }
+//    }
 }
 
 -(void)createGallery{
@@ -99,8 +99,6 @@
 
     self.galleryArray = [[NSArray alloc]init];
     self.galleryArray = [galleryQuery findObjects];
-    
-    NSLog(@"**********GALLERY ARRAY**********\n\n%@", self.galleryArray);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -110,34 +108,21 @@
         return UIEdgeInsetsMake(15, 0, 15, 0);
 }
 
-
-//- (BOOL)prefersStatusBarHidden {
-//    return YES;
-//}
-
-
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
     
-    UIImage *bannerImage = [UIImage imageWithData:[[self.bannerDic objectForKey:[self.countries objectAtIndex:indexPath.section]] getData]];
-    header.image.image = bannerImage;
+//    UIImage *bannerImage = [UIImage imageWithData:[[self.bannerDic objectForKey:[self.countries objectAtIndex:indexPath.section]] getData]];
+//    header.image.image = bannerImage;
+    header.headerLabel.text = [self.countries objectAtIndex:indexPath.section];
     
     return header;
 }
 
 
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    CollectionViewCell *cell = (CollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
-    NSLog(@"%@", cell.pivy);
-    
-          [self performSegueWithIdentifier:@"gotoPivyDetailFromCollection" sender:cell];
-}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"gotoPivyDetailFromCollection"]) {
+    if ([segue.identifier isEqualToString:@"goToPivyDetailFromCollection"]) {
         CollectionViewCell *cell = (CollectionViewCell*) sender;
         PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
         pdvc.pivy = cell.pivy;
@@ -149,14 +134,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     NSString *key = [self.countries objectAtIndex:section];
     return [[self.pivyDic objectForKey:key] count];
     
 }
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     Pivy *pivy = [[Pivy alloc]init];
@@ -170,7 +153,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     for(Gallery *gallery in self.galleryArray){
         if( (pivy.name == gallery.pivy.name) && (gallery.to == [PFUser currentUser]) ){
             cell.contentView.alpha = 1;
-            NSLog(@"CELL: %@", pivy.name);
+            NSLog(@"LOLOL******");
+//            NSLog(@"CELL: %@", pivy.name);
         }
     }
 
