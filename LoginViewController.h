@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
+#import "MBProgressHUD.h"
+#import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController

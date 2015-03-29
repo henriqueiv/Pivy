@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @interface LoggedMoreTableViewController : UITableViewController
 

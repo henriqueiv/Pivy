@@ -14,13 +14,10 @@
 
 @implementation MoreTableViewController
 -(void)viewDidLoad{
-    [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:YES];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 @end

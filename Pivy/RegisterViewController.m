@@ -7,9 +7,7 @@
 //
 
 #import "RegisterViewController.h"
-#import <Parse/Parse.h>
-#import <ParseFacebookUtils/PFFacebookUtils.h>
-#import "MBProgressHUD.h"
+
 
 @interface RegisterViewController ()
 
@@ -20,7 +18,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 
 @end
-@implementation RegisterViewController
+
+@implementation RegisterViewController{
+    MBProgressHUD *hud;
+}
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -33,63 +34,56 @@
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
     _confirmPasswordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Confirm password" attributes:@{NSForegroundColorAttributeName: color}];
 }
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
 
 - (IBAction)confirmButton:(id)sender {
-    
     if ([_passwordField.text isEqualToString:_confirmPasswordField.text]) {
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
         PFUser *newUser = [PFUser user];
         newUser.username = _usernameField.text;
         newUser.email = _emailField.text;
         newUser.password = _passwordField.text;
         newUser[@"name"] = _nameField.text;
         
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Loading...";
-        
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [hud hide:YES];
             if (!error) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Success on register" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
-                [hud hide:YES];
-                [self.navigationController popViewControllerAnimated:YES];
+                [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
             }
             else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
-                [hud hide:YES];
             }
         }];
-    }
-    
-    else{
+    } else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password does not match" message:@"Check your password and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
 
 - (IBAction)facebookSignup:(id)sender {
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"] block:^(PFUser *user, NSError *error) {
-        if (user) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [self loadData];
-            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
-        } else if (user.isNew) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup sucess" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
+        if (!error) {
+            [self _loadFacebookUserData:user];
         } else {
+            [hud hide:YES];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
     }];
 }
 
-- (void)loadData {
+- (void)_loadFacebookUserData:(PFUser *)user {
+    NSString *message;
+    
+    if (user.isNew)
+        message = @"Enjoy you brand new Pivy account";
+    else
+        message = @"You already had an account, so we just updated your info on our servers";
+    
     // Send request to Facebook
     FBRequest *request = [FBRequest requestForMe];
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
@@ -97,7 +91,6 @@
         if (!error) {
             // Parse the data received
             NSDictionary *userData = (NSDictionary *)result;
-            
             
             PFUser *user = [PFUser currentUser];
             
@@ -113,10 +106,23 @@
             if (email)
                 user.email = email;
             
-            [[PFUser currentUser] saveInBackground];
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [hud hide:YES];
+                if (succeeded){
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success"
+                                                                    message:message
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                    [self performSegueWithIdentifier:@"gotoLogged" sender:nil];
+                }
+            }];
             
         } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
-                    isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
+                    isEqualToString: @"OAuthException"]) {
+            // Since the request failed, we can check if it was due to an invalid session
             NSLog(@"The facebook session was invalidated");
         } else {
             NSLog(@"Some other error: %@", error);
