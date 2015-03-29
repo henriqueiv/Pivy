@@ -30,7 +30,6 @@
     for (UITextField *tf in array) {
         tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:tf.placeholder
                                                                    attributes:@{NSForegroundColorAttributeName: color}];
-        
     }
 }
 
