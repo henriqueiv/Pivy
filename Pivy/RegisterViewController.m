@@ -25,14 +25,13 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    //Change placeholder text collor
     UIColor *color = [UIColor lightTextColor];
-    _nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full name" attributes:@{NSForegroundColorAttributeName: color}];
-    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: color}];
-    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"E-mail" attributes:@{NSForegroundColorAttributeName: color}];
-    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
-    _confirmPasswordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Confirm password" attributes:@{NSForegroundColorAttributeName: color}];
+    NSArray *array = [[NSArray alloc] initWithObjects:_nameField, _usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
+    for (UITextField *tf in array) {
+        tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:tf.placeholder
+                                                                   attributes:@{NSForegroundColorAttributeName: color}];
+        
+    }
 }
 
 - (IBAction)confirmButton:(id)sender {
