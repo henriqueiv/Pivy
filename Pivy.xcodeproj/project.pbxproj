@@ -224,11 +224,11 @@
 			children = (
 				6222C8A01ABB47F1008B5970 /* AppDelegate.h */,
 				6222C8A11ABB47F1008B5970 /* AppDelegate.m */,
-				62D5A2111ABB560100464F29 /* Models */,
-				6292E1771AC30B1D00B28CE0 /* Views */,
 				6292E1761AC30AFE00B28CE0 /* Controllers */,
+				62D5A2111ABB560100464F29 /* Models */,
 				6222C89C1ABB47F1008B5970 /* Supporting Files */,
 				6292E17B1AC31F3400B28CE0 /* Utils */,
+				6292E1771AC30B1D00B28CE0 /* Views */,
 			);
 			path = Pivy;
 			sourceTree = "<group>";
@@ -260,18 +260,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		627B17411AC7749800C81E90 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */,
+				624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */,
+				62C98EB61AC5DB6F003E405B /* GalleryDataManager.h */,
+				62C98EB71AC5DB6F003E405B /* GalleryDataManager.m */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
 		6292E1761AC30AFE00B28CE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				627B17411AC7749800C81E90 /* DataManager */,
 				52C1645F1AC5A4E7008E8B2F /* Detail */,
 				6292E17F1AC320ED00B28CE0 /* Main */,
 				6292E17A1AC30B7D00B28CE0 /* More */,
 				6292E1791AC30B7400B28CE0 /* Map */,
 				6292E1781AC30B6500B28CE0 /* Collection */,
-				624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */,
-				624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */,
-				62C98EB61AC5DB6F003E405B /* GalleryDataManager.h */,
-				62C98EB71AC5DB6F003E405B /* GalleryDataManager.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
