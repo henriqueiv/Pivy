@@ -9,13 +9,13 @@
 
 #import "Banner.h"
 #import "Gallery.h"
-#import "GalleryDataManager.h"
 #import "MBProgressHUD.h"
 #import "Pivy.h"
-#import "PivyDataManager.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <UIKit/UIKit.h>
+#import "DataManager.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, MBProgressHUDDelegate>
 
