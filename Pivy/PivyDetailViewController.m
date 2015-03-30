@@ -65,8 +65,7 @@
     }];
 }
 
-- (IBAction)getPivy:(id)sender {
-    NSLog(@"GETTTTTT");
+- (IBAction)getPivy:(UIButton *)sender {
     Gallery *g = [[Gallery alloc] init];
     g.pivy = self.pivy;
     g.from = [PFUser currentUser];
