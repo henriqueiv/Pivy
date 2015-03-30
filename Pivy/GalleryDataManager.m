@@ -35,7 +35,6 @@
 //                                    waitUntilDone:NO];
 //            }
 //        }];
-        
         [[[query fromLocalDatastore] orderByDescending:@"createdAt"] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects) {
 #ifdef DEBUG
