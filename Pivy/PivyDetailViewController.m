@@ -8,6 +8,8 @@
 
 #import "PivyDetailViewController.h"
 #import "Gallery.h"
+#import "MBProgressHUD.h"
+
 
 @interface PivyDetailViewController ()
 
@@ -22,9 +24,33 @@
     
     self.nameLabel.text = self.pivy.name;
     self.countryLabel.text = self.pivy.Country;
-    self.locationLabel.text = @"LOL";
-    self.descriptionTextView.text = self.pivy.Description;
+    self.descriptionTextView.text = self.pivy.pivyDescription;
     [self checkIfHasPivy];
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
+    [query fromLocalDatastore];
+    NSLog(@"Inicio query de Backgrounds");
+    [query whereKey:@"country" equalTo:self.pivy.countryCode];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(!error){
+            _backgroundImageView.image = [UIImage imageWithData:[object[@"image"] getData]];
+            NSLog(@"Background alterado com sucesso");
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BAckground setting error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
+    
+    //add blur effect to background
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    effectView.frame = self.view.frame;
+    [self.backgroundImageView addSubview:effectView];
 }
 
 -(void)checkIfHasPivy{
@@ -52,7 +78,7 @@
     
 }
 
-- (IBAction)getPivy:(id)sender {
+- (IBAction)getPivy:(UIButton *)sender {
     Gallery *g = [[Gallery alloc] init];
     g.pivy = self.pivy;
     g.from = [PFUser currentUser];

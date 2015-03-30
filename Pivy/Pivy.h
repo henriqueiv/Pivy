@@ -12,8 +12,9 @@
 
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *Description;
+@property (nonatomic, strong) NSString *pivyDescription;
 @property (nonatomic, strong) NSString *Country;
+@property (nonatomic, strong) NSString *countryCode;
 @property (nonatomic, strong) PFFile *image;
 
 + (NSString *)parseClassName;
