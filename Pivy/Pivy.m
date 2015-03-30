@@ -14,7 +14,8 @@
 @dynamic location;
 @dynamic Country;
 @dynamic image;
-@dynamic Description;
+@dynamic pivyDescription;
+@dynamic countryCode;
 
 + (NSString *)parseClassName {
     return NSStringFromClass([self class]);
