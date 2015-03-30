@@ -40,10 +40,6 @@
                        forControlEvents:UIControlEventValueChanged];
 }
 
-//- (BOOL)prefersStatusBarHidden {
-//    return YES;
-//}
-
 -(void)viewWillAppear:(BOOL)animated{
     [self populateWorld];
 //    [self.navigationController setNavigationBarHidden:YES animated:animated];

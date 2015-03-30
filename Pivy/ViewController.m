@@ -15,7 +15,6 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-
 @end
 
 @implementation ViewController
@@ -28,13 +27,13 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     
-    [self queryAndPinClassInBackground:@"Banner"];
     [self queryAndPinClassInBackground:@"Pivy"];
     [self queryAndPinClassInBackground:@"Background"];
     
     [self placeViewFromStoryboardOnTabBar];
     
 }
+
 -(void)queryAndPinClassInBackground:(NSString *)class{
     
     PFQuery *query = [PFQuery queryWithClassName:class];
