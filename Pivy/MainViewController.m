@@ -112,27 +112,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 //    [self reverseGeocode:newLocation];
     //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-    //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitud);
 }
-
-- (IBAction)clearPivys:(id)sender {
-    PivyDataManager *pdm = [[PivyDataManager alloc] init];
-    [pdm clearLocalDB];
-}
-
-- (IBAction)downloadGalleries:(id)sender {
-    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-    [gdm downloadGalleries];
-}
-
-- (IBAction)clearGalleries:(id)sender {
-    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-    [gdm clearLocalDB];
-}
-
-- (IBAction)downloadPivys:(id)sender {
-    PivyDataManager *pdm = [[PivyDataManager alloc] init];
-    [pdm downloadPivys];
-}
-
 @end
