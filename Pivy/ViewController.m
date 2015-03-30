@@ -21,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self placeViewFromStoryboardOnTabBar];
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -28,27 +30,23 @@
     [locationManager startUpdatingLocation];
     
     [self queryAndPinClassInBackground:@"Pivy"];
-    [self queryAndPinClassInBackground:@"Background"];
-    
-    [self placeViewFromStoryboardOnTabBar];
     
 }
 
 -(void)queryAndPinClassInBackground:(NSString *)class{
-    
+    MBProgressHUD *hud;
+
+    [hud showAnimated:YES whileExecutingBlock:^{
     PFQuery *query = [PFQuery queryWithClassName:class];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSArray *array = objects;
         [PFObject pinAllInBackground:array block:^(BOOL succeeded, NSError *error) {
             if(succeeded){
-                NSLog(@"****** %@ Pinado na MAIN *****", class);
+                NSLog(@"****** %@ Pinado na MAIN ******", class);
                 if ([class isEqualToString:@"Background"]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                        
                         NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
                         NSLog(@"%@", countryCode);
-                        
                         PFQuery *query = [PFQuery queryWithClassName:@"Background"];
                         [query fromLocalDatastore];
                         NSLog(@"Inicio query de Backgrounds");
@@ -57,7 +55,6 @@
                             if(!error){
                                 _backgroundImageView.image = [UIImage imageWithData:[object[@"image"] getData]];
                                 NSLog(@"Background alterado com sucesso");
-                                [MBProgressHUD hideHUDForView:self.view animated:YES];
                             }
                             else{
                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
@@ -81,6 +78,7 @@
                 [alert show];
             }
         }];
+    }];
     }];
 }
 
