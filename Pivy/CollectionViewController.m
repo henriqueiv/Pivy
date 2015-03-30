@@ -38,7 +38,6 @@
     _reuseIdentifier =  @"Cell";
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
-    [self createCollection];
     
 //    [self createGallery];
     //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
@@ -46,6 +45,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+   [self createCollection];
    if([PFUser currentUser])
        [self createGallery];
     [self.collectionView reloadData];
