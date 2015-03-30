@@ -127,6 +127,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <keyCommands/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNI-bv-8HL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
