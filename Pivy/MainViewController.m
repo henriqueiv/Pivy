@@ -12,6 +12,7 @@
 #import "Pivy.h"
 #import "PivyDataManager.h"
 #import "GalleryDataManager.h"
+#import "DataManager.h"
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -28,45 +29,44 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
-    
+
     [self queryAndPinClassInBackground:@"Pivy"];
-    
+    [self queryAndPinClassInBackground:@"Background"];
 }
 
 -(void)queryAndPinClassInBackground:(NSString *)class{
-    MBProgressHUD *hud;
-
-    [hud showAnimated:YES whileExecutingBlock:^{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     PFQuery *query = [PFQuery queryWithClassName:class];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSArray *array = objects;
-        [PFObject pinAllInBackground:array block:^(BOOL succeeded, NSError *error) {
+        [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
             if(succeeded){
                 NSLog(@"****** %@ Pinado na MAIN ******", class);
                 if ([class isEqualToString:@"Background"]) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-                        NSLog(@"%@", countryCode);
-                        PFQuery *query = [PFQuery queryWithClassName:@"Background"];
-                        [query fromLocalDatastore];
-                        NSLog(@"Inicio query de Backgrounds");
-                        [query whereKey:@"country" equalTo:countryCode];
-                        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                            if(!error){
-                                _backgroundImageView.image = [UIImage imageWithData:[object[@"image"] getData]];
-                                NSLog(@"Background alterado com sucesso");
-                            }
-                            else{
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
-                                                                                message:[error.description valueForKey: @"error"]
-                                                                               delegate:nil
-                                                                      cancelButtonTitle:nil
-                                                                      otherButtonTitles:@"Dismiss", nil];
-                                [alert show];
-                            }
-                        }];
-                    });
-                    
+                    NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+                    NSLog(@"Country code: %@", countryCode);
+                    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
+                    [query fromLocalDatastore];
+                    NSLog(@"Inicio query de Backgrounds");
+                    [query whereKey:@"country" equalTo:countryCode];
+                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                        if(!error){
+                            [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    _backgroundImageView.image = [UIImage imageWithData:data];
+                                    NSLog(@"Background alterado com sucesso");
+                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                });
+                            }];
+                        }
+                        else{
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                                            message:[error.description valueForKey: @"error"]
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:nil
+                                                                  otherButtonTitles:@"Dismiss", nil];
+                            [alert show];
+                        }
+                    }];
                 }
             }
             else{
@@ -77,12 +77,15 @@
                                                       otherButtonTitles:@"Dismiss", nil];
                 [alert show];
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
         }];
-    }];
     }];
 }
 
 -(void)placeViewFromStoryboardOnTabBar{
+    
     //Link with More.storyboard
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
     NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];

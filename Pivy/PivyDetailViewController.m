@@ -37,7 +37,7 @@
             NSLog(@"Background alterado com sucesso");
         }
         else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"BAckground setting error"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Background setting error"
                                                             message:[error.description valueForKey: @"error"]
                                                            delegate:nil
                                                   cancelButtonTitle:nil
@@ -46,7 +46,7 @@
         }
     }];
     
-    //add blur effect to background
+    //Add blur effect to background
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
     effectView.frame = self.view.frame;
