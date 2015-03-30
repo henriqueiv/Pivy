@@ -6,18 +6,18 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 #import "Pivy.h"
 #import "PivyDataManager.h"
 #import "GalleryDataManager.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
