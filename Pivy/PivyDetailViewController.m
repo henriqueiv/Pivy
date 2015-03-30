@@ -58,33 +58,24 @@
     PFQuery *query = [Gallery query];
     [query fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
-    NSLog(@"1");
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"2");
         dispatch_async(dispatch_get_main_queue(), ^{
             self.btnGetPivy.enabled = (objects.count == 0);
-            NSLog(@"3");
-            //            if (objects.count == 0){
-            //                self.btnGetPivy.enabled = YES;
-            //            }else{
-            //                self.btnGetPivy.enabled = NO;
-            //                Gallery *g = (Gallery*) objects[0];
-            //                NSLog(@"%@", g);
-            //            }
         });
-        NSLog(@"4");
     }];
-    NSLog(@"5");
-    
 }
 
-- (IBAction)getPivy:(UIButton *)sender {
+- (IBAction)getPivy:(id)sender {
+    NSLog(@"GETTTTTT");
     Gallery *g = [[Gallery alloc] init];
     g.pivy = self.pivy;
     g.from = [PFUser currentUser];
     g.to = [PFUser currentUser];
+    
     [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"PINOU");
         dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"SAVOU");
             if (succeeded) {
                 [g saveEventually];
                 [self checkIfHasPivy];

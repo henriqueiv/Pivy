@@ -35,6 +35,8 @@
 //                                    waitUntilDone:NO];
 //            }
 //        }];
+        if([PFUser currentUser])
+            [query whereKey:@"to" equalTo:[PFUser currentUser]];
         [[[query fromLocalDatastore] orderByDescending:@"createdAt"] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects) {
 #ifdef DEBUG
@@ -67,6 +69,9 @@
 #ifdef DEBUG
     NSLog(@"Maior data: %@", date);
 #endif
+    
+    if ([PFUser currentUser])
+        [query whereKey:@"to" equalTo:[PFUser currentUser]];
     [query whereKey:@"createdAt" greaterThan:date];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects) {
