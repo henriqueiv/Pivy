@@ -43,6 +43,7 @@
 		6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
+		62451E121AC9CC6B00C31557 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E111AC9CC6B00C31557 /* DataManager.m */; };
 		624B5A9C1AC47BAC00290D72 /* PivyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */; };
 		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
 		6292E1821AC34AC500B28CE0 /* RWBlurPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */; };
@@ -122,6 +123,8 @@
 		6222C8B81ABB47F1008B5970 /* PivyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PivyTests.m; sourceTree = "<group>"; };
 		623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDetailViewController.h; sourceTree = "<group>"; };
 		623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDetailViewController.m; sourceTree = "<group>"; };
+		62451E101AC9CC6B00C31557 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		62451E111AC9CC6B00C31557 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDataManager.h; sourceTree = "<group>"; };
 		624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDataManager.m; sourceTree = "<group>"; };
 		6292E17C1AC31F4200B28CE0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */,
 				62C98EB61AC5DB6F003E405B /* GalleryDataManager.h */,
 				62C98EB71AC5DB6F003E405B /* GalleryDataManager.m */,
+				62451E101AC9CC6B00C31557 /* DataManager.h */,
+				62451E111AC9CC6B00C31557 /* DataManager.m */,
 			);
 			name = DataManager;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				62D5A2181ABB56A200464F29 /* Objeto.m in Sources */,
 				62C98EB81AC5DB6F003E405B /* GalleryDataManager.m in Sources */,
 				6222C89F1ABB47F1008B5970 /* main.m in Sources */,
+				62451E121AC9CC6B00C31557 /* DataManager.m in Sources */,
 				623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */,
 				52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
