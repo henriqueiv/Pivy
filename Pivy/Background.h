@@ -9,9 +9,11 @@
 #import "Objeto.h"
 #import <Parse/Parse.h>
 
-@interface Background : Objeto
+@interface Background : PFObject<PFSubclassing>
 
 @property NSString *country;
 @property PFFile *image;
+
++ (NSString *)parseClassName;
 
 @end

@@ -10,6 +10,7 @@
 #import "PivyDataManager.h"
 #import "GalleryDataManager.h"
 #import "DataManager.h"
+#import "Background.h"
 
 #define kSectionLogin 0
 #define kSectionConfig 1
@@ -44,16 +45,17 @@
         case kSectionLogin:{
             switch (indexPath.row) {
                 case (kRowName):{
-                    FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-                    [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
-                                                                  NSDictionary* result,
-                                                                  NSError *error) {
-                        NSArray* friends = [result objectForKey:@"data"];
-                        NSLog(@"Found: %lu friends", (unsigned long)friends.count);
-                        for (NSDictionary<FBGraphUser>* friend in friends) {
-                            NSLog(@"I have a friend named %@ with id %@", friend.name, friend.objectID);
-                        }
-                    }];
+//                    FBRequest* friendsRequest = [FBRequest requestForMyFriends];
+//                    [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
+//                                                                  NSDictionary* result,
+//                                                                  NSError *error) {
+//                        NSArray* friends = [result objectForKey:@"data"];
+//                        NSLog(@"Found: %lu friends", (unsigned long)friends.count);
+//                        for (NSDictionary<FBGraphUser>* friend in friends) {
+//                            NSLog(@"I have a friend named %@ with id %@", friend.name, friend.objectID);
+//                        }
+                    [DataManager deleteAll:[Background parseClassName] inBackground:NO];
+//                    }];
                     break;
                 }
                 case  (kRowLogout):{

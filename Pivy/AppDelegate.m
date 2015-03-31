@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Background.h"
 
 #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
 #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
@@ -60,27 +61,27 @@
     [[UITabBar appearance] setTranslucent:NO];
     [[UITabBar appearance] setAlpha:0.9f];
 }
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self downloadData];
-    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [[PFFacebookUtils session] close];
-}
-
--(void)downloadData{
-    [self downloadAppData];
-    [self downloadUserData];
-}
-
--(void)downloadAppData{
-    [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
-}
-
--(void)downloadUserData{
-    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
-}
+//
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+////    [self downloadData];
+//    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+//}
+//
+//- (void)applicationWillTerminate:(UIApplication *)application {
+//    [[PFFacebookUtils session] close];
+//}
+//
+//-(void)downloadData{
+//    [self downloadAppData];
+//    [self downloadUserData];
+//}
+//
+//-(void)downloadAppData{
+//    [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
+//}
+//
+//-(void)downloadUserData{
+//    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+//}
 
 @end

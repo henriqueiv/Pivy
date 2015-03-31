@@ -11,8 +11,10 @@
 #import "MBProgressHUD.h"
 #import "Pivy.h"
 #import "PivyDataManager.h"
+#import "Background.h"
 #import "GalleryDataManager.h"
 #import "DataManager.h"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -22,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor yellowColor]];
     [self placeViewFromStoryboardOnTabBar];
     
     locationManager = [[CLLocationManager alloc] init];
@@ -29,9 +32,48 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    
+    [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
+    dispatch_async(kBgQueue, ^{
+        [DataManager updateLocalDatastore:[Background parseClassName] inBackground:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setBackground];
+        });
+    });
 
-    [self queryAndPinClassInBackground:@"Pivy"];
-    [self queryAndPinClassInBackground:@"Background"];
+}
+
+-(void) setBackground{
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    NSLog(@"Country code: %@", countryCode);
+    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
+    [query fromLocalDatastore];
+    NSLog(@"Inicio query de Backgrounds");
+    [query whereKey:@"country" equalTo:countryCode];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(!error){
+            [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.backgroundImageView.image = [UIImage imageWithData:data];
+                    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+                    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+                    effectView.alpha = 0.8;
+                    effectView.frame = self.view.frame;
+                    [self.backgroundImageView addSubview:effectView];
+                    NSLog(@"Background alterado com sucesso");
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
+            }];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
 }
 
 -(void)queryAndPinClassInBackground:(NSString *)class{

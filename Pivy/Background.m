@@ -13,4 +13,9 @@
 @dynamic image;
 @dynamic country;
 
+
++ (NSString *)parseClassName {
+    return NSStringFromClass([self class]);
+}
+
 @end
