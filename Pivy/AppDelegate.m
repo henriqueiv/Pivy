@@ -78,6 +78,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+    [DataManager updateLocalDatastore:[Background parseClassName] inBackground:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
