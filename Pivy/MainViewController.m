@@ -127,6 +127,7 @@
 }
 
 -(void)placeViewFromStoryboardOnTabBar{
+    
     //Link with More.storyboard
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
     NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];

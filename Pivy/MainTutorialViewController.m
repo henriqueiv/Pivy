@@ -68,81 +68,80 @@
     }
 }
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat pageWidth = scrollView.bounds.size.width;
+    page = floor((scrollView.contentOffset.x - pageWidth / 4) / pageWidth) + 1;
+    _pageControl.currentPage = page;
     
-    - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-        //[scrollView layoutIfNeeded];
-        CGFloat pageWidth = scrollView.bounds.size.width;
-        page = floor((scrollView.contentOffset.x - pageWidth / 4) / pageWidth) + 1;
-        _pageControl.currentPage = page;
-        
-        switch (page) {
-            case 0:{
-                [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-                self.imgPageView01.hidden=NO;
-                self.imgPageView02.hidden=YES;
-                self.imgPageView03.hidden=YES;
-                self.imgPageView04.hidden=YES;
-                self.imgPageView05.hidden=YES;
-                break;
-            }
-                
-            case 1:{
-                [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-                self.imgPageView01.hidden=YES;
-                self.imgPageView02.hidden=NO;
-                self.imgPageView03.hidden=YES;
-                self.imgPageView04.hidden=YES;
-                self.imgPageView05.hidden=YES;
-                break;
-            }
-                
-            case 2:{
-                self.imgPageView01.hidden=YES;
-                self.imgPageView02.hidden=YES;
-                self.imgPageView03.hidden=NO;
-                self.imgPageView04.hidden=YES;
-                self.imgPageView05.hidden=YES;
-                break;
-            }
-                
-            case 3:{
-                self.imgPageView01.hidden=YES;
-                self.imgPageView02.hidden=YES;
-                self.imgPageView03.hidden=YES;
-                self.imgPageView04.hidden=NO;
-                self.imgPageView05.hidden=YES;
-                break;
-            }
-            case 4:{
-                self.imgPageView01.hidden=YES;
-                self.imgPageView02.hidden=YES;
-                self.imgPageView03.hidden=YES;
-                self.imgPageView04.hidden=YES;
-                self.imgPageView05.hidden=NO;
-                break;
-            }
-                
-            default:
-                break;
+    switch (page) {
+        case 0:{
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+            self.imgPageView01.hidden=NO;
+            self.imgPageView02.hidden=YES;
+            self.imgPageView03.hidden=YES;
+            self.imgPageView04.hidden=YES;
+            self.imgPageView05.hidden=YES;
+            break;
         }
+            
+        case 1:{
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            self.imgPageView01.hidden=YES;
+            self.imgPageView02.hidden=NO;
+            self.imgPageView03.hidden=YES;
+            self.imgPageView04.hidden=YES;
+            self.imgPageView05.hidden=YES;
+            break;
+        }
+            
+        case 2:{
+            self.imgPageView01.hidden=YES;
+            self.imgPageView02.hidden=YES;
+            self.imgPageView03.hidden=NO;
+            self.imgPageView04.hidden=YES;
+            self.imgPageView05.hidden=YES;
+            break;
+        }
+            
+        case 3:{
+            self.imgPageView01.hidden=YES;
+            self.imgPageView02.hidden=YES;
+            self.imgPageView03.hidden=YES;
+            self.imgPageView04.hidden=NO;
+            self.imgPageView05.hidden=YES;
+            break;
+        }
+        case 4:{
+            self.imgPageView01.hidden=YES;
+            self.imgPageView02.hidden=YES;
+            self.imgPageView03.hidden=YES;
+            self.imgPageView04.hidden=YES;
+            self.imgPageView05.hidden=NO;
+            break;
+        }
+            
+        default:
+            break;
     }
-    
-    - (IBAction)downloadData:(id)sender {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        dispatch_async(kBgQueue, ^{
-            [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
-            [DataManager updateLocalDatastore:[Background parseClassName] inBackground:YES];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // This is the first launch ever
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                UIViewController *vc = [sb instantiateInitialViewController];
-                [self presentViewController:vc animated:YES completion:nil];
-            });
+}
+
+- (IBAction)downloadData:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(kBgQueue, ^{
+        [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
+        [DataManager updateLocalDatastore:[Background parseClassName] inBackground:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // This is the first launch ever
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *vc = [sb instantiateInitialViewController];
+            [self presentViewController:vc animated:YES completion:nil];
         });
-    }
-    
-    @end
+    });
+}
+
+@end
