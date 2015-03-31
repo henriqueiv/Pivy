@@ -144,14 +144,14 @@
         for (PFObject *o in objs) {
             [o unpin:&error];
             if (error) {
-                NSLog(@"DataManager.deleteAll(%@):: Erro: %@", error);
+                NSLog(@"DataManager.deleteAll(%@):: Erro: %@", className, error);
             }else{
             }
         }
     }else{
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if(error){
-                NSLog(@"DataManager.deleteAll(%@):: Erro: %@", error);
+                NSLog(@"DataManager.deleteAll(%@):: Erro: %@", className, error);
             }else{
             }
             if (objects.count > 0) {

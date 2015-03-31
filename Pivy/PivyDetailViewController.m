@@ -94,8 +94,7 @@
                                 self.btnGetPivy.enabled = NO;
                                 self.btnGetPivy.alpha = 0.5;
                             }
-                        }
-                        else{
+                        }else{
                             self.btnGetPivy.enabled = NO;
                             self.btnGetPivy.alpha = 0.5;
                         }
