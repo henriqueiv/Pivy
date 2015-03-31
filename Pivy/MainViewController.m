@@ -40,7 +40,7 @@
             [self setBackground];
         });
     });
-
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 -(void) setBackground{
