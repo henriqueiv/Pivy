@@ -39,7 +39,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"SECTION: %ld  ROW: %ld",indexPath.section , indexPath.row);
+//    NSLog(@"SECTION: %ld  ROW: %ld",indexPath.section , indexPath.row);
     
     switch (indexPath.section) {
         case kSectionLogin:{
@@ -55,6 +55,9 @@
 //                            NSLog(@"I have a friend named %@ with id %@", friend.name, friend.objectID);
 //                        }
                     [DataManager deleteAll:[Background parseClassName] inBackground:NO];
+                    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HasLaunchedOnce"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    
 //                    }];
                     break;
                 }
@@ -76,26 +79,18 @@
             switch (indexPath.row) {
                 case (kRowDownloadPIVY):{
                     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
-                    //                PivyDataManager *pdm = [[PivyDataManager alloc] init];
-                    //                [pdm downloadPivys];
                     break;
                 }
                 case  (kRowClearPIVY):{
                     [DataManager deleteAll:[Pivy parseClassName] inBackground:NO];
-                    //                PivyDataManager *pdm = [[PivyDataManager alloc] init];
-                    //                [pdm clearLocalDB];
                     break;
                 }
                 case  (kRowDownloadGallery):{
                     [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
-                    //                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-                    //                [gdm downloadGalleries];
                     break;
                 }
                 case  (kRowClearGallery):{
                     [DataManager deleteAll:[Gallery parseClassName] inBackground:NO];
-                    //                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-                    //                [gdm clearLocalDB];
                     break;
                 }
                 default:

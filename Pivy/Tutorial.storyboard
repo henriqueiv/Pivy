@@ -9,7 +9,7 @@
         <!--Main Tutorial View Controller-->
         <scene sceneID="dHs-M1-vz7">
             <objects>
-                <viewController id="3eN-fL-d89" customClass="MainTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainTutorialVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3eN-fL-d89" customClass="MainTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BIS-7P-dCF"/>
                         <viewControllerLayoutGuide type="bottom" id="bso-PO-X0f"/>

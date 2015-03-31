@@ -89,7 +89,6 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-//    LocalAnnotation *la = (LocalAnnotation*) view.annotation;
     [self performSegueWithIdentifier:@"gotoPivyDetailFromMap" sender:view.annotation];
 
 }
