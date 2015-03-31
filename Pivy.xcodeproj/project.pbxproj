@@ -38,9 +38,7 @@
 		6222C89F1ABB47F1008B5970 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C89E1ABB47F1008B5970 /* main.m */; };
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* MainViewController.m */; };
-		6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
 		6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A91ABB47F1008B5970 /* Images.xcassets */; };
-		6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
 		62451E121AC9CC6B00C31557 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E111AC9CC6B00C31557 /* DataManager.m */; };
@@ -49,6 +47,9 @@
 		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
 		6292E1821AC34AC500B28CE0 /* RWBlurPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */; };
 		6292E1851AC34B3300B28CE0 /* RWBlurPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1841AC34B3300B28CE0 /* RWBlurPopoverView.m */; };
+		62C6516C1ACB2201008F8BCC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
+		62C6516D1ACB2213008F8BCC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
+		62C6516F1ACB2227008F8BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
 		62C98EB21AC5BFE1003E405B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */; };
 		62C98EBB1AC5DB8A003E405B /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C98EBA1AC5DB8A003E405B /* AppUtils.m */; };
 		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
@@ -491,7 +492,7 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 29P59JP27S;
+						DevelopmentTeam = 8WCPHDZJPJ;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
@@ -526,11 +527,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C6516F1ACB2227008F8BCC /* Main.storyboard in Resources */,
+				62C6516D1ACB2213008F8BCC /* LaunchScreen.xib in Resources */,
+				62C6516C1ACB2201008F8BCC /* Tutorial.storyboard in Resources */,
 				402D37B61ACA5707002C0025 /* Localizable.strings in Resources */,
-				62451E191ACA4AA600C31557 /* Tutorial.storyboard in Resources */,
-				6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */,
 				35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */,
-				6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */,
 				6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
