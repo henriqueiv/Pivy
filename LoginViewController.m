@@ -8,8 +8,6 @@
 
 #import "LoginViewController.h"
 
-
-
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -65,7 +63,8 @@
                                             
                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login sucess", @"Title of AlertView for login") message:NSLocalizedString(@"You are logged, enjoy", @"Message of AlertView for login") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button from AlertView") otherButtonTitles:nil, nil];
                                             [alert show];
-                                            
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
+
                                             [self performSegueWithIdentifier:@"gotoLogged" sender:nil];
                                         }else if (user.isNew){
                                             [self _loadFacebookUserData];

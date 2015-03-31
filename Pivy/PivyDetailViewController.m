@@ -7,9 +7,6 @@
 //
 
 #import "PivyDetailViewController.h"
-#import "Gallery.h"
-#import "MBProgressHUD.h"
-
 
 @interface PivyDetailViewController ()
 

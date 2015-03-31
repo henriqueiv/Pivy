@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  Pivy
+
+  Created by Ami Garcia on 3/30/15.
+  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
+*/
+
+/* No comment provided by engineer. */
+"Cellular" = "Cellular";
+
+/* Message for password not matching */
+"Check your password and try again" = "Vérifiez votre mot de passe et essayez à nouveau";
+
+/* Message for new account created */
+"Enjoy you brand new Pivy account" = "Profitez de votre nouveau Pivy compte";
+
+/* Title for error in register
+ Title message for error in facebook register */
+"Fail" = "Échouer";
+
+/* Login successfull with FB */
+"Login success" = "Login succès";
+
+/* No comment provided by engineer. */
+"No Connection" = "Aucune Connexion";
+
+/* Button for error in facebook register
+ Button for error in register
+ Button for password not matching
+ Button for successfull login with FB
+ Button for successfull register */
+"OK" = "OK";
+
+/* Title for password not matching */
+"Password does not match" = "Mot de passe ne correspond pas";
+
+/* Title for successfull register */
+"Success" = "Succès";
+
+/* Message for successfull register */
+"Success on register" = "Le succès sur registre";
+
+/* No comment provided by engineer. */
+"WiFi" = "WiFi";
+
+/* Message for existing account on Pivy */
+"You already had an account, so we just updated your info on our servers" = "Vous avez déjà un compte, alors nous avons mis à jour vos informations sur nos serveurs";
+
