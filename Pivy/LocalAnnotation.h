@@ -17,5 +17,6 @@
 @property (nonatomic, strong) Pivy *pivy;
 
 -(id)initWithPivy:(Pivy*)pivy;
+-(id)initWithTitle: (NSString*)newTitle Location:(CLLocationCoordinate2D)location;
 
 @end

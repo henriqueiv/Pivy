@@ -32,7 +32,6 @@
 @implementation CollectionViewController
 
 - (void)viewDidLoad {
-    NSLog(@"\n\nENTROU NA COLLECTION VIEW\n\n\n\n\n");
     [super viewDidLoad];
     _reuseIdentifier =  @"Cell";
     
@@ -40,28 +39,31 @@
     [refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
-   
+    
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleGetPivyNotification:)
+                                                 name:@"GetPivyNotification"
+                                               object:nil];
+    [self createCollection];
     
+    if([PFUser currentUser])
+        [self createGallery];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-   [self createCollection];
-   if([PFUser currentUser])
-       [self createGallery];
+-(void)handleGetPivyNotification:(Pivy*) pivy{
+    if([PFUser currentUser])
+        [self createGallery];
    [self.collectionView reloadData];
 }
 
 -(void)createCollection{
-
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects) {
             self.pivyDic = [[NSMutableDictionary alloc]init];
@@ -75,13 +77,11 @@
                     [self.countries addObject:pivy.Country];
                 }
             }
-            NSLog(@"TERMINEI O BG");
         }
         if(error){
             NSLog(@"ERRO: %@", error);
         }
        dispatch_async(dispatch_get_main_queue(), ^{
-           NSLog(@"CHEGUEI NO DISPATCH");
            [MBProgressHUD hideHUDForView:self.view animated:YES];
            [self.collectionView reloadData];
        });
@@ -93,15 +93,24 @@
 -(void)createGallery{
     PFQuery *galleryQuery = [Gallery query];
     [galleryQuery fromLocalDatastore];
-    
     [galleryQuery whereKey:@"from" equalTo:[PFUser currentUser]];
-
-    self.galleryArray = [[NSArray alloc]init];
-    self.galleryArray = [galleryQuery findObjects];
+    [galleryQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects){
+            self.galleryArray = [[NSArray alloc] initWithArray:objects];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+        }
+    }];
 }
 
-- (void) startRefresh:(UICollectionView *)startRefresh {
+- (void) startRefresh:(UIRefreshControl *)startRefresh {
+    [startRefresh beginRefreshing];
+    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+    if([PFUser currentUser])
+        [self createGallery];
     [self.collectionView reloadData];
+    [startRefresh endRefreshing];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -136,11 +145,11 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSString *key = [self.countries objectAtIndex:section];
     return [[self.pivyDic objectForKey:key] count];
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Pivy *pivy = [[Pivy alloc]init];
-    pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    Pivy *pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
     cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
@@ -148,20 +157,22 @@
     cell.backgroundColor = [UIColor blackColor];
     cell.contentView.alpha = 0.2;
     for(Gallery *gallery in self.galleryArray){
-        if( (pivy.name == gallery.pivy.name) && (gallery.to == [PFUser currentUser]) ){
+        if( ([pivy.name isEqualToString:gallery.pivy.name]) && ([gallery.to isEqual:[PFUser currentUser]]) ){
             cell.contentView.alpha = 1;
         }
     }
+    
+    cell.imageCell.crossfadeDuration = 0;
 
     if(pivy.image){
         
-        [pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            UIImage *ourImage = [UIImage imageWithData:data];
-            cell.imageCell.image = ourImage;
-        }];
+        [AsyncImageLoader cancelPreviousPerformRequestsWithTarget:cell.imageCell];
+        cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
+        [cell.imageCell setImageURL:[NSURL URLWithString:(NSString *)[pivy.image url]]];
         
     }
     else{
+
         cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
     }
     return cell;

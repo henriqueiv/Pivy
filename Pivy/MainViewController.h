@@ -11,7 +11,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Reachability.h"
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate>{
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>{
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
     Reachability *internetReachable;    

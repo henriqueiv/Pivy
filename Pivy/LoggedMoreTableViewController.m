@@ -10,6 +10,7 @@
 #import "PivyDataManager.h"
 #import "GalleryDataManager.h"
 #import "DataManager.h"
+#import "Background.h"
 
 #define kSectionLogin 0
 #define kSectionConfig 1
@@ -32,28 +33,33 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
     _nameLabel.text = [[PFUser currentUser]valueForKey:@"name"];
     _mailLabel.text = [[PFUser currentUser]valueForKey:@"email"];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"SECTION: %ld  ROW: %ld",indexPath.section , indexPath.row);
+//    NSLog(@"SECTION: %ld  ROW: %ld",indexPath.section , indexPath.row);
     
     switch (indexPath.section) {
         case kSectionLogin:{
             switch (indexPath.row) {
                 case (kRowName):{
-                    FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-                    [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
-                                                                  NSDictionary* result,
-                                                                  NSError *error) {
-                        NSArray* friends = [result objectForKey:@"data"];
-                        NSLog(@"Found: %lu friends", (unsigned long)friends.count);
-                        for (NSDictionary<FBGraphUser>* friend in friends) {
-                            NSLog(@"I have a friend named %@ with id %@", friend.name, friend.objectID);
-                        }
-                    }];
+//                    FBRequest* friendsRequest = [FBRequest requestForMyFriends];
+//                    [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
+//                                                                  NSDictionary* result,
+//                                                                  NSError *error) {
+//                        NSArray* friends = [result objectForKey:@"data"];
+//                        NSLog(@"Found: %lu friends", (unsigned long)friends.count);
+//                        for (NSDictionary<FBGraphUser>* friend in friends) {
+//                            NSLog(@"I have a friend named %@ with id %@", friend.name, friend.objectID);
+//                        }
+                    [DataManager deleteAll:[Background parseClassName] inBackground:NO];
+                    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HasLaunchedOnce"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    
+//                    }];
                     break;
                 }
                 case  (kRowLogout):{
@@ -74,26 +80,22 @@
             switch (indexPath.row) {
                 case (kRowDownloadPIVY):{
                     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
-                    //                PivyDataManager *pdm = [[PivyDataManager alloc] init];
-                    //                [pdm downloadPivys];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 case  (kRowClearPIVY):{
                     [DataManager deleteAll:[Pivy parseClassName] inBackground:NO];
-                    //                PivyDataManager *pdm = [[PivyDataManager alloc] init];
-                    //                [pdm clearLocalDB];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 case  (kRowDownloadGallery):{
                     [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
-                    //                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-                    //                [gdm downloadGalleries];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 case  (kRowClearGallery):{
                     [DataManager deleteAll:[Gallery parseClassName] inBackground:NO];
-                    //                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-                    //                [gdm clearLocalDB];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 default:

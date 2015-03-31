@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Background.h"
 
 #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
 #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
@@ -21,7 +22,21 @@
     [self configureParse];
     [self configureTabBar];
     [self configureNavigationBar];
+    
+    UILocalNotification *launchNote = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (launchNote){
+        [self renumberBadgesOfPendingNotifications];
+    }
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
 }
 
 -(void)configureNavigationBar{
@@ -32,9 +47,14 @@
                                                         alpha:1.0f]];
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
 -(void)configureParse{
     [Gallery registerSubclass];
     [Pivy registerSubclass];
+    [Background registerSubclass];
     
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
@@ -56,12 +76,11 @@
                                                         green:211/255.0f
                                                          blue:10.0/255.0f
                                                         alpha:1.0f]];
-    [[UITabBar appearance] setTranslucent:NO];
-    [[UITabBar appearance] setAlpha:0.9f];
+//    [[UITabBar appearance] setTranslucent:NO];
+//    [[UITabBar appearance] setAlpha:0.9f];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self downloadData];
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
@@ -69,17 +88,47 @@
     [[PFFacebookUtils session] close];
 }
 
--(void)downloadData{
-    [self downloadAppData];
-    [self downloadUserData];
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSLog(@"Notificacao: %@", notification);
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pivy"
+                                                        message:notification.alertBody
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+//     Send notification to do something
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+    [self renumberBadgesOfPendingNotifications];
 }
 
--(void)downloadAppData{
-    [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
-}
-
--(void)downloadUserData{
-    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+- (void)renumberBadgesOfPendingNotifications{
+    // clear the badge on the icon
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+    // first get a copy of all pending notifications (unfortunately you cannot 'modify' a pending notification)
+    NSArray *pendingNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    
+    NSLog(@"pendingNotifications.count: %ld", pendingNotifications.count);
+    // if there are any pending notifications -> adjust their badge number
+    if (pendingNotifications.count != 0) {
+        // clear all pending notifications
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
+        // the for loop will 'restore' the pending notifications, but with corrected badge numbers
+        // note : a more advanced method could 'sort' the notifications first !!!
+        NSUInteger badgeNbr = 1;
+        
+        for (UILocalNotification *notification in pendingNotifications){
+            // modify the badgeNumber
+            notification.applicationIconBadgeNumber = badgeNbr++;
+            
+            // schedule 'again'
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
+    }
 }
 
 @end

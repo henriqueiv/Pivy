@@ -15,6 +15,7 @@
 @implementation MoreTableViewController
 -(void)viewDidLoad{
     [self.navigationItem setHidesBackButton:YES];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
