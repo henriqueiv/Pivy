@@ -60,7 +60,8 @@
                                                                                   cancelButtonTitle:@"OK"
                                                                                   otherButtonTitles:nil, nil];
                                             [alert show];
-                                            
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
+
                                             [self performSegueWithIdentifier:@"gotoLogged" sender:nil];
                                         }else if (user.isNew){
                                             [self _loadFacebookUserData];
