@@ -32,6 +32,7 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    [self getPivysWithinKilometers:1];
     
     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
     dispatch_async(kBgQueue, ^{
@@ -43,7 +44,7 @@
 
 }
 
--(void) setBackground{
+- (void)setBackground{
     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
     NSLog(@"Country code: %@", countryCode);
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
@@ -76,7 +77,7 @@
     }];
 }
 
--(void)queryAndPinClassInBackground:(NSString *)class{
+- (void)queryAndPinClassInBackground:(NSString *)class{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     PFQuery *query = [PFQuery queryWithClassName:class];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -126,7 +127,7 @@
     }];
 }
 
--(void)placeViewFromStoryboardOnTabBar{
+- (void)placeViewFromStoryboardOnTabBar{
     
     //Link with More.storyboard
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
@@ -143,20 +144,40 @@
     [self.tabBarController setViewControllers:array];
 }
 
-//- (void)reverseGeocode:(CLLocation *)location {
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-//        if (!error) {
-//            CLPlacemark *placemark = [placemarks lastObject];
-//                        NSLog(@"Country with placemark: %@", placemark);
-//        } else
-//            NSLog(@"Error %@", error.description);
-//    }];
-//}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-//    [self reverseGeocode:newLocation];
-    //    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-    //    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitud);
+- (void)reverseGeocode:(CLLocation *)location {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error) {
+            CLPlacemark *placemark = [placemarks lastObject];
+                        NSLog(@"Country with placemark: %@", placemark);
+        } else
+            NSLog(@"Error %@", error.description);
+    }];
 }
+
+-(void)getPivysWithinKilometers:(int)km{
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        
+        PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
+        [query fromLocalDatastore];
+        query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            for (Pivy *pivy in objects) {
+                UILabel *tx = [[UILabel  alloc] init];
+                tx.frame = CGRectMake(0, 0, 100, 100);
+                tx.text = pivy.pivyDescription;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.view addSubview:tx];
+                });
+            }
+        }];
+        
+    }];
+}
+
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+//    [self reverseGeocode:newLocation];
+//        NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+//}
 @end

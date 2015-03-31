@@ -31,24 +31,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    self.mapView.showsUserLocation = YES;
+    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     [self populateWorld];
     
     self.mapViewModeSelector.layer.cornerRadius = 5; // Remove white borders from bounds
     [self.mapViewModeSelector addTarget:self
                                  action:@selector(changeViewModeMap)
                        forControlEvents:UIControlEventValueChanged];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [self populateWorld];
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [super viewWillAppear:animated];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-//    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [super viewWillDisappear:animated];
 }
 
 -(void)populateWorld{
@@ -113,33 +103,17 @@
     
 }
 
--(CLLocationCoordinate2D) addressLocation {
-    NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv",
-                           [@"abc" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+- (void)showCurrentLocation{
     
-    
-    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSStringEncodingConversionAllowLossy  error:nil];
-    NSArray *listItems = [locationString componentsSeparatedByString:@","];
-    
-    double latitude = 0.0;
-    double longitude = 0.0;
-    
-    if([listItems count] >= 4 && [[listItems objectAtIndex:0] isEqualToString:@"200"]) {
-        latitude = [[listItems objectAtIndex:2] doubleValue];
-        longitude = [[listItems objectAtIndex:3] doubleValue];
-    }
-    else {
-        
-    }
-    CLLocationCoordinate2D location;
-    location.latitude = latitude;
-    location.longitude = longitude;
-    
-    return location;
+    MKMapPoint annotationPoint = MKMapPointForCoordinate(self.mapView.userLocation.coordinate);
+    MKMapRect zoomRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.0, 0.0);
+    [self.mapView setVisibleMapRect:zoomRect animated:YES];
 }
 
-
 -(void)changeViewModeMap{
+    self.mapView.userTrackingMode = YES;
+    self.mapView.userTrackingMode = NO;
+    
     switch (self.mapViewModeSelector.selectedSegmentIndex) {
         case kViewModeNearby:{
             MKCoordinateRegion region;
@@ -180,6 +154,8 @@
         }
     }
 }
+
+
 
 
 @end

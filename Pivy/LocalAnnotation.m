@@ -21,6 +21,16 @@
     return self;
 }
 
+-(id)initWithTitle:(NSString *)newTitle Location:(CLLocationCoordinate2D)location{
+    self = [super init];
+    if(self){
+        _title = newTitle;
+        _coordinate = location;
+    }
+    
+    return self;
+}
+
 -(NSString *)description{
     return [NSString stringWithFormat:@"Title: %@,\nCoordinate: %f : %f,\nPivy: %@", _title, _coordinate.latitude, _coordinate.longitude, _pivy];
 }
