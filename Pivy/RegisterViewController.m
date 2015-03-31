@@ -28,7 +28,7 @@
     UIColor *color = [UIColor lightTextColor];
     NSArray *array = [[NSArray alloc] initWithObjects:_nameField, _usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
     for (UITextField *tf in array) {
-        tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:tf.placeholder
+        tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(tf.placeholder, @"Placeholder for Register")
                                                                    attributes:@{NSForegroundColorAttributeName: color}];
     }
 }
@@ -46,17 +46,17 @@
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [hud hide:YES];
             if (!error) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Success on register" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"Title for successfull register") message:NSLocalizedString(@"Success on register", @"Message for successfull register") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for successfull register") otherButtonTitles:nil, nil];
                 [alert show];
                 [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
             }
             else{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail", @"Title for error in register") message:[error.userInfo valueForKey:@"error"] delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for error in register") otherButtonTitles:nil, nil];
                 [alert show];
             }
         }];
     } else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password does not match" message:@"Check your password and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Password does not match", @"Title for password not matching") message:NSLocalizedString(@"Check your password and try again", @"Message for password not matching") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for password not matching") otherButtonTitles:nil, nil];
         [alert show];
     }
 }
@@ -68,7 +68,7 @@
             [self _loadFacebookUserData:user];
         } else {
             [hud hide:YES];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail", @"Title message for error in facebook register") message:[error.userInfo valueForKey:@"error"] delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for error in facebook register") otherButtonTitles:nil, nil];
             [alert show];
         }
     }];
@@ -78,9 +78,9 @@
     NSString *message;
     
     if (user.isNew)
-        message = @"Enjoy you brand new Pivy account";
+        message = [NSString stringWithFormat:NSLocalizedString(@"Enjoy you brand new Pivy account", @"Message for new account created")];
     else
-        message = @"You already had an account, so we just updated your info on our servers";
+        message = [NSString stringWithFormat:NSLocalizedString(@"You already had an account, so we just updated your info on our servers", @"Message for existing account on Pivy")];
     
     // Send request to Facebook
     FBRequest *request = [FBRequest requestForMe];
@@ -107,13 +107,8 @@
             [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [hud hide:YES];
                 if (succeeded){
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success"
-                                                                    message:message
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login success", @"Login successfull with FB") message:message delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for successfull login with FB") otherButtonTitles:nil, nil];
                     [alert show];
-                    
                     [self performSegueWithIdentifier:@"gotoLogged" sender:nil];
                 }
             }];

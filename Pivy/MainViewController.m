@@ -19,6 +19,7 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainViewController ()
+@property (weak, nonatomic) Pivy *pivy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextView *pivyDescription;
@@ -40,7 +41,7 @@
     self.tableView.dataSource = self;
     
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
-    [self.btnGetPivy setTitle:@"Pivy not available" forState:UIControlStateDisabled];
+    [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
     _btnGetPivy.layer.cornerRadius = 18;
     _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
                                                      green:211/255.0f
@@ -66,11 +67,10 @@
 }
 
 - (void)setBackground{
+    
     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-    //    NSLog(@"Country code: %@", countryCode);
-    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
+    PFQuery *query = [PFQuery queryWithClassName:[Background parseClassName]];
     [query fromLocalDatastore];
-    //    NSLog(@"Inicio query de Backgrounds");
     [query whereKey:@"country" equalTo:countryCode];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if(!error){
@@ -82,7 +82,6 @@
                     effectView.alpha = 0.8;
                     effectView.frame = self.view.frame;
                     [self.backgroundImageView addSubview:effectView];
-                    //                    NSLog(@"Background alterado com sucesso");
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }];
@@ -203,6 +202,46 @@
         
     }];
     return nil;
+}
+
+-(void)checkIfHasPivy{
+    PFQuery *query = [Gallery query];
+    [query fromLocalDatastore];
+    [query whereKey:@"pivy" equalTo:self.pivy];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (objects.count != 0){
+                self.btnGetPivy.enabled = NO;
+                self.btnGetPivy.alpha = 0.5;
+            }
+            else
+                self.btnGetPivy.enabled = YES;
+        });
+    }];
+}
+
+- (IBAction)getPivy:(UIButton *)sender {
+    if ([PFUser currentUser]) {
+        Gallery *g = [[Gallery alloc] init];
+        g.pivy = self.pivy;
+        g.from = [PFUser currentUser];
+        g.to = [PFUser currentUser];
+        
+        [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            NSLog(@"PINOU");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"SAVOU");
+                if (succeeded) {
+                    [g saveEventually];
+                    [self checkIfHasPivy];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];
+                }
+            });
+        }];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

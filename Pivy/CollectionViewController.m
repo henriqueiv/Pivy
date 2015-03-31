@@ -39,7 +39,7 @@
     [refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
-   
+    
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
@@ -48,6 +48,7 @@
                                                  name:@"GetPivyNotification"
                                                object:nil];
     [self createCollection];
+    
     if([PFUser currentUser])
         [self createGallery];
 }
@@ -105,6 +106,9 @@
 
 - (void) startRefresh:(UIRefreshControl *)startRefresh {
     [startRefresh beginRefreshing];
+    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+    if([PFUser currentUser])
+        [self createGallery];
     [self.collectionView reloadData];
     [startRefresh endRefreshing];
 }
@@ -141,6 +145,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSString *key = [self.countries objectAtIndex:section];
     return [[self.pivyDic objectForKey:key] count];
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -152,7 +157,7 @@
     cell.backgroundColor = [UIColor blackColor];
     cell.contentView.alpha = 0.2;
     for(Gallery *gallery in self.galleryArray){
-        if( (pivy.name == gallery.pivy.name) && (gallery.to == [PFUser currentUser]) ){
+        if( ([pivy.name isEqualToString:gallery.pivy.name]) && ([gallery.to isEqual:[PFUser currentUser]]) ){
             cell.contentView.alpha = 1;
         }
     }

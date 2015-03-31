@@ -24,10 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    //    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: color}];
+    //    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+    
+    
     //Chage placeholder color
     UIColor *color = [UIColor lightTextColor];
-    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: color}];
-    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+    //Localized strings
+    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Username", @"Username from user") attributes:@{NSForegroundColorAttributeName: color}];
+    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"User's password") attributes:@{NSForegroundColorAttributeName: color}];
+    
+   
 }
 
 - (IBAction)loginButton:(UIButton *)sender {
@@ -54,11 +62,8 @@
     [PFFacebookUtils logInWithPermissions:@[@"public_profile", @"email", @"user_friends"]
                                     block:^(PFUser *user, NSError *error) {
                                         if (user){
-                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success"
-                                                                                            message:@"You are logged, enjoy"
-                                                                                           delegate:self
-                                                                                  cancelButtonTitle:@"OK"
-                                                                                  otherButtonTitles:nil, nil];
+                                            
+                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login sucess", @"Title of AlertView for login") message:NSLocalizedString(@"You are logged, enjoy", @"Message of AlertView for login") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button from AlertView") otherButtonTitles:nil, nil];
                                             [alert show];
                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
 
@@ -67,7 +72,7 @@
                                             [self _loadFacebookUserData];
                                         }
                                         else {
-                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error.userInfo valueForKey:@"error"]  delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail", @"Title of error message") message:[error.userInfo valueForKey:@"error"] delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button from alertView error") otherButtonTitles:nil, nil];
                                             [alert show];
                                         }
                                     }];
@@ -100,11 +105,7 @@
             [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded){
                     [hud hide:YES];
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login success"
-                                                                    message: @"You did'n had an account, we made it automatically for you, so enjoy our Pivys!"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login success", @"Title for login in facebook") message:NSLocalizedString(@"You did'n had an account, we made it automatically for you, so enjoy our Pivys!", @"Message for login in facebook sucessfull") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for successfull login") otherButtonTitles:nil, nil];
                     [alert show];
                     
                     [self performSegueWithIdentifier:@"gotoLogged" sender:nil];
