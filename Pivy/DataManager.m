@@ -83,7 +83,7 @@
     
     if (inBackground) {
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (objects) {
+            if (objects.count > 0) {
 #ifdef DEBUG
                 NSLog(@"downloadFromParse \n%ld %@ baixados AGORA", objects.count, className);
 #endif
@@ -109,7 +109,7 @@
         if (error) {
             NSLog(@"downloadFromParse Erro!\n%@", error);
         }else{
-            if (objs) {
+            if (objs.count > 0) {
 #ifdef DEBUG
                 NSLog(@"downloadFromParse \n%ld gallery baixados AGORA", objs.count);
 #endif
@@ -153,7 +153,7 @@
                 NSLog(@"deleteAll Erro");
             }else{
             }
-            if (objects) {
+            if (objects.count > 0) {
 #ifdef DEBUG
                 NSLog(@"deleteAll %lu %@ encontrados para excluir", (unsigned long)objects.count, className);
 #endif
