@@ -7,7 +7,6 @@
 //
 
 
-#import "Banner.h"
 #import "Gallery.h"
 #import "MBProgressHUD.h"
 #import "Pivy.h"

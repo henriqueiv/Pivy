@@ -15,7 +15,8 @@
 #import "Pivy.h"
 #import "Gallery.h"
 #import "AppDelegate.h"
-#import "Banner.h"
+#import "MBProgressHUD.h"
+
 
 @interface CollectionViewController()
 
@@ -23,8 +24,6 @@
 @property NSMutableDictionary *pivyDic;
 @property NSMutableArray *countries;
 @property NSMutableArray *pivyArray;
-@property NSArray *bannerArray;
-@property NSMutableDictionary *bannerDic;
 @property NSArray *galleryArray;
 
 @end
@@ -33,62 +32,58 @@
 @implementation CollectionViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     _reuseIdentifier =  @"Cell";
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(startRefresh:)
+             forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:refreshControl];
+   
+    self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
-    
-//    [self createGallery];
-    //    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    //    layout.sectionInset = UIEdgeInsetsMake(15, 0, 15, 0);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
    [self createCollection];
    if([PFUser currentUser])
        [self createGallery];
-    [self.collectionView reloadData];
+   [self.collectionView reloadData];
 }
 
 -(void)createCollection{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
     
-    NSArray *objects = [[NSArray alloc]init];
-    objects = [query findObjects];
-    
-#ifndef NDEBUG
-    NSLog(@"%lu", (unsigned long)objects.count);
-#endif
-    if (objects) {
-        self.pivyDic = [[NSMutableDictionary alloc]init];
-        self.countries = [[NSMutableArray alloc]init];
-        for (Pivy *pivy in objects) {
-            if ([self.pivyDic objectForKey:pivy.Country]) {
-                [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
-            }else{
-                NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
-                [self.pivyDic setObject:pivyArray forKey:pivy.Country];
-                [self.countries addObject:pivy.Country];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects) {
+            self.pivyDic = [[NSMutableDictionary alloc]init];
+            self.countries = [[NSMutableArray alloc]init];
+            for (Pivy *pivy in objects) {
+                if ([self.pivyDic objectForKey:pivy.Country]) {
+                    [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
+                }else{
+                    NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
+                    [self.pivyDic setObject:pivyArray forKey:pivy.Country];
+                    [self.countries addObject:pivy.Country];
+                }
             }
         }
-    }
+        if(error){
+            NSLog(@"ERRO: %@", error);
+        }
+       dispatch_async(dispatch_get_main_queue(), ^{
+           [MBProgressHUD hideHUDForView:self.view animated:YES];
+           [self.collectionView reloadData];
+       });
+    }];
+    
 
-//    PFQuery *bannerQuery = [Banner query];
-//    [bannerQuery fromLocalDatastore];
-//    [bannerQuery orderByAscending:@"country"];
-//    self.bannerArray = [bannerQuery findObjects];
-//    
-//    if(self.bannerArray){
-//        self.bannerDic = [[NSMutableDictionary alloc]init];
-//        for(Banner *banner in self.bannerArray){
-//            if(banner){
-//                [self.bannerDic setObject:banner.image forKey:banner.country];
-//            }
-//        }
-//    }
 }
 
 -(void)createGallery{
@@ -96,9 +91,22 @@
     [galleryQuery fromLocalDatastore];
     
     [galleryQuery whereKey:@"from" equalTo:[PFUser currentUser]];
+    
+    
+    [galleryQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects){
+            self.galleryArray = [[NSArray alloc] initWithArray:objects];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+        }
+    }];
+}
 
-    self.galleryArray = [[NSArray alloc]init];
-    self.galleryArray = [galleryQuery findObjects];
+- (void) startRefresh:(UIRefreshControl *)startRefresh {
+    [startRefresh beginRefreshing];
+    [self.collectionView reloadData];
+    [startRefresh endRefreshing];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -111,9 +119,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-    
-//    UIImage *bannerImage = [UIImage imageWithData:[[self.bannerDic objectForKey:[self.countries objectAtIndex:indexPath.section]] getData]];
-//    header.image.image = bannerImage;
+
     header.headerLabel.text = [self.countries objectAtIndex:indexPath.section];
     
     return header;
@@ -129,16 +135,12 @@
     }}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    
     return self.pivyDic.count;
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     NSString *key = [self.countries objectAtIndex:section];
     return [[self.pivyDic objectForKey:key] count];
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -153,13 +155,16 @@
     for(Gallery *gallery in self.galleryArray){
         if( (pivy.name == gallery.pivy.name) && (gallery.to == [PFUser currentUser]) ){
             cell.contentView.alpha = 1;
-            NSLog(@"LOLOL******");
-//            NSLog(@"CELL: %@", pivy.name);
         }
     }
 
     if(pivy.image){
-        cell.imageCell.image = [UIImage imageWithData:[pivy.image getData]];
+        
+        [pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            UIImage *ourImage = [UIImage imageWithData:data];
+            cell.imageCell.image = ourImage;
+        }];
+        
     }
     else{
         cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
