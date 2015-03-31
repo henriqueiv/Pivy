@@ -19,10 +19,14 @@
 - (void)viewDidLoad {
     NSLog(@"Entro no didload da detail");
     [super viewDidLoad];
-    self.nameLabel.text = self.pivy.name;
-    self.countryLabel.text = self.pivy.Country;
-    self.descriptionTextView.text = self.pivy.pivyDescription;
-    self.imageView.image = [UIImage imageWithData:[self.pivy.image getData]];
+    //self.nameLabel.text = self.pivy.name;
+    //self.countryLabel.text = self.pivy.Country;
+    //self.descriptionTextView.text = self.pivy.pivyDescription;
+    
+    //Localize strings
+    self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
+    self.countryLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.Country, @"Pivy's country")];
+    self.descriptionTextView.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.pivyDescription, @"Pivy's description")];
     
     [self checkIfHasPivy];
     
