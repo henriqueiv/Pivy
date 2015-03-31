@@ -32,7 +32,6 @@
 @implementation CollectionViewController
 
 - (void)viewDidLoad {
-    NSLog(@"\n\nENTROU NA COLLECTION VIEW\n\n\n\n\n");
     [super viewDidLoad];
     _reuseIdentifier =  @"Cell";
     
@@ -44,7 +43,6 @@
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -75,13 +73,11 @@
                     [self.countries addObject:pivy.Country];
                 }
             }
-            NSLog(@"TERMINEI O BG");
         }
         if(error){
             NSLog(@"ERRO: %@", error);
         }
        dispatch_async(dispatch_get_main_queue(), ^{
-           NSLog(@"CHEGUEI NO DISPATCH");
            [MBProgressHUD hideHUDForView:self.view animated:YES];
            [self.collectionView reloadData];
        });
@@ -95,13 +91,22 @@
     [galleryQuery fromLocalDatastore];
     
     [galleryQuery whereKey:@"from" equalTo:[PFUser currentUser]];
-
-    self.galleryArray = [[NSArray alloc]init];
-    self.galleryArray = [galleryQuery findObjects];
+    
+    
+    [galleryQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(objects){
+            self.galleryArray = [[NSArray alloc] initWithArray:objects];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+        }
+    }];
 }
 
-- (void) startRefresh:(UICollectionView *)startRefresh {
+- (void) startRefresh:(UIRefreshControl *)startRefresh {
+    [startRefresh beginRefreshing];
     [self.collectionView reloadData];
+    [startRefresh endRefreshing];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
