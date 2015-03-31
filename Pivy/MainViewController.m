@@ -7,24 +7,16 @@
 //
 
 #import "MainViewController.h"
-#import <Parse/Parse.h>
-#import "MBProgressHUD.h"
-#import "Pivy.h"
-#import "PivyDataManager.h"
-#import "Background.h"
-#import "GalleryDataManager.h"
-#import "DataManager.h"
-#import "MainTableViewCell.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainViewController ()
+
 @property (weak, nonatomic) Pivy *pivy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextView *pivyDescription;
 @property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) NSMutableArray *array;
@@ -249,8 +241,8 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MainTableViewCell *cell = [[MainTableViewCell alloc] init];
-    cell.nameLabel.text = @"Fuck the system";
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.textLabel.text = @"Fuck the system";
     return cell;
 }
 

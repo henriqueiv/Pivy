@@ -7,10 +7,6 @@
 //
 
 #import "MainTutorialViewController.h"
-#import "DataManager.h"
-#import "Background.h"
-#import "MBProgressHUD.h"
-#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainTutorialViewController () <UIScrollViewDelegate>{
     int page;

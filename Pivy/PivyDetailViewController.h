@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Gallery.h"
+#import "MBProgressHUD.h"
 #import "Pivy.h"
+#import <UIKit/UIKit.h>
 
 @interface PivyDetailViewController : UIViewController
 
