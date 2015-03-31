@@ -66,11 +66,6 @@
             [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.backgroundImageView.image = [UIImage imageWithData:data];
-                    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-                    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-                    effectView.alpha = 0.8;
-                    effectView.frame = self.view.frame;
-                    [self.backgroundImageView addSubview:effectView];
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }];
