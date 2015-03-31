@@ -35,7 +35,7 @@
     [self checkIfHasPivy];
     
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
-    [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
+    [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
     _btnGetPivy.layer.cornerRadius = 18;
     _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
                                                      green:211/255.0f
@@ -95,11 +95,17 @@
                     PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
                     [query fromLocalDatastore];
                     query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
-                    query = [query whereKey:@"pivy" equalTo:self.pivy];
                     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                         if(object){
-                            self.btnGetPivy.enabled = YES;
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];                       }
+                            Pivy *pivy = (Pivy*)object;
+                            if([pivy isEqual:self.pivy]){
+                                self.btnGetPivy.enabled = YES;
+                            }
+                            else{
+                                self.btnGetPivy.enabled = NO;
+                                self.btnGetPivy.alpha = 0.5;
+                            }
+                        }
                         else{
                             self.btnGetPivy.enabled = NO;
                             self.btnGetPivy.alpha = 0.5;
