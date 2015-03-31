@@ -5,19 +5,8 @@
 //  Created by Marcus Vinicius Kuquert on 3/20/15.
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
-#import <Parse/Parse.h>
-#import <CoreLocation/CoreLocation.h>
-#import "MapViewController.h"
-#import "LocalAnnotation.h"
-#import "PivyDetailViewController.h"
 
-#define kViewModeNearby 0
-#define kViewModeWorld 1
-#define kLatitudeDeltaNearby 2
-#define kLongitudeDeltaNearby 2
-#define kLatitudeDeltaWorld 180
-#define kLongitudeDeltaWorld 180
-#define DEBUG 1
+#import "MapViewController.h"
 
 @interface MapViewController ()
 

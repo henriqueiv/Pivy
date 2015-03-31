@@ -6,17 +6,7 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
-#import "PivyDetailViewController.h"
 #import "CollectionViewController.h"
-#import "CollectionViewCell.h"
-#import "CollectionViewCellHeader.h"
-#import "Pivy.h"
-#import "Gallery.h"
-#import "AppDelegate.h"
-#import "MBProgressHUD.h"
-
 
 @interface CollectionViewController()
 

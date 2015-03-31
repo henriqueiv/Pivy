@@ -6,10 +6,15 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Background.h"
+#import "DataManager.h"
+#import "MBProgressHUD.h"
+#import "Pivy.h"
+#import "Reachability.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "Reachability.h"
+#import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>{
     CLLocationManager *locationManager;

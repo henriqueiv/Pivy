@@ -7,22 +7,9 @@
 //
 
 #import "LoggedMoreTableViewController.h"
-#import "PivyDataManager.h"
-#import "GalleryDataManager.h"
-#import "DataManager.h"
-#import "Background.h"
-
-#define kSectionLogin 0
-#define kSectionConfig 1
-#define kSectionAbout  2
-#define kRowName 0
-#define kRowLogout 2
-#define kRowDownloadPIVY 1
-#define kRowClearPIVY 2
-#define kRowDownloadGallery 3
-#define kRowClearGallery 4
 
 @interface LoggedMoreTableViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mailLabel;
 

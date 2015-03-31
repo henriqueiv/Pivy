@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Henrique Valcanaia. All rights reserved.
 //
 
+#import "AsyncImageView.h"
+#import "Pivy.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Pivy.h"
-#import "AsyncImageView.h"
 
 @interface CollectionViewCell : UICollectionViewCell
 
