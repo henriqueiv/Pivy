@@ -31,8 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [self populateWorld];
+//    [self populateWorld];
     
     self.mapViewModeSelector.layer.cornerRadius = 5; // Remove white borders from bounds
     [self.mapViewModeSelector addTarget:self
@@ -42,12 +41,10 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self populateWorld];
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-//    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
 
@@ -99,7 +96,6 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-//    LocalAnnotation *la = (LocalAnnotation*) view.annotation;
     [self performSegueWithIdentifier:@"gotoPivyDetailFromMap" sender:view.annotation];
 
 }
@@ -112,32 +108,6 @@
     }
     
 }
-
--(CLLocationCoordinate2D) addressLocation {
-    NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv",
-                           [@"abc" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSStringEncodingConversionAllowLossy  error:nil];
-    NSArray *listItems = [locationString componentsSeparatedByString:@","];
-    
-    double latitude = 0.0;
-    double longitude = 0.0;
-    
-    if([listItems count] >= 4 && [[listItems objectAtIndex:0] isEqualToString:@"200"]) {
-        latitude = [[listItems objectAtIndex:2] doubleValue];
-        longitude = [[listItems objectAtIndex:3] doubleValue];
-    }
-    else {
-        
-    }
-    CLLocationCoordinate2D location;
-    location.latitude = latitude;
-    location.longitude = longitude;
-    
-    return location;
-}
-
 
 -(void)changeViewModeMap{
     switch (self.mapViewModeSelector.selectedSegmentIndex) {
