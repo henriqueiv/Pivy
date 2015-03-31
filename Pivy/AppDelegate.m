@@ -49,6 +49,7 @@
 -(void)configureParse{
     [Gallery registerSubclass];
     [Pivy registerSubclass];
+    [Background registerSubclass];
     
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
