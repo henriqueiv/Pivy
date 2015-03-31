@@ -7,6 +7,7 @@
 //
 
 #import "DataManager.h"
+#define DEBUG 1
 
 @implementation DataManager
 
@@ -21,17 +22,17 @@
             [[[query fromLocalDatastore] orderByDescending:@"createdAt"] getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                 NSDate *date;
                 if (error) {
-                    NSLog(@"ERRO\n%@", error);
+                    NSLog(@"updateLocalDatastore ERRO\n%@", error);
                 }else{
                     if (object) {
                         date = object.createdAt;
 #ifdef DEBUG
-                        NSLog(@"Objeto encontrado, baixando a partir de %@", date);
+                        NSLog(@"updateLocalDatastore Objeto encontrado, baixando a partir de %@", date);
 #endif
                     }else{
                         date = [[NSDate alloc] initWithTimeIntervalSince1970:0];
 #ifdef DEBUG
-                        NSLog(@"Objeto NAO encontrado, baixando a partir de %@", date);
+                        NSLog(@"updateLocalDatastore Objeto NAO encontrado, baixando a partir de %@", date);
 #endif
                     }
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -41,56 +42,63 @@
             }];
         }else{
             NSError *error;
-            PFObject *object = [[[query fromLocalDatastore] orderByDescending:@"createdAt"] getFirstObject:&error];
+            query = [[query fromLocalDatastore] orderByDescending:@"createdAt"];
+            PFObject *object = [query getFirstObject:&error];
             if (error) {
-                NSLog(@"Erro\n%@", error);
+                NSLog(@"updateLocalDatastore Erro\n%@", error);
             }else{
-                NSDate *date;
-                if (object) {
-                    date = object.createdAt;
-#ifdef DEBUG
-                    NSLog(@"Objeto encontrado, baixando a partir de %@", date);
-#endif
-                }else{
-                    date = [[NSDate alloc] initWithTimeIntervalSince1970:0];
-#ifdef DEBUG
-                    NSLog(@"Objeto NAO encontrado, baixando a partir de %@", date);
-#endif
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [DataManager downloadFromParse:className afterDate:date inBackground:inBackground];
-                });
+                
             }
+            
+            NSDate *date;
+            if (object) {
+                date = object.createdAt;
+#ifdef DEBUG
+                NSLog(@"updateLocalDatastore Objeto encontrado, baixando a partir de %@", date);
+#endif
+            }else{
+                date = [[NSDate alloc] initWithTimeIntervalSince1970:0];
+#ifdef DEBUG
+                NSLog(@"updateLocalDatastore Objeto NAO encontrado, baixando a partir de %@", date);
+#endif
+            }
+            [DataManager downloadFromParse:className afterDate:date inBackground:inBackground];
         }
     }else{
-        NSLog(@"Sem internet!");
+        NSLog(@"updateLocalDatastore Sem internet!");
     }
 }
 
 + (void) downloadFromParse:(NSString*) className afterDate:(NSDate*)date inBackground:(BOOL)inBackground{
     PFQuery *query = [PFQuery queryWithClassName:className];
     [query whereKey:@"createdAt" greaterThan:date];
-    if([className isEqualToString:[Gallery parseClassName]])
-        [query whereKey:@"to" equalTo:[PFUser currentUser]];
+    if([className isEqualToString:[Gallery parseClassName]]){
+        if ([PFUser currentUser]){
+            [query whereKey:@"to" equalTo:[PFUser currentUser]];
+        }else{
+            NSLog(@"DataManager.downloadFromParse:: Para utilizar a galeria tem que setar o usuario animal!");
+            return;
+        }
+    }
     
     if (inBackground) {
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects) {
 #ifdef DEBUG
-                NSLog(@"\n%ld gallery baixados AGORA", objects.count);
+                NSLog(@"downloadFromParse \n%ld %@ baixados AGORA", objects.count, className);
 #endif
                 NSMutableArray *galleries = [[NSMutableArray alloc] initWithArray:objects];
                 [PFObject pinAllInBackground:galleries
                                        block:^(BOOL succeeded, NSError *error) {
                                            if (succeeded) {
-                                               NSLog(@"Pivys pinados com sucesso!!!!!!");
+                                               NSLog(@"downloadFromParse Pivys pinados com sucesso!!!!!!");
                                            }else{
-                                               NSLog(@"Sem sucesso");
+                                               NSLog(@"downloadFromParse Sem sucesso");
                                            }
                                            if(error){
-                                               NSLog(@"Erroooo: %@", error);
+                                               NSLog(@"downloadFromParse Erroooo: %@", error);
                                            }else{
-                                               NSLog(@"Não deu erro");
+                                               NSLog(@"downloadFromParse Não deu erro");
                                            }
                                        }];
             }
@@ -99,15 +107,15 @@
         NSError *error;
         NSArray *objs = [query findObjects:&error];
         if (error) {
-            NSLog(@"Erro!\n%@", error);
+            NSLog(@"downloadFromParse Erro!\n%@", error);
         }else{
             if (objs) {
 #ifdef DEBUG
-                NSLog(@"\n%ld gallery baixados AGORA", objs.count);
+                NSLog(@"downloadFromParse \n%ld gallery baixados AGORA", objs.count);
 #endif
                 [PFObject pinAll:objs error:&error];
             }else{
-                NSLog(@"Nenhum objeto");
+                NSLog(@"downloadFromParse Nenhum objeto");
             }
         }
     }
@@ -118,59 +126,47 @@
 }
 
 + (void) deleteAll:(NSString*) className inBackground:(BOOL)inBackground{
-#ifdef DEBUG
-    NSInteger __block count = 0;
-#endif
     PFQuery *query = [PFQuery queryWithClassName:className];
     [query fromLocalDatastore];
-    if (inBackground) {
+    if (!inBackground) {
         NSError *error;
         NSArray *objs = [query findObjects:&error];
         for (PFObject *o in objs) {
-#ifdef DEBUG
-            count++;
-#endif
             [o unpin:&error];
             if (error) {
-                NSLog(@"Erro\n%@", error);
+                NSLog(@"deleteAll Erro\n%@", error);
             }else{
             }
         }
     }else{
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if(error){
-                NSLog(@"Erro");
+                NSLog(@"deleteAll Erro");
             }else{
-                if (objects) {
-                    for (PFObject *o in objects) {
+            }
+            if (objects) {
 #ifdef DEBUG
-                        count++;
+                NSLog(@"deleteAll %lu %@ encontrados para excluir", (unsigned long)objects.count, className);
 #endif
-                        
-                        [o unpinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (succeeded) {
-                                
-                            }else{
-                                NSLog(@"Sem sucesso");
-                            }
+                for (PFObject *o in objects) {
+                    [o unpinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
                             
-                            if (error) {
-                                NSLog(@"Erro\n%@", error);
-                            }else{
-                                
-                            }
-                        }];
-                    }
-                }else{
-                    NSLog(@"Nenhum objeto");
+                        }else{
+                            NSLog(@"deleteAll Sem sucesso");
+                        }
+                        
+                        if (error) {
+                            NSLog(@"deleteAll Erro\n%@", error);
+                        }else{
+                            
+                        }
+                    }];
                 }
+            }else{
+                NSLog(@"deleteAll Nenhum objeto");
             }
         }];
-        
-#ifdef DEBUG
-        NSLog(@"Objetos excluidos: %ld", (long)count);
-#endif
-        
     }
 }
 

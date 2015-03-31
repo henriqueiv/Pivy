@@ -75,13 +75,11 @@
 }
 
 -(void)downloadAppData{
-    PivyDataManager *pdm = [[PivyDataManager alloc] init];
-    [pdm downloadPivys];
+    [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
 }
 
 -(void)downloadUserData{
-    GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-    [gdm downloadGalleries];
+    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
 }
 
 @end

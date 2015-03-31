@@ -9,6 +9,7 @@
 #import "LoggedMoreTableViewController.h"
 #import "PivyDataManager.h"
 #import "GalleryDataManager.h"
+#import "DataManager.h"
 
 #define kSectionLogin 0
 #define kSectionConfig 1
@@ -39,7 +40,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"SECTION: %ld  ROW: %ld",indexPath.section , indexPath.row);
     
-    if(indexPath.section == kSectionLogin){
+    switch (indexPath.section) {
+        case kSectionLogin:{
             switch (indexPath.row) {
                 case (kRowName):{
                     FBRequest* friendsRequest = [FBRequest requestForMyFriends];
@@ -61,42 +63,46 @@
                     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
                     break;
                 }
-                
+                    
                 default:
                     break;
             }
-        
-    }
-    
-    if(indexPath.section == kSectionConfig){
-        switch (indexPath.row) {
-            case (kRowDownloadPIVY):{
-                PivyDataManager *pdm = [[PivyDataManager alloc] init];
-                [pdm downloadPivys];
-                break;
-            }
-            case  (kRowClearPIVY):{
-                PivyDataManager *pdm = [[PivyDataManager alloc] init];
-                [pdm clearLocalDB];
-                break;
-            }
-            case  (kRowDownloadGallery):{
-                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-                [gdm downloadGalleries];
-                break;
-            }
-            case  (kRowClearGallery):{
-                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
-                [gdm clearLocalDB];
-                break;
-            }
-            default:
-                break;
+            break;
         }
-
+            
+        case kSectionConfig:{
+            switch (indexPath.row) {
+                case (kRowDownloadPIVY):{
+                    [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
+                    //                PivyDataManager *pdm = [[PivyDataManager alloc] init];
+                    //                [pdm downloadPivys];
+                    break;
+                }
+                case  (kRowClearPIVY):{
+                    [DataManager deleteAll:[Pivy parseClassName] inBackground:NO];
+                    //                PivyDataManager *pdm = [[PivyDataManager alloc] init];
+                    //                [pdm clearLocalDB];
+                    break;
+                }
+                case  (kRowDownloadGallery):{
+                    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+                    //                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+                    //                [gdm downloadGalleries];
+                    break;
+                }
+                case  (kRowClearGallery):{
+                    [DataManager deleteAll:[Gallery parseClassName] inBackground:NO];
+                    //                GalleryDataManager *gdm = [[GalleryDataManager alloc] init];
+                    //                [gdm clearLocalDB];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+        default:
+            break;
     }
-    
-    
 }
 
 @end
