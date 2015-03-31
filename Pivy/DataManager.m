@@ -52,7 +52,7 @@
             }
             
             NSDate *date;
-            if (object) {
+            if (object.createdAt) {
                 date = object.createdAt;
 #ifdef DEBUG
                 NSLog(@"DataManager.updateLocalDatastore(%@):: Objeto encontrado, baixando a partir de %@", className, date);
