@@ -37,6 +37,7 @@
         NSLog(@"Ja executou o cara 1 vez");
         [self gotoApp];
     }
+     
 }
 
 -(void)viewDidLayoutSubviews{

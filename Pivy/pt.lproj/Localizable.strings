@@ -19,7 +19,7 @@
  Title message for error in facebook register */
 "Fail" = "Falha";
 
-/* Login successfull with FB */
+/* Login successfull with FB Password does not match */
 "Login success" = "Login bem sucedido";
 
 /* No comment provided by engineer. */
@@ -33,17 +33,17 @@
 "OK" = "OK";
 
 /* Title for password not matching */
-"Password does not match" = "Password does not match";
+"Password does not match" = "Senha não confere";
 
 /* Title for successfull register */
-"Success" = "Success";
+"Success" = "Sucesso";
 
 /* Message for successfull register */
-"Success on register" = "Success on register";
+"Success on register" = "Sucesso no registro";
 
 /* No comment provided by engineer. */
 "WiFi" = "WiFi";
 
 /* Message for existing account on Pivy */
-"You already had an account, so we just updated your info on our servers" = "You already had an account, so we just updated your info on our servers";
+"You already had an account, so we just updated your info on our servers" = "Você já possui uma conta, então atulizamos seus dados em nossos servidores ";
 
