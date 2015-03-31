@@ -40,6 +40,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miq-ND-seP">
+                                <rect key="frame" x="0.0" y="0.0" width="608" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Ng-3f-0U4">
+                                    <rect key="frame" x="0.0" y="0.0" width="608" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Pivys nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-4r-Lk6">
                                 <rect key="frame" x="0.0" y="10" width="600" height="52"/>
                                 <constraints>
@@ -55,7 +63,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i8a-0f-TGc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIVY_logo" translatesAutoresizingMaskIntoConstraints="NO" id="i8a-0f-TGc">
                                 <rect key="frame" x="200" y="78" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="M4U-AX-EaI"/>
@@ -95,10 +103,14 @@
                             <constraint firstItem="GRL-4r-Lk6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="10" id="K4O-sE-3tG"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PEV-G2-fUw"/>
                             <constraint firstAttribute="centerX" secondItem="FY5-QQ-ZGd" secondAttribute="centerX" id="Rb9-LU-0q9"/>
+                            <constraint firstItem="miq-ND-seP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="TqI-Gu-gWX"/>
+                            <constraint firstItem="miq-ND-seP" firstAttribute="trailingMargin" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="16" id="ddp-Ra-4kp"/>
                             <constraint firstAttribute="trailing" secondItem="GRL-4r-Lk6" secondAttribute="trailing" id="dk5-Kf-4e3"/>
                             <constraint firstItem="i8a-0f-TGc" firstAttribute="top" secondItem="GRL-4r-Lk6" secondAttribute="bottom" constant="16" id="fVG-Nd-Ecs"/>
+                            <constraint firstItem="miq-ND-seP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="fXj-eS-fnW"/>
                             <constraint firstItem="GRL-4r-Lk6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h8E-Ht-4Ma"/>
                             <constraint firstItem="FY5-QQ-ZGd" firstAttribute="top" secondItem="It7-ZO-OrS" secondAttribute="bottom" constant="43" id="m4o-D8-69K"/>
+                            <constraint firstItem="miq-ND-seP" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" id="mnu-90-e8o"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p76-3o-g8l"/>
                             <constraint firstItem="It7-ZO-OrS" firstAttribute="top" secondItem="i8a-0f-TGc" secondAttribute="bottom" constant="2" id="p8V-4e-dVn"/>
                             <constraint firstAttribute="bottom" secondItem="TUk-1a-k9T" secondAttribute="bottom" id="pdQ-HW-kkJ"/>
@@ -117,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-860" y="-1550"/>
+            <point key="canvasLocation" x="-860" y="-1398"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="n5x-sa-Cji">
@@ -268,13 +280,13 @@
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="88h-i1-sif">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioa-SA-C9P">
+                            <visualEffectView opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioa-SA-C9P">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dJo-py-1df">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqS-WU-bkt">
                                 <rect key="frame" x="155" y="462" width="290" height="50"/>
