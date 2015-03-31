@@ -15,6 +15,8 @@
 #import "Pivy.h"
 #import "Gallery.h"
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
+
 
 @interface CollectionViewController()
 
@@ -30,7 +32,7 @@
 @implementation CollectionViewController
 
 - (void)viewDidLoad {
-    
+    NSLog(@"\n\nENTROU NA COLLECTION VIEW\n\n\n\n\n");
     [super viewDidLoad];
     _reuseIdentifier =  @"Cell";
     
@@ -43,41 +45,48 @@
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
     
-    [self createCollection];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self createCollection];
-    if([PFUser currentUser])
+   [self createCollection];
+   if([PFUser currentUser])
        [self createGallery];
    [self.collectionView reloadData];
 }
 
 -(void)createCollection{
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
     
-    NSArray *objects = [[NSArray alloc]init];
-    objects = [query findObjects];
-    
-#ifndef NDEBUG
-    NSLog(@"%lu", (unsigned long)objects.count);
-#endif
-    if (objects) {
-        self.pivyDic = [[NSMutableDictionary alloc]init];
-        self.countries = [[NSMutableArray alloc]init];
-        for (Pivy *pivy in objects) {
-            if ([self.pivyDic objectForKey:pivy.Country]) {
-                [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
-            }else{
-                NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
-                [self.pivyDic setObject:pivyArray forKey:pivy.Country];
-                [self.countries addObject:pivy.Country];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects) {
+            self.pivyDic = [[NSMutableDictionary alloc]init];
+            self.countries = [[NSMutableArray alloc]init];
+            for (Pivy *pivy in objects) {
+                if ([self.pivyDic objectForKey:pivy.Country]) {
+                    [[self.pivyDic objectForKey:pivy.Country] addObject:pivy];
+                }else{
+                    NSMutableArray *pivyArray = [[NSMutableArray alloc]initWithObjects:pivy, nil];
+                    [self.pivyDic setObject:pivyArray forKey:pivy.Country];
+                    [self.countries addObject:pivy.Country];
+                }
             }
+            NSLog(@"TERMINEI O BG");
         }
-    }
+        if(error){
+            NSLog(@"ERRO: %@", error);
+        }
+       dispatch_async(dispatch_get_main_queue(), ^{
+           NSLog(@"CHEGUEI NO DISPATCH");
+           [MBProgressHUD hideHUDForView:self.view animated:YES];
+           [self.collectionView reloadData];
+       });
+    }];
+    
 
 }
 
