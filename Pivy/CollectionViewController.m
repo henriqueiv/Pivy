@@ -144,8 +144,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Pivy *pivy = [[Pivy alloc]init];
-    pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    Pivy *pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
     cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
@@ -157,16 +156,18 @@
             cell.contentView.alpha = 1;
         }
     }
+    
+    cell.imageCell.crossfadeDuration = 0;
 
     if(pivy.image){
         
-        [pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            UIImage *ourImage = [UIImage imageWithData:data];
-            cell.imageCell.image = ourImage;
-        }];
+        [AsyncImageLoader cancelPreviousPerformRequestsWithTarget:cell.imageCell];
+        cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
+        [cell.imageCell setImageURL:[NSURL URLWithString:(NSString *)[pivy.image url]]];
         
     }
     else{
+
         cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
     }
     return cell;

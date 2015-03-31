@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     page = 0;
 }
 
@@ -40,8 +41,12 @@
             NSLog(@"Ja executou o cara 1 vez");
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *vc = [sb instantiateInitialViewController];
-            [self presentViewController:vc animated:YES completion:nil];
+            
+            [[[UIApplication sharedApplication] delegate] window].rootViewController = vc;
+            
+//            [self presentViewController:vc animated:YES completion:nil];
         }else{
+            
             UIViewController *vc1 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"firstTutorial"];
             UIViewController *vc2 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"secondTutorial"];
             UIViewController *vc3 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"thirdTutorial"];
@@ -61,9 +66,9 @@
             
             vc5.view.frame = CGRectMake(vc1.view.frame.size.width*4, 0, vc5.view.frame.size.width, vc5.view.frame.size.height);
             [self.scrollView addSubview:vc5.view];
-            
+
+
             [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * 5, self.scrollView.frame.size.height)];
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         }
     }
 }
