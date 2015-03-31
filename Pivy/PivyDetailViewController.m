@@ -30,7 +30,7 @@
     [self checkIfHasPivy];
     
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
-    [self.btnGetPivy setTitle:@"Pivy not available" forState:UIControlStateDisabled];
+    [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
     _btnGetPivy.layer.cornerRadius = 18;
     _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
                                                      green:211/255.0f
@@ -117,8 +117,6 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
-    
-    
 }
 
 

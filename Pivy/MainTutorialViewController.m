@@ -131,11 +131,12 @@
     dispatch_async(kBgQueue, ^{
         [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
         [DataManager updateLocalDatastore:[Background parseClassName] inBackground:NO];
+        [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
         dispatch_async(dispatch_get_main_queue(), ^{
             // This is the first launch ever
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *vc = [sb instantiateInitialViewController];
