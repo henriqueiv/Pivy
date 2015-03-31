@@ -86,8 +86,24 @@
                 self.btnGetPivy.enabled = NO;
                 self.btnGetPivy.alpha = 0.5;
             }
-            else
-                self.btnGetPivy.enabled = YES;
+            else{
+                [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+                    PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
+                    [query fromLocalDatastore];
+                    query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
+                    query = [query whereKey:@"pivy" equalTo:self.pivy];
+                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                        if(object){
+                            self.btnGetPivy.enabled = YES;
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];                       }
+                        else{
+                            self.btnGetPivy.enabled = NO;
+                            self.btnGetPivy.alpha = 0.5;
+                        }
+                    }];
+                    
+                }];
+            }
         });
     }];
 }
@@ -100,9 +116,7 @@
         g.to = [PFUser currentUser];
         
         [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            NSLog(@"PINOU");
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"SAVOU");
                 if (succeeded) {
                     [g saveEventually];
                     [self checkIfHasPivy];
