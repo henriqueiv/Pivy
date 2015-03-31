@@ -58,8 +58,8 @@
                                                         green:211/255.0f
                                                          blue:10.0/255.0f
                                                         alpha:1.0f]];
-    [[UITabBar appearance] setTranslucent:NO];
-    [[UITabBar appearance] setAlpha:0.9f];
+//    [[UITabBar appearance] setTranslucent:NO];
+//    [[UITabBar appearance] setAlpha:0.9f];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
