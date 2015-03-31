@@ -23,6 +23,11 @@
     [self configureTabBar];
     [self configureNavigationBar];
     
+    UILocalNotification *launchNote = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (launchNote){
+        [self renumberBadgesOfPendingNotifications];
+    }
+    
     return YES;
 }
 
@@ -49,6 +54,7 @@
 -(void)configureParse{
     [Gallery registerSubclass];
     [Pivy registerSubclass];
+    [Background registerSubclass];
     
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
@@ -80,6 +86,49 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [[PFFacebookUtils session] close];
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSLog(@"Notificacao: %@", notification);
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pivy"
+                                                        message:notification.alertBody
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
+//     Send notification to do something
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+    [self renumberBadgesOfPendingNotifications];
+}
+
+- (void)renumberBadgesOfPendingNotifications{
+    // clear the badge on the icon
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+    // first get a copy of all pending notifications (unfortunately you cannot 'modify' a pending notification)
+    NSArray *pendingNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    
+    NSLog(@"pendingNotifications.count: %ld", pendingNotifications.count);
+    // if there are any pending notifications -> adjust their badge number
+    if (pendingNotifications.count != 0) {
+        // clear all pending notifications
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
+        // the for loop will 'restore' the pending notifications, but with corrected badge numbers
+        // note : a more advanced method could 'sort' the notifications first !!!
+        NSUInteger badgeNbr = 1;
+        
+        for (UILocalNotification *notification in pendingNotifications){
+            // modify the badgeNumber
+            notification.applicationIconBadgeNumber = badgeNbr++;
+            
+            // schedule 'again'
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
+    }
 }
 
 @end

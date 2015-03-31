@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="-215" y="1267"/>
         </scene>
-        <!--Main Tutorial View Controller-->
+        <!--View Controller-->
         <scene sceneID="Y12-41-HBq">
             <objects>
-                <viewController storyboardIdentifier="firstTutorial" id="C7l-N9-8me" customClass="MainTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstTutorial" id="C7l-N9-8me" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q4P-g8-nlc"/>
                         <viewControllerLayoutGuide type="bottom" id="8vf-oh-NGI"/>
@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="442" y="1258"/>
         </scene>
-        <!--Main Tutorial View Controller-->
+        <!--View Controller-->
         <scene sceneID="0mJ-eO-MgC">
             <objects>
-                <viewController storyboardIdentifier="secondTutorial" id="lpU-OU-a3t" customClass="MainTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondTutorial" id="lpU-OU-a3t" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3yJ-a0-70p"/>
                         <viewControllerLayoutGuide type="bottom" id="vYR-6J-9Ql"/>
@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="1070" y="1258"/>
         </scene>
-        <!--Main Tutorial View Controller-->
+        <!--View Controller-->
         <scene sceneID="X5E-ug-tgM">
             <objects>
-                <viewController storyboardIdentifier="thirdTutorial" id="jQm-Fw-tah" customClass="MainTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="thirdTutorial" id="jQm-Fw-tah" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mdn-Sa-fm1"/>
                         <viewControllerLayoutGuide type="bottom" id="pqw-fb-b4O"/>
@@ -252,10 +252,10 @@
             </objects>
             <point key="canvasLocation" x="1710" y="1258"/>
         </scene>
-        <!--Main Tutorial View Controller-->
+        <!--View Controller-->
         <scene sceneID="3WE-1R-lJN">
             <objects>
-                <viewController storyboardIdentifier="fourthTutorial" id="pOx-5g-ehF" customClass="MainTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fourthTutorial" id="pOx-5g-ehF" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="04f-JI-Kwq"/>
                         <viewControllerLayoutGuide type="bottom" id="y5q-J7-DVn"/>
@@ -308,10 +308,10 @@
             </objects>
             <point key="canvasLocation" x="2384" y="1258"/>
         </scene>
-        <!--Main Tutorial View Controller-->
+        <!--View Controller-->
         <scene sceneID="SS1-0t-Ijp">
             <objects>
-                <viewController storyboardIdentifier="fifthTutorial" id="z35-K0-pny" customClass="MainTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fifthTutorial" id="z35-K0-pny" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ENL-59-RxW"/>
                         <viewControllerLayoutGuide type="bottom" id="Fg8-Cb-imd"/>

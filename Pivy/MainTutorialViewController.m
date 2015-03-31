@@ -30,42 +30,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     page = 0;
+    NSLog(@"self.restorationIdentifier: %@", self.restorationIdentifier);
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
+        NSLog(@"Ja executou o cara 1 vez");
+        [self gotoApp];
+    }
 }
 
 -(void)viewDidLayoutSubviews{
-    NSLog(@"self.restorationIdentifier: %@", self.restorationIdentifier);
-    if ([self.restorationIdentifier isEqualToString:@"mainTutorialVC"]) {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]){
-            NSLog(@"Ja executou o cara 1 vez");
-            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *vc = [sb instantiateInitialViewController];
-            [self presentViewController:vc animated:YES completion:nil];
-        }else{
-            UIViewController *vc1 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"firstTutorial"];
-            UIViewController *vc2 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"secondTutorial"];
-            UIViewController *vc3 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"thirdTutorial"];
-            UIViewController *vc4 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"fourthTutorial"];
-            UIViewController *vc5 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"fifthTutorial"];
-            
-            [self.scrollView addSubview:vc1.view];
-            
-            vc2.view.frame = CGRectMake(vc1.view.frame.size.width, 0, vc2.view.frame.size.width, vc2.view.frame.size.height);
-            [self.scrollView addSubview:vc2.view];
-            
-            vc3.view.frame = CGRectMake(vc1.view.frame.size.width*2, 0, vc3.view.frame.size.width, vc3.view.frame.size.height);
-            [self.scrollView addSubview:vc3.view];
-            
-            vc4.view.frame = CGRectMake(vc1.view.frame.size.width*3, 0, vc4.view.frame.size.width, vc4.view.frame.size.height);
-            [self.scrollView addSubview:vc4.view];
-            
-            vc5.view.frame = CGRectMake(vc1.view.frame.size.width*4, 0, vc5.view.frame.size.width, vc5.view.frame.size.height);
-            [self.scrollView addSubview:vc5.view];
-            
-            [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * 5, self.scrollView.frame.size.height)];
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-        }
-    }
+    UIViewController *vc1 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"firstTutorial"];
+    UIViewController *vc2 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"secondTutorial"];
+    UIViewController *vc3 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"thirdTutorial"];
+    UIViewController *vc4 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"fourthTutorial"];
+    UIViewController *vc5 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"fifthTutorial"];
+    
+    [self.scrollView addSubview:vc1.view];
+    
+    vc2.view.frame = CGRectMake(vc1.view.frame.size.width, 0, vc2.view.frame.size.width, vc2.view.frame.size.height);
+    [self.scrollView addSubview:vc2.view];
+    
+    vc3.view.frame = CGRectMake(vc1.view.frame.size.width*2, 0, vc3.view.frame.size.width, vc3.view.frame.size.height);
+    [self.scrollView addSubview:vc3.view];
+    
+    vc4.view.frame = CGRectMake(vc1.view.frame.size.width*3, 0, vc4.view.frame.size.width, vc4.view.frame.size.height);
+    [self.scrollView addSubview:vc4.view];
+    
+    vc5.view.frame = CGRectMake(vc1.view.frame.size.width*4, 0, vc5.view.frame.size.width, vc5.view.frame.size.height);
+    [self.scrollView addSubview:vc5.view];
+    
+    
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * 5, self.scrollView.frame.size.height)];
 }
 
 
@@ -126,6 +122,12 @@
     }
 }
 
+-(void)gotoApp{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [sb instantiateInitialViewController];
+    [[[UIApplication sharedApplication] delegate] window].rootViewController = vc;
+}
+
 - (IBAction)downloadData:(id)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(kBgQueue, ^{
@@ -138,9 +140,7 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *vc = [sb instantiateInitialViewController];
-            [self presentViewController:vc animated:YES completion:nil];
+            [self gotoApp];
         });
     });
 }

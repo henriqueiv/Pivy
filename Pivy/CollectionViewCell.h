@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Pivy.h"
+#import "AsyncImageView.h"
 
 @interface CollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageCell;
+@property (weak, nonatomic) IBOutlet AsyncImageView *imageCell;
 @property (weak, nonatomic) Pivy *pivy;
 
 
