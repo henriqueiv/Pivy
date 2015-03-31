@@ -30,6 +30,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.tintColor = [UIColor colorWithRed:250/255.0f
+                                          green:211/255.0f
+                                           blue:10.0/255.0f
+                                          alpha:1.0f];
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;

@@ -18,6 +18,10 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UITextView *pivyDescription;
+@property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -33,6 +37,15 @@
     [self placeViewFromStoryboardOnTabBar];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
+    [self.btnGetPivy setTitle:@"Pivy not available" forState:UIControlStateDisabled];
+    _btnGetPivy.layer.cornerRadius = 18;
+    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
+                                                     green:211/255.0f
+                                                      blue:10.0/255.0f
+                                                     alpha:1.0f] CGColor];
+    _btnGetPivy.layer.borderWidth = 1;
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -169,19 +182,27 @@
         [query fromLocalDatastore];
         query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
         
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            for (Pivy *pivy in objects) {
-                NSLog(@"%@", objects);
-                _array = [NSMutableArray arrayWithArray:objects];
-                [self.tableView reloadData];
-                UILabel *tx = [[UILabel  alloc] init];
-                tx.frame = CGRectMake(0, 0, 100, 100);
-                tx.text = pivy.pivyDescription;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.view addSubview:tx];
-                });
-            }
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            Pivy *p = (Pivy *)object;
+            self.pivyDescription.text = p.pivyDescription;
+            self.image.image = [[UIImage alloc] initWithData:[p.image getData]];
+            self.nameLabel.text = p.name;
         }];
+        
+        
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            for (Pivy *pivy in objects) {
+//                NSLog(@"%@", objects);
+//                _array = [NSMutableArray arrayWithArray:objects];
+//                [self.tableView reloadData];
+//                UILabel *tx = [[UILabel  alloc] init];
+//                tx.frame = CGRectMake(0, 0, 100, 100);
+//                tx.text = pivy.pivyDescription;
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [self.view addSubview:tx];
+//                });
+//            }
+//        }];
         
         
     }];

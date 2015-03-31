@@ -25,8 +25,12 @@
     self.nameLabel.text = self.pivy.name;
     self.countryLabel.text = self.pivy.Country;
     self.descriptionTextView.text = self.pivy.pivyDescription;
+    self.imageView.image = [UIImage imageWithData:[self.pivy.image getData]];
+    
     [self checkIfHasPivy];
     
+    [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
+    [self.btnGetPivy setTitle:@"Pivy not available" forState:UIControlStateDisabled];
     _btnGetPivy.layer.cornerRadius = 18;
     _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
                                                      green:211/255.0f
@@ -81,10 +85,12 @@
     [query whereKey:@"pivy" equalTo:self.pivy];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (objects.count != 0)
-                self.btnGetPivy.hidden = YES;
+            if (objects.count != 0){
+                self.btnGetPivy.enabled = NO;
+                self.btnGetPivy.alpha = 0.5;
+            }
             else
-                self.btnGetPivy.hidden = NO;
+                self.btnGetPivy.enabled = YES;
         });
     }];
 }

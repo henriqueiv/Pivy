@@ -33,6 +33,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
     _nameLabel.text = [[PFUser currentUser]valueForKey:@"name"];
     _mailLabel.text = [[PFUser currentUser]valueForKey:@"email"];
 }
@@ -79,18 +80,22 @@
             switch (indexPath.row) {
                 case (kRowDownloadPIVY):{
                     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 case  (kRowClearPIVY):{
                     [DataManager deleteAll:[Pivy parseClassName] inBackground:NO];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 case  (kRowDownloadGallery):{
                     [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 case  (kRowClearGallery):{
                     [DataManager deleteAll:[Gallery parseClassName] inBackground:NO];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
                     break;
                 }
                 default:
