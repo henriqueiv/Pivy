@@ -157,13 +157,13 @@
     if(pivy.image){
         
         [AsyncImageLoader cancelPreviousPerformRequestsWithTarget:cell.imageCell];
-        cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
+        cell.imageCell.image = [UIImage imageNamed:@"PIVY_logo.png"];
         [cell.imageCell setImageURL:[NSURL URLWithString:(NSString *)[pivy.image url]]];
         
     }
     else{
 
-        cell.imageCell.image = [UIImage imageNamed:@"imageTest.png"];
+        cell.imageCell.image = [UIImage imageNamed:@"PIVY_logo.png"];
     }
     return cell;
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3eN-fL-d89">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3eN-fL-d89">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -324,19 +324,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-Ys-eLB">
-                                <rect key="frame" x="287" y="253" width="52" height="24"/>
+                                <rect key="frame" x="275" y="253" width="52" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to use the app off-line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="im2-yq-u8w">
-                                <rect key="frame" x="219" y="323" width="187.5" height="24"/>
+                                <rect key="frame" x="207" y="323" width="187.5" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEn-S0-c4I">
-                                <rect key="frame" x="246" y="282" width="135" height="35"/>
+                                <rect key="frame" x="234" y="282" width="135" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <state key="normal" title="Download Data">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -363,7 +363,7 @@
                             <constraint firstItem="sM0-Ys-eLB" firstAttribute="centerX" secondItem="1oK-5K-gts" secondAttribute="centerX" constant="13.5" id="kCB-jA-srK"/>
                             <constraint firstItem="AEn-S0-c4I" firstAttribute="centerX" secondItem="im2-yq-u8w" secondAttribute="centerX" constant="0.75" id="rVo-0O-2Ek"/>
                             <constraint firstItem="1oK-5K-gts" firstAttribute="leading" secondItem="ban-ls-Hgc" secondAttribute="leading" id="s2S-uU-Bcq"/>
-                            <constraint firstAttribute="centerX" secondItem="AEn-S0-c4I" secondAttribute="centerX" constant="-13.5" id="vVU-D3-5M6"/>
+                            <constraint firstAttribute="centerX" secondItem="AEn-S0-c4I" secondAttribute="centerX" constant="-1.5" id="vVU-D3-5M6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

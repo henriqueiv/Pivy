@@ -527,7 +527,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				402D37B61ACA5707002C0025 /* Localizable.strings in Resources */,
-				62451E191ACA4AA600C31557 /* Tutorial.storyboard in Resources */,
 				6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */,
 				35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */,
 				6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */,

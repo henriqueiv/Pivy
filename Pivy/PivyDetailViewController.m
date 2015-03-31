@@ -43,10 +43,10 @@
     [self setBackgroundForCountryCode:self.pivy.countryCode];
     
     //Add blur effect to background
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    effectView.frame = self.view.frame;
-    [self.backgroundImageView addSubview:effectView];
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+//    effectView.frame = self.view.frame;
+//    [self.backgroundImageView addSubview:effectView];
 }
 
 
@@ -60,10 +60,6 @@
             [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.backgroundImageView.image = [UIImage imageWithData:data];
-                    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-                    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-                    effectView.frame = self.view.frame;
-                    [self.backgroundImageView addSubview:effectView];
                     NSLog(@"Background alterado com sucesso");
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });

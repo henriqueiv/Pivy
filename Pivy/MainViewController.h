@@ -16,7 +16,7 @@
 #import <Parse/Parse.h>
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource>{
+@interface MainViewController : UIViewController <CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
     Reachability *internetReachable;    

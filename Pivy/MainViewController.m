@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextView *pivyDescription;
 @property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) NSMutableArray *array;
 
@@ -29,8 +28,6 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor yellowColor]];
     [self placeViewFromStoryboardOnTabBar];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
     
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
@@ -107,7 +104,7 @@
                         if(!error){
                             [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    _backgroundImageView.image = [UIImage imageWithData:data];
+                                    self.backgroundImageView.image = [UIImage imageWithData:data];
                                     //                                    NSLog(@"Background alterado com sucesso");
                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 });
@@ -186,6 +183,7 @@
         query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             Pivy *p = (Pivy *)object;
+            self.pivy = p;
             self.pivyDescription.text = p.pivyDescription;
             self.image.image = [[UIImage alloc] initWithData:[p.image getData]];
             self.nameLabel.text = p.name;
@@ -234,16 +232,6 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = @"Fuck the system";
-    return cell;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {

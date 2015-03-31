@@ -63,9 +63,9 @@
                                 </constraints>
                             </imageView>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="No description available" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="It7-ZO-OrS">
-                                <rect key="frame" x="155" y="280" width="290" height="120"/>
+                                <rect key="frame" x="155" y="280" width="290" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="ZL3-MN-C6F"/>
+                                    <constraint firstAttribute="height" constant="170" id="ZL3-MN-C6F"/>
                                     <constraint firstAttribute="width" constant="290" id="mvy-YU-pM5"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,7 +73,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FY5-QQ-ZGd">
-                                <rect key="frame" x="155" y="408" width="290" height="50"/>
+                                <rect key="frame" x="155" y="493" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9yF-11-tjI"/>
@@ -98,7 +98,7 @@
                             <constraint firstAttribute="trailing" secondItem="GRL-4r-Lk6" secondAttribute="trailing" id="dk5-Kf-4e3"/>
                             <constraint firstItem="i8a-0f-TGc" firstAttribute="top" secondItem="GRL-4r-Lk6" secondAttribute="bottom" constant="16" id="fVG-Nd-Ecs"/>
                             <constraint firstItem="GRL-4r-Lk6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h8E-Ht-4Ma"/>
-                            <constraint firstItem="FY5-QQ-ZGd" firstAttribute="top" secondItem="It7-ZO-OrS" secondAttribute="bottom" constant="8" id="m4o-D8-69K"/>
+                            <constraint firstItem="FY5-QQ-ZGd" firstAttribute="top" secondItem="It7-ZO-OrS" secondAttribute="bottom" constant="43" id="m4o-D8-69K"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p76-3o-g8l"/>
                             <constraint firstItem="It7-ZO-OrS" firstAttribute="top" secondItem="i8a-0f-TGc" secondAttribute="bottom" constant="2" id="p8V-4e-dVn"/>
                             <constraint firstAttribute="bottom" secondItem="TUk-1a-k9T" secondAttribute="bottom" id="pdQ-HW-kkJ"/>
@@ -264,6 +264,14 @@
                             <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="88h-i1-sif">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioa-SA-C9P">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dJo-py-1df">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqS-WU-bkt">
                                 <rect key="frame" x="155" y="462" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -280,7 +288,7 @@
                                     <action selector="getPivy:" destination="L9M-Dc-DQz" eventType="touchUpInside" id="ezq-Iw-j0D"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageTest" translatesAutoresizingMaskIntoConstraints="NO" id="Bxg-Ib-QtB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIVY_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bxg-Ib-QtB">
                                 <rect key="frame" x="200" y="132" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="6fv-HF-R4w"/>
@@ -332,8 +340,12 @@
                             <constraint firstItem="OVS-MV-wko" firstAttribute="top" secondItem="Bxg-Ib-QtB" secondAttribute="bottom" constant="8" id="bIt-sp-Hr8"/>
                             <constraint firstItem="OVS-MV-wko" firstAttribute="top" secondItem="Bxg-Ib-QtB" secondAttribute="bottom" constant="2" id="dtT-UZ-KI6"/>
                             <constraint firstItem="Bxg-Ib-QtB" firstAttribute="top" secondItem="iyq-mj-7B6" secondAttribute="bottom" constant="68" id="hFl-k0-fs6"/>
+                            <constraint firstAttribute="trailing" secondItem="Ioa-SA-C9P" secondAttribute="trailing" id="jJK-MJ-GsY"/>
                             <constraint firstAttribute="centerX" secondItem="OVS-MV-wko" secondAttribute="centerX" id="nCH-DH-zJF"/>
+                            <constraint firstItem="Ioa-SA-C9P" firstAttribute="leading" secondItem="LLb-c4-uyY" secondAttribute="leading" id="qiD-Q7-nht"/>
+                            <constraint firstAttribute="bottom" secondItem="Ioa-SA-C9P" secondAttribute="bottom" id="sIS-cj-VKn"/>
                             <constraint firstItem="88h-i1-sif" firstAttribute="top" secondItem="LLb-c4-uyY" secondAttribute="topMargin" id="sz8-dV-WHU"/>
+                            <constraint firstItem="Ioa-SA-C9P" firstAttribute="top" secondItem="iyq-mj-7B6" secondAttribute="bottom" id="zJL-f5-WR6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -376,7 +388,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="imageTest" width="453" height="595"/>
+        <image name="PIVY_logo" width="478" height="262"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TuR-Ye-sG1"/>
