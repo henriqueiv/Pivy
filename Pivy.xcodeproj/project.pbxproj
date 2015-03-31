@@ -43,6 +43,8 @@
 		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
 		62451E121AC9CC6B00C31557 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E111AC9CC6B00C31557 /* DataManager.m */; };
+		62451E171ACA4A8B00C31557 /* MainTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E161ACA4A8B00C31557 /* MainTutorialViewController.m */; };
+		62451E191ACA4AA600C31557 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
 		624B5A9C1AC47BAC00290D72 /* PivyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */; };
 		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
 		6292E1821AC34AC500B28CE0 /* RWBlurPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */; };
@@ -122,6 +124,9 @@
 		623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDetailViewController.m; sourceTree = "<group>"; };
 		62451E101AC9CC6B00C31557 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		62451E111AC9CC6B00C31557 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		62451E151ACA4A8B00C31557 /* MainTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTutorialViewController.h; sourceTree = "<group>"; };
+		62451E161ACA4A8B00C31557 /* MainTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTutorialViewController.m; sourceTree = "<group>"; };
+		62451E181ACA4AA600C31557 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		624B5A9A1AC47BAC00290D72 /* PivyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDataManager.h; sourceTree = "<group>"; };
 		624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PivyDataManager.m; sourceTree = "<group>"; };
 		6292E17C1AC31F4200B28CE0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -260,6 +265,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		62451E1A1ACA4AB400C31557 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				62451E151ACA4A8B00C31557 /* MainTutorialViewController.h */,
+				62451E161ACA4A8B00C31557 /* MainTutorialViewController.m */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
 		627B17411AC7749800C81E90 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +290,7 @@
 		6292E1761AC30AFE00B28CE0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				62451E1A1ACA4AB400C31557 /* Tutorial */,
 				627B17411AC7749800C81E90 /* DataManager */,
 				52C1645F1AC5A4E7008E8B2F /* Detail */,
 				6292E17F1AC320ED00B28CE0 /* Main */,
@@ -290,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				52C1645C1AC4859C008E8B2F /* Collection */,
+				62451E181ACA4AA600C31557 /* Tutorial.storyboard */,
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
 				35C3A6031AC1D6590067BAAE /* More.storyboard */,
@@ -496,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62451E191ACA4AA600C31557 /* Tutorial.storyboard in Resources */,
 				6222C8A81ABB47F1008B5970 /* Main.storyboard in Resources */,
 				35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */,
 				6222C8AD1ABB47F1008B5970 /* LaunchScreen.xib in Resources */,
@@ -540,6 +557,7 @@
 				52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
+				62451E171ACA4A8B00C31557 /* MainTutorialViewController.m in Sources */,
 				62ED49261AC5B974002CCE90 /* Gallery.m in Sources */,
 				35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */,
 			);

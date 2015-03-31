@@ -40,15 +40,15 @@
             [self setBackground];
         });
     });
-
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 -(void) setBackground{
     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-    NSLog(@"Country code: %@", countryCode);
+//    NSLog(@"Country code: %@", countryCode);
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
     [query fromLocalDatastore];
-    NSLog(@"Inicio query de Backgrounds");
+//    NSLog(@"Inicio query de Backgrounds");
     [query whereKey:@"country" equalTo:countryCode];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if(!error){
@@ -60,7 +60,7 @@
                     effectView.alpha = 0.8;
                     effectView.frame = self.view.frame;
                     [self.backgroundImageView addSubview:effectView];
-                    NSLog(@"Background alterado com sucesso");
+//                    NSLog(@"Background alterado com sucesso");
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }];
@@ -82,20 +82,20 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
             if(succeeded){
-                NSLog(@"****** %@ Pinado na MAIN ******", class);
+//                NSLog(@"****** %@ Pinado na MAIN ******", class);
                 if ([class isEqualToString:@"Background"]) {
                     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-                    NSLog(@"Country code: %@", countryCode);
+//                    NSLog(@"Country code: %@", countryCode);
                     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
                     [query fromLocalDatastore];
-                    NSLog(@"Inicio query de Backgrounds");
+//                    NSLog(@"Inicio query de Backgrounds");
                     [query whereKey:@"country" equalTo:countryCode];
                     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                         if(!error){
                             [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     _backgroundImageView.image = [UIImage imageWithData:data];
-                                    NSLog(@"Background alterado com sucesso");
+//                                    NSLog(@"Background alterado com sucesso");
                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 });
                             }];
@@ -132,7 +132,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
     NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];
     UIViewController *vc;
-    NSLog(@"%@", [PFUser currentUser]);
+//    NSLog(@"%@", [PFUser currentUser]);
     if ([PFUser currentUser])
         vc = [sb instantiateViewControllerWithIdentifier:@"logged"];
     else

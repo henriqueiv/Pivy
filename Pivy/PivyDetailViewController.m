@@ -90,7 +90,6 @@
 }
 
 - (IBAction)getPivy:(UIButton *)sender {
-    
     if ([PFUser currentUser]) {
         Gallery *g = [[Gallery alloc] init];
         g.pivy = self.pivy;
@@ -104,6 +103,7 @@
                 if (succeeded) {
                     [g saveEventually];
                     [self checkIfHasPivy];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];
                 }
             });
         }];

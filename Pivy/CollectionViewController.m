@@ -43,23 +43,26 @@
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.allowsSelection = YES;
     self.navigationController.navigationBar.hidden = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleGetPivyNotification:)
+                                                 name:@"GetPivyNotification"
+                                               object:nil];
+    [self createCollection];
+    if([PFUser currentUser])
+        [self createGallery];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-   [self createCollection];
-   if([PFUser currentUser])
-       [self createGallery];
+-(void)handleGetPivyNotification:(Pivy*) pivy{
+    if([PFUser currentUser])
+        [self createGallery];
    [self.collectionView reloadData];
 }
 
 -(void)createCollection{
-
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     PFQuery *query = [Pivy query];
     [query fromLocalDatastore];
     [query orderByAscending:@"Country"];
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects) {
             self.pivyDic = [[NSMutableDictionary alloc]init];
@@ -89,10 +92,7 @@
 -(void)createGallery{
     PFQuery *galleryQuery = [Gallery query];
     [galleryQuery fromLocalDatastore];
-    
     [galleryQuery whereKey:@"from" equalTo:[PFUser currentUser]];
-    
-    
     [galleryQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(objects){
             self.galleryArray = [[NSArray alloc] initWithArray:objects];
