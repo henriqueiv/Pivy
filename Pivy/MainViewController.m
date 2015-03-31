@@ -14,10 +14,15 @@
 #import "Background.h"
 #import "GalleryDataManager.h"
 #import "DataManager.h"
+#import "MainTableViewCell.h"
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainViewController ()
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) NSMutableArray *array;
+
 @end
 
 @implementation MainViewController
@@ -26,6 +31,8 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor yellowColor]];
     [self placeViewFromStoryboardOnTabBar];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -155,7 +162,7 @@
     }];
 }
 
--(void)getPivysWithinKilometers:(int)km{
+-(NSArray *)getPivysWithinKilometers:(int)km{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         
         PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
@@ -164,6 +171,9 @@
         
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             for (Pivy *pivy in objects) {
+                NSLog(@"%@", objects);
+                _array = [NSMutableArray arrayWithArray:objects];
+                [self.tableView reloadData];
                 UILabel *tx = [[UILabel  alloc] init];
                 tx.frame = CGRectMake(0, 0, 100, 100);
                 tx.text = pivy.pivyDescription;
@@ -173,9 +183,21 @@
             }
         }];
         
+        
     }];
+    return nil;
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 2;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MainTableViewCell *cell = [[MainTableViewCell alloc] init];
+//    Pivy *pivy = (Pivy *)[_array objectAtIndex:indexPath.row];
+    cell.nameLabel.text = @"Fuck the system";
+    return cell;
+}
 //- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 //    [self reverseGeocode:newLocation];
 //        NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);

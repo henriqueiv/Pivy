@@ -40,23 +40,67 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="316" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-Yu-vHn">
+                                <rect key="frame" x="0.0" y="0.0" width="611" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="316" id="PZj-u0-1BT" customClass="MainTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PZj-u0-1BT" id="51p-0X-RTd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mob-ZT-c9T">
+                                                    <rect key="frame" x="8" y="38" width="46" height="30"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8E-AB-xjB">
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bannerFrance" translatesAutoresizingMaskIntoConstraints="NO" id="qc9-2t-Yj6">
+                                                    <rect key="frame" x="13" y="81" width="200" height="200.5"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="getButton" destination="Mob-ZT-c9T" id="8Qc-FN-njP"/>
+                                            <outlet property="image" destination="qc9-2t-Yj6" id="E0c-DR-SCk"/>
+                                            <outlet property="nameLabel" destination="R8E-AB-xjB" id="7N9-t1-Wqb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="KVJ-UZ-go1"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="djj-8D-hNH"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nrL-Yu-vHn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HgC-Rx-Qns"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KSJ-eW-NYK"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Pbf-Jh-xOc"/>
+                            <constraint firstAttribute="trailing" secondItem="nrL-Yu-vHn" secondAttribute="trailing" id="Se5-Is-MRa"/>
+                            <constraint firstItem="nrL-Yu-vHn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zek-fW-SDg"/>
                             <constraint firstAttribute="bottom" secondItem="TUk-1a-k9T" secondAttribute="bottom" id="iET-Ep-Pma"/>
+                            <constraint firstAttribute="bottom" secondItem="nrL-Yu-vHn" secondAttribute="bottom" id="tOd-AM-JhS"/>
                             <constraint firstAttribute="trailing" secondItem="TUk-1a-k9T" secondAttribute="trailing" id="u2p-jg-hWF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="featured" id="AfX-FJ-cF5"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="TUk-1a-k9T" id="Hc1-VL-3AG"/>
+                        <outlet property="tableView" destination="nrL-Yu-vHn" id="LpF-a6-cEb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-852" y="-1412"/>
+            <point key="canvasLocation" x="-860" y="-1550"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="n5x-sa-Cji">
@@ -291,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n4-CD-nSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831" y="-1385"/>
+            <point key="canvasLocation" x="801" y="-408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2tP-aJ-3In">
@@ -314,6 +358,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bannerFrance" width="1200" height="100"/>
         <image name="imageTest" width="453" height="595"/>
     </resources>
     <inferredMetricsTieBreakers>
