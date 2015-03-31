@@ -46,7 +46,6 @@
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
 		62451E121AC9CC6B00C31557 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E111AC9CC6B00C31557 /* DataManager.m */; };
 		62451E171ACA4A8B00C31557 /* MainTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E161ACA4A8B00C31557 /* MainTutorialViewController.m */; };
-		62451E191ACA4AA600C31557 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
 		62451E1E1ACADECA00C31557 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E1D1ACADECA00C31557 /* AsyncImageView.m */; };
 		624B5A9C1AC47BAC00290D72 /* PivyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 624B5A9B1AC47BAC00290D72 /* PivyDataManager.m */; };
 		6292E17E1AC31F4200B28CE0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6292E17D1AC31F4200B28CE0 /* Reachability.m */; };
@@ -117,6 +116,9 @@
 		52C164581AC48546008E8B2F /* CollectionViewCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCellHeader.h; sourceTree = "<group>"; };
 		52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCellHeader.m; sourceTree = "<group>"; };
 		52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		52E2B71F1ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		52E2B7201ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		52E2B7211ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				en,
 				Base,
 				pt,
+				fr,
 			);
 			mainGroup = 6222C8901ABB47F1008B5970;
 			productRefGroup = 6222C89A1ABB47F1008B5970 /* Products */;
@@ -616,6 +619,7 @@
 				402D37B71ACA5707002C0025 /* en */,
 				402D37B91ACA5720002C0025 /* Base */,
 				402D37BA1ACA5722002C0025 /* pt */,
+				52E2B71F1ACB0F49008B62E5 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -625,6 +629,7 @@
 			children = (
 				6222C8A71ABB47F1008B5970 /* Base */,
 				402D37B51ACA56B0002C0025 /* pt */,
+				52E2B7211ACB0F49008B62E5 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 			children = (
 				6222C8AC1ABB47F1008B5970 /* Base */,
 				402D37B41ACA56B0002C0025 /* pt */,
+				52E2B7201ACB0F49008B62E5 /* fr */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
