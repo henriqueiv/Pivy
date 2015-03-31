@@ -15,6 +15,7 @@
 #import "GalleryDataManager.h"
 #import "DataManager.h"
 #import "MainTableViewCell.h"
+
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
 @interface MainViewController ()
@@ -49,9 +50,9 @@
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
+    //    locationManager.distanceFilter = kDistanceFilter; The default distanceFilter for startMonitoringSignificantLocationChanges is 500 meters.
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    [locationManager startMonitoringSignificantLocationChanges];
     [self getPivysWithinKilometers:1];
     
     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
@@ -66,10 +67,10 @@
 
 - (void)setBackground{
     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-//    NSLog(@"Country code: %@", countryCode);
+    //    NSLog(@"Country code: %@", countryCode);
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
     [query fromLocalDatastore];
-//    NSLog(@"Inicio query de Backgrounds");
+    //    NSLog(@"Inicio query de Backgrounds");
     [query whereKey:@"country" equalTo:countryCode];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if(!error){
@@ -81,7 +82,7 @@
                     effectView.alpha = 0.8;
                     effectView.frame = self.view.frame;
                     [self.backgroundImageView addSubview:effectView];
-//                    NSLog(@"Background alterado com sucesso");
+                    //                    NSLog(@"Background alterado com sucesso");
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }];
@@ -103,20 +104,20 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
             if(succeeded){
-//                NSLog(@"****** %@ Pinado na MAIN ******", class);
+                //                NSLog(@"****** %@ Pinado na MAIN ******", class);
                 if ([class isEqualToString:@"Background"]) {
                     NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-//                    NSLog(@"Country code: %@", countryCode);
+                    //                    NSLog(@"Country code: %@", countryCode);
                     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
                     [query fromLocalDatastore];
-//                    NSLog(@"Inicio query de Backgrounds");
+                    //                    NSLog(@"Inicio query de Backgrounds");
                     [query whereKey:@"country" equalTo:countryCode];
                     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                         if(!error){
                             [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     _backgroundImageView.image = [UIImage imageWithData:data];
-//                                    NSLog(@"Background alterado com sucesso");
+                                    //                                    NSLog(@"Background alterado com sucesso");
                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                                 });
                             }];
@@ -153,7 +154,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
     NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];
     UIViewController *vc;
-//    NSLog(@"%@", [PFUser currentUser]);
+    //    NSLog(@"%@", [PFUser currentUser]);
     if ([PFUser currentUser])
         vc = [sb instantiateViewControllerWithIdentifier:@"logged"];
     else
@@ -169,41 +170,36 @@
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error) {
             CLPlacemark *placemark = [placemarks lastObject];
-                        NSLog(@"Country with placemark: %@", placemark);
+            NSLog(@"Country with placemark: %@", placemark);
         } else
             NSLog(@"Error %@", error.description);
     }];
 }
 
+-(void)sendPush:(Pivy*) pivy{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [NSDate date];
+    notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", pivy.name];
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+
+    NSUInteger nextBadgeNumber = [[[UIApplication sharedApplication] scheduledLocalNotifications] count] + 1;
+    NSLog(@"nextBadgeNumber: %d", nextBadgeNumber);
+    notification.applicationIconBadgeNumber = nextBadgeNumber;
+}
+
 -(NSArray *)getPivysWithinKilometers:(int)km{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        
         PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
         [query fromLocalDatastore];
         query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
-        
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             Pivy *p = (Pivy *)object;
             self.pivyDescription.text = p.pivyDescription;
             self.image.image = [[UIImage alloc] initWithData:[p.image getData]];
             self.nameLabel.text = p.name;
+            [self sendPush:p];
         }];
-        
-        
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            for (Pivy *pivy in objects) {
-//                NSLog(@"%@", objects);
-//                _array = [NSMutableArray arrayWithArray:objects];
-//                [self.tableView reloadData];
-//                UILabel *tx = [[UILabel  alloc] init];
-//                tx.frame = CGRectMake(0, 0, 100, 100);
-//                tx.text = pivy.pivyDescription;
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [self.view addSubview:tx];
-//                });
-//            }
-//        }];
-        
         
     }];
     return nil;
@@ -215,12 +211,12 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MainTableViewCell *cell = [[MainTableViewCell alloc] init];
-//    Pivy *pivy = (Pivy *)[_array objectAtIndex:indexPath.row];
     cell.nameLabel.text = @"Fuck the system";
     return cell;
 }
-//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-//    [self reverseGeocode:newLocation];
-//        NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-//}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    [self getPivysWithinKilometers:1];
+}
+
 @end
