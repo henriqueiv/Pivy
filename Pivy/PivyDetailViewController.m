@@ -27,7 +27,11 @@
     self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
     self.countryLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.Country, @"Pivy's country")];
     self.descriptionTextView.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.pivyDescription, @"Pivy's description")];
-    
+    [self.pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageView.image = [UIImage imageWithData:data];
+        });
+    }];
     [self checkIfHasPivy];
     
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
