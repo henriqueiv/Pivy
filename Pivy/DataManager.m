@@ -128,6 +128,15 @@
 + (void) deleteAll:(NSString*) className inBackground:(BOOL)inBackground{
     PFQuery *query = [PFQuery queryWithClassName:className];
     [query fromLocalDatastore];
+    if([className isEqualToString:[Gallery parseClassName]]){
+        if ([PFUser currentUser]){
+            [query whereKey:@"to" equalTo:[PFUser currentUser]];
+        }else{
+            NSLog(@"DataManager.downloadFromParse:: Para utilizar a galeria tem que setar o usuario animal!");
+            return;
+        }
+    }
+    
     if (!inBackground) {
         NSError *error;
         NSArray *objs = [query findObjects:&error];
