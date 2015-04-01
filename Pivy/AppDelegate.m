@@ -86,16 +86,17 @@
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    NSLog(@"Notificacao: %@", notification);
-    UIApplicationState state = [application applicationState];
-    if (state == UIApplicationStateActive) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pivy"
-                                                        message:notification.alertBody
-                                                       delegate:self cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+//    NSLog(@"Notificacao: %@", notification);
+    if (notification.alertBody) {
+        UIApplicationState state = [application applicationState];
+        if (state == UIApplicationStateActive) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pivy"
+                                                            message:notification.alertBody
+                                                           delegate:self cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
     }
-    
 //     Send notification to do something
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
     [self renumberBadgesOfPendingNotifications];
@@ -108,7 +109,7 @@
     // first get a copy of all pending notifications (unfortunately you cannot 'modify' a pending notification)
     NSArray *pendingNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     
-    NSLog(@"pendingNotifications.count: %ld", pendingNotifications.count);
+//    NSLog(@"pendingNotifications.count: %ld", pendingNotifications.count);
     // if there are any pending notifications -> adjust their badge number
     if (pendingNotifications.count != 0) {
         // clear all pending notifications
