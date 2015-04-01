@@ -80,7 +80,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (objects.count != 0){
-                [self.btnGetPivy setTitle:@"You have this one" forState:UIControlStateDisabled];
+                [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
                 self.btnGetPivy.enabled = NO;
                 self.btnGetPivy.alpha = 0.5;
             }
