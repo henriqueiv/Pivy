@@ -30,9 +30,11 @@
         });
     }];
     [self checkIfHasPivy];
+//    [self checkPivyEnabled];
     
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
+    
     _btnGetPivy.layer.cornerRadius = 18;
     _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
                                                      green:211/255.0f
@@ -69,13 +71,16 @@
     }];
 }
 
+
 -(void)checkIfHasPivy{
     PFQuery *query = [Gallery query];
     [query fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (objects.count != 0){
+                [self.btnGetPivy setTitle:@"You have this one" forState:UIControlStateDisabled];
                 self.btnGetPivy.enabled = NO;
                 self.btnGetPivy.alpha = 0.5;
             }
@@ -88,9 +93,11 @@
                         if(object){
                             Pivy *pivy = (Pivy*)object;
                             if([pivy isEqual:self.pivy]){
+                                self.btnGetPivy.titleLabel.text = @"GET";
                                 self.btnGetPivy.enabled = YES;
                             }
                             else{
+                                [self.btnGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
                                 self.btnGetPivy.enabled = NO;
                                 self.btnGetPivy.alpha = 0.5;
                             }
@@ -99,10 +106,10 @@
                             self.btnGetPivy.alpha = 0.5;
                         }
                     }];
-                    
                 }];
             }
         });
+        
     }];
 }
 
