@@ -35,9 +35,9 @@
 	<string>Pivy</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Geolocation is the heart of our app!</string>
 	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Geolocation is the heart of our app!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Geolocation is the heart of our app!</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -50,8 +50,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

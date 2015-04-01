@@ -22,10 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    //    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: color}];
-    //    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
-    
+    _usernameField.delegate = self;
+    _passwordField.delegate = self;
     
     //Chage placeholder color
     UIColor *color = [UIColor lightTextColor];
@@ -34,6 +32,18 @@
     _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"User's password") attributes:@{NSForegroundColorAttributeName: color}];
     
    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == _usernameField){
+        [_passwordField becomeFirstResponder];
+    }else if(theTextField ==_passwordField){
+        [self loginButton:nil];
+    }
+    return YES;
+}
+- (IBAction)dismissKeyboard:(id)sender {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)loginButton:(UIButton *)sender {

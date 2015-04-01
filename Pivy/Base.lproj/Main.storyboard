@@ -50,7 +50,7 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Pivys nearby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-4r-Lk6">
-                                <rect key="frame" x="0.0" y="10" width="600" height="52"/>
+                                <rect key="frame" x="0.0" y="15" width="600" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2BZ-Fd-jiV"/>
                                     <constraint firstAttribute="height" constant="52" id="EVH-Vh-bFd"/>
@@ -65,17 +65,18 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIVY_logo" translatesAutoresizingMaskIntoConstraints="NO" id="i8a-0f-TGc">
-                                <rect key="frame" x="200" y="78" width="200" height="200"/>
+                                <rect key="frame" x="200" y="83" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="M4U-AX-EaI"/>
                                     <constraint firstAttribute="height" constant="200" id="frc-o2-DF8"/>
                                 </constraints>
                             </imageView>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="No description available" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="It7-ZO-OrS">
-                                <rect key="frame" x="155" y="280" width="290" height="170"/>
+                                <rect key="frame" x="155" y="285" width="290" height="165"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="ZL3-MN-C6F"/>
+                                    <constraint firstAttribute="height" priority="750" constant="170" id="ZL3-MN-C6F"/>
                                     <constraint firstAttribute="width" constant="290" id="mvy-YU-pM5"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="nfi-Pq-RFg"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -101,16 +102,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="It7-ZO-OrS" secondAttribute="centerX" id="Fuv-bq-iBW"/>
-                            <constraint firstItem="GRL-4r-Lk6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="10" id="K4O-sE-3tG"/>
+                            <constraint firstItem="GRL-4r-Lk6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="15" id="K4O-sE-3tG"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PEV-G2-fUw"/>
                             <constraint firstAttribute="centerX" secondItem="FY5-QQ-ZGd" secondAttribute="centerX" id="Rb9-LU-0q9"/>
                             <constraint firstItem="miq-ND-seP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="TqI-Gu-gWX"/>
                             <constraint firstItem="miq-ND-seP" firstAttribute="trailingMargin" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="16" id="ddp-Ra-4kp"/>
+                            <constraint firstItem="FY5-QQ-ZGd" firstAttribute="top" secondItem="miq-ND-seP" secondAttribute="bottom" constant="-107" id="dgd-ni-KwI"/>
                             <constraint firstAttribute="trailing" secondItem="GRL-4r-Lk6" secondAttribute="trailing" id="dk5-Kf-4e3"/>
                             <constraint firstItem="i8a-0f-TGc" firstAttribute="top" secondItem="GRL-4r-Lk6" secondAttribute="bottom" constant="16" id="fVG-Nd-Ecs"/>
                             <constraint firstItem="miq-ND-seP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="fXj-eS-fnW"/>
                             <constraint firstItem="GRL-4r-Lk6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h8E-Ht-4Ma"/>
-                            <constraint firstItem="FY5-QQ-ZGd" firstAttribute="top" secondItem="It7-ZO-OrS" secondAttribute="bottom" constant="43" id="m4o-D8-69K"/>
+                            <constraint firstItem="FY5-QQ-ZGd" firstAttribute="top" secondItem="It7-ZO-OrS" secondAttribute="bottom" priority="900" constant="43" id="m4o-D8-69K"/>
                             <constraint firstItem="miq-ND-seP" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" id="mnu-90-e8o"/>
                             <constraint firstItem="TUk-1a-k9T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p76-3o-g8l"/>
                             <constraint firstItem="It7-ZO-OrS" firstAttribute="top" secondItem="i8a-0f-TGc" secondAttribute="bottom" constant="2" id="p8V-4e-dVn"/>
@@ -176,7 +178,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="e8L-Qb-t6L" customClass="CollectionViewCellHeader">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="26"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PIVY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kic-L3-ihT">
@@ -291,19 +293,8 @@
                                                 <constraint firstAttribute="width" constant="200" id="Y2g-L8-5BC"/>
                                             </constraints>
                                         </imageView>
-                                        <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-MV-wko">
-                                            <rect key="frame" x="155" y="305" width="290" height="120"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="290" id="T3Z-tH-MT6"/>
-                                                <constraint firstAttribute="height" constant="120" id="ujF-vr-lUl"/>
-                                            </constraints>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaX-0O-9XZ">
-                                            <rect key="frame" x="0.0" y="23" width="600" height="52"/>
+                                            <rect key="frame" x="0.0" y="20" width="600" height="52"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="Dfp-vE-iBd"/>
                                                 <constraint firstAttribute="width" secondItem="NaX-0O-9XZ" secondAttribute="height" multiplier="150:13" id="nTM-Ib-B1f"/>
@@ -333,19 +324,37 @@
                                                 <action selector="getPivy:" destination="L9M-Dc-DQz" eventType="touchUpInside" id="ezq-Iw-j0D"/>
                                             </connections>
                                         </button>
+                                        <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-MV-wko">
+                                            <rect key="frame" x="155" y="305" width="290" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="290" id="T3Z-tH-MT6"/>
+                                                <constraint firstAttribute="height" constant="120" id="ujF-vr-lUl"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="NqS-WU-bkt" secondAttribute="bottom" constant="53" id="2Gk-PB-IYZ"/>
+                                        <constraint firstItem="Bxg-Ib-QtB" firstAttribute="top" secondItem="NaX-0O-9XZ" secondAttribute="bottom" constant="25" id="6PW-sK-jY6"/>
                                         <constraint firstItem="NaX-0O-9XZ" firstAttribute="leading" secondItem="dJo-py-1df" secondAttribute="leading" id="BdG-bF-KZv"/>
                                         <constraint firstAttribute="centerX" secondItem="Bxg-Ib-QtB" secondAttribute="centerX" id="CwK-RI-yze"/>
                                         <constraint firstItem="NqS-WU-bkt" firstAttribute="width" secondItem="OVS-MV-wko" secondAttribute="width" id="FeM-OA-IPh"/>
                                         <constraint firstItem="NqS-WU-bkt" firstAttribute="top" secondItem="OVS-MV-wko" secondAttribute="bottom" constant="8" id="JDq-jh-1Y1"/>
-                                        <constraint firstItem="NaX-0O-9XZ" firstAttribute="top" secondItem="dJo-py-1df" secondAttribute="top" constant="23" id="KCG-2E-c3J"/>
+                                        <constraint firstItem="NaX-0O-9XZ" firstAttribute="top" secondItem="dJo-py-1df" secondAttribute="top" constant="20" id="KCG-2E-c3J"/>
                                         <constraint firstAttribute="centerX" secondItem="NqS-WU-bkt" secondAttribute="centerX" id="Lzd-zX-XY2"/>
                                         <constraint firstAttribute="centerX" secondItem="OVS-MV-wko" secondAttribute="centerX" id="QnU-F1-CDN"/>
                                         <constraint firstItem="Bxg-Ib-QtB" firstAttribute="top" secondItem="NaX-0O-9XZ" secondAttribute="bottom" constant="22" id="SV7-0P-Zq7"/>
                                         <constraint firstAttribute="trailing" secondItem="NaX-0O-9XZ" secondAttribute="trailing" id="qp1-Ps-VCg"/>
                                         <constraint firstItem="OVS-MV-wko" firstAttribute="top" secondItem="Bxg-Ib-QtB" secondAttribute="bottom" constant="8" id="xLl-k2-Lw6"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="SV7-0P-Zq7"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>

@@ -25,12 +25,33 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    _nameField.delegate = self;
+    _usernameField.delegate = self;
+    _emailField.delegate = self;
+    _passwordField.delegate = self;
+    _confirmPasswordField.delegate = self;
+    
     UIColor *color = [UIColor lightTextColor];
     NSArray *array = [[NSArray alloc] initWithObjects:_nameField, _usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
     for (UITextField *tf in array) {
         tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(tf.placeholder, @"Placeholder for Register")
                                                                    attributes:@{NSForegroundColorAttributeName: color}];
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if(theTextField==_nameField){
+        [_usernameField becomeFirstResponder];
+    }else if (theTextField == _usernameField){
+        [_emailField becomeFirstResponder];
+    }else if (theTextField == _emailField){
+        [_passwordField becomeFirstResponder];
+    }else if(theTextField ==_passwordField){
+        [_confirmPasswordField becomeFirstResponder];
+    }else if (theTextField == _confirmPasswordField){
+        [self confirmButton:nil];
+    }
+    return YES;
 }
 
 - (IBAction)confirmButton:(id)sender {
@@ -59,6 +80,9 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Password does not match", @"Title for password not matching") message:NSLocalizedString(@"Check your password and try again", @"Message for password not matching") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for password not matching") otherButtonTitles:nil, nil];
         [alert show];
     }
+}
+- (IBAction)hideKeyboard:(id)sender {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)facebookSignup:(id)sender {
