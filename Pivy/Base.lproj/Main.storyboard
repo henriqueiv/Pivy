@@ -199,17 +199,13 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Gallery" id="t6k-qJ-GCM">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="DdC-fq-QHY">
-                            <connections>
-                                <segue destination="odo-wT-hbR" kind="show" id="ZfC-HV-EJG"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="DdC-fq-QHY"/>
                     </navigationItem>
                     <keyCommands/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNI-bv-8HL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="-716"/>
+            <point key="canvasLocation" x="632" y="-1418"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="fPs-El-57R">
@@ -254,6 +250,18 @@
                             </segments>
                             <color key="tintColor" red="0.97254901960784312" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="uUd-BO-Ncz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wLi-MR-emA">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Gallery">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ix1-sl-Atd" kind="show" id="bhY-Ek-2tA"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="3LT-4k-Kco" id="1l6-LS-Xfk"/>
@@ -263,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkk-LD-o2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="-27"/>
+            <point key="canvasLocation" x="-72" y="-716"/>
         </scene>
         <!--Pivy Detail View Controller-->
         <scene sceneID="wvV-HT-lvd">
@@ -376,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n4-CD-nSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-586"/>
+            <point key="canvasLocation" x="729" y="-684"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2tP-aJ-3In">
@@ -390,7 +398,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ix1-sl-Atd" kind="relationship" relationship="rootViewController" id="6HB-I7-SRM"/>
+                        <segue destination="odo-wT-hbR" kind="relationship" relationship="rootViewController" id="LAU-ga-RbS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIK-3a-4ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -403,6 +411,6 @@
         <image name="tabBar-Purple" width="375" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TuR-Ye-sG1"/>
+        <segue reference="w4a-LR-wRE"/>
     </inferredMetricsTieBreakers>
 </document>
