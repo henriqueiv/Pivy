@@ -7,23 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		358B18021ABC7C39007283CB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18011ABC7C39007283CB /* AudioToolbox.framework */; };
-		358B18041ABC7C41007283CB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18031ABC7C41007283CB /* CFNetwork.framework */; };
-		358B18061ABC7C48007283CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18051ABC7C48007283CB /* CoreGraphics.framework */; };
-		358B18081ABC7C4E007283CB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18071ABC7C4E007283CB /* CoreLocation.framework */; };
-		358B180A1ABC7C6F007283CB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18091ABC7C6E007283CB /* MobileCoreServices.framework */; };
-		358B180C1ABC7C74007283CB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B180B1ABC7C74007283CB /* QuartzCore.framework */; };
-		358B180E1ABC7C7D007283CB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B180D1ABC7C7D007283CB /* Security.framework */; };
-		358B18101ABC7C82007283CB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B180F1ABC7C82007283CB /* StoreKit.framework */; };
-		358B18121ABC7C88007283CB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18111ABC7C88007283CB /* SystemConfiguration.framework */; };
-		358B18141ABC7C92007283CB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18131ABC7C92007283CB /* libz.dylib */; };
-		358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B18151ABC7C98007283CB /* libsqlite3.dylib */; };
-		358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358B181C1ABCABC6007283CB /* MapKit.framework */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
-		359187461AC4922F009E81B1 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187421AC4922F009E81B1 /* ParseFacebookUtilsV4.framework */; };
-		359187481AC49243009E81B1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359187471AC49243009E81B1 /* Bolts.framework */; };
-		3591874C1AC4BBFA009E81B1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3591874B1AC4BBFA009E81B1 /* Parse.framework */; };
-		3591874E1AC4BD0E009E81B1 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */; };
 		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
 		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
 		35C3A6041AC1D6590067BAAE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C3A6031AC1D6590067BAAE /* More.storyboard */; };
@@ -50,12 +34,12 @@
 		62C6516C1ACB2201008F8BCC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
 		62C6516D1ACB2213008F8BCC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		62C6516F1ACB2227008F8BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
-		62C98EB21AC5BFE1003E405B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */; };
 		62C98EBB1AC5DB8A003E405B /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C98EBA1AC5DB8A003E405B /* AppUtils.m */; };
 		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
 		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
 		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
 		62ED49261AC5B974002CCE90 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED49251AC5B974002CCE90 /* Gallery.m */; };
+		85655C68AF39C0EE1A79C3BC /* libPods-Pivy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD6EB5610ADE964D80336CA /* libPods-Pivy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,24 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		358B18011ABC7C39007283CB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		358B18031ABC7C41007283CB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		358B18051ABC7C48007283CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		358B18071ABC7C4E007283CB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		358B18091ABC7C6E007283CB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		358B180B1ABC7C74007283CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		358B180D1ABC7C7D007283CB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		358B180F1ABC7C82007283CB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		358B18111ABC7C88007283CB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		358B18131ABC7C92007283CB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		358B18151ABC7C98007283CB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		358B181C1ABCABC6007283CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.release.xcconfig"; sourceTree = "<group>"; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
-		359187421AC4922F009E81B1 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		359187471AC49243009E81B1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		3591874B1AC4BBFA009E81B1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		35C3A5FE1AC0B0040067BAAE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		35C3A6001AC0B0870067BAAE /* LocalAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAnnotation.h; sourceTree = "<group>"; };
@@ -111,7 +80,6 @@
 		52362FE01ABE0D2B0079D117 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		52C164581AC48546008E8B2F /* CollectionViewCellHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCellHeader.h; sourceTree = "<group>"; };
 		52C164591AC48546008E8B2F /* CollectionViewCellHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCellHeader.m; sourceTree = "<group>"; };
-		52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		52E2B71F1ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		52E2B7201ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		52E2B7211ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -143,7 +111,6 @@
 		6292E1811AC34AC500B28CE0 /* RWBlurPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWBlurPopover.m; sourceTree = "<group>"; };
 		6292E1831AC34B3300B28CE0 /* RWBlurPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWBlurPopoverView.h; sourceTree = "<group>"; };
 		6292E1841AC34B3300B28CE0 /* RWBlurPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWBlurPopoverView.m; sourceTree = "<group>"; };
-		62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		62C98EB91AC5DB8A003E405B /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
 		62C98EBA1AC5DB8A003E405B /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
 		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
@@ -154,6 +121,8 @@
 		62D5A21D1ABB571200464F29 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		62ED49241AC5B974002CCE90 /* Gallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gallery.h; sourceTree = "<group>"; };
 		62ED49251AC5B974002CCE90 /* Gallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gallery.m; sourceTree = "<group>"; };
+		7BE9A90BF87E9587BAC6AF91 /* Pods-Pivy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.debug.xcconfig"; sourceTree = "<group>"; };
+		FDD6EB5610ADE964D80336CA /* libPods-Pivy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pivy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,23 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359187481AC49243009E81B1 /* Bolts.framework in Frameworks */,
-				358B181D1ABCABC6007283CB /* MapKit.framework in Frameworks */,
-				358B18161ABC7C98007283CB /* libsqlite3.dylib in Frameworks */,
-				358B18141ABC7C92007283CB /* libz.dylib in Frameworks */,
-				358B18121ABC7C88007283CB /* SystemConfiguration.framework in Frameworks */,
-				3591874E1AC4BD0E009E81B1 /* ParseFacebookUtils.framework in Frameworks */,
-				3591874C1AC4BBFA009E81B1 /* Parse.framework in Frameworks */,
-				358B18101ABC7C82007283CB /* StoreKit.framework in Frameworks */,
-				62C98EB21AC5BFE1003E405B /* FacebookSDK.framework in Frameworks */,
-				358B180E1ABC7C7D007283CB /* Security.framework in Frameworks */,
-				358B180C1ABC7C74007283CB /* QuartzCore.framework in Frameworks */,
-				358B180A1ABC7C6F007283CB /* MobileCoreServices.framework in Frameworks */,
-				359187461AC4922F009E81B1 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				358B18081ABC7C4E007283CB /* CoreLocation.framework in Frameworks */,
-				358B18061ABC7C48007283CB /* CoreGraphics.framework in Frameworks */,
-				358B18041ABC7C41007283CB /* CFNetwork.framework in Frameworks */,
-				358B18021ABC7C39007283CB /* AudioToolbox.framework in Frameworks */,
+				85655C68AF39C0EE1A79C3BC /* libPods-Pivy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +171,7 @@
 				6222C89B1ABB47F1008B5970 /* Pivy */,
 				6222C8B51ABB47F1008B5970 /* PivyTests */,
 				6222C89A1ABB47F1008B5970 /* Products */,
+				8ACE1A4DF959A906FC42C20B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -405,42 +359,18 @@
 		62D5A2211ABB5D1600464F29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				62D5A2231ABB5D2500464F29 /* System Frameworks */,
-				62D5A2221ABB5D1D00464F29 /* User Frameworks */,
+				FDD6EB5610ADE964D80336CA /* libPods-Pivy.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		62D5A2221ABB5D1D00464F29 /* User Frameworks */ = {
+		8ACE1A4DF959A906FC42C20B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				62C98EB11AC5BFE1003E405B /* FacebookSDK.framework */,
-				3591874D1AC4BD0E009E81B1 /* ParseFacebookUtils.framework */,
-				3591874B1AC4BBFA009E81B1 /* Parse.framework */,
-				359187471AC49243009E81B1 /* Bolts.framework */,
-				359187421AC4922F009E81B1 /* ParseFacebookUtilsV4.framework */,
+				7BE9A90BF87E9587BAC6AF91 /* Pods-Pivy.debug.xcconfig */,
+				0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */,
 			);
-			name = "User Frameworks";
-			sourceTree = "<group>";
-		};
-		62D5A2231ABB5D2500464F29 /* System Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				52C1645D1AC59DFE008E8B2F /* FBSDKCoreKit.framework */,
-				358B181C1ABCABC6007283CB /* MapKit.framework */,
-				358B18151ABC7C98007283CB /* libsqlite3.dylib */,
-				358B18131ABC7C92007283CB /* libz.dylib */,
-				358B18111ABC7C88007283CB /* SystemConfiguration.framework */,
-				358B180F1ABC7C82007283CB /* StoreKit.framework */,
-				358B180D1ABC7C7D007283CB /* Security.framework */,
-				358B180B1ABC7C74007283CB /* QuartzCore.framework */,
-				358B18091ABC7C6E007283CB /* MobileCoreServices.framework */,
-				358B18071ABC7C4E007283CB /* CoreLocation.framework */,
-				358B18051ABC7C48007283CB /* CoreGraphics.framework */,
-				358B18031ABC7C41007283CB /* CFNetwork.framework */,
-				358B18011ABC7C39007283CB /* AudioToolbox.framework */,
-			);
-			name = "System Frameworks";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,9 +380,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6222C8BC1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "Pivy" */;
 			buildPhases = (
+				CA60EB9421EC47D51FE08991 /* Check Pods Manifest.lock */,
 				6222C8951ABB47F1008B5970 /* Sources */,
 				6222C8961ABB47F1008B5970 /* Frameworks */,
 				6222C8971ABB47F1008B5970 /* Resources */,
+				81E6DE36195766A865AB45F8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -544,6 +476,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		81E6DE36195766A865AB45F8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pivy/Pods-Pivy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA60EB9421EC47D51FE08991 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6222C8951ABB47F1008B5970 /* Sources */ = {
@@ -714,6 +679,7 @@
 		};
 		6222C8BD1ABB47F1008B5970 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BE9A90BF87E9587BAC6AF91 /* Pods-Pivy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -734,6 +700,7 @@
 		};
 		6222C8BE1ABB47F1008B5970 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
