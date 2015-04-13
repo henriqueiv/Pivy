@@ -16,6 +16,11 @@
 
 @implementation PivyDetailViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+//    self.tabBarController.hidesBottomBarWhenPushed = true;
+//    self.hidesBottomBarWhenPushed = true;
+}
+
 - (void)viewDidLoad {
     //    NSLog(@"Entro no didload da detail");
     [super viewDidLoad];

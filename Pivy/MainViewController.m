@@ -26,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.hidesBottomBarWhenPushed = true;
+    
     [self.view setBackgroundColor:[UIColor yellowColor]];
     [self placeViewFromStoryboardOnTabBar];
     

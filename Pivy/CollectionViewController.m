@@ -23,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG-Purple.png"]];
+
     _reuseIdentifier =  @"Cell";
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -126,6 +129,7 @@
         CollectionViewCell *cell = (CollectionViewCell*) sender;
         PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
         pdvc.pivy = cell.pivy;
+        pdvc.hidesBottomBarWhenPushed = true;
     }}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
