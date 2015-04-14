@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3550A95C1ADC3F37006BF21F /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3550A95B1ADC3F37006BF21F /* InterfaceController.m */; };
+		3550A95F1ADC3F37006BF21F /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3550A95E1ADC3F37006BF21F /* NotificationController.m */; };
+		3550A9611ADC3F37006BF21F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3550A9601ADC3F37006BF21F /* Images.xcassets */; };
+		3550A9651ADC3F37006BF21F /* Pivy WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 3550A9641ADC3F37006BF21F /* Pivy WatchKit App.app */; };
+		3550A96D1ADC3F37006BF21F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3550A96B1ADC3F37006BF21F /* Interface.storyboard */; };
+		3550A96F1ADC3F37006BF21F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3550A96E1ADC3F37006BF21F /* Images.xcassets */; };
+		3550A9721ADC3F37006BF21F /* Pivy WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3550A9551ADC3F37006BF21F /* Pivy WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
 		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
 		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
@@ -43,6 +50,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3550A9661ADC3F37006BF21F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3550A9631ADC3F37006BF21F;
+			remoteInfo = "Pivy WatchKit App";
+		};
+		3550A9701ADC3F37006BF21F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3550A9541ADC3F37006BF21F;
+			remoteInfo = "Pivy WatchKit Extension";
+		};
 		6222C8B31ABB47F1008B5970 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
@@ -52,8 +73,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3550A9791ADC3F37006BF21F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3550A9721ADC3F37006BF21F /* Pivy WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.release.xcconfig"; sourceTree = "<group>"; };
+		3550A9551ADC3F37006BF21F /* Pivy WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Pivy WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3550A9581ADC3F37006BF21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3550A9591ADC3F37006BF21F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		3550A95A1ADC3F37006BF21F /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		3550A95B1ADC3F37006BF21F /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		3550A95D1ADC3F37006BF21F /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		3550A95E1ADC3F37006BF21F /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		3550A9601ADC3F37006BF21F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3550A9641ADC3F37006BF21F /* Pivy WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pivy WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3550A96A1ADC3F37006BF21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3550A96C1ADC3F37006BF21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		3550A96E1ADC3F37006BF21F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
 		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -126,6 +173,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3550A9521ADC3F37006BF21F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6222C8961ABB47F1008B5970 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +198,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3550A9561ADC3F37006BF21F /* Pivy WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3550A95A1ADC3F37006BF21F /* InterfaceController.h */,
+				3550A95B1ADC3F37006BF21F /* InterfaceController.m */,
+				3550A95D1ADC3F37006BF21F /* NotificationController.h */,
+				3550A95E1ADC3F37006BF21F /* NotificationController.m */,
+				3550A9601ADC3F37006BF21F /* Images.xcassets */,
+				3550A9571ADC3F37006BF21F /* Supporting Files */,
+			);
+			path = "Pivy WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		3550A9571ADC3F37006BF21F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3550A9581ADC3F37006BF21F /* Info.plist */,
+				3550A9591ADC3F37006BF21F /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3550A9681ADC3F37006BF21F /* Pivy WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				3550A96B1ADC3F37006BF21F /* Interface.storyboard */,
+				3550A96E1ADC3F37006BF21F /* Images.xcassets */,
+				3550A9691ADC3F37006BF21F /* Supporting Files */,
+			);
+			path = "Pivy WatchKit App";
+			sourceTree = "<group>";
+		};
+		3550A9691ADC3F37006BF21F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3550A96A1ADC3F37006BF21F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		52C1645C1AC4859C008E8B2F /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +261,8 @@
 		6222C8901ABB47F1008B5970 = {
 			isa = PBXGroup;
 			children = (
+				3550A9561ADC3F37006BF21F /* Pivy WatchKit Extension */,
+				3550A9681ADC3F37006BF21F /* Pivy WatchKit App */,
 				62D5A2211ABB5D1600464F29 /* Frameworks */,
 				6222C89B1ABB47F1008B5970 /* Pivy */,
 				6222C8B51ABB47F1008B5970 /* PivyTests */,
@@ -180,6 +276,8 @@
 			children = (
 				6222C8991ABB47F1008B5970 /* Pivy.app */,
 				6222C8B21ABB47F1008B5970 /* PivyTests.xctest */,
+				3550A9551ADC3F37006BF21F /* Pivy WatchKit Extension.appex */,
+				3550A9641ADC3F37006BF21F /* Pivy WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -376,6 +474,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3550A9541ADC3F37006BF21F /* Pivy WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3550A9781ADC3F37006BF21F /* Build configuration list for PBXNativeTarget "Pivy WatchKit Extension" */;
+			buildPhases = (
+				3550A9511ADC3F37006BF21F /* Sources */,
+				3550A9521ADC3F37006BF21F /* Frameworks */,
+				3550A9531ADC3F37006BF21F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3550A9671ADC3F37006BF21F /* PBXTargetDependency */,
+			);
+			name = "Pivy WatchKit Extension";
+			productName = "Pivy WatchKit Extension";
+			productReference = 3550A9551ADC3F37006BF21F /* Pivy WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		3550A9631ADC3F37006BF21F /* Pivy WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3550A9771ADC3F37006BF21F /* Build configuration list for PBXNativeTarget "Pivy WatchKit App" */;
+			buildPhases = (
+				3550A9621ADC3F37006BF21F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pivy WatchKit App";
+			productName = "Pivy WatchKit App";
+			productReference = 3550A9641ADC3F37006BF21F /* Pivy WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		6222C8981ABB47F1008B5970 /* Pivy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6222C8BC1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "Pivy" */;
@@ -385,10 +516,12 @@
 				6222C8961ABB47F1008B5970 /* Frameworks */,
 				6222C8971ABB47F1008B5970 /* Resources */,
 				81E6DE36195766A865AB45F8 /* Copy Pods Resources */,
+				3550A9791ADC3F37006BF21F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3550A9711ADC3F37006BF21F /* PBXTargetDependency */,
 			);
 			name = Pivy;
 			productName = Pivy;
@@ -422,6 +555,13 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Henrique Valcanaia";
 				TargetAttributes = {
+					3550A9541ADC3F37006BF21F = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = BJXVASWXX8;
+					};
+					3550A9631ADC3F37006BF21F = {
+						CreatedOnToolsVersion = 6.3;
+					};
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = BJXVASWXX8;
@@ -450,11 +590,31 @@
 			targets = (
 				6222C8981ABB47F1008B5970 /* Pivy */,
 				6222C8B11ABB47F1008B5970 /* PivyTests */,
+				3550A9541ADC3F37006BF21F /* Pivy WatchKit Extension */,
+				3550A9631ADC3F37006BF21F /* Pivy WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3550A9531ADC3F37006BF21F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3550A9651ADC3F37006BF21F /* Pivy WatchKit App.app in Resources */,
+				3550A9611ADC3F37006BF21F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3550A9621ADC3F37006BF21F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3550A96D1ADC3F37006BF21F /* Interface.storyboard in Resources */,
+				3550A96F1ADC3F37006BF21F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6222C8971ABB47F1008B5970 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +671,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3550A9511ADC3F37006BF21F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3550A95F1ADC3F37006BF21F /* NotificationController.m in Sources */,
+				3550A95C1ADC3F37006BF21F /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6222C8951ABB47F1008B5970 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,6 +723,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3550A9671ADC3F37006BF21F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3550A9631ADC3F37006BF21F /* Pivy WatchKit App */;
+			targetProxy = 3550A9661ADC3F37006BF21F /* PBXContainerItemProxy */;
+		};
+		3550A9711ADC3F37006BF21F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3550A9541ADC3F37006BF21F /* Pivy WatchKit Extension */;
+			targetProxy = 3550A9701ADC3F37006BF21F /* PBXContainerItemProxy */;
+		};
 		6222C8B41ABB47F1008B5970 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6222C8981ABB47F1008B5970 /* Pivy */;
@@ -562,6 +741,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3550A96B1ADC3F37006BF21F /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3550A96C1ADC3F37006BF21F /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		402D37B81ACA5707002C0025 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -596,6 +783,78 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3550A9731ADC3F37006BF21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Pivy WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3550A9741ADC3F37006BF21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Pivy WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3550A9751ADC3F37006BF21F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Pivy_WatchKit_Extension;
+				INFOPLIST_FILE = "Pivy WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos8.3;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		3550A9761ADC3F37006BF21F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = Pivy_WatchKit_Extension;
+				INFOPLIST_FILE = "Pivy WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos8.3;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 		6222C8BA1ABB47F1008B5970 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -691,7 +950,7 @@
 					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -712,7 +971,7 @@
 					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -758,6 +1017,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3550A9771ADC3F37006BF21F /* Build configuration list for PBXNativeTarget "Pivy WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3550A9751ADC3F37006BF21F /* Debug */,
+				3550A9761ADC3F37006BF21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3550A9781ADC3F37006BF21F /* Build configuration list for PBXNativeTarget "Pivy WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3550A9731ADC3F37006BF21F /* Debug */,
+				3550A9741ADC3F37006BF21F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6222C8941ABB47F1008B5970 /* Build configuration list for PBXProject "Pivy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
