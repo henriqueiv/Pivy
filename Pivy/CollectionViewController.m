@@ -23,11 +23,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG-Purple.png"]];
+
     _reuseIdentifier =  @"Cell";
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
+//    refreshControl.tintColor = [UIColor whiteColor];//refresh branco
+    refreshControl.tintColor = [UIColor colorWithRed:0.250 green:0.237 blue:0.255 alpha:0.25];
     [self.collectionView addSubview:refreshControl];
     
     self.collectionView.alwaysBounceVertical = YES;
@@ -94,21 +99,37 @@
     }];
 }
 
+//- (void) startRefresh:(UIRefreshControl *)startRefresh {
+//    [startRefresh beginRefreshing];
+//    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+//    if([PFUser currentUser])
+//        [self createGallery];
+//    [self.collectionView reloadData];
+//    [startRefresh endRefreshing];
+//}
+
 - (void) startRefresh:(UIRefreshControl *)startRefresh {
     [startRefresh beginRefreshing];
-    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
-    if([PFUser currentUser])
-        [self createGallery];
-    [self.collectionView reloadData];
-    [startRefresh endRefreshing];
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+        [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
+        if([PFUser currentUser])
+            [self createGallery];
+        [self.collectionView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [startRefresh endRefreshing];
+
+        });
+    });
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     if (section == (self.pivyDic.count)-1)
-        return UIEdgeInsetsMake(15, 0, 66, 0);
+        return UIEdgeInsetsMake(15, 5, 66, 5);
     else
-        return UIEdgeInsetsMake(15, 0, 15, 0);
+        return UIEdgeInsetsMake(15, 5, 15, 5);
+    
 }
+
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -126,6 +147,7 @@
         CollectionViewCell *cell = (CollectionViewCell*) sender;
         PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
         pdvc.pivy = cell.pivy;
+        pdvc.hidesBottomBarWhenPushed = true;
     }}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -145,6 +167,9 @@
     cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
     cell.pivy = pivy;
     cell.backgroundColor = [UIColor blackColor];
+    
+    cell.layer.borderWidth = 1;
+    cell.layer.borderColor = [UIColor colorWithRed:0.250 green:0.237 blue:0.255 alpha:1].CGColor;
     cell.contentView.alpha = 0.2;
     for(Gallery *gallery in self.galleryArray){
         if( ([pivy.name isEqualToString:gallery.pivy.name]) && ([gallery.to isEqual:[PFUser currentUser]]) ){
@@ -155,14 +180,11 @@
     cell.imageCell.crossfadeDuration = 0;
 
     if(pivy.image){
-        
         [AsyncImageLoader cancelPreviousPerformRequestsWithTarget:cell.imageCell];
         cell.imageCell.image = [UIImage imageNamed:@"PIVY_logo.png"];
         [cell.imageCell setImageURL:[NSURL URLWithString:(NSString *)[pivy.image url]]];
-        
     }
     else{
-
         cell.imageCell.image = [UIImage imageNamed:@"PIVY_logo.png"];
     }
     return cell;

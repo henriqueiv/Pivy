@@ -23,6 +23,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
     _nameLabel.text = [[PFUser currentUser]valueForKey:@"name"];
     _mailLabel.text = [[PFUser currentUser]valueForKey:@"email"];
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG-Purple.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = tempImageView;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
