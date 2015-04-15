@@ -17,9 +17,16 @@
 -(void)viewDidLoad{
     [self.navigationItem setHidesBackButton:YES];
      [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG-Purple.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = tempImageView;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 @end
