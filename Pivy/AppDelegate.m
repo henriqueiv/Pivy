@@ -24,6 +24,8 @@
         [self renumberBadgesOfPendingNotifications];
     }
     
+    [self registerForLocalNotification];
+    
     return YES;
 }
 
@@ -33,6 +35,14 @@
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
+}
+
+-(void)registerForLocalNotification{
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
 }
 
 -(void)configureNavigationBar{
