@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zw5-Y0-BW6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zw5-Y0-BW6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1697" y="-408"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Here-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
@@ -121,7 +121,7 @@
                             <constraint firstAttribute="centerX" secondItem="i8a-0f-TGc" secondAttribute="centerX" id="xJE-8w-dHj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="AfX-FJ-cF5"/>
+                    <tabBarItem key="tabBarItem" title="Here" image="icon-Here" id="AfX-FJ-cF5"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="TUk-1a-k9T" id="Hc1-VL-3AG"/>
                         <outlet property="btnGetPivy" destination="FY5-QQ-ZGd" id="LCI-g8-cq7"/>
@@ -387,11 +387,11 @@
             </objects>
             <point key="canvasLocation" x="729" y="-684"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Pivy world-->
         <scene sceneID="2tP-aJ-3In">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dnC-UP-xo6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="wWx-qx-M6n"/>
+                    <tabBarItem key="tabBarItem" title="Pivy world" image="icon-PivyWorld" id="wWx-qx-M6n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qNE-Qy-osw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -409,6 +409,8 @@
     </scenes>
     <resources>
         <image name="PIVY_logo" width="478" height="262"/>
+        <image name="icon-Here" width="33" height="33"/>
+        <image name="icon-PivyWorld" width="33" height="33"/>
         <image name="tabBar-Purple" width="375" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
