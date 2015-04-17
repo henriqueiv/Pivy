@@ -37,10 +37,11 @@
 
 -(void)configureNavigationBar{
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
-                                                        green:211/255.0f
-                                                         blue:10.0/255.0f
-                                                        alpha:1.0f]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
+//                                                        green:211/255.0f
+//                                                         blue:10.0/255.0f
+//                                                        alpha:1.0f]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -68,10 +69,12 @@
 }
 
 -(void)configureTabBar{
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
-                                                        green:211/255.0f
-                                                         blue:10.0/255.0f
-                                                        alpha:1.0f]];
+    
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+//    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
+//                                                        green:211/255.0f
+//                                                         blue:10.0/255.0f
+//                                                        alpha:1.0f]];
 //    [[UITabBar appearance] setTranslucent:NO];
 //    [[UITabBar appearance] setAlpha:0.9f];
 }
