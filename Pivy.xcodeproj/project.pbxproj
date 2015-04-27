@@ -559,7 +559,7 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = YYWFQ73E8M;
+						DevelopmentTeam = 29P59JP27S;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
@@ -568,11 +568,11 @@
 					};
 					6299E97C1ADC509800EF2B51 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = 29P59JP27S;
 					};
 					6299E98B1ADC509900EF2B51 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = 8WCPHDZJPJ;
+						DevelopmentTeam = 29P59JP27S;
 					};
 				};
 			};
@@ -960,6 +960,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -975,6 +976,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1058,6 +1060,7 @@
 				6299E99E1ADC509900EF2B51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6299E9A01ADC509900EF2B51 /* Build configuration list for PBXNativeTarget "Pivy WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -1066,6 +1069,7 @@
 				6299E99C1ADC509900EF2B51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

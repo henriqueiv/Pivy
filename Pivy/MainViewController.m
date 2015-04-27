@@ -34,10 +34,11 @@
     [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
     _btnGetPivy.layer.cornerRadius = 18;
-    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
-                                                     green:211/255.0f
-                                                      blue:10.0/255.0f
-                                                     alpha:1.0f] CGColor];
+//    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
+//                                                     green:211/255.0f
+//                                                      blue:10.0/255.0f
+//                                                     alpha:1.0f] CGColor];
+    _btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
     _btnGetPivy.layer.borderWidth = 1;
     
     locationManager = [[CLLocationManager alloc] init];

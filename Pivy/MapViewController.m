@@ -39,6 +39,9 @@
                                  action:@selector(changeViewModeMap)
                        forControlEvents:UIControlEventValueChanged];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 -(void)populateWorld{
     PFQuery *query = [[Pivy query] fromLocalDatastore];
@@ -97,6 +100,7 @@
         LocalAnnotation *a = (LocalAnnotation*) sender;
         PivyDetailViewController *pdvc = (PivyDetailViewController*) segue.destinationViewController;
         pdvc.pivy = a.pivy;
+        self.tabBarController.tabBar.hidden = YES;
     }
     
 }
