@@ -163,6 +163,7 @@
 
 -(void)sendPush:(Pivy*) pivy{
     UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.category = @"myCategory";
     notification.fireDate = [NSDate date];
     notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", pivy.name];
     notification.soundName = UILocalNotificationDefaultSoundName;
@@ -170,7 +171,7 @@
 
     NSUInteger nextBadgeNumber = [[[UIApplication sharedApplication] scheduledLocalNotifications] count] + 1;
     NSLog(@"nextBadgeNumber: %d", nextBadgeNumber);
-    notification.applicationIconBadgeNumber = nextBadgeNumber;
+//    notification.applicationIconBadgeNumber = nextBadgeNumber;
 }
 
 -(NSArray *)getPivysWithinKilometers:(int)km{

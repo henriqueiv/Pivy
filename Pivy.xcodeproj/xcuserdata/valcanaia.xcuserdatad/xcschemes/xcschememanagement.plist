@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Notification - Pivy WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pivy WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Pivy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>6222C8B11ABB47F1008B5970</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6299E98B1ADC509900EF2B51</key>
 		<dict>
 			<key>primary</key>
 			<true/>

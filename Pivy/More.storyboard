@@ -12,7 +12,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fPN-H0-HfZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="User" id="ryA-Ue-LlB">
@@ -254,13 +254,15 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sbA-s1-4hX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.87888652150000002" green="0.87888652150000002" blue="0.87888652150000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="User" id="89X-1R-GWm">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="wxl-Wh-S62" detailTextLabel="cVC-cG-7kE" style="IBUITableViewCellStyleValue1" id="osd-z2-DnY">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="wxl-Wh-S62" detailTextLabel="cVC-cG-7kE" style="IBUITableViewCellStyleValue1" id="osd-z2-DnY">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="osd-z2-DnY" id="vgO-8E-vq2">
@@ -268,26 +270,29 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Signup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wxl-Wh-S62">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Don't have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cVC-cG-7kE">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="tintColor" red="0.89411764709999997" green="0.87058823529999996" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="rkU-cH-eCA" kind="show" id="see-pH-e2X"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="93c-sW-a21" detailTextLabel="ZKF-vC-dnb" style="IBUITableViewCellStyleValue1" id="ac8-Nd-aYO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="93c-sW-a21" detailTextLabel="ZKF-vC-dnb" style="IBUITableViewCellStyleValue1" id="ac8-Nd-aYO">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ac8-Nd-aYO" id="Bxk-3D-1UF">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -305,9 +310,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="tintColor" red="0.89411764709999997" green="0.87058823529999996" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="uYP-zA-IBs" kind="show" id="pie-B3-GMY"/>
                                         </connections>
@@ -334,8 +341,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="lFN-Mc-t53" detailTextLabel="69z-Sp-wJD" style="IBUITableViewCellStyleValue1" id="JHy-sh-G2Z">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -355,8 +365,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
@@ -369,10 +381,16 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="ibi-cd-Jyq"/>
                     <navigationItem key="navigationItem" title="Not logged" id="F8d-tQ-R8d"/>
+                    <connections>
+                        <outlet property="cellAbout" destination="JHy-sh-G2Z" id="TlL-FB-njY"/>
+                        <outlet property="cellLogin" destination="osd-z2-DnY" id="FXd-MN-ksd"/>
+                        <outlet property="cellSignUp" destination="ac8-Nd-aYO" id="VZz-g2-U7B"/>
+                        <outlet property="cellTeam" destination="KxG-jr-kST" id="Z9U-5b-rV5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KpM-Yd-gZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="224" y="379"/>
+            <point key="canvasLocation" x="173" y="329"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="oCV-Qc-Y6Z">
@@ -386,9 +404,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG-Purple" translatesAutoresizingMaskIntoConstraints="NO" id="ncL-xm-f9m" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-NY-ndc">
                                 <rect key="frame" x="108" y="194" width="443" height="40"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -522,6 +537,9 @@
                                     <action selector="confirmButton:" destination="rkU-cH-eCA" eventType="touchUpInside" id="f4S-bN-bcp"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG-Purple" translatesAutoresizingMaskIntoConstraints="NO" id="ncL-xm-f9m" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="BZr-iz-tjO" firstAttribute="top" secondItem="7Mf-Wz-A8V" secondAttribute="bottom" constant="17" id="0MP-XE-Rl8"/>
@@ -832,6 +850,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="yQ5-Ub-alo"/>
         <segue reference="SLr-36-evW"/>
+        <segue reference="75O-hY-7hQ"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.85490196080000003" green="0.70980392160000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>
