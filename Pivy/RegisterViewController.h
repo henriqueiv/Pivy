@@ -11,6 +11,6 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController<UITextFieldDelegate>
+@interface RegisterViewController : UIViewController<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

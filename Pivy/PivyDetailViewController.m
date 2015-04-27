@@ -34,17 +34,20 @@
             self.imageView.image = [UIImage imageWithData:data];
         });
     }];
-    [self checkIfHasPivy];
+//    [self checkIfHasPivy];
 //    [self checkPivyEnabled];
     
-    [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
+    [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
+//    [self.btnGetPivy setTintColor:[UIColor whiteColor]];
+    
     
     _btnGetPivy.layer.cornerRadius = 18;
-    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
-                                                     green:211/255.0f
-                                                      blue:10.0/255.0f
-                                                     alpha:1.0f] CGColor];
+//    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
+//                                                     green:211/255.0f
+//                                                      blue:10.0/255.0f
+//                                                     alpha:1.0f] CGColor];
+    self.btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
     _btnGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
 }

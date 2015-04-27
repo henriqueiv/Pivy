@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -37,6 +38,14 @@
         tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(tf.placeholder, @"Placeholder for Register")
                                                                    attributes:@{NSForegroundColorAttributeName: color}];
     }
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTaped:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [self.imageView addGestureRecognizer:singleTap];
+    [self.imageView setUserInteractionEnabled:YES];
+    
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -145,5 +154,26 @@
             NSLog(@"Some other error: %@", error);
         }
     }];
+}
+
+- (void)imageTaped:(UIGestureRecognizer *)gestureRecognizer {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+    self.imageView.clipsToBounds = YES;
+    self.imageView.layer.cornerRadius = self.imageView.layer.visibleRect.size.height/2;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 @end
