@@ -16,13 +16,7 @@
 
 @implementation PivyDetailViewController
 
--(void)viewWillAppear:(BOOL)animated{
-//    self.tabBarController.hidesBottomBarWhenPushed = true;
-//    self.hidesBottomBarWhenPushed = true;
-}
-
 - (void)viewDidLoad {
-    //    NSLog(@"Entro no didload da detail");
     [super viewDidLoad];
     
     //Localize strings
@@ -34,19 +28,12 @@
             self.imageView.image = [UIImage imageWithData:data];
         });
     }];
-//    [self checkIfHasPivy];
-//    [self checkPivyEnabled];
     
     [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
-//    [self.btnGetPivy setTintColor:[UIColor whiteColor]];
     
     
     _btnGetPivy.layer.cornerRadius = 18;
-//    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
-//                                                     green:211/255.0f
-//                                                      blue:10.0/255.0f
-//                                                     alpha:1.0f] CGColor];
     self.btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
     _btnGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
@@ -67,8 +54,7 @@
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }];
-        }
-        else{
+        }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
                                                             message:[error.description valueForKey: @"error"]
                                                            delegate:nil
@@ -85,14 +71,12 @@
     [query fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (objects.count != 0){
                 [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
                 self.btnGetPivy.enabled = NO;
                 self.btnGetPivy.alpha = 0.5;
-            }
-            else{
+            }else{
                 [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
                     PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
                     [query fromLocalDatastore];
@@ -103,8 +87,7 @@
                             if([pivy isEqual:self.pivy]){
                                 self.btnGetPivy.titleLabel.text = @"GET";
                                 self.btnGetPivy.enabled = YES;
-                            }
-                            else{
+                            }else{
                                 [self.btnGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
                                 self.btnGetPivy.enabled = NO;
                                 self.btnGetPivy.alpha = 0.5;
@@ -117,7 +100,6 @@
                 }];
             }
         });
-        
     }];
 }
 
@@ -127,11 +109,8 @@
         g.pivy = self.pivy;
         g.from = [PFUser currentUser];
         g.to = [PFUser currentUser];
-        
         [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            NSLog(@"PINOU");
             dispatch_async(dispatch_get_main_queue(), ^{
-//                NSLog(@"SAVOU");
                 if (succeeded) {
                     [g saveEventually];
                     [self checkIfHasPivy];
