@@ -34,7 +34,7 @@
             self.imageView.image = [UIImage imageWithData:data];
         });
     }];
-//    [self checkIfHasPivy];
+    [self checkIfHasPivy];
 //    [self checkPivyEnabled];
     
     [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
