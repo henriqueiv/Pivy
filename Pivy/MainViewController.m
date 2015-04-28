@@ -7,18 +7,16 @@
 //
 
 #import "MainViewController.h"
+#import "PivyDetailViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
+#define kRangeInKm 10
 
 @interface MainViewController ()
 
+@property (strong, nonatomic) NSMutableArray *pivyArray;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) Pivy *pivy;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UITextView *pivyDescription;
-@property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (weak, nonatomic) NSMutableArray *array;
 
 @end
 
@@ -28,110 +26,17 @@
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = true;
     
-    [self.view setBackgroundColor:[UIColor yellowColor]];
     [self placeViewFromStoryboardOnTabBar];
-    
-    [self.btnGetPivy setTitle:@"GET" forState:UIControlStateNormal];
-    [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
-    _btnGetPivy.layer.cornerRadius = 18;
-//    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
-//                                                     green:211/255.0f
-//                                                      blue:10.0/255.0f
-//                                                     alpha:1.0f] CGColor];
-    _btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
-    _btnGetPivy.layer.borderWidth = 1;
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    //    locationManager.distanceFilter = kDistanceFilter; The default distanceFilter for startMonitoringSignificantLocationChanges is 500 meters.
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startMonitoringSignificantLocationChanges];
-    [self getPivysWithinKilometers:1];
+    
+    [self getPivysWithinKilometers:kRangeInKm];
     
     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
-    dispatch_async(kBgQueue, ^{
-        [DataManager updateLocalDatastore:[Background parseClassName] inBackground:YES];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self setBackground];
-        });
-    });
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
-
-- (void)setBackground{
-    
-    NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-    PFQuery *query = [PFQuery queryWithClassName:[Background parseClassName]];
-    [query fromLocalDatastore];
-    [query whereKey:@"country" equalTo:countryCode];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if(!error){
-            [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.backgroundImageView.image = [UIImage imageWithData:data];
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                });
-            }];
-        }
-        else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
-                                                            message:[error.description valueForKey: @"error"]
-                                                           delegate:nil
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:@"Dismiss", nil];
-            [alert show];
-        }
-    }];
-}
-
-- (void)queryAndPinClassInBackground:(NSString *)class{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    PFQuery *query = [PFQuery queryWithClassName:class];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
-            if(succeeded){
-                //                NSLog(@"****** %@ Pinado na MAIN ******", class);
-                if ([class isEqualToString:@"Background"]) {
-                    NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-                    //                    NSLog(@"Country code: %@", countryCode);
-                    PFQuery *query = [PFQuery queryWithClassName:@"Background"];
-                    [query fromLocalDatastore];
-                    //                    NSLog(@"Inicio query de Backgrounds");
-                    [query whereKey:@"country" equalTo:countryCode];
-                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                        if(!error){
-                            [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    self.backgroundImageView.image = [UIImage imageWithData:data];
-                                    //                                    NSLog(@"Background alterado com sucesso");
-                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                });
-                            }];
-                        }
-                        else{
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
-                                                                            message:[error.description valueForKey: @"error"]
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:nil
-                                                                  otherButtonTitles:@"Dismiss", nil];
-                            [alert show];
-                        }
-                    }];
-                }
-            }
-            else{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ Pining Error", class]
-                                                                message:[error.description valueForKey: @"error"]
-                                                               delegate:nil
-                                                      cancelButtonTitle:nil
-                                                      otherButtonTitles:@"Dismiss", nil];
-                [alert show];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            });
-        }];
-    }];
 }
 
 - (void)placeViewFromStoryboardOnTabBar{
@@ -140,7 +45,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"More" bundle:nil];
     NSMutableArray *array = [NSMutableArray   arrayWithArray:[self.tabBarController viewControllers]];
     UIViewController *vc;
-    //    NSLog(@"%@", [PFUser currentUser]);
+    
     if ([PFUser currentUser])
         vc = [sb instantiateViewControllerWithIdentifier:@"logged"];
     else
@@ -162,79 +67,58 @@
     }];
 }
 
--(void)sendPush:(Pivy*) pivy{
+- (void)sendPush:(NSArray *) pivys{
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.category = @"myCategory";
     notification.fireDate = [NSDate date];
-    notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", pivy.name];
+    if (pivys.count == 1) {
+        Pivy *p = (Pivy *)pivys.firstObject;
+        notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", p.name];
+    }
+    else{
+        notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %d Pivys! Gotta catch'em all!", (int)pivys.count];
+    }
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-
+    
     NSUInteger nextBadgeNumber = [[[UIApplication sharedApplication] scheduledLocalNotifications] count] + 1;
-    NSLog(@"nextBadgeNumber: %d", nextBadgeNumber);
-//    notification.applicationIconBadgeNumber = nextBadgeNumber;
+    NSLog(@"nextBadgeNumber: %d", (int)nextBadgeNumber);
 }
 
--(NSArray *)getPivysWithinKilometers:(int)km{
+- (NSArray *)getPivysWithinKilometers:(int )km{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
         [query fromLocalDatastore];
         query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
-        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            Pivy *p = (Pivy *)object;
-            self.pivy = p;
-            self.pivyDescription.text = p.pivyDescription;
-            self.image.image = [[UIImage alloc] initWithData:[p.image getData]];
-            self.nameLabel.text = p.name;
-            [self sendPush:p];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (objects.count > 0) {
+                NSMutableArray *a = [[NSMutableArray alloc] initWithArray:objects];
+                self.pivyArray = a;
+                if(self.pivyArray.count > 0)
+                    [self sendPush:self.pivyArray];
+                [self getPivy];
+            }
         }];
-        
     }];
     return nil;
 }
 
--(void)checkIfHasPivy{
-    PFQuery *query = [Gallery query];
-    [query fromLocalDatastore];
-    [query whereKey:@"pivy" equalTo:self.pivy];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (objects.count != 0){
-                self.btnGetPivy.enabled = NO;
-                self.btnGetPivy.alpha = 0.5;
-            }
-            else
-                self.btnGetPivy.enabled = YES;
-        });
-    }];
-}
-
-- (IBAction)getPivy:(UIButton *)sender {
-    if ([PFUser currentUser]) {
-        Gallery *g = [[Gallery alloc] init];
-        g.pivy = self.pivy;
-        g.from = [PFUser currentUser];
-        g.to = [PFUser currentUser];
-        
-        [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            NSLog(@"PINOU");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"SAVOU");
-                if (succeeded) {
-                    [g saveEventually];
-                    [self checkIfHasPivy];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];
-                }
-            });
-        }];
-    }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+- (void)getPivy {
+    if (self.pivyArray.count > 0){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        for(int i =0; i < self.pivyArray.count; i++){
+            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
+            PivyDetailViewController *detail = (PivyDetailViewController *)vc;
+            detail.pivy = (Pivy *)self.pivyArray[i];
+            detail.view.frame = CGRectMake(self.scrollView.frame.size.width*i, 0, detail.view.frame.size.width, detail.view.frame.size.height);
+            [self.scrollView addSubview:detail.view];
+            [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * self.pivyArray.count, self.scrollView.frame.size.height)];
+        }
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    [self getPivysWithinKilometers:1];
+    [self getPivysWithinKilometers:kRangeInKm];
 }
 
 @end

@@ -11,20 +11,23 @@
 @interface PivyDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 
 @end
 
 @implementation PivyDetailViewController
 
--(void)viewWillAppear:(BOOL)animated{
-//    self.tabBarController.hidesBottomBarWhenPushed = true;
-//    self.hidesBottomBarWhenPushed = true;
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
-- (void)viewDidLoad {
-    //    NSLog(@"Entro no didload da detail");
-    [super viewDidLoad];
-    
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     //Localize strings
     self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
     self.countryLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.Country, @"Pivy's country")];
@@ -32,6 +35,7 @@
     [self.pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = [UIImage imageWithData:data];
+            [self.view sendSubviewToBack:self.backgroundImageView];
         });
     }];
     [self checkIfHasPivy];
@@ -39,19 +43,17 @@
     
     [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
-//    [self.btnGetPivy setTintColor:[UIColor whiteColor]];
     
     
-    _btnGetPivy.layer.cornerRadius = 18;
-//    _btnGetPivy.layer.borderColor = [[UIColor colorWithRed:250/255.0f
-//                                                     green:211/255.0f
-//                                                      blue:10.0/255.0f
-//                                                     alpha:1.0f] CGColor];
+    self.btnGetPivy.layer.cornerRadius = 18;
     self.btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
-    _btnGetPivy.layer.borderWidth = 1;
+    self.btnGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
 }
-
+//-(void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear: NO];
+//
+//}
 
 -(void) setBackgroundForCountryCode:(NSString *)countryCode{
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
@@ -67,8 +69,7 @@
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }];
-        }
-        else{
+        }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
                                                             message:[error.description valueForKey: @"error"]
                                                            delegate:nil
@@ -85,14 +86,12 @@
     [query fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (objects.count != 0){
                 [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
                 self.btnGetPivy.enabled = NO;
                 self.btnGetPivy.alpha = 0.5;
-            }
-            else{
+            }else{
                 [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
                     PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
                     [query fromLocalDatastore];
@@ -103,8 +102,7 @@
                             if([pivy isEqual:self.pivy]){
                                 self.btnGetPivy.titleLabel.text = @"GET";
                                 self.btnGetPivy.enabled = YES;
-                            }
-                            else{
+                            }else{
                                 [self.btnGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
                                 self.btnGetPivy.enabled = NO;
                                 self.btnGetPivy.alpha = 0.5;
@@ -117,7 +115,6 @@
                 }];
             }
         });
-        
     }];
 }
 
@@ -127,11 +124,8 @@
         g.pivy = self.pivy;
         g.from = [PFUser currentUser];
         g.to = [PFUser currentUser];
-        
         [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            NSLog(@"PINOU");
             dispatch_async(dispatch_get_main_queue(), ^{
-//                NSLog(@"SAVOU");
                 if (succeeded) {
                     [g saveEventually];
                     [self checkIfHasPivy];
