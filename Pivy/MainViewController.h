@@ -19,7 +19,7 @@
 @interface MainViewController : UIViewController <CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
     CLLocation *currentLocation;
-    Reachability *internetReachable;    
+    Reachability *internetReachable;
 }
 
 @end
