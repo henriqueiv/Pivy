@@ -45,8 +45,24 @@
     [self.imageView setUserInteractionEnabled:YES];
     
     
+    UIColor *colorPlaceHolder = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.30];
+    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Username" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+   
+    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Email" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    
+    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Password" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    
+    _confirmPasswordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Confirm password" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    
+    
 }
-
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.emailField resignFirstResponder];
+    [self.confirmPasswordField resignFirstResponder];
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     NSArray *array = [[NSArray alloc] initWithObjects:_usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
     for (int i = 0; i < array.count; i++) {

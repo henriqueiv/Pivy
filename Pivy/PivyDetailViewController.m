@@ -11,6 +11,12 @@
 @interface PivyDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 
 @end
 
@@ -18,7 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     //Localize strings
     self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
     self.countryLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.Country, @"Pivy's country")];
@@ -26,19 +35,25 @@
     [self.pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = [UIImage imageWithData:data];
+            [self.view sendSubviewToBack:self.backgroundImageView];
         });
     }];
+    [self checkIfHasPivy];
+//    [self checkPivyEnabled];
     
     [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
     
     
-    _btnGetPivy.layer.cornerRadius = 18;
+    self.btnGetPivy.layer.cornerRadius = 18;
     self.btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
-    _btnGetPivy.layer.borderWidth = 1;
+    self.btnGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
 }
-
+//-(void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear: NO];
+//
+//}
 
 -(void) setBackgroundForCountryCode:(NSString *)countryCode{
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];

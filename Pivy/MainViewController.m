@@ -96,20 +96,20 @@
                 self.pivyArray = a;
                 if(self.pivyArray.count > 0)
                     [self sendPush:self.pivyArray];
+                [self getPivy];
             }
         }];
     }];
     return nil;
 }
 
-- (IBAction)getPivy:(UIButton *)sender {
+- (void)getPivy {
     if (self.pivyArray.count > 0){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         for(int i =0; i < self.pivyArray.count; i++){
             UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
             PivyDetailViewController *detail = (PivyDetailViewController *)vc;
             detail.pivy = (Pivy *)self.pivyArray[i];
-            
             detail.view.frame = CGRectMake(self.scrollView.frame.size.width*i, 0, detail.view.frame.size.width, detail.view.frame.size.height);
             [self.scrollView addSubview:detail.view];
             [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * self.pivyArray.count, self.scrollView.frame.size.height)];
