@@ -16,10 +16,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="NEv-r6-r7S" secondAttribute="bottom" id="Hce-J8-6C7"/>
-                <constraint firstItem="NEv-r6-r7S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ipE-63-fka"/>
-                <constraint firstItem="NEv-r6-r7S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jPq-wZ-PqH"/>
-                <constraint firstAttribute="trailing" secondItem="NEv-r6-r7S" secondAttribute="trailing" id="lwp-Kw-Smp"/>
+                <constraint firstItem="NEv-r6-r7S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9GW-sQ-N8q"/>
+                <constraint firstItem="NEv-r6-r7S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qcv-1A-tIl"/>
+                <constraint firstAttribute="bottom" secondItem="NEv-r6-r7S" secondAttribute="bottom" id="R1r-p0-UaD"/>
+                <constraint firstAttribute="trailing" secondItem="NEv-r6-r7S" secondAttribute="trailing" id="hHg-9f-bEj"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
