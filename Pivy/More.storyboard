@@ -540,6 +540,11 @@
                                     <action selector="confirmButton:" destination="rkU-cH-eCA" eventType="touchUpInside" id="f4S-bN-bcp"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KW5-hp-enT">
+                                <rect key="frame" x="35" y="93" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="BZr-iz-tjO" firstAttribute="top" secondItem="7Mf-Wz-A8V" secondAttribute="bottom" constant="17" id="0MP-XE-Rl8"/>
@@ -600,6 +605,7 @@
                         <outlet property="confirmPasswordField" destination="BZr-iz-tjO" id="wNU-lj-9kz"/>
                         <outlet property="emailField" destination="wqH-u4-h3p" id="PiT-fg-Hor"/>
                         <outlet property="imageView" destination="64X-TG-mH2" id="VOJ-8e-yns"/>
+                        <outlet property="nameField" destination="KW5-hp-enT" id="d5L-pU-n8x"/>
                         <outlet property="passwordField" destination="7Mf-Wz-A8V" id="pv1-Sf-Dq6"/>
                         <outlet property="usernameField" destination="Ska-NY-ndc" id="7bF-jN-NtF"/>
                         <segue destination="NUv-So-g7G" kind="show" identifier="gotoLogged" id="yQ5-Ub-alo"/>
@@ -848,8 +854,8 @@
         <image name="type-Pivy" width="217" height="109"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="75O-hY-7hQ"/>
         <segue reference="SLr-36-evW"/>
+        <segue reference="yQ5-Ub-alo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

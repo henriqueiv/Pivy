@@ -11,12 +11,12 @@
 
 @interface RegisterViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 
 @end
 
@@ -26,14 +26,13 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    _nameField.delegate = self;
     _usernameField.delegate = self;
     _emailField.delegate = self;
     _passwordField.delegate = self;
     _confirmPasswordField.delegate = self;
     
     UIColor *color = [UIColor lightTextColor];
-    NSArray *array = [[NSArray alloc] initWithObjects:_nameField, _usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:_usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
     for (UITextField *tf in array) {
         tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(tf.placeholder, @"Placeholder for Register")
                                                                    attributes:@{NSForegroundColorAttributeName: color}];
@@ -49,45 +48,81 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    if(theTextField==_nameField){
-        [_usernameField becomeFirstResponder];
-    }else if (theTextField == _usernameField){
-        [_emailField becomeFirstResponder];
-    }else if (theTextField == _emailField){
-        [_passwordField becomeFirstResponder];
-    }else if(theTextField ==_passwordField){
-        [_confirmPasswordField becomeFirstResponder];
-    }else if (theTextField == _confirmPasswordField){
-        [self confirmButton:nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:_usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
+    for (int i = 0; i < array.count; i++) {
+        if (theTextField == array[i]) {
+            if (i < array.count-1) {
+                [(UITextField*) array[i+1] becomeFirstResponder];
+            }else{
+                [self confirmButton:nil];
+            }
+        }
     }
+
+//    if(theTextField == _nameField){
+//        [_emailField becomeFirstResponder];
+//    }else if (theTextField == _usernameField){
+//        [_emailField becomeFirstResponder];
+//    }else if (theTextField == _emailField){
+//        [_passwordField becomeFirstResponder];
+//    }else if(theTextField ==_passwordField){
+//        [_confirmPasswordField becomeFirstResponder];
+//    }else if (theTextField == _confirmPasswordField){
+//        [self confirmButton:nil];
+//    }
     return YES;
 }
 
+- (BOOL)validateFields{
+    NSArray *array = [[NSArray alloc] initWithObjects:_nameField, _usernameField, _emailField, _passwordField, _confirmPasswordField, nil];
+    for (UITextField *tf in array) {
+        if ([tf.text isEqual:@""]) {
+            [tf becomeFirstResponder];
+            [tf selectAll:nil]; // if sender is nil then just select the text, if !=nil then select and show the menu
+            return false;
+        }
+    }
+    
+    if (![_passwordField.text isEqualToString:_confirmPasswordField.text]) {
+        [_confirmPasswordField becomeFirstResponder];
+        [_confirmPasswordField selectAll:nil];
+        return false;
+    }
+    
+    return true;
+}
+
 - (IBAction)confirmButton:(id)sender {
-    if ([_passwordField.text isEqualToString:_confirmPasswordField.text]) {
+    if ([self validateFields]) {
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         PFUser *newUser = [PFUser user];
         newUser.username = _usernameField.text;
         newUser.email = _emailField.text;
         newUser.password = _passwordField.text;
-        newUser[@"name"] = _nameField.text;
+        [newUser setObject:_nameField.text forKey:@"name"];
         
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [hud hide:YES];
-            if (!error) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"Title for successfull register") message:NSLocalizedString(@"Success on register", @"Message for successfull register") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for successfull register") otherButtonTitles:nil, nil];
-                [alert show];
-                [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
-            }
-            else{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail", @"Title for error in register") message:[error.userInfo valueForKey:@"error"] delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for error in register") otherButtonTitles:nil, nil];
-                [alert show];
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hide:YES];
+                if (!error) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", @"Title for successfull register")
+                                                                    message:NSLocalizedString(@"Success on register", @"Message for successfull register")
+                                                                   delegate:self
+                                                          cancelButtonTitle:NSLocalizedString(@"OK", @"Button for successfull register")
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                    [self performSegueWithIdentifier:@"gotoLogged" sender:sender];
+                }else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Fail", @"Title for error in register")
+                                                                    message:[error.userInfo valueForKey:@"error"]
+                                                                   delegate:self
+                                                          cancelButtonTitle:NSLocalizedString(@"OK", @"Button for error in register")
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+            });
         }];
-    } else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Password does not match", @"Title for password not matching") message:NSLocalizedString(@"Check your password and try again", @"Message for password not matching") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Button for password not matching") otherButtonTitles:nil, nil];
-        [alert show];
     }
 }
 - (IBAction)hideKeyboard:(id)sender {
@@ -157,23 +192,34 @@
 }
 
 - (void)imageTaped:(UIGestureRecognizer *)gestureRecognizer {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
-    
+    if ([UIImagePickerController availableCaptureModesForCameraDevice:(UIImagePickerControllerCameraDeviceRear)]){
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+    }else{
+        [self noCamera];
+    }
+}
+
+- (void)noCamera{
+#warning TODO Create localizable
+    NSString *message = [NSString stringWithFormat:NSLocalizedString(@"No rear camera available message", @"There is no rear camera available in this device. Message for UIAlertView")];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No rear camera available title", @"There is no rear camera available in this device. Title for UIAlertView")
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"OK", @"Button for successfull login with FB")
+                                          otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
     self.imageView.clipsToBounds = YES;
     self.imageView.layer.cornerRadius = self.imageView.layer.visibleRect.size.height/2;
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 @end
