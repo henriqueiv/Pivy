@@ -18,20 +18,18 @@
 
 @end
 
-
 @implementation CollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG-Purple.png"]];
-
     _reuseIdentifier =  @"Cell";
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(startRefresh:)
+    [refreshControl addTarget:self
+                       action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
-//    refreshControl.tintColor = [UIColor whiteColor];//refresh branco
     refreshControl.tintColor = [UIColor colorWithRed:0.250 green:0.237 blue:0.255 alpha:0.25];
     [self.collectionView addSubview:refreshControl];
     
@@ -43,7 +41,6 @@
                                                  name:@"GetPivyNotification"
                                                object:nil];
     [self createCollection];
-    
     if([PFUser currentUser])
         [self createGallery];
 }
@@ -51,7 +48,7 @@
 -(void)handleGetPivyNotification:(Pivy*) pivy{
     if([PFUser currentUser])
         [self createGallery];
-   [self.collectionView reloadData];
+    [self.collectionView reloadData];
 }
 
 -(void)createCollection{
@@ -76,13 +73,11 @@
         if(error){
             NSLog(@"ERRO: %@", error);
         }
-       dispatch_async(dispatch_get_main_queue(), ^{
-           [MBProgressHUD hideHUDForView:self.view animated:YES];
-           [self.collectionView reloadData];
-       });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.collectionView reloadData];
+        });
     }];
-    
-
 }
 
 -(void)createGallery{
@@ -99,15 +94,6 @@
     }];
 }
 
-//- (void) startRefresh:(UIRefreshControl *)startRefresh {
-//    [startRefresh beginRefreshing];
-//    [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
-//    if([PFUser currentUser])
-//        [self createGallery];
-//    [self.collectionView reloadData];
-//    [startRefresh endRefreshing];
-//}
-
 - (void) startRefresh:(UIRefreshControl *)startRefresh {
     [startRefresh beginRefreshing];
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
@@ -117,26 +103,21 @@
         [self.collectionView reloadData];
         dispatch_async(dispatch_get_main_queue(), ^{
             [startRefresh endRefreshing];
-
         });
     });
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    if (section == (self.pivyDic.count)-1)
+    if (section == (self.pivyDic.count)-1){
         return UIEdgeInsetsMake(15, 5, 66, 5);
-    else
+    }else{
         return UIEdgeInsetsMake(15, 5, 15, 5);
-    
+    }
 }
 
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-
     header.headerLabel.text = [self.countries objectAtIndex:indexPath.section];
-    
     return header;
 }
 
@@ -157,28 +138,14 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSString *key = [self.countries objectAtIndex:section];
     return [[self.pivyDic objectForKey:key] count];
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     Pivy *pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-    
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
-//    cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
     cell.pivy = pivy;
-        cell.backgroundColor = [UIColor clearColor];
-    
-//    cell.layer.borderWidth = 1;
-//    cell.layer.borderColor = [UIColor colorWithRed:0.250 green:0.237 blue:0.255 alpha:1].CGColor;
-//    cell.contentView.alpha = 0.2;
-//    for(Gallery *gallery in self.galleryArray){
-//        if( ([pivy.name isEqualToString:gallery.pivy.name]) && ([gallery.to isEqual:[PFUser currentUser]]) ){
-//            cell.contentView.alpha = 1;
-//        }
-//    }
-    
+    cell.backgroundColor = [UIColor clearColor];
     cell.imageCell.crossfadeDuration = 0;
-
     if(pivy.image){
         [AsyncImageLoader cancelPreviousPerformRequestsWithTarget:cell.imageCell];
         cell.imageCell.image = [UIImage imageNamed:@"PIVY_logo.png"];
