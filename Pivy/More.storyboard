@@ -841,10 +841,10 @@
         <image name="BG-Purple" width="750" height="1334"/>
         <image name="Button-CreateAccount" width="165" height="45"/>
         <image name="button-FacebookLogin" width="165" height="45"/>
-        <image name="icon-Email" width="60" height="46"/>
-        <image name="icon-Password" width="29" height="25"/>
+        <image name="icon-Email" width="114" height="77"/>
+        <image name="icon-Password" width="24" height="31"/>
         <image name="icon-TakePhoto" width="338" height="338"/>
-        <image name="icon-User" width="28" height="25"/>
+        <image name="icon-User" width="31" height="28"/>
         <image name="type-Pivy" width="217" height="109"/>
     </resources>
     <inferredMetricsTieBreakers>

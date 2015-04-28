@@ -25,13 +25,12 @@
     _usernameField.delegate = self;
     _passwordField.delegate = self;
     
-    //Chage placeholder color
-    UIColor *color = [UIColor lightTextColor];
+    UIColor *colorPlaceHolder = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.30];
+//    UIColor *color = [UIColor lightTextColor];
     //Localized strings
-    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Username", @"Username from user") attributes:@{NSForegroundColorAttributeName: color}];
-    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"User's password") attributes:@{NSForegroundColorAttributeName: color}];
-    
-   
+    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Username", @"Username from user") attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Password", @"User's password") attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -42,9 +41,14 @@
     }
     return YES;
 }
-- (IBAction)dismissKeyboard:(id)sender {
-    [self.view endEditing:YES];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
 }
+//- (IBAction)dismissKeyboard:(id)sender {
+//    [self.view endEditing:YES];
+//}
 
 - (IBAction)loginButton:(UIButton *)sender {
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
