@@ -230,7 +230,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="pegarPivy:" destination="L9M-Dc-DQz" eventType="touchUpInside" id="YDE-Sk-L6W"/>
+                                    <action selector="pegarPivy:" destination="L9M-Dc-DQz" eventType="touchUpInside" id="cPT-LY-uIf"/>
                                 </connections>
                             </button>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-MV-wko">
