@@ -38,6 +38,7 @@
 		6299E9951ADC509900EF2B51 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9931ADC509900EF2B51 /* Interface.storyboard */; };
 		6299E9971ADC509900EF2B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9961ADC509900EF2B51 /* Images.xcassets */; };
 		6299E99A1ADC509900EF2B51 /* Pivy WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6299E97D1ADC509800EF2B51 /* Pivy WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		62BA995D1AF05490007B2FA1 /* RoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BA995C1AF05490007B2FA1 /* RoundedImageView.m */; };
 		62C6516C1ACB2201008F8BCC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
 		62C6516D1ACB2213008F8BCC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		62C6516F1ACB2227008F8BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
@@ -159,6 +160,8 @@
 		6299E9941ADC509900EF2B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		6299E9961ADC509900EF2B51 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6299E9A21ADC56CD00EF2B51 /* NotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationPayload.apns; sourceTree = "<group>"; };
+		62BA995B1AF05490007B2FA1 /* RoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedImageView.h; sourceTree = "<group>"; };
+		62BA995C1AF05490007B2FA1 /* RoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedImageView.m; sourceTree = "<group>"; };
 		62C98EB91AC5DB8A003E405B /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
 		62C98EBA1AC5DB8A003E405B /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
 		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */,
 				6222C8A61ABB47F1008B5970 /* Main.storyboard */,
 				35C3A6031AC1D6590067BAAE /* More.storyboard */,
+				62BA995B1AF05490007B2FA1 /* RoundedImageView.h */,
+				62BA995C1AF05490007B2FA1 /* RoundedImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -698,6 +703,7 @@
 				623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */,
 				52C1645A1AC48546008E8B2F /* CollectionViewCellHeader.m in Sources */,
 				52362FE21ABE0D2B0079D117 /* CollectionViewController.m in Sources */,
+				62BA995D1AF05490007B2FA1 /* RoundedImageView.m in Sources */,
 				358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */,
 				62451E171ACA4A8B00C31557 /* MainTutorialViewController.m in Sources */,
 				62ED49261AC5B974002CCE90 /* Gallery.m in Sources */,

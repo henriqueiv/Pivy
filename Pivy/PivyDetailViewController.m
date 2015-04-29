@@ -7,6 +7,7 @@
 //
 
 #import "PivyDetailViewController.h"
+#import "RoundedImageView.h"
 
 @interface PivyDetailViewController ()
 
@@ -14,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet RoundedImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 
@@ -22,11 +23,7 @@
 
 @implementation PivyDetailViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
+-(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //Localize strings
     self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
@@ -39,7 +36,6 @@
         });
     }];
     [self checkIfHasPivy];
-//    [self checkPivyEnabled];
     
     [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
     [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
@@ -50,10 +46,6 @@
     self.btnGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
 }
-//-(void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear: NO];
-//
-//}
 
 -(void) setBackgroundForCountryCode:(NSString *)countryCode{
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
@@ -80,8 +72,7 @@
     }];
 }
 
-
--(void)checkIfHasPivy{
+-(void) checkIfHasPivy{
     PFQuery *query = [Gallery query];
     [query fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
@@ -118,7 +109,7 @@
     }];
 }
 
-- (IBAction)getPivy:(UIButton *)sender {
+-(IBAction) getPivy:(UIButton *)sender {
     if ([PFUser currentUser]) {
         Gallery *g = [[Gallery alloc] init];
         g.pivy = self.pivy;
@@ -138,6 +129,5 @@
         [alert show];
     }
 }
-
 
 @end
