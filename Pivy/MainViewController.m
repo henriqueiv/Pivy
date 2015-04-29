@@ -10,7 +10,7 @@
 #import "PivyDetailViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
-#define kRangeInKm 10000
+#define kRangeInKm 5
 
 @interface MainViewController (){
     NSMutableArray *viewControllerArray;
@@ -41,6 +41,43 @@
     
     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+- (void)setBackground{
+    
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    PFQuery *query = [PFQuery queryWithClassName:[Background parseClassName]];
+    [query fromLocalDatastore];
+    [query whereKey:@"country" equalTo:countryCode];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(!error){
+            [object[@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageWithData:data]];
+                    UIVisualEffectView *ve = [[UIVisualEffectView alloc] initWithEffect: [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+                    UILabel *lb = [[UILabel alloc] init];
+                    
+                    lb.frame = CGRectMake((self.view.frame.size.width/2 - 100), (self.view.frame.size.height/2)-20, 200, 40);
+                    lb.text = @" The is no pivys near you";
+                    lb.textColor = [UIColor whiteColor];
+                    bg.frame = self.view.frame;
+                    ve.frame = self.view.frame;
+                    
+                    [self.view addSubview:bg];
+                    [self.view addSubview:ve];
+                    [self.view addSubview:lb];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
+            }];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error"
+                                                            message:[error.description valueForKey: @"error"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Dismiss", nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)placeViewFromStoryboardOnTabBar{
@@ -100,6 +137,8 @@
                 if(pivyArray.count > 0)
                     [self sendPush:pivyArray];
                 [self getPivy];
+            }else{
+                [self setBackground];
             }
         }];
     }];

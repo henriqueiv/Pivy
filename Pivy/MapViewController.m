@@ -22,7 +22,6 @@
     self.view.tintColor = [UIColor whiteColor];
     
     UINavigationBar *bar = [self.navigationController navigationBar];
-//    [bar setTintColor:[UIColor redColor]];
     [bar setBackgroundColor:[UIColor colorWithRed:85/255.0f
                                             green:23/255.0f
                                              blue:82.0/255.0f
@@ -74,6 +73,7 @@
             
             // If appropriate, customize the callout by adding accessory views (code not shown).
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            rightButton.tintColor = [UIColor purpleColor];
             
             [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
             pinView.rightCalloutAccessoryView = rightButton;

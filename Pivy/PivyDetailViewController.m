@@ -43,7 +43,16 @@
     self.botaoManeiroGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
     self.botaoManeiroGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleGetPivyNotification:)
+                                                 name:@"GetPivyNotification"
+                                               object:nil];
 }
+-(void)handleGetPivyNotification:(Pivy*) pivy{
+    [self checkIfHasPivy];
+}
+
 
 -(void) setBackgroundForCountryCode:(NSString *)countryCode{
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
@@ -90,26 +99,6 @@
                         self.botaoManeiroGetPivy.enabled = NO;
                         self.botaoManeiroGetPivy.alpha = 0.5;
                     }
-                    
-                    //                    PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
-                    //                    [query fromLocalDatastore];
-                    //                    query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:kRangeInKm];
-                    //                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                    //                        if(object){
-                    //                            Pivy *pivy = (Pivy*)object;
-                    //                            if([pivy isEqual:self.pivy]){
-                    //                                self.botaoManeiroGetPivy.titleLabel.text = @"GET PIVY";
-                    //                                self.botaoManeiroGetPivy.enabled = YES;
-                    //                            }else{
-                    //                                [self.botaoManeiroGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
-                    //                                self.botaoManeiroGetPivy.enabled = NO;
-                    //                                self.botaoManeiroGetPivy.alpha = 0.5;
-                    //                            }
-                    //                        }else{
-                    //                            self.botaoManeiroGetPivy.enabled = NO;
-                    //                            self.botaoManeiroGetPivy.alpha = 0.5;
-                    //                        }
-                    //                    }];
                 }];
             }
         });
@@ -136,27 +125,5 @@
         [alert show];
     }
 }
-
-
-//-(IBAction) getPivy:(UIButton *)sender {
-//    if ([PFUser currentUser]) {
-//        Gallery *g = [[Gallery alloc] init];
-//        g.pivy = self.pivy;
-//        g.from = [PFUser currentUser];
-//        g.to = [PFUser currentUser];
-//        [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                if (succeeded) {
-//                    [g saveEventually];
-//                    [self checkIfHasPivy];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];
-//                }
-//            });
-//        }];
-//    }else{
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//        [alert show];
-//    }
-//}
 
 @end
