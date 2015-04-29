@@ -57,6 +57,7 @@
                 case  (kRowLogout):{
                     [[PFFacebookUtils session] close];
                     [PFUser logOut];
+                    [DataManager deleteAll:[Gallery parseClassName] inBackground:YES];
                     [self performSegueWithIdentifier:@"gotoMore" sender:nil];
                     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
                     break;
