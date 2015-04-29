@@ -8,16 +8,15 @@
 
 #import "PivyDetailViewController.h"
 #import "RoundedImageView.h"
+#define kRangeInKm 10000
 
 @interface PivyDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *btnGetPivy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet RoundedImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-
+@property (weak, nonatomic) IBOutlet UIButton *botaoManeiroGetPivy;
 
 @end
 
@@ -25,9 +24,9 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     //Localize strings
     self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
-    self.countryLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.Country, @"Pivy's country")];
     self.descriptionTextView.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.pivyDescription, @"Pivy's description")];
     [self.pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -35,15 +34,14 @@
             [self.view sendSubviewToBack:self.backgroundImageView];
         });
     }];
+    
+    [self.botaoManeiroGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
+    [self.botaoManeiroGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
     [self checkIfHasPivy];
     
-    [self.btnGetPivy setTitle:@"GET PIVY" forState:UIControlStateNormal];
-    [self.btnGetPivy setTitle:@"Unable to get pivy" forState:UIControlStateDisabled];
-    
-    
-    self.btnGetPivy.layer.cornerRadius = 18;
-    self.btnGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
-    self.btnGetPivy.layer.borderWidth = 1;
+    self.botaoManeiroGetPivy.layer.cornerRadius = self.botaoManeiroGetPivy.frame.size.height/4;
+    self.botaoManeiroGetPivy.layer.borderColor = [[UIColor whiteColor]CGColor];
+    self.botaoManeiroGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
 }
 
@@ -79,37 +77,46 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (objects.count != 0){
-                [self.btnGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
-                self.btnGetPivy.enabled = NO;
-                self.btnGetPivy.alpha = 0.5;
+                [self.botaoManeiroGetPivy setTitle:@"You have this Pivy" forState:UIControlStateDisabled];
+                self.botaoManeiroGetPivy.enabled = NO;
+                self.botaoManeiroGetPivy.alpha = 0.5;
             }else{
                 [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-                    PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
-                    [query fromLocalDatastore];
-                    query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:1];
-                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                        if(object){
-                            Pivy *pivy = (Pivy*)object;
-                            if([pivy isEqual:self.pivy]){
-                                self.btnGetPivy.titleLabel.text = @"GET";
-                                self.btnGetPivy.enabled = YES;
-                            }else{
-                                [self.btnGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
-                                self.btnGetPivy.enabled = NO;
-                                self.btnGetPivy.alpha = 0.5;
-                            }
-                        }else{
-                            self.btnGetPivy.enabled = NO;
-                            self.btnGetPivy.alpha = 0.5;
-                        }
-                    }];
+                    if ([geoPoint distanceInKilometersTo:self.pivy.location] <= kRangeInKm) {
+                        self.botaoManeiroGetPivy.titleLabel.text = @"GET PIVY";
+                        self.botaoManeiroGetPivy.enabled = YES;
+                    }else{
+                        [self.botaoManeiroGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
+                        self.botaoManeiroGetPivy.enabled = NO;
+                        self.botaoManeiroGetPivy.alpha = 0.5;
+                    }
+                    
+                    //                    PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
+                    //                    [query fromLocalDatastore];
+                    //                    query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:kRangeInKm];
+                    //                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                    //                        if(object){
+                    //                            Pivy *pivy = (Pivy*)object;
+                    //                            if([pivy isEqual:self.pivy]){
+                    //                                self.botaoManeiroGetPivy.titleLabel.text = @"GET PIVY";
+                    //                                self.botaoManeiroGetPivy.enabled = YES;
+                    //                            }else{
+                    //                                [self.botaoManeiroGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
+                    //                                self.botaoManeiroGetPivy.enabled = NO;
+                    //                                self.botaoManeiroGetPivy.alpha = 0.5;
+                    //                            }
+                    //                        }else{
+                    //                            self.botaoManeiroGetPivy.enabled = NO;
+                    //                            self.botaoManeiroGetPivy.alpha = 0.5;
+                    //                        }
+                    //                    }];
                 }];
             }
         });
     }];
 }
 
--(IBAction) getPivy:(UIButton *)sender {
+- (IBAction)pegarPivy:(id)sender {
     if ([PFUser currentUser]) {
         Gallery *g = [[Gallery alloc] init];
         g.pivy = self.pivy;
@@ -129,5 +136,27 @@
         [alert show];
     }
 }
+
+
+//-(IBAction) getPivy:(UIButton *)sender {
+//    if ([PFUser currentUser]) {
+//        Gallery *g = [[Gallery alloc] init];
+//        g.pivy = self.pivy;
+//        g.from = [PFUser currentUser];
+//        g.to = [PFUser currentUser];
+//        [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                if (succeeded) {
+//                    [g saveEventually];
+//                    [self checkIfHasPivy];
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];
+//                }
+//            });
+//        }];
+//    }else{
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//}
 
 @end
