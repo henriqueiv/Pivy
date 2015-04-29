@@ -12,11 +12,14 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 #define kRangeInKm 10000
 
-@interface MainViewController ()
+@interface MainViewController (){
+    NSMutableArray *viewControllerArray;
+    NSMutableArray *pivyArray;
+}
 
-@property (strong, nonatomic) NSMutableArray *pivyArray;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) Pivy *pivy;
+@property (weak, nonatomic) PivyDetailViewController *detail;
 
 @end
 
@@ -33,6 +36,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startMonitoringSignificantLocationChanges];
     
+    [self.scrollView setDelegate:self];
     [self getPivysWithinKilometers:kRangeInKm];
     
     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
@@ -92,9 +96,9 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects.count > 0) {
                 NSMutableArray *a = [[NSMutableArray alloc] initWithArray:objects];
-                self.pivyArray = a;
-                if(self.pivyArray.count > 0)
-                    [self sendPush:self.pivyArray];
+                pivyArray = a;
+                if(pivyArray.count > 0)
+                    [self sendPush:pivyArray];
                 [self getPivy];
             }
         }];
@@ -103,15 +107,16 @@
 }
 
 - (void)getPivy {
-    if (self.pivyArray.count > 0){
+    viewControllerArray = [[NSMutableArray alloc] init];
+    if (pivyArray.count > 0){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        for(int i =0; i < self.pivyArray.count; i++){
-            PivyDetailViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
-            PivyDetailViewController *detail = (PivyDetailViewController *)vc;
-            detail.pivy = (Pivy *)self.pivyArray[i];
-            detail.view.frame = CGRectMake(self.scrollView.frame.size.width*i, 0, detail.view.frame.size.width, detail.view.frame.size.height);
-            [self.scrollView addSubview:detail.view];
-            [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * self.pivyArray.count, self.scrollView.frame.size.height)];
+        for(int i = 0; i < pivyArray.count; i++){
+            self.detail = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
+            [viewControllerArray addObject:self.detail];
+            self.detail.pivy = (Pivy *)pivyArray[i];
+            self.detail.view.frame = CGRectMake(self.scrollView.frame.size.width*i, 0, self.detail.view.frame.size.width, self.detail.view.frame.size.height);
+            [self.scrollView addSubview:self.detail.view];
+            [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * pivyArray.count, self.scrollView.frame.size.height)];
         }
     }
 }
@@ -120,4 +125,10 @@
     [self getPivysWithinKilometers:kRangeInKm];
 }
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    int indexOfPage = scrollView.contentOffset.x / scrollView.frame.size.width;
+    self.detail = [viewControllerArray objectAtIndex:indexOfPage];
+    NSLog(@"%d", indexOfPage);
+}
 @end
