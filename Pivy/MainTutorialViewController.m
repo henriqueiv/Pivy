@@ -42,6 +42,8 @@
     UIViewController *vc4 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"fourthTutorial"];
     UIViewController *vc5 = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"fifthTutorial"];
     
+//    vc1.view.layoutIfNeeded;
+//    vc1.view.frame = CGRectMake(0, 0, vc1.view.frame.size.width, vc1.view.frame.size.height+10);
     [self.scrollView addSubview:vc1.view];
     
     vc2.view.frame = CGRectMake(vc1.view.frame.size.width, 0, vc2.view.frame.size.width, vc2.view.frame.size.height);

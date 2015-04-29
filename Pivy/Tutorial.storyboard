@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3eN-fL-d89">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3eN-fL-d89">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -112,8 +112,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashPivyBg" translatesAutoresizingMaskIntoConstraints="NO" id="ooH-eM-5IH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firstBGS" translatesAutoresizingMaskIntoConstraints="NO" id="ooH-eM-5IH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="608"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pivySplash" translatesAutoresizingMaskIntoConstraints="NO" id="a71-kj-0yd">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
@@ -126,11 +126,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="a71-kj-0yd" secondAttribute="centerY" id="0mk-Zv-ERf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ooH-eM-5IH" secondAttribute="trailing" constant="-16" id="Xbr-g9-wHa"/>
+                            <constraint firstItem="ooH-eM-5IH" firstAttribute="leading" secondItem="75H-aA-vns" secondAttribute="leadingMargin" constant="-16" id="5jW-r7-gXE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ooH-eM-5IH" secondAttribute="trailing" constant="-16" id="Rfi-Ce-auS"/>
                             <constraint firstAttribute="centerX" secondItem="a71-kj-0yd" secondAttribute="centerX" id="Yq6-ZL-3uG"/>
-                            <constraint firstItem="8vf-oh-NGI" firstAttribute="top" secondItem="ooH-eM-5IH" secondAttribute="bottom" id="mdL-eS-YjD"/>
-                            <constraint firstItem="ooH-eM-5IH" firstAttribute="leading" secondItem="75H-aA-vns" secondAttribute="leadingMargin" constant="-16" id="ssH-k2-ohB"/>
-                            <constraint firstItem="ooH-eM-5IH" firstAttribute="top" secondItem="75H-aA-vns" secondAttribute="topMargin" id="yEX-Xz-iZM"/>
+                            <constraint firstItem="ooH-eM-5IH" firstAttribute="top" secondItem="75H-aA-vns" secondAttribute="topMargin" id="h7o-sJ-rhQ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ooH-eM-5IH" secondAttribute="bottom" constant="-8" id="s1X-Ey-3zg"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -224,7 +224,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="find" translatesAutoresizingMaskIntoConstraints="NO" id="deN-pu-Iab">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="find" translatesAutoresizingMaskIntoConstraints="NO" id="deN-pu-Iab">
                                 <rect key="frame" x="161" y="151" width="278" height="224"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="deN-pu-Iab" secondAttribute="height" multiplier="133:107" id="Enr-iz-ZcL"/>
@@ -411,14 +411,14 @@
         <image name="bg03white" width="750" height="1334"/>
         <image name="bg04white" width="750" height="1334"/>
         <image name="collect" width="594" height="486"/>
-        <image name="find" width="683" height="557"/>
+        <image name="find" width="2953" height="1998"/>
+        <image name="firstBGS" width="384" height="617"/>
         <image name="pageView01" width="139" height="24"/>
         <image name="pageView02" width="139" height="24"/>
         <image name="pageView03" width="139" height="24"/>
         <image name="pageView04" width="139" height="24"/>
         <image name="pageView05" width="139" height="24"/>
         <image name="pivySplash" width="478" height="262"/>
-        <image name="splashPivyBg" width="750" height="1334"/>
         <image name="travel" width="1330" height="1166"/>
     </resources>
 </document>
