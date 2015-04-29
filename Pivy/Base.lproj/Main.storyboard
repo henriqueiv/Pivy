@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.29803921568627451" green="0.098039215686274508" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="om5-hd-Kjz" secondAttribute="trailing" constant="-16" id="5Ox-wT-Ayt"/>
                             <constraint firstAttribute="bottomMargin" secondItem="om5-hd-Kjz" secondAttribute="bottom" id="HqT-Fn-UP7"/>
