@@ -12,13 +12,11 @@
 
 @interface PivyDetailViewController ()
 
-//@property (weak, nonatomic) IBOutlet UIButton *botaoManeiroGetPivy;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet RoundedImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIButton *botaoManeiroGetPivy;
-
 
 @end
 
@@ -29,7 +27,6 @@
     
     //Localize strings
     self.nameLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.name, @"Pivy's name")];
-//    self.countryLabel.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.Country, @"Pivy's country")];
     self.descriptionTextView.text = [NSString stringWithFormat:NSLocalizedString(self.pivy.pivyDescription, @"Pivy's description")];
     [self.pivy.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -85,25 +82,34 @@
                 self.botaoManeiroGetPivy.alpha = 0.5;
             }else{
                 [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-                    PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
-                    [query fromLocalDatastore];
-                    query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:kRangeInKm];
-                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                        if(object){
-                            Pivy *pivy = (Pivy*)object;
-                            if([pivy isEqual:self.pivy]){
-                                self.botaoManeiroGetPivy.titleLabel.text = @"GET PIVY";
-                                self.botaoManeiroGetPivy.enabled = YES;
-                            }else{
-                                [self.botaoManeiroGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
-                                self.botaoManeiroGetPivy.enabled = NO;
-                                self.botaoManeiroGetPivy.alpha = 0.5;
-                            }
-                        }else{
-                            self.botaoManeiroGetPivy.enabled = NO;
-                            self.botaoManeiroGetPivy.alpha = 0.5;
-                        }
-                    }];
+                    if ([geoPoint distanceInKilometersTo:self.pivy.location] <= kRangeInKm) {
+                        self.botaoManeiroGetPivy.titleLabel.text = @"GET PIVY";
+                        self.botaoManeiroGetPivy.enabled = YES;
+                    }else{
+                        [self.botaoManeiroGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
+                        self.botaoManeiroGetPivy.enabled = NO;
+                        self.botaoManeiroGetPivy.alpha = 0.5;
+                    }
+                    
+                    //                    PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
+                    //                    [query fromLocalDatastore];
+                    //                    query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:kRangeInKm];
+                    //                    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                    //                        if(object){
+                    //                            Pivy *pivy = (Pivy*)object;
+                    //                            if([pivy isEqual:self.pivy]){
+                    //                                self.botaoManeiroGetPivy.titleLabel.text = @"GET PIVY";
+                    //                                self.botaoManeiroGetPivy.enabled = YES;
+                    //                            }else{
+                    //                                [self.botaoManeiroGetPivy setTitle:@"You're too far" forState:UIControlStateDisabled];
+                    //                                self.botaoManeiroGetPivy.enabled = NO;
+                    //                                self.botaoManeiroGetPivy.alpha = 0.5;
+                    //                            }
+                    //                        }else{
+                    //                            self.botaoManeiroGetPivy.enabled = NO;
+                    //                            self.botaoManeiroGetPivy.alpha = 0.5;
+                    //                        }
+                    //                    }];
                 }];
             }
         });
