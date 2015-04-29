@@ -559,7 +559,7 @@
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = 29P59JP27S;
 					};
 					6222C8B11ABB47F1008B5970 = {
 						CreatedOnToolsVersion = 6.2;
@@ -568,11 +568,11 @@
 					};
 					6299E97C1ADC509800EF2B51 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = 29P59JP27S;
 					};
 					6299E98B1ADC509900EF2B51 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = 29P59JP27S;
 					};
 				};
 			};
