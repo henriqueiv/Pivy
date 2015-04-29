@@ -50,10 +50,6 @@
     self.btnGetPivy.layer.borderWidth = 1;
     [self setBackgroundForCountryCode:self.pivy.countryCode];
 }
-//-(void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear: NO];
-//
-//}
 
 -(void) setBackgroundForCountryCode:(NSString *)countryCode{
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];

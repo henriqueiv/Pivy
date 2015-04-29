@@ -8,7 +8,7 @@
 
 #import "LoggedMoreTableViewController.h"
 
-@interface LoggedMoreTableViewController ()
+@interface LoggedMoreTableViewController () <UITabBarControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mailLabel;
@@ -21,8 +21,9 @@
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:nil];
-    _nameLabel.text = [[PFUser currentUser]valueForKey:@"name"];
-    _mailLabel.text = [[PFUser currentUser]valueForKey:@"email"];
+    self.nameLabel.text = [[PFUser currentUser]valueForKey:@"name"];
+    self.mailLabel.text = [[PFUser currentUser]valueForKey:@"email"];
+    [self.tabBarController setDelegate:self];
     
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG-Purple.png"]];
     [tempImageView setFrame:self.tableView.frame];
@@ -32,7 +33,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    NSLog(@"SECTION: %ld  ROW: %ld",indexPath.section , indexPath.row);
     
     switch (indexPath.section) {
         case kSectionLogin:{
@@ -97,6 +97,9 @@
         default:
             break;
     }
+}
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    return (viewController != tabBarController.selectedViewController);
 }
 
 @end
