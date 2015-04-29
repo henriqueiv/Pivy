@@ -46,9 +46,6 @@
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
 }
-//- (IBAction)dismissKeyboard:(id)sender {
-//    [self.view endEditing:YES];
-//}
 
 - (IBAction)loginButton:(UIButton *)sender {
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

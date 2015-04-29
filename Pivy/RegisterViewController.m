@@ -46,13 +46,15 @@
     
     
     UIColor *colorPlaceHolder = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.30];
-    _usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Username" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    self.usernameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Username" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
    
-    _emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Email" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    self.emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Email" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
     
-    _passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Password" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    self.passwordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Password" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
     
-    _confirmPasswordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Confirm password" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    self.confirmPasswordField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Confirm password" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
+    
+    self.nameField.attributedPlaceholder = [[NSAttributedString alloc] initWithString: @"Full Name" attributes:@{NSForegroundColorAttributeName: colorPlaceHolder}];
     
     
 }
