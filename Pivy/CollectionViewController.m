@@ -141,15 +141,15 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Pivy *pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_reuseIdentifier forIndexPath:indexPath];
-    cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
+    Pivy *pivy = [[self.pivyDic objectForKey:[self.countries objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     cell.pivy = pivy;
-    cell.backgroundColor = [UIColor clearColor];
-    
+
+    cell.layer.cornerRadius = cell.layer.visibleRect.size.height /2;
     cell.layer.borderWidth = 1;
-    cell.layer.borderColor = [UIColor colorWithRed:0.250 green:0.237 blue:0.255 alpha:1].CGColor;
-    cell.contentView.alpha = 0.2;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.layer.borderColor = [UIColor whiteColor].CGColor;
+    cell.contentView.alpha = 0.3;
     for(Gallery *gallery in self.galleryArray){
         if( ([pivy.name isEqualToString:gallery.pivy.name]) && ([gallery.to isEqual:[PFUser currentUser]]) ){
             cell.contentView.alpha = 1;

@@ -79,14 +79,7 @@
 }
 
 -(void)configureTabBar{
-    
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-//    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
-//                                                        green:211/255.0f
-//                                                         blue:10.0/255.0f
-//                                                        alpha:1.0f]];
-//    [[UITabBar appearance] setTranslucent:NO];
-//    [[UITabBar appearance] setAlpha:0.9f];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -99,7 +92,6 @@
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-//    NSLog(@"Notificacao: %@", notification);
     if (notification.alertBody) {
         UIApplicationState state = [application applicationState];
         if (state == UIApplicationStateActive) {
@@ -110,8 +102,6 @@
             [alert show];
         }
     }
-//     Send notification to do something
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
     [self renumberBadgesOfPendingNotifications];
 }
 
@@ -122,7 +112,6 @@
     // first get a copy of all pending notifications (unfortunately you cannot 'modify' a pending notification)
     NSArray *pendingNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     
-//    NSLog(@"pendingNotifications.count: %ld", pendingNotifications.count);
     // if there are any pending notifications -> adjust their badge number
     if (pendingNotifications.count != 0) {
         // clear all pending notifications

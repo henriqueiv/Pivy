@@ -10,7 +10,7 @@
 #import "PivyDetailViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
-#define kRangeInKm 10
+#define kRangeInKm 10000
 
 @interface MainViewController ()
 
@@ -74,8 +74,7 @@
     if (pivys.count == 1) {
         Pivy *p = (Pivy *)pivys.firstObject;
         notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", p.name];
-    }
-    else{
+    }else{
         notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %d Pivys! Gotta catch'em all!", (int)pivys.count];
     }
     notification.soundName = UILocalNotificationDefaultSoundName;
@@ -107,7 +106,7 @@
     if (self.pivyArray.count > 0){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         for(int i =0; i < self.pivyArray.count; i++){
-            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
+            PivyDetailViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Detail"];
             PivyDetailViewController *detail = (PivyDetailViewController *)vc;
             detail.pivy = (Pivy *)self.pivyArray[i];
             detail.view.frame = CGRectMake(self.scrollView.frame.size.width*i, 0, detail.view.frame.size.width, detail.view.frame.size.height);
