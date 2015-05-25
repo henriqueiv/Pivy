@@ -115,6 +115,7 @@
     if (pivys.count == 1) {
         Pivy *p = (Pivy *)pivys.firstObject;
         notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", p.name];
+        [[NSUserDefaults standardUserDefaults] setObject:p forKey:@"getSinglePivyFromWatch"];
     }else{
         notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %d Pivys! Gotta catch'em all!", (int)pivys.count];
     }

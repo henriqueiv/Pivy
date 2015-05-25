@@ -32,6 +32,22 @@
     [super didDeactivate];
 }
 
+-(void)handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)localNotification{
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    
+    [self handleAction:identifier forNotification:dict];
+}
+
+-(void)handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)remoteNotification{
+    
+}
+
+-(void)handleAction:(NSString*)identifier forNotification:(NSDictionary*)notification{
+    if ([identifier isEqualToString:@"getSinglePivyCategory"]) {
+        
+    }
+}
+
 @end
 
 

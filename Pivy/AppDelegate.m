@@ -32,17 +32,37 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    currentInstallation[@"userid"] = [PFUser currentUser].objectId;
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
 }
 
 -(void)registerForLocalNotification{
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    // Create a mutable set to store the category definitions.
+    NSMutableSet* categories = [NSMutableSet set];
     
-    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    // Define the actions for a meeting invite notification.
+    UIMutableUserNotificationAction* acceptAction = [[UIMutableUserNotificationAction alloc] init];
+    acceptAction.title = NSLocalizedString(@"Get Pivy", @"Title for get Pivy notif");
+    acceptAction.identifier = @"getSinglePivyAction";
+    acceptAction.activationMode = UIUserNotificationActivationModeForeground; //UIUserNotificationActivationModeBackground if no need in foreground.
+    acceptAction.authenticationRequired = NO;
     
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    // Create the category object and add it to the set.
+    UIMutableUserNotificationCategory* getSinglePivyCategory = [[UIMutableUserNotificationCategory alloc] init];
+    [getSinglePivyCategory setActions:@[acceptAction]
+                    forContext:UIUserNotificationActionContextDefault];
+    getSinglePivyCategory.identifier = @"getSinglePivyCategory";
+    
+    [categories addObject:getSinglePivyCategory];
+    
+    // Configure other actions and categories and add them to the set...
+    UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:
+                                            (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound)
+                                                                             categories:categories];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 }
 
 -(void)configureNavigationBar{
@@ -129,6 +149,20 @@
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         }
     }
+}
+
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
+    // Pivy é incluido no UserDefatults ao lançar a notificação na detail
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"getSinglePivyFromWatch" object:nil];
+}
+
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler{
+    // Pivy é incluido no UserDefatults ao lançar a notificação na detail
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"getSinglePivyFromWatch" object:nil];
+}
+
+-(void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply{
+    NSLog(@"aiuh");
 }
 
 @end

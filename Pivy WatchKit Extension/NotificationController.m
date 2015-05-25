@@ -15,30 +15,9 @@
 
 @end
 
-
 @implementation NotificationController
 
-- (instancetype)init {
-    self = [super init];
-    if (self){
-        // Initialize variables here.
-        // Configure interface objects here.
-        self.textLabel.text = @"demonio";
-    }
-    return self;
-}
-
-- (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
-    [super willActivate];
-}
-
-- (void)didDeactivate {
-    // This method is called when watch view controller is no longer visible
-    [super didDeactivate];
-}
-
-
+// Só roda fora do simulador
 - (void)didReceiveLocalNotification:(UILocalNotification *)localNotification withCompletion:(void (^)(WKUserNotificationInterfaceType))completionHandler {
     // This method is called when a local notification needs to be presented.
     // Implement it if you use a dynamic notification interface.
@@ -46,10 +25,11 @@
     //
     // After populating your dynamic notification interface call the completion block.
     NSLog(@"localNotification Dictionary %@", localNotification);
-    completionHandler(@"myCategory");
-//    completionHandler(WKUserNotificationInterfaceTypeCustom);
+    self.textLabel.text = localNotification.alertBody;
+    completionHandler(WKUserNotificationInterfaceTypeCustom);
 }
 
+// No simulador sempre cai aqui
 - (void)didReceiveRemoteNotification:(NSDictionary *)remoteNotification withCompletion:(void (^)(WKUserNotificationInterfaceType))completionHandler {
     // This method is called when a remote notification needs to be presented.
     // Implement it if you use a dynamic notification interface.
@@ -57,6 +37,7 @@
     //
     // After populating your dynamic notification interface call the completion block.
     NSLog(@"remoteNotification Dictionary %@", remoteNotification);
+    self.textLabel.text = [remoteNotification objectForKey:@"customKey"];
     completionHandler(WKUserNotificationInterfaceTypeCustom);
 }
 
@@ -64,6 +45,15 @@
     NSLog(@"identifier: %@", identifier);
     NSLog(@"localNotification: %@", localNotification);
 }
+
+-(void)handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)remoteNotification{
+    NSLog(@"iaeuhae");
+    NSDictionary *dict = @{@"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3"};
+    [WKInterfaceController openParentApplication:dict reply:^(NSDictionary *replyInfo, NSError *error) {
+        NSLog(@"iaueh");
+    }];
+}
+
 
 @end
 

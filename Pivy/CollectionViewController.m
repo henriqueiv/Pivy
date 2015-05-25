@@ -40,6 +40,7 @@
                                              selector:@selector(handleGetPivyNotification:)
                                                  name:@"GetPivyNotification"
                                                object:nil];
+    
     [self createCollection];
     if([PFUser currentUser])
         [self createGallery];

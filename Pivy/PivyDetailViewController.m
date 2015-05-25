@@ -48,11 +48,16 @@
                                              selector:@selector(handleGetPivyNotification:)
                                                  name:@"GetPivyNotification"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pegarPivy:)
+                                                 name:@"getSinglePivyFromWatch"
+                                               object:@"watch"];
 }
+
 -(void)handleGetPivyNotification:(Pivy*) pivy{
     [self checkIfHasPivy];
 }
-
 
 -(void) setBackgroundForCountryCode:(NSString *)countryCode{
     PFQuery *query = [PFQuery queryWithClassName:@"Background"];
@@ -108,7 +113,11 @@
 - (IBAction)pegarPivy:(id)sender {
     if ([PFUser currentUser]) {
         Gallery *g = [[Gallery alloc] init];
-        g.pivy = self.pivy;
+        if ([(NSString*)sender isEqualToString:@"watch"]) {
+            g.pivy = (Pivy*)[[NSUserDefaults standardUserDefaults] objectForKey:@"getSinglePivyFromWatch"];
+        }else{
+            g.pivy = self.pivy;
+        }
         g.from = [PFUser currentUser];
         g.to = [PFUser currentUser];
         [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -116,7 +125,7 @@
                 if (succeeded) {
                     [g saveEventually];
                     [self checkIfHasPivy];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:self.pivy];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:g.pivy];
                 }
             });
         }];

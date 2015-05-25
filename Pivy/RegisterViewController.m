@@ -222,8 +222,8 @@
     }
 }
 
-- (void)noCamera{
 #warning TODO Create localizable
+- (void)noCamera{
     NSString *message = [NSString stringWithFormat:NSLocalizedString(@"No rear camera available message", @"There is no rear camera available in this device. Message for UIAlertView")];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No rear camera available title", @"There is no rear camera available in this device. Title for UIAlertView")
                                                     message:message
