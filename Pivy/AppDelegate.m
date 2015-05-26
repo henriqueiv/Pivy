@@ -83,6 +83,9 @@
     [Pivy registerSubclass];
     [Background registerSubclass];
     
+    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"];
+
+    
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];

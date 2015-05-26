@@ -11,7 +11,7 @@ pod 'Parse'
 
 end
 
-target 'PivyTests' do
-
+target 'Pivy WatchKit Extension' do
+	pod 'Parse'
 end
 
