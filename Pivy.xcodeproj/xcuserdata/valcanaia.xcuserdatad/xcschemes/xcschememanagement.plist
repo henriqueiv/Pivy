@@ -9,22 +9,27 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Pivy WatchKit App Glance.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>Pivy WatchKit App Notifications.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Pivy WatchKit App.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Pivy WatchKit Extension.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Pivy.xcscheme</key>
 		<dict>

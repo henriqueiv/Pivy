@@ -8,7 +8,11 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <label alignment="left" text="MAAAIN" id="9xt-0F-xxk"/>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="-322" y="289"/>
         </scene>
@@ -20,6 +24,7 @@
                         <label width="136" height="42" alignment="left" text="There is a Pivy near you!" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="getSinglePivyCategory" id="JfB-70-Muf"/>
+                    <color key="backgroundColor" red="0.23921568627450981" green="0.043137254901960784" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
@@ -28,14 +33,44 @@
             </objects>
             <point key="canvasLocation" x="-322" y="587"/>
         </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="CqP-mr-GyR">
+            <objects>
+                <glanceController topTemplateType="largeBody1" id="sZ3-bE-XqC" customClass="GlanceInterfaceController">
+                    <items>
+                        <label alignment="left" text="1234" id="vrY-fT-zQo"/>
+                        <label alignment="left" text="Label" id="PSp-UC-ngC"/>
+                        <group alignment="left" id="cwS-1d-Ww4">
+                            <items>
+                                <imageView width="1" height="1" alignment="left" id="XPe-wO-YcD"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="galleryDate" destination="PSp-UC-ngC" id="q4f-xW-7HR"/>
+                        <outlet property="pivyImage" destination="XPe-wO-YcD" id="SR0-rf-Ewi"/>
+                        <outlet property="pivyNameLabel" destination="vrY-fT-zQo" id="qO2-RU-DPb"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="-318" y="842"/>
+        </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController">
                     <items>
+                        <group width="1" alignment="left" id="Bdb-Za-jix">
+                            <items>
+                                <imageView width="1" alignment="left" id="rZn-5f-wpO"/>
+                            </items>
+                        </group>
                         <label alignment="center" text="Label" numberOfLines="0" id="vED-QA-4du"/>
                     </items>
+                    <color key="backgroundColor" red="0.23921568627450981" green="0.043137254901960784" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
+                        <outlet property="group" destination="Bdb-Za-jix" id="8vJ-nU-Xjb"/>
+                        <outlet property="pivyImage" destination="rZn-5f-wpO" id="1gu-MC-flG"/>
                         <outlet property="textLabel" destination="vED-QA-4du" id="kx4-HS-2U8"/>
                     </connections>
                 </controller>

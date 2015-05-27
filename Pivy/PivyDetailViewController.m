@@ -8,7 +8,7 @@
 
 #import "PivyDetailViewController.h"
 #import "RoundedImageView.h"
-#define kRangeInKm 10000
+#define kRangeInKm 1
 
 @interface PivyDetailViewController ()
 
@@ -52,7 +52,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(pegarPivy:)
                                                  name:@"getSinglePivyFromWatch"
-                                               object:@"watch"];
+                                               object:nil];
 }
 
 -(void)handleGetPivyNotification:(Pivy*) pivy{
@@ -85,8 +85,7 @@
 }
 
 -(void) checkIfHasPivy{
-    PFQuery *query = [Gallery query];
-    [query fromLocalDatastore];
+    PFQuery *query = [[Gallery query] fromLocalDatastore];
     [query whereKey:@"pivy" equalTo:self.pivy];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -111,24 +110,40 @@
 }
 
 - (IBAction)pegarPivy:(id)sender {
+    NSLog(@"sender: %@", sender);
     if ([PFUser currentUser]) {
         Gallery *g = [[Gallery alloc] init];
-        if ([(NSString*)sender isEqualToString:@"watch"]) {
-            g.pivy = (Pivy*)[[NSUserDefaults standardUserDefaults] objectForKey:@"getSinglePivyFromWatch"];
-        }else{
+        if ([sender isKindOfClass:[NSNotification class]]){
+            NSString *objId = ((NSNotification*) sender).object;
+            PFQuery *query = [[Pivy query] fromLocalDatastore];
+            [[query whereKey:@"objectId" equalTo:objId] getFirstObjectInBackgroundWithBlock:^(PFObject *pivy, NSError *error){
+                if (!error) {
+                    g.pivy = (Pivy*)pivy;
+                    g.from = [PFUser currentUser];
+                    g.to = [PFUser currentUser];
+                    [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            [g saveEventually];
+                            [self checkIfHasPivy];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:g.pivy];
+                        }
+                    }];
+                }else{
+                    NSLog(@"error: %@", error);
+                }
+            }];
+        }else if([sender isKindOfClass:[UIButton class]]){
             g.pivy = self.pivy;
-        }
-        g.from = [PFUser currentUser];
-        g.to = [PFUser currentUser];
-        [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            g.from = [PFUser currentUser];
+            g.to = [PFUser currentUser];
+            [g pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     [g saveEventually];
                     [self checkIfHasPivy];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"GetPivyNotification" object:g.pivy];
                 }
-            });
-        }];
+            }];
+        }
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Please" message:@"You are note logged, please go to more tab and login or sign up" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];

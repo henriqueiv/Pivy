@@ -7,11 +7,13 @@
 //
 
 #import "NotificationController.h"
-
+#import "Pivy.h"
 
 @interface NotificationController()
 
+@property (weak, nonatomic) IBOutlet WKInterfaceImage *pivyImage;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *textLabel;
+@property (weak, nonatomic) IBOutlet WKInterfaceGroup *group;
 
 @end
 
@@ -25,7 +27,7 @@
     //
     // After populating your dynamic notification interface call the completion block.
     NSLog(@"localNotification Dictionary %@", localNotification);
-    self.textLabel.text = localNotification.alertBody;
+    [self getPivyFromNotification:localNotification.userInfo];
     completionHandler(WKUserNotificationInterfaceTypeCustom);
 }
 
@@ -38,34 +40,46 @@
     //
     // After populating your dynamic notification interface call the completion block.
     // Enable data sharing in app extensions.
+    NSLog(@"remoteNotification Dictionary %@", remoteNotification);
+    [self getPivyFromNotification:remoteNotification];
+    completionHandler(WKUserNotificationInterfaceTypeCustom);
+}
+
+-(void)getPivyFromNotification:(NSDictionary *)notification{
     [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"
                                      containingApplication:@"br.Pivy"];
+    
+    [Parse enableLocalDatastore];
+    
     // Setup Parse
     [Parse setApplicationId:PARSE_APPLICATION_ID clientKey:PARSE_CLIENT_KEY];
     
     PFQuery *q = [PFQuery queryWithClassName:@"Pivy"];
-    NSArray *obj = [q findObjects];
-    NSLog(@"%@", [obj firstObject]);
-
+//    [q fromLocalDatastore];
+    NSString *objId = [notification objectForKey:@"pivyObjectId"];
+    [q whereKey:@"objectId" equalTo:objId];
+    PFObject *obj = [q getFirstObject];
+    [self updateUserActivity:@"br.Pivy.handoff.detail"
+                    userInfo:@{@"objectId":objId}
+                  webpageURL:nil];
     
-    NSLog(@"remoteNotification Dictionary %@", remoteNotification);
-    self.textLabel.text = [remoteNotification objectForKey:@"customKey"];
-    completionHandler(WKUserNotificationInterfaceTypeCustom);
-}
-
--(void)handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)localNotification{
-    NSLog(@"identifier: %@", identifier);
-    NSLog(@"localNotification: %@", localNotification);
-}
-
--(void)handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)remoteNotification{
-    NSLog(@"iaeuhae");
-    NSDictionary *dict = @{@"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3"};
-    [WKInterfaceController openParentApplication:dict reply:^(NSDictionary *replyInfo, NSError *error) {
-        NSLog(@"iaueh");
+    NSLog(@"Pivy: %@", obj);
+    [self.pivyImage setImageNamed:@"ImgAppleWatchAnimation_"];
+    [[obj objectForKey:@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        if (!error) {
+            [self.group setBackgroundImage:[[UIImage alloc] initWithData:data]];
+            
+            [self.pivyImage startAnimatingWithImagesInRange:NSMakeRange(0, 49)
+                                                   duration:1.5
+                                                repeatCount:1];
+            NSLog(@"foi satã");
+        }else{
+            NSLog(@"erroo, %@", error);
+        }
     }];
+    NSLog(@"notification Dictionary: %@", notification);
+    self.textLabel.text = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy", [obj objectForKey:@"name"]];
 }
-
 
 
 @end

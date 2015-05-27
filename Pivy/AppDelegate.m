@@ -155,17 +155,28 @@
 }
 
 -(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
-    // Pivy é incluido no UserDefatults ao lançar a notificação na detail
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"getSinglePivyFromWatch" object:nil];
+    [self getPivyFromNotification:userInfo];
+    completionHandler();
 }
 
 -(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler{
-    // Pivy é incluido no UserDefatults ao lançar a notificação na detail
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"getSinglePivyFromWatch" object:nil];
+    [self getPivyFromNotification:notification.userInfo];
+    completionHandler();
+}
+
+-(void)getPivyFromNotification:(NSDictionary*)dict{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"getSinglePivyFromWatch" object:[dict objectForKey:@"objectId"]];
 }
 
 -(void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply{
     NSLog(@"aiuh");
+}
+
+-(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler{
+    UIWindow *win = self.window;
+    UIViewController *vc = win.rootViewController;
+    [vc restoreUserActivityState:userActivity];
+    return YES;
 }
 
 @end

@@ -23,7 +23,6 @@
 		6222C8A21ABB47F1008B5970 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A11ABB47F1008B5970 /* AppDelegate.m */; };
 		6222C8A51ABB47F1008B5970 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8A41ABB47F1008B5970 /* MainViewController.m */; };
 		6222C8AA1ABB47F1008B5970 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A91ABB47F1008B5970 /* Images.xcassets */; };
-		6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6222C8B81ABB47F1008B5970 /* PivyTests.m */; };
 		623C62461AC0CCFE003B9200 /* PivyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 623C62451AC0CCFE003B9200 /* PivyDetailViewController.m */; };
 		62451E121AC9CC6B00C31557 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E111AC9CC6B00C31557 /* DataManager.m */; };
 		62451E171ACA4A8B00C31557 /* MainTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62451E161ACA4A8B00C31557 /* MainTutorialViewController.m */; };
@@ -36,13 +35,14 @@
 		6299E9891ADC509800EF2B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9881ADC509800EF2B51 /* Images.xcassets */; };
 		6299E98D1ADC509900EF2B51 /* Pivy WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 6299E98C1ADC509900EF2B51 /* Pivy WatchKit App.app */; };
 		6299E9951ADC509900EF2B51 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9931ADC509900EF2B51 /* Interface.storyboard */; };
-		6299E9971ADC509900EF2B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9961ADC509900EF2B51 /* Images.xcassets */; };
 		6299E99A1ADC509900EF2B51 /* Pivy WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6299E97D1ADC509800EF2B51 /* Pivy WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		62BA995D1AF05490007B2FA1 /* RoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BA995C1AF05490007B2FA1 /* RoundedImageView.m */; };
 		62C6516C1ACB2201008F8BCC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
 		62C6516D1ACB2213008F8BCC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		62C6516F1ACB2227008F8BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
 		62C98EBB1AC5DB8A003E405B /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 62C98EBA1AC5DB8A003E405B /* AppUtils.m */; };
+		62CE23561B14F06F005AAD88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62CE23551B14F06F005AAD88 /* Images.xcassets */; };
+		62CE23591B150140005AAD88 /* GlanceInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CE23581B150140005AAD88 /* GlanceInterfaceController.m */; };
 		62D5A2181ABB56A200464F29 /* Objeto.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A2171ABB56A200464F29 /* Objeto.m */; };
 		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
 		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
@@ -52,13 +52,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6222C8B31ABB47F1008B5970 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6222C8981ABB47F1008B5970;
-			remoteInfo = Pivy;
-		};
 		6299E98E1ADC509900EF2B51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
@@ -133,7 +126,6 @@
 		6222C8A71ABB47F1008B5970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6222C8A91ABB47F1008B5970 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6222C8AC1ABB47F1008B5970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6222C8B21ABB47F1008B5970 /* PivyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PivyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C8B71ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C8B81ABB47F1008B5970 /* PivyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PivyTests.m; sourceTree = "<group>"; };
 		623C62441AC0CCFE003B9200 /* PivyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PivyDetailViewController.h; sourceTree = "<group>"; };
@@ -162,12 +154,14 @@
 		6299E98C1ADC509900EF2B51 /* Pivy WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pivy WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6299E9921ADC509900EF2B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6299E9941ADC509900EF2B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		6299E9961ADC509900EF2B51 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6299E9A21ADC56CD00EF2B51 /* NotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationPayload.apns; sourceTree = "<group>"; };
 		62BA995B1AF05490007B2FA1 /* RoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedImageView.h; sourceTree = "<group>"; };
 		62BA995C1AF05490007B2FA1 /* RoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedImageView.m; sourceTree = "<group>"; };
 		62C98EB91AC5DB8A003E405B /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
 		62C98EBA1AC5DB8A003E405B /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
+		62CE23551B14F06F005AAD88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		62CE23571B150140005AAD88 /* GlanceInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlanceInterfaceController.h; sourceTree = "<group>"; };
+		62CE23581B150140005AAD88 /* GlanceInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlanceInterfaceController.m; sourceTree = "<group>"; };
 		62D5A2161ABB56A200464F29 /* Objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Objeto.h; sourceTree = "<group>"; };
 		62D5A2171ABB56A200464F29 /* Objeto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Objeto.m; sourceTree = "<group>"; };
 		62D5A2191ABB570200464F29 /* Pivy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pivy.h; sourceTree = "<group>"; };
@@ -188,13 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				85655C68AF39C0EE1A79C3BC /* libPods-Pivy.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6222C8AF1ABB47F1008B5970 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				6222C8991ABB47F1008B5970 /* Pivy.app */,
-				6222C8B21ABB47F1008B5970 /* PivyTests.xctest */,
 				6299E97D1ADC509800EF2B51 /* Pivy WatchKit Extension.appex */,
 				6299E98C1ADC509900EF2B51 /* Pivy WatchKit App.app */,
 			);
@@ -415,9 +401,11 @@
 			isa = PBXGroup;
 			children = (
 				52C904F91B1397DD009D8BD6 /* Pivy WatchKit Extension.entitlements */,
+				62CE23571B150140005AAD88 /* GlanceInterfaceController.h */,
 				6299E9821ADC509800EF2B51 /* InterfaceController.h */,
-				6299E9831ADC509800EF2B51 /* InterfaceController.m */,
 				6299E9851ADC509800EF2B51 /* NotificationController.h */,
+				62CE23581B150140005AAD88 /* GlanceInterfaceController.m */,
+				6299E9831ADC509800EF2B51 /* InterfaceController.m */,
 				6299E9861ADC509800EF2B51 /* NotificationController.m */,
 				6299E9881ADC509800EF2B51 /* Images.xcassets */,
 				6299E97F1ADC509800EF2B51 /* Supporting Files */,
@@ -438,7 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				6299E9931ADC509900EF2B51 /* Interface.storyboard */,
-				6299E9961ADC509900EF2B51 /* Images.xcassets */,
+				62CE23551B14F06F005AAD88 /* Images.xcassets */,
 				6299E9911ADC509900EF2B51 /* Supporting Files */,
 			);
 			path = "Pivy WatchKit App";
@@ -514,24 +502,6 @@
 			productReference = 6222C8991ABB47F1008B5970 /* Pivy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6222C8B11ABB47F1008B5970 /* PivyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6222C8BF1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "PivyTests" */;
-			buildPhases = (
-				6222C8AE1ABB47F1008B5970 /* Sources */,
-				6222C8AF1ABB47F1008B5970 /* Frameworks */,
-				6222C8B01ABB47F1008B5970 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6222C8B41ABB47F1008B5970 /* PBXTargetDependency */,
-			);
-			name = PivyTests;
-			productName = PivyTests;
-			productReference = 6222C8B21ABB47F1008B5970 /* PivyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		6299E97C1ADC509800EF2B51 /* Pivy WatchKit Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6299E9A01ADC509900EF2B51 /* Build configuration list for PBXNativeTarget "Pivy WatchKit Extension" */;
@@ -588,11 +558,6 @@
 							};
 						};
 					};
-					6222C8B11ABB47F1008B5970 = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = BJXVASWXX8;
-						TestTargetID = 6222C8981ABB47F1008B5970;
-					};
 					6299E97C1ADC509800EF2B51 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = YYWFQ73E8M;
@@ -607,7 +572,7 @@
 					};
 					6299E98B1ADC509900EF2B51 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = BJXVASWXX8;
+						DevelopmentTeam = YYWFQ73E8M;
 					};
 				};
 			};
@@ -627,7 +592,6 @@
 			projectRoot = "";
 			targets = (
 				6222C8981ABB47F1008B5970 /* Pivy */,
-				6222C8B11ABB47F1008B5970 /* PivyTests */,
 				6299E97C1ADC509800EF2B51 /* Pivy WatchKit Extension */,
 				6299E98B1ADC509900EF2B51 /* Pivy WatchKit App */,
 			);
@@ -648,13 +612,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6222C8B01ABB47F1008B5970 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6299E97B1ADC509800EF2B51 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,7 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6299E9951ADC509900EF2B51 /* Interface.storyboard in Resources */,
-				6299E9971ADC509900EF2B51 /* Images.xcassets in Resources */,
+				62CE23561B14F06F005AAD88 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,19 +729,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6222C8AE1ABB47F1008B5970 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6222C8B91ABB47F1008B5970 /* PivyTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6299E9791ADC509800EF2B51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6299E9871ADC509800EF2B51 /* NotificationController.m in Sources */,
+				62CE23591B150140005AAD88 /* GlanceInterfaceController.m in Sources */,
 				6299E9841ADC509800EF2B51 /* InterfaceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,11 +742,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6222C8B41ABB47F1008B5970 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6222C8981ABB47F1008B5970 /* Pivy */;
-			targetProxy = 6222C8B31ABB47F1008B5970 /* PBXContainerItemProxy */;
-		};
 		6299E98F1ADC509900EF2B51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6299E98B1ADC509900EF2B51 /* Pivy WatchKit App */;
@@ -978,42 +923,6 @@
 			};
 			name = Release;
 		};
-		6222C8C01ABB47F1008B5970 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PivyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pivy.app/Pivy";
-			};
-			name = Debug;
-		};
-		6222C8C11ABB47F1008B5970 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PivyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pivy.app/Pivy";
-			};
-			name = Release;
-		};
 		6299E99B1ADC509900EF2B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FAD4CD8087182F44B9205F24 /* Pods-Pivy WatchKit Extension.debug.xcconfig */;
@@ -1113,15 +1022,6 @@
 			buildConfigurations = (
 				6222C8BD1ABB47F1008B5970 /* Debug */,
 				6222C8BE1ABB47F1008B5970 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6222C8BF1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "PivyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6222C8C01ABB47F1008B5970 /* Debug */,
-				6222C8C11ABB47F1008B5970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

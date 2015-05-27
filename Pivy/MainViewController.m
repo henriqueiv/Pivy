@@ -10,7 +10,7 @@
 #import "PivyDetailViewController.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
-#define kRangeInKm 5
+#define kRangeInKm 1
 
 @interface MainViewController (){
     NSMutableArray *viewControllerArray;
@@ -110,13 +110,14 @@
 
 - (void)sendPush:(NSArray *) pivys{
     UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.category = @"myCategory";
     notification.fireDate = [NSDate date];
     if (pivys.count == 1) {
         Pivy *p = (Pivy *)pivys.firstObject;
+        notification.category = @"getSinglePivyCategory";
         notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %@ Pivy! Gotta catch'em all!", p.name];
-        [[NSUserDefaults standardUserDefaults] setObject:p forKey:@"getSinglePivyFromWatch"];
+        notification.userInfo = @{@"objectId":p.objectId};
     }else{
+        notification.category = @"getMultiplesPivyCategory";
         notification.alertBody = [NSString stringWithFormat:@"Hey, you're near to %d Pivys! Gotta catch'em all!", (int)pivys.count];
     }
     notification.soundName = UILocalNotificationDefaultSoundName;
@@ -128,16 +129,30 @@
 
 - (NSArray *)getPivysWithinKilometers:(int )km{
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        PFQuery *query = [PFQuery queryWithClassName:[Pivy parseClassName]];
-        [query fromLocalDatastore];
-        query = [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
+        PFQuery *query = [[Pivy query] fromLocalDatastore];
+        [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:km];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (objects.count > 0) {
-                NSMutableArray *a = [[NSMutableArray alloc] initWithArray:objects];
-                pivyArray = a;
-                if(pivyArray.count > 0)
-                    [self sendPush:pivyArray];
-                [self getPivy];
+                NSMutableArray *tmpPivyArray = [[NSMutableArray alloc] initWithArray:objects];
+                pivyArray = [[NSMutableArray alloc] initWithArray:objects];
+                if ([PFUser currentUser]) {
+                    PFQuery *galleryQuery = [[Gallery query] fromLocalDatastore];
+                    [galleryQuery whereKey:@"to" equalTo:[PFUser currentUser]];
+                    [galleryQuery whereKey:@"pivy" containedIn:tmpPivyArray];
+                    [galleryQuery findObjectsInBackgroundWithBlock:^(NSArray *galerias, NSError *error){
+                        for (Gallery *g in galerias) {
+                            [tmpPivyArray removeObject:g.pivy];
+                        }
+                        if(tmpPivyArray.count > 0)
+                            [self sendPush:tmpPivyArray];
+                        [self getPivy];
+                    }];
+                }else{
+                    pivyArray = tmpPivyArray;
+                    if(pivyArray.count > 0)
+                        [self sendPush:pivyArray];
+                    [self getPivy];
+                }
             }else{
                 [self setBackground];
             }
@@ -165,10 +180,14 @@
     [self getPivysWithinKilometers:kRangeInKm];
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     int indexOfPage = scrollView.contentOffset.x / scrollView.frame.size.width;
     self.detail = [viewControllerArray objectAtIndex:indexOfPage];
     NSLog(@"%d", indexOfPage);
 }
+
+-(void) restoreUserActivityState:(NSUserActivity *)activity{
+    NSLog(@"useract: %@", activity);
+}
+
 @end
