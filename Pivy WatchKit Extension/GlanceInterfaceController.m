@@ -30,39 +30,56 @@
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
-    
-    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"
-                                     containingApplication:@"br.Pivy"];
-    [Parse enableLocalDatastore];
-    // Setup Parse
-    [Parse setApplicationId:PARSE_APPLICATION_ID clientKey:PARSE_CLIENT_KEY];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Gallery"];
-//    [[query fromLocalDatastore] includeKey:@"pivy"];
-    [query includeKey:@"pivy"];
-    [query orderByDescending:@"createdAt"];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *obj, NSError *error){
-        [self updateUserActivity:@"br.Pivy.handoff.detail"
-                        userInfo:@{@"objectId":[obj objectForKey:@"objectId"]}
-                      webpageURL:nil];
-        if (!error) {
-            NSLog(@"obj: %@", obj);
-            self.pivyNameLabel.text = [[obj objectForKey:@"pivy"]objectForKey:@"name"];
-            NSDateFormatter *dfm = [[NSDateFormatter alloc] init];
-            [dfm setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
-            self.galleryDate.text = [dfm stringFromDate:[obj objectForKey:@"createdAt"]];
-            [[obj objectForKey:@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
-                if (!error) {
-                    [self.pivyImage setImage:[[UIImage alloc] initWithData:data]];
-                    NSLog(@"foi satã");
-                }else{
-                    NSLog(@"erroo, %@", error);
-                }
-            }];
-        }else{
-            NSLog(@"error: %@", error);
-        }
-    }];
+    BOOL teste = YES;
+    if (teste) {
+        [WKInterfaceController openParentApplication:@{@"pfquery_request": @"glanceCall"} reply:^(NSDictionary *replyInfo, NSError *error) {
+//            NSLog(@"User Info: %@", replyInfo);
+//            NSLog(@"Error: %@", error);
+            
+            if ([replyInfo[@"success"] boolValue]) {
+//                NSLog(@"Read data from Wormhole and update interface!");
+                self.pivyNameLabel.text = [replyInfo objectForKey:@"name"];
+                self.galleryDate.text = [replyInfo objectForKey:@"date"];
+                [self.pivyImage setImage:[[UIImage alloc] initWithData:[replyInfo objectForKey:@"imageData"]]];
+                [self updateUserActivity:@"br.Pivy.handoff.detail"
+                                userInfo:@{@"objectId":[replyInfo objectForKey:@"objectId"]}
+                              webpageURL:nil];
+            }
+        }];
+    }else{
+        [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"
+                                         containingApplication:@"br.Pivy"];
+        [Parse enableLocalDatastore];
+        // Setup Parse
+        [Parse setApplicationId:PARSE_APPLICATION_ID clientKey:PARSE_CLIENT_KEY];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Gallery"];
+        //    [[query fromLocalDatastore] includeKey:@"pivy"];
+        [query includeKey:@"pivy"];
+        [query orderByDescending:@"createdAt"];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *obj, NSError *error){
+            [self updateUserActivity:@"br.Pivy.handoff.detail"
+                            userInfo:@{@"objectId":[obj objectForKey:@"objectId"]}
+                          webpageURL:nil];
+            if (!error) {
+//                NSLog(@"obj: %@", obj);
+                self.pivyNameLabel.text = [[obj objectForKey:@"pivy"]objectForKey:@"name"];
+                NSDateFormatter *dfm = [[NSDateFormatter alloc] init];
+                [dfm setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
+                self.galleryDate.text = [dfm stringFromDate:[obj objectForKey:@"createdAt"]];
+                [[obj objectForKey:@"image"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+                    if (!error) {
+                        [self.pivyImage setImage:[[UIImage alloc] initWithData:data]];
+//                        NSLog(@"foi satã");
+                    }else{
+                        NSLog(@"erroo, %@", error);
+                    }
+                }];
+            }else{
+                NSLog(@"error: %@", error);
+            }
+        }];
+    }
 }
 
 - (void)didDeactivate {

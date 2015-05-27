@@ -129,7 +129,7 @@
 - (IBAction)downloadData:(id)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(kBgQueue, ^{
-        [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:NO];
+        [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
         [DataManager updateLocalDatastore:[Background parseClassName] inBackground:NO];
         [DataManager updateLocalDatastore:[Gallery parseClassName] inBackground:NO];
         dispatch_async(dispatch_get_main_queue(), ^{

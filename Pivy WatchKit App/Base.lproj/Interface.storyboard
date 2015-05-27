@@ -10,11 +10,39 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
-                        <label alignment="left" text="MAAAIN" id="9xt-0F-xxk"/>
+                        <label width="1" height="1" alignment="left" text="This app for ⌚️ exists just to show you how it works 😎" textAlignment="center" numberOfLines="0" id="9xt-0F-xxk"/>
                     </items>
+                    <connections>
+                        <segue destination="tN1-sX-0ur" kind="relationship" relationship="nextPage" id="lpE-6j-k6P"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="-322" y="289"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="nMY-Nu-FdO">
+            <objects>
+                <controller id="tN1-sX-0ur">
+                    <items>
+                        <label width="1" height="1" alignment="left" text="The Glance will show you the last Pivy you've got and will enable the handoff in you iPhone 📱" textAlignment="center" numberOfLines="0" id="tvE-2n-Pwx"/>
+                    </items>
+                    <connections>
+                        <segue destination="Mp2-Sl-vBI" kind="relationship" relationship="nextPage" id="txa-fn-yu0"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-74" y="289"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="VTg-mY-EcW">
+            <objects>
+                <controller id="Mp2-Sl-vBI">
+                    <items>
+                        <label width="1" height="1" alignment="left" text="The notifications  will show the Pivy that you're nearby or the number of Pivys that you're nearby 🌎" textAlignment="center" numberOfLines="0" id="5OZ-1t-YPn"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="163" y="289"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -60,7 +88,7 @@
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController">
                     <items>
-                        <group width="1" alignment="left" id="Bdb-Za-jix">
+                        <group width="1" alignment="left" radius="0.0" id="Bdb-Za-jix">
                             <items>
                                 <imageView width="1" alignment="left" id="rZn-5f-wpO"/>
                             </items>

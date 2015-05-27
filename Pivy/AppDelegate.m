@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#define kNotificationCall @"notificationCall"
+#define kGlanceCall @"glanceCall"
 
 @interface AppDelegate ()
 
@@ -52,7 +54,7 @@
     // Create the category object and add it to the set.
     UIMutableUserNotificationCategory* getSinglePivyCategory = [[UIMutableUserNotificationCategory alloc] init];
     [getSinglePivyCategory setActions:@[acceptAction]
-                    forContext:UIUserNotificationActionContextDefault];
+                           forContext:UIUserNotificationActionContextDefault];
     getSinglePivyCategory.identifier = @"getSinglePivyCategory";
     
     [categories addObject:getSinglePivyCategory];
@@ -67,10 +69,10 @@
 
 -(void)configureNavigationBar{
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
-//                                                        green:211/255.0f
-//                                                         blue:10.0/255.0f
-//                                                        alpha:1.0f]];
+    //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:250/255.0f
+    //                                                        green:211/255.0f
+    //                                                         blue:10.0/255.0f
+    //                                                        alpha:1.0f]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
@@ -84,7 +86,7 @@
     [Background registerSubclass];
     
     [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"];
-
+    
     
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
@@ -168,8 +170,75 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"getSinglePivyFromWatch" object:[dict objectForKey:@"objectId"]];
 }
 
--(void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply{
-    NSLog(@"aiuh");
+- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply {
+    NSString *call = userInfo[@"pfquery_request"];
+    if ([call isEqualToString:kNotificationCall]) {
+        NSLog(@"Starting PFQuery"); // won't print out to console since you're running the watch extension
+        
+        // 1. Run the PFQuery
+        // 2. Write the data into MMWormhole (done in PFQuery completion block)
+        // 3. Send the reply back to the extension as success (done in PFQuery completion block)
+        PFQuery *q = [Pivy query];
+        [q fromLocalDatastore];
+        NSString *objId = [userInfo objectForKey:@"pivyObjectId"];
+        [q whereKey:@"objectId" equalTo:objId];
+        NSError *error;
+        PFObject *obj = [q getFirstObject:&error];
+        if (!error) {
+            NSData *data = [[obj objectForKey:@"image"] getData];
+            if (data) {
+//                NSLog(@"foi satã");
+                reply(@{@"success": @(YES),
+                        @"name": [obj objectForKey:@"name"],
+                        @"imageData": data
+                        });
+            } else{
+                NSLog(@"Error getting data");
+                reply(@{@"success": @(NO),
+                        @"error": error.localizedDescription});
+            }
+        }else{
+            NSLog(@"Error getting first obj in bg: %@", error);
+            reply(@{@"success": @(NO),
+                    @"error": error.localizedDescription});
+        }
+    }else if ([call isEqualToString:kGlanceCall]) {
+        PFQuery *query = [Gallery query];
+        [query fromLocalDatastore];
+        [query includeKey:@"pivy"];
+        [query orderByDescending:@"createdAt"];
+        NSError *errorGetFirstObj;
+        Gallery *gallery = (Gallery*) [query getFirstObject:&errorGetFirstObj];
+        if (!errorGetFirstObj) {
+            Pivy *pivy = gallery.pivy;
+            NSError *errorGetData;
+            NSData *data = [pivy.image getData:&errorGetData];
+            if (!errorGetData) {
+                NSDateFormatter *dfm = [[NSDateFormatter alloc] init];
+                [dfm setDateFormat:@"yyyy-mm-dd HH:mm"];
+                reply(@{@"success": @(YES),
+                        @"date": [dfm stringFromDate:gallery.createdAt],
+                        @"name": pivy.name,
+                        @"imageData": data,
+                        @"objectId": pivy.objectId
+                        });
+            }else{
+                NSLog(@"Error getting data: %@", errorGetData);
+                reply(@{@"success": @(NO),
+                        @"error get data": errorGetData.localizedDescription
+                        });
+            }
+            
+        }else{
+            NSLog(@"Error getting first obj: %@", errorGetFirstObj);
+            reply(@{@"success": @(NO),
+                    @"error get first obj": errorGetFirstObj.localizedDescription
+                    });
+        }
+    }else{
+        reply(@{@"success": @(NO),
+                @"error": @"Invalid call"});
+    }
 }
 
 -(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler{

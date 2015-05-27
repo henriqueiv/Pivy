@@ -89,6 +89,22 @@
                 NSLog(@"DataManager.downloadFromParse(%@):: %ld baixados AGORA", className, objects.count);
 #endif
                 NSMutableArray *galleries = [[NSMutableArray alloc] initWithArray:objects];
+                if([className isEqualToString:[Pivy parseClassName]]){
+                    for (Pivy *p in objects) {
+                        if (![p.image isDataAvailable]) {
+//                            NSLog(@"objid: %@", p.objectId);
+                            NSError *error;
+//                            NSLog(@"Antes: %ld", [p.image isDataAvailable]);
+                            NSData *data = [p.image getData:&error];
+//                            NSLog(@"Depois: %ld", [p.image isDataAvailable]);
+                            if (error) {
+                                NSLog(@"error get data bg: %@", error);
+                            }
+                            
+                        }
+                    }
+                }
+                
                 [PFObject pinAllInBackground:galleries
                                        block:^(BOOL succeeded, NSError *error) {
                                            if (succeeded) {

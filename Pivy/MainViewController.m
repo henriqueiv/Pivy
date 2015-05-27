@@ -41,6 +41,13 @@
     
     [DataManager updateLocalDatastore:[Pivy parseClassName] inBackground:YES];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    
+//    PFQuery *q = [Pivy query];
+//    [q whereKey:@"objectId" equalTo:@"cug9VsVG4I"];
+//    [q fromLocalDatastore];
+//    Pivy *p = [q getFirstObject];
+//    NSLog(@"isDataAvailable from local: %ld", [p.image isDataAvailable]);
 }
 - (void)setBackground{
     
