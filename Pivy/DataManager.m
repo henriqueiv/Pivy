@@ -92,11 +92,11 @@
                 if([className isEqualToString:[Pivy parseClassName]]){
                     for (Pivy *p in objects) {
                         if (![p.image isDataAvailable]) {
-//                            NSLog(@"objid: %@", p.objectId);
+                            NSLog(@"objid: %@", p.objectId);
                             NSError *error;
-//                            NSLog(@"Antes: %ld", [p.image isDataAvailable]);
+                            NSLog(@"Antes: %ld", [p.image isDataAvailable]);
                             NSData *data = [p.image getData:&error];
-//                            NSLog(@"Depois: %ld", [p.image isDataAvailable]);
+                            NSLog(@"Depois: %ld", [p.image isDataAvailable]);
                             if (error) {
                                 NSLog(@"error get data bg: %@", error);
                             }

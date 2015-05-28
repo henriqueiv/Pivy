@@ -242,6 +242,7 @@
 }
 
 -(BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler{
+    NSLog(@"useract: %@", userActivity.userInfo);
     UIWindow *win = self.window;
     UIViewController *vc = win.rootViewController;
     [vc restoreUserActivityState:userActivity];
