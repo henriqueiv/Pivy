@@ -7,17 +7,13 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>br.Pivy</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>br.Pivy.handoff.detail</string>
-	</array>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
@@ -43,6 +39,10 @@
 	<string>Geolocation is the heart of our app!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Geolocation is the heart of our app!</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>br.Pivy.handoff.detail</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

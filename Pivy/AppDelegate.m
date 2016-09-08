@@ -80,18 +80,28 @@
     [PFPush handlePush:userInfo];
 }
 
+//-(void)configureParse{
+//    [Gallery registerSubclass];
+//    [Pivy registerSubclass];
+//    [Background registerSubclass];
+//
+//    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"];
+//
+//
+//    #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
+//    #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
+//    [Parse enableLocalDatastore];
+//    [Parse setApplicationId:PARSE_APPLICATION_ID
+//                  clientKey:PARSE_CLIENT_KEY];
+//    [PFFacebookUtils initializeFacebook];
+//}
+
 -(void)configureParse{
-    [Gallery registerSubclass];
-    [Pivy registerSubclass];
-    [Background registerSubclass];
-    
-    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.br.Pivy"];
-    
-    
+    #define PARSE_APPLICATION_ID @"rCoHIuogBuDRydKFZVPeMr5fyquq8tMpUsQJ1Cyx"
+    #define PARSE_CLIENT_KEY @"2uvNt4S4yykRQiCzwdY6UvkEGOxY6cSaVsE9qvnL"
     [Parse enableLocalDatastore];
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];
-    [PFFacebookUtils initializeFacebook];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -187,7 +197,7 @@
         if (!error) {
             NSData *data = [[obj objectForKey:@"image"] getData];
             if (data) {
-//                NSLog(@"foi satã");
+                //                NSLog(@"foi satã");
                 reply(@{@"success": @(YES),
                         @"name": [obj objectForKey:@"name"],
                         @"imageData": data

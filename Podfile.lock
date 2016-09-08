@@ -1,0 +1,28 @@
+PODS:
+  - Bolts (1.1.5):
+    - Bolts/AppLinks (= 1.1.5)
+    - Bolts/Tasks (= 1.1.5)
+  - Bolts/AppLinks (1.1.5):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.1.5)
+  - Facebook-iOS-SDK (3.23.2):
+    - Bolts (~> 1.0)
+  - Parse (1.7.4):
+    - Bolts/Tasks (>= 1.1.5)
+  - ParseFacebookUtils (1.7.4):
+    - Bolts/Tasks (>= 1.1.5)
+    - Facebook-iOS-SDK (~> 3.23)
+    - Parse (~> 1.7.4)
+
+DEPENDENCIES:
+  - Facebook-iOS-SDK
+  - Parse
+  - ParseFacebookUtils
+
+SPEC CHECKSUMS:
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
+  ParseFacebookUtils: 7115990b291ae95b920fde413272828d0eb0d963
+
+COCOAPODS: 0.37.1

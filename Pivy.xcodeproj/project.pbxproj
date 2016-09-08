@@ -33,10 +33,10 @@
 		6299E9841ADC509800EF2B51 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6299E9831ADC509800EF2B51 /* InterfaceController.m */; };
 		6299E9871ADC509800EF2B51 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6299E9861ADC509800EF2B51 /* NotificationController.m */; };
 		6299E9891ADC509800EF2B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9881ADC509800EF2B51 /* Images.xcassets */; };
-		6299E98D1ADC509900EF2B51 /* Pivy WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 6299E98C1ADC509900EF2B51 /* Pivy WatchKit App.app */; };
 		6299E9951ADC509900EF2B51 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6299E9931ADC509900EF2B51 /* Interface.storyboard */; };
-		6299E99A1ADC509900EF2B51 /* Pivy WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6299E97D1ADC509800EF2B51 /* Pivy WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		62BA995D1AF05490007B2FA1 /* RoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62BA995C1AF05490007B2FA1 /* RoundedImageView.m */; };
+		62BD409B1C7CB32500A625C1 /* Pivy WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6299E97D1ADC509800EF2B51 /* Pivy WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		62BD409E1C7CB32500A625C1 /* Pivy WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6299E98C1ADC509900EF2B51 /* Pivy WatchKit App.app */; };
 		62C6516C1ACB2201008F8BCC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62451E181ACA4AA600C31557 /* Tutorial.storyboard */; };
 		62C6516D1ACB2213008F8BCC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8AB1ABB47F1008B5970 /* LaunchScreen.xib */; };
 		62C6516F1ACB2227008F8BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6222C8A61ABB47F1008B5970 /* Main.storyboard */; };
@@ -52,32 +52,43 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6299E98E1ADC509900EF2B51 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6299E98B1ADC509900EF2B51;
-			remoteInfo = "Pivy WatchKit App";
-		};
-		6299E9981ADC509900EF2B51 /* PBXContainerItemProxy */ = {
+		62BD40991C7CB32500A625C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6299E97C1ADC509800EF2B51;
 			remoteInfo = "Pivy WatchKit Extension";
 		};
+		62BD409C1C7CB32500A625C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6222C8911ABB47F1008B5970 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6299E98B1ADC509900EF2B51;
+			remoteInfo = "Pivy WatchKit App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6299E9A11ADC509900EF2B51 /* Embed App Extensions */ = {
+		62BD409F1C7CB32500A625C1 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6299E99A1ADC509900EF2B51 /* Pivy WatchKit Extension.appex in Embed App Extensions */,
+				62BD409B1C7CB32500A625C1 /* Pivy WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62BD40A01C7CB32500A625C1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				62BD409E1C7CB32500A625C1 /* Pivy WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -490,12 +501,12 @@
 				6222C8961ABB47F1008B5970 /* Frameworks */,
 				6222C8971ABB47F1008B5970 /* Resources */,
 				81E6DE36195766A865AB45F8 /* Copy Pods Resources */,
-				6299E9A11ADC509900EF2B51 /* Embed App Extensions */,
+				62BD40A01C7CB32500A625C1 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6299E9991ADC509900EF2B51 /* PBXTargetDependency */,
+				62BD409D1C7CB32500A625C1 /* PBXTargetDependency */,
 			);
 			name = Pivy;
 			productName = Pivy;
@@ -515,27 +526,28 @@
 			buildRules = (
 			);
 			dependencies = (
-				6299E98F1ADC509900EF2B51 /* PBXTargetDependency */,
 			);
 			name = "Pivy WatchKit Extension";
 			productName = "Pivy WatchKit Extension";
 			productReference = 6299E97D1ADC509800EF2B51 /* Pivy WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		6299E98B1ADC509900EF2B51 /* Pivy WatchKit App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6299E99F1ADC509900EF2B51 /* Build configuration list for PBXNativeTarget "Pivy WatchKit App" */;
 			buildPhases = (
 				6299E98A1ADC509900EF2B51 /* Resources */,
+				62BD409F1C7CB32500A625C1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				62BD409A1C7CB32500A625C1 /* PBXTargetDependency */,
 			);
 			name = "Pivy WatchKit App";
 			productName = "Pivy WatchKit App";
 			productReference = 6299E98C1ADC509900EF2B51 /* Pivy WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
+			productType = "com.apple.product-type.application.watchapp2";
 		};
 /* End PBXNativeTarget section */
 
@@ -543,7 +555,7 @@
 		6222C8911ABB47F1008B5970 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Henrique Valcanaia";
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
@@ -616,7 +628,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6299E98D1ADC509900EF2B51 /* Pivy WatchKit App.app in Resources */,
 				6299E9891ADC509800EF2B51 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,15 +753,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6299E98F1ADC509900EF2B51 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6299E98B1ADC509900EF2B51 /* Pivy WatchKit App */;
-			targetProxy = 6299E98E1ADC509900EF2B51 /* PBXContainerItemProxy */;
-		};
-		6299E9991ADC509900EF2B51 /* PBXTargetDependency */ = {
+		62BD409A1C7CB32500A625C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6299E97C1ADC509800EF2B51 /* Pivy WatchKit Extension */;
-			targetProxy = 6299E9981ADC509900EF2B51 /* PBXContainerItemProxy */;
+			targetProxy = 62BD40991C7CB32500A625C1 /* PBXContainerItemProxy */;
+		};
+		62BD409D1C7CB32500A625C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6299E98B1ADC509900EF2B51 /* Pivy WatchKit App */;
+			targetProxy = 62BD409C1C7CB32500A625C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -818,6 +829,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: br.Pivy";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -894,8 +906,9 @@
 					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -916,8 +929,9 @@
 					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -939,9 +953,13 @@
 				INFOPLIST_FILE = "Pivy WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -957,9 +975,13 @@
 				INFOPLIST_FILE = "Pivy WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -977,12 +999,13 @@
 				);
 				IBSC_MODULE = Pivy_WatchKit_Extension;
 				INFOPLIST_FILE = "Pivy WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -996,12 +1019,13 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = Pivy_WatchKit_Extension;
 				INFOPLIST_FILE = "Pivy WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
