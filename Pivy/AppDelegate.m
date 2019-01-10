@@ -21,6 +21,8 @@
     [self configureTabBar];
     [self configureNavigationBar];
     
+    int* x, y;
+    
     UILocalNotification *launchNote = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (launchNote){
         [self renumberBadgesOfPendingNotifications];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21993B558F2C18F1ECB52FD4 /* libPods-Pivy WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 553C194E3BEDB8B4250239F5 /* libPods-Pivy WatchKit Extension.a */; };
 		358B18201ABCB33B007283CB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 358B181F1ABCB33B007283CB /* MBProgressHUD.m */; };
 		35C3A5FF1AC0B0040067BAAE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A5FE1AC0B0040067BAAE /* MapViewController.m */; };
 		35C3A6021AC0B0870067BAAE /* LocalAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C3A6011AC0B0870067BAAE /* LocalAnnotation.m */; };
@@ -47,8 +48,7 @@
 		62D5A21B1ABB570200464F29 /* Pivy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21A1ABB570200464F29 /* Pivy.m */; };
 		62D5A21E1ABB571200464F29 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D5A21D1ABB571200464F29 /* Background.m */; };
 		62ED49261AC5B974002CCE90 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ED49251AC5B974002CCE90 /* Gallery.m */; };
-		7969478673429AE7F07BC9C7 /* libPods-Pivy WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590D3A79F78176D7663D2D78 /* libPods-Pivy WatchKit Extension.a */; };
-		85655C68AF39C0EE1A79C3BC /* libPods-Pivy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD6EB5610ADE964D80336CA /* libPods-Pivy.a */; };
+		8C56E475EA36A2CC45A4A93C /* libPods-Pivy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EACDF68232008B72E3F660 /* libPods-Pivy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.release.xcconfig"; sourceTree = "<group>"; };
 		358B181E1ABCB33B007283CB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		358B181F1ABCB33B007283CB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
 		35C3A5FD1AC0B0040067BAAE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -126,7 +125,7 @@
 		52E2B71F1ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		52E2B7201ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		52E2B7211ACB0F49008B62E5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		590D3A79F78176D7663D2D78 /* libPods-Pivy WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pivy WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553C194E3BEDB8B4250239F5 /* libPods-Pivy WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pivy WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C8991ABB47F1008B5970 /* Pivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6222C89D1ABB47F1008B5970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6222C89E1ABB47F1008B5970 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -181,18 +180,26 @@
 		62D5A21D1ABB571200464F29 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		62ED49241AC5B974002CCE90 /* Gallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gallery.h; sourceTree = "<group>"; };
 		62ED49251AC5B974002CCE90 /* Gallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gallery.m; sourceTree = "<group>"; };
-		7BE9A90BF87E9587BAC6AF91 /* Pods-Pivy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.debug.xcconfig"; sourceTree = "<group>"; };
-		CBFDBC3BE711F0FC0AB5DF4E /* Pods-Pivy WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy WatchKit Extension/Pods-Pivy WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
-		FAD4CD8087182F44B9205F24 /* Pods-Pivy WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy WatchKit Extension/Pods-Pivy WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		FDD6EB5610ADE964D80336CA /* libPods-Pivy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pivy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A551D75A012A1CD3297B4101 /* Pods-Pivy WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy WatchKit Extension/Pods-Pivy WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		A6536EFE444F7204CAD34BD8 /* Pods-Pivy WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy WatchKit Extension/Pods-Pivy WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C181177165040A2AB0D44670 /* Pods-Pivy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.debug.xcconfig"; sourceTree = "<group>"; };
+		DE468B4F0574D10423F21FE4 /* Pods-Pivy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pivy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pivy/Pods-Pivy.release.xcconfig"; sourceTree = "<group>"; };
+		E5EACDF68232008B72E3F660 /* libPods-Pivy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pivy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		271FDB5649A256F3C742E361 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6222C8961ABB47F1008B5970 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85655C68AF39C0EE1A79C3BC /* libPods-Pivy.a in Frameworks */,
+				8C56E475EA36A2CC45A4A93C /* libPods-Pivy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,13 +207,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7969478673429AE7F07BC9C7 /* libPods-Pivy WatchKit Extension.a in Frameworks */,
+				21993B558F2C18F1ECB52FD4 /* libPods-Pivy WatchKit Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35BBEC4F44AE7F039AADD102 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C181177165040A2AB0D44670 /* Pods-Pivy.debug.xcconfig */,
+				DE468B4F0574D10423F21FE4 /* Pods-Pivy.release.xcconfig */,
+				A551D75A012A1CD3297B4101 /* Pods-Pivy WatchKit Extension.debug.xcconfig */,
+				A6536EFE444F7204CAD34BD8 /* Pods-Pivy WatchKit Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		52C1645C1AC4859C008E8B2F /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,11 +250,11 @@
 			children = (
 				6299E97E1ADC509800EF2B51 /* Pivy WatchKit Extension */,
 				6299E9901ADC509900EF2B51 /* Pivy WatchKit App */,
-				62D5A2211ABB5D1600464F29 /* Frameworks */,
 				6222C89B1ABB47F1008B5970 /* Pivy */,
 				6222C8B51ABB47F1008B5970 /* PivyTests */,
 				6222C89A1ABB47F1008B5970 /* Products */,
-				8ACE1A4DF959A906FC42C20B /* Pods */,
+				35BBEC4F44AE7F039AADD102 /* Pods */,
+				DC9008E031F2DE0DFF698846 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -469,24 +487,13 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		62D5A2211ABB5D1600464F29 /* Frameworks */ = {
+		DC9008E031F2DE0DFF698846 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FDD6EB5610ADE964D80336CA /* libPods-Pivy.a */,
-				590D3A79F78176D7663D2D78 /* libPods-Pivy WatchKit Extension.a */,
+				E5EACDF68232008B72E3F660 /* libPods-Pivy.a */,
+				553C194E3BEDB8B4250239F5 /* libPods-Pivy WatchKit Extension.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8ACE1A4DF959A906FC42C20B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7BE9A90BF87E9587BAC6AF91 /* Pods-Pivy.debug.xcconfig */,
-				0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */,
-				FAD4CD8087182F44B9205F24 /* Pods-Pivy WatchKit Extension.debug.xcconfig */,
-				CBFDBC3BE711F0FC0AB5DF4E /* Pods-Pivy WatchKit Extension.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,12 +503,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6222C8BC1ABB47F1008B5970 /* Build configuration list for PBXNativeTarget "Pivy" */;
 			buildPhases = (
-				CA60EB9421EC47D51FE08991 /* Check Pods Manifest.lock */,
+				1D7E93E402EF22546E8C7363 /* [CP] Check Pods Manifest.lock */,
 				6222C8951ABB47F1008B5970 /* Sources */,
 				6222C8961ABB47F1008B5970 /* Frameworks */,
 				6222C8971ABB47F1008B5970 /* Resources */,
-				81E6DE36195766A865AB45F8 /* Copy Pods Resources */,
 				62BD40A01C7CB32500A625C1 /* Embed Watch Content */,
+				C9A593D794A47950696BB5B6 /* [CP] Embed Pods Frameworks */,
+				906220CC7E2615BBB53C89BF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -517,11 +525,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6299E9A01ADC509900EF2B51 /* Build configuration list for PBXNativeTarget "Pivy WatchKit Extension" */;
 			buildPhases = (
-				3FC252FD9FCF71BD9BEBBA7A /* Check Pods Manifest.lock */,
+				6806389763C037CDE4C5EAD1 /* [CP] Check Pods Manifest.lock */,
 				6299E9791ADC509800EF2B51 /* Sources */,
 				6299E97A1ADC509800EF2B51 /* Frameworks */,
 				6299E97B1ADC509800EF2B51 /* Resources */,
-				E1D8FC5CEC58ADF9FCC78B28 /* Copy Pods Resources */,
+				E38484A1BBC417841FC08EB0 /* [CP] Embed Pods Frameworks */,
+				CA353E2EE0709244748811A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -538,6 +547,7 @@
 			buildPhases = (
 				6299E98A1ADC509900EF2B51 /* Resources */,
 				62BD409F1C7CB32500A625C1 /* Embed App Extensions */,
+				271FDB5649A256F3C742E361 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -555,7 +565,7 @@
 		6222C8911ABB47F1008B5970 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Henrique Valcanaia";
 				TargetAttributes = {
 					6222C8981ABB47F1008B5970 = {
@@ -644,29 +654,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3FC252FD9FCF71BD9BEBBA7A /* Check Pods Manifest.lock */ = {
+		1D7E93E402EF22546E8C7363 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		81E6DE36195766A865AB45F8 /* Copy Pods Resources */ = {
+		6806389763C037CDE4C5EAD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		906220CC7E2615BBB53C89BF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,34 +699,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pivy/Pods-Pivy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA60EB9421EC47D51FE08991 /* Check Pods Manifest.lock */ = {
+		C9A593D794A47950696BB5B6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pivy/Pods-Pivy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1D8FC5CEC58ADF9FCC78B28 /* Copy Pods Resources */ = {
+		CA353E2EE0709244748811A4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pivy WatchKit Extension/Pods-Pivy WatchKit Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E38484A1BBC417841FC08EB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pivy WatchKit Extension/Pods-Pivy WatchKit Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -812,6 +852,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -821,8 +862,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Production IOS Push Services: br.Pivy";
@@ -832,6 +875,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -857,6 +901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -866,8 +911,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Production IOS Push Services: br.Pivy";
@@ -876,6 +923,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -893,7 +941,7 @@
 		};
 		6222C8BD1ABB47F1008B5970 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BE9A90BF87E9587BAC6AF91 /* Pods-Pivy.debug.xcconfig */;
+			baseConfigurationReference = C181177165040A2AB0D44670 /* Pods-Pivy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pivy/Pivy.entitlements;
@@ -906,7 +954,7 @@
 					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -916,7 +964,7 @@
 		};
 		6222C8BE1ABB47F1008B5970 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A5F1E0B4C7ADC1E6FEB0AFC /* Pods-Pivy.release.xcconfig */;
+			baseConfigurationReference = DE468B4F0574D10423F21FE4 /* Pods-Pivy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pivy/Pivy.entitlements;
@@ -929,7 +977,7 @@
 					/Users/pietrodegrazia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Pivy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.Pivy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -939,7 +987,7 @@
 		};
 		6299E99B1ADC509900EF2B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAD4CD8087182F44B9205F24 /* Pods-Pivy WatchKit Extension.debug.xcconfig */;
+			baseConfigurationReference = A551D75A012A1CD3297B4101 /* Pods-Pivy WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Pivy WatchKit Extension/Pivy WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -965,7 +1013,7 @@
 		};
 		6299E99C1ADC509900EF2B51 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBFDBC3BE711F0FC0AB5DF4E /* Pods-Pivy WatchKit Extension.release.xcconfig */;
+			baseConfigurationReference = A6536EFE444F7204CAD34BD8 /* Pods-Pivy WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Pivy WatchKit Extension/Pivy WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
